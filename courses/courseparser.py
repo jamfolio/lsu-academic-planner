@@ -5,6 +5,8 @@ import json
 
 courses = {}
 
+os.makedirs("courses", exist_ok=True)
+
 for filename in os.listdir("pages"):
     if not filename.endswith(".html"):
         continue
@@ -119,7 +121,7 @@ for filename in os.listdir("pages"):
     if code not in courses or (courses[code]["credits"] is None and credits is not None):
         courses[code] = {"code": code, "title": title, "credits": credits, "prereq": prereq, "coreq": coreq, "equivalent_courses": equivalents, "restricted_credits": credit_rest, "repeatable": repeat, "other": other, "description": description}
         
-with open("courses.json", "w", encoding="utf-8") as f:
+with open("courses/courses.json", "w", encoding="utf-8") as f:
     json.dump(courses, f, ensure_ascii=False, indent=2)
 
 print(len(courses))
