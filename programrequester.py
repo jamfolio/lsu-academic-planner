@@ -37,14 +37,14 @@ for poid in tqdm(range(14104, 14638)):
     soup = BeautifulSoup(html, "html.parser")
     h1 = soup.find("h1")
 
-    if h1 is None: 
+    if h1 is None:
         tqdm.write(f"{poid} Error: not a program page!!!!!")
         with open("bad.html", "w", encoding="utf-8") as f:
             f.write(html)
         continue
 
     with open(path, "w", encoding="utf-8") as f:
-          f.write(html)
+        f.write(html)
 
 
 print(len(os.listdir("programs")), "programs saved")

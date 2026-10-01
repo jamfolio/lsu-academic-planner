@@ -32,7 +32,7 @@ for coid in tqdm(range(227992, 234500)):
 
         break
 
-    time.sleep(.5)
+    time.sleep(0.5)
 
     if response.status_code != 200:
         tqdm.write(f"{coid} bad status: {response.status_code}")
@@ -43,14 +43,14 @@ for coid in tqdm(range(227992, 234500)):
     soup = BeautifulSoup(html, "html.parser")
     h1 = soup.find("h1")
 
-    if h1 is None: 
+    if h1 is None:
         tqdm.write(f"{coid} Error: not a course page!!!!!")
         with open("bad.html", "w", encoding="utf-8") as f:
             f.write(html)
         continue
 
     with open(path, "w", encoding="utf-8") as f:
-          f.write(html)
+        f.write(html)
 
 
 print(len(os.listdir("pages")), "pages saved")

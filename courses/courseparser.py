@@ -22,7 +22,7 @@ for filename in os.listdir("pages"):
 
     if match is None:
         continue
-    else: 
+    else:
         code = match.group(1)
         title = match.group(2)
         credits = match.group(3)
@@ -45,7 +45,7 @@ for filename in os.listdir("pages"):
         if not text:
             continue
 
-        if (sibling.name in ("em", "i", "strong")):
+        if sibling.name in ("em", "i", "strong"):
             deciders.append(text)
         elif deciders and deciders[-1].endswith(":"):
             deciders.append(text)
@@ -63,7 +63,11 @@ for filename in os.listdir("pages"):
     next_is_coreq = False
 
     for note in deciders:
-        if next_is_prereq and prereq is not None and not re.match(r"^([a-z.,;]|[A-Z]+ \d{4})", note):
+        if (
+            next_is_prereq
+            and prereq is not None
+            and not re.match(r"^([a-z.,;]|[A-Z]+ \d{4})", note)
+        ):
             next_is_prereq = False
 
         if next_is_prereq:
@@ -87,7 +91,16 @@ for filename in os.listdir("pages"):
         elif note.startswith("Coreq"):
             next_is_coreq = True
 
-        elif note.startswith(("Same as", "Also offered as", "See ", "See:", "An honors course", "An Honors course")):
+        elif note.startswith(
+            (
+                "Same as",
+                "Also offered as",
+                "See ",
+                "See:",
+                "An honors course",
+                "An Honors course",
+            )
+        ):
             equivalents.append(note)
 
         elif note.startswith("Credit will"):
@@ -118,11 +131,23 @@ for filename in os.listdir("pages"):
     description = re.sub(r"An [Hh]onors course[^.]*\.", "", description)
     description = description.strip()
 
-    if code not in courses or (courses[code]["credits"] is None and credits is not None):
-        courses[code] = {"code": code, "title": title, "credits": credits, "prereq": prereq, "coreq": coreq, "equivalent_courses": equivalents, "restricted_credits": credit_rest, "repeatable": repeat, "other": other, "description": description}
-        
+    if code not in courses or (
+        courses[code]["credits"] is None and credits is not None
+    ):
+        courses[code] = {
+            "code": code,
+            "title": title,
+            "credits": credits,
+            "prereq": prereq,
+            "coreq": coreq,
+            "equivalent_courses": equivalents,
+            "restricted_credits": credit_rest,
+            "repeatable": repeat,
+            "other": other,
+            "description": description,
+        }
+
 with open("courses/courses.json", "w", encoding="utf-8") as f:
     json.dump(courses, f, ensure_ascii=False, indent=2)
 
 print(len(courses))
-

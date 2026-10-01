@@ -11,7 +11,7 @@ for filename in os.listdir("programs"):
     if not filename.endswith(".html"):
         continue
 
-    with open (f"programs/{filename}", "r", encoding="utf-8", errors="replace") as f:
+    with open(f"programs/{filename}", "r", encoding="utf-8", errors="replace") as f:
         html = f.read()
 
     soup = BeautifulSoup(html, "html.parser")
