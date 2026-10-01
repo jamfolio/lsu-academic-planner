@@ -130,7 +130,7 @@ for filename in os.listdir("programs"):
         degree_programs[filename[:-5]] = program
 
 
-with open("degree_programs/degrees.json", "w", encoding="utf-8") as f:
+with open("academic_programs/degrees.json", "w", encoding="utf-8") as f:
     json.dump(degree_programs, f, ensure_ascii=False, indent=2)
 
 print(len(degree_programs))
