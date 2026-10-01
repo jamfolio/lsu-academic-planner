@@ -32,11 +32,20 @@ for filename in ["14178.html"]:
             text = item.get_text(" ", strip=True)
             # print("  ", item.get("class"), item.get_text(" ", strip=True))
             if "acalog-course" in classes:
-                print("COURSE", text)
-                # code = re.match(r"[A-Z]+\s+\d{4}", text)
-                # credits = re.search(r"\((.*?)\)", text)
-                or_ending = text.endswith(" or")
-                and_ending = text.endswith(" and")
+                code = re.match(r"[A-Z]+ \d{4}", text)
+                code = code.group(0)
+
+                found = re.findall(r"\((.*?)\)", text) 
+                credits = found[-1]
+
+                if text.endswith(" or"):
+                    connector = "or"
+                elif text.endswith(" and"):
+                    connector = "and"
+                else:
+                    connector = None
+
+                print("COURSE", code, credits, connector)
             elif "acalog-adhoc-list-item" in classes:
                 print("SLOT", text)
             elif "acalog-adhoc" in classes:
