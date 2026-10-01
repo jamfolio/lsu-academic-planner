@@ -8,12 +8,9 @@ from tqdm import tqdm
 
 from seleniumbase import Driver
 
-# headers = {"User-Agent": "LSU academic planner student project"}
 driver = Driver(uc=False)
 
 os.makedirs("programs", exist_ok=True)
-
-# driver.quit()
 
 for poid in tqdm(range(14104, 14638)):
     path = f"programs/{poid}.html"
@@ -25,27 +22,16 @@ for poid in tqdm(range(14104, 14638)):
     while True:
         try:
             driver.get(url)
-            # driver.page_source
-            # response = requests.get(url, headers=headers, cookies=cookies, timeout=10)
+
         except requests.RequestException:
             tqdm.write(f"{poid} request failed, retrying in 1 min")
             time.sleep(60)
             continue
 
-        # if response.status_code == 202:
-            # tqdm.write(f"{poid} blocked, pausing for 1 min...")
-            # time.sleep(60)
-            # continue
-
         break
 
     time.sleep(3)
 
-    # if response.status_code != 200:
-        # tqdm.write(f"{poid} bad status: {response.status_code}")
-        # continue
-
-    # html = response.text
     html = driver.page_source
 
     soup = BeautifulSoup(html, "html.parser")
