@@ -94,6 +94,6 @@ for code, course in tqdm(todo):
             json.dump(results, f, ensure_ascii=False, indent=2)
 
 with open("courses/llmrules.json", "w", encoding="utf-8") as f:
-            json.dump(results, f, ensure_ascii=False, indent=2)
+    json.dump(results, f, ensure_ascii=False, indent=2)
 
 print(len(results))

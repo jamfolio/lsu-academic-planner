@@ -1,0 +1,474 @@
+{
+    "GEOL 3666": {
+        "and": [
+            {
+                "course": "GEOL 3032"
+            },
+            {
+                "course": "GEOL 3041"
+            },
+            {
+                "course": "GEOL 3061"
+            },
+            {
+                "or": [
+                    {
+                        "course": "GEOL 3071"
+                    },
+                    {
+                        "equivalent": true
+                    }
+                ]
+            }
+        ]
+    },
+    "CM 2113": {
+        "and": [
+            {
+                "or": [
+                    {
+                        "course": "CM 1112"
+                    },
+                    {
+                        "course": "CONE 1112"
+                    }
+                ]
+            },
+            {
+                "or": [
+                    {
+                        "course": "CM 2112",
+                        "concurrent": true
+                    },
+                    {
+                        "course": "FESA 2117",
+                        "concurrent": true
+                    }
+                ]
+            }
+        ]
+    },
+    "CM 3111": {
+        "and": [
+            {
+                "course": "CM 2113"
+            },
+            {
+                "or": [
+                    {
+                        "course": "CM 2116"
+                    },
+                    {
+                        "course": "CONE 1112"
+                    },
+                    {
+                        "course": "FESA 2117"
+                    }
+                ]
+            },
+            {
+                "or": [
+                    {
+                        "course": "MATH 1431"
+                    },
+                    {
+                        "course": "MATH 1550"
+                    }
+                ]
+            }
+        ]
+    },
+    "LHRD 7203": {
+        "or": [
+            {
+                "and": [
+                    {
+                        "course": "ELRC 7006"
+                    },
+                    {
+                        "course": "ELRC 7016"
+                    }
+                ]
+            },
+            {
+                "equivalent": true
+            }
+        ]
+    },
+    "HORT 2070": {
+        "course": "HORT 2050",
+        "concurrent": true
+    },
+    "RNR 4107": {
+        "and": [
+            {
+                "or": [
+                    {
+                        "course": "RNR 2039"
+                    },
+                    {
+                        "course": "RNR 2072"
+                    }
+                ]
+            },
+            {
+                "other": "6 hrs. social science general education electives"
+            }
+        ]
+    },
+    "PETE 4320": {
+        "and": [
+            {
+                "or": [
+                    {
+                        "course": "PETE 3050"
+                    },
+                    {
+                        "consent": "instructor"
+                    }
+                ]
+            },
+            {
+                "other": "admitted to the College of Engineering and the Petroleum Engineering major"
+            }
+        ]
+    },
+    "EDCI 2272": {
+        "course": "ART 2271"
+    },
+    "FIN 7709": {
+        "or": [
+            {
+                "other": "enrollment in finance graduate programs"
+            },
+            {
+                "course": "BADM 7090"
+            },
+            {
+                "consent": "department"
+            }
+        ]
+    },
+    "LHRD 7731": {
+        "other": "nine hours from LHRD 7723, LHRD 7724, LHRD 7725, LHRD 7575, or LHRD 7727"
+    },
+    "LHRD 7733": {
+        "other": "twelve hours from LHRD 7723, LHRD 7724, LHRD 7725, LHRD 7575, LHRD 7727, or LHRD 7731"
+    },
+    "PLHL 4444": {
+        "and": [
+            {
+                "course": "BIOL 1201"
+            },
+            {
+                "course": "BIOL 1208"
+            },
+            {
+                "other": "1402 (subject not given in catalog)"
+            },
+            {
+                "or": [
+                    {
+                        "course": "CHEM 2060"
+                    },
+                    {
+                        "course": "CHEM 2261"
+                    }
+                ]
+            }
+        ]
+    },
+    "LHRD 2002": {
+        "course": "LHRD 2001"
+    },
+    "BIOL 4596": {
+        "and": [
+            {
+                "course": "BIOL 2153"
+            },
+            {
+                "or": [
+                    {
+                        "course": "CHEM 2262"
+                    },
+                    {
+                        "course": "CHEM 2462"
+                    }
+                ]
+            }
+        ]
+    },
+    "CHEM 4010": {
+        "or": [
+            {
+                "course": "CHEM 1103"
+            },
+            {
+                "course": "CHEM 1202"
+            },
+            {
+                "course": "CHEM 1422"
+            }
+        ]
+    },
+    "CE 4760": {
+        "and": [
+            {
+                "course": "EVEG 3200"
+            },
+            {
+                "course": "CE 3300"
+            },
+            {
+                "course": "CE 3600"
+            },
+            {
+                "or": [
+                    {
+                        "course": "CE 4410"
+                    },
+                    {
+                        "equivalent": true
+                    }
+                ]
+            },
+            {
+                "course": "CE 4750"
+            },
+            {
+                "or": [
+                    {
+                        "course": "CE 4200"
+                    },
+                    {
+                        "course": "CE 4300"
+                    },
+                    {
+                        "course": "CE 4400"
+                    },
+                    {
+                        "course": "CE 4600"
+                    },
+                    {
+                        "course": "CE 4670"
+                    }
+                ]
+            }
+        ]
+    },
+    "BIOL 4450": {
+        "or": [
+            {
+                "course": "BIOL 4087"
+            },
+            {
+                "course": "BIOL 4093"
+            }
+        ]
+    },
+    "BE 4310": {
+        "and": [
+            {
+                "or": [
+                    {
+                        "course": "ME 3333"
+                    },
+                    {
+                        "equivalent": true
+                    }
+                ]
+            },
+            {
+                "or": [
+                    {
+                        "course": "BE 4352",
+                        "concurrent": true
+                    },
+                    {
+                        "equivalent": true
+                    }
+                ]
+            }
+        ]
+    },
+    "AGEC 3003": {
+        "and": [
+            {
+                "or": [
+                    {
+                        "and": [
+                            {
+                                "course": "AGEC 2003"
+                            },
+                            {
+                                "course": "ECON 2030"
+                            }
+                        ]
+                    },
+                    {
+                        "and": [
+                            {
+                                "course": "ECON 2000"
+                            },
+                            {
+                                "course": "ECON 2010"
+                            }
+                        ]
+                    },
+                    {
+                        "equivalent": true
+                    }
+                ]
+            },
+            {
+                "or": [
+                    {
+                        "course": "MATH 1431"
+                    },
+                    {
+                        "course": "MATH 1550"
+                    }
+                ]
+            }
+        ]
+    },
+    "PADM 7917": {
+        "or": [
+            {
+                "course": "PADM 5010"
+            },
+            {
+                "equivalent": true
+            }
+        ]
+    },
+    "CHEM 4564": {
+        "and": [
+            {
+                "or": [
+                    {
+                        "course": "CHEM 2262"
+                    },
+                    {
+                        "course": "CHEM 2462"
+                    }
+                ]
+            },
+            {
+                "or": [
+                    {
+                        "course": "CHEM 2364"
+                    },
+                    {
+                        "course": "CHEM 2463"
+                    }
+                ]
+            }
+        ]
+    },
+    "CHEM 4556": {
+        "and": [
+            {
+                "course": "CHEM 2001"
+            },
+            {
+                "or": [
+                    {
+                        "course": "CHEM 3490"
+                    },
+                    {
+                        "course": "CHEM 3491"
+                    },
+                    {
+                        "course": "BIOL 4001"
+                    }
+                ]
+            }
+        ]
+    },
+    "MUS 2622": {
+        "and": [
+            {
+                "or": [
+                    {
+                        "course": "MUS 2620"
+                    },
+                    {
+                        "course": "MUS 2630"
+                    },
+                    {
+                        "consent": "department"
+                    }
+                ]
+            },
+            {
+                "other": "music majors or minors only"
+            }
+        ]
+    },
+    "PSYC 7979": {
+        "consent": "instructor"
+    },
+    "EE 4810": {
+        "and": [
+            {
+                "course": "EE 2820"
+            },
+            {
+                "or": [
+                    {
+                        "course": "EE 3610"
+                    },
+                    {
+                        "course": "EE 3752"
+                    }
+                ]
+            },
+            {
+                "other": "senior standing in the College of Engineering"
+            },
+            {
+                "or": [
+                    {
+                        "course": "EE 3160"
+                    },
+                    {
+                        "course": "EE 3220"
+                    },
+                    {
+                        "course": "EE 3410"
+                    },
+                    {
+                        "course": "EE 3530"
+                    },
+                    {
+                        "course": "EE 3755"
+                    }
+                ]
+            }
+        ]
+    },
+    "EE 2120": {
+        "or": [
+            {
+                "and": [
+                    {
+                        "course": "EE 1820",
+                        "concurrent": true
+                    },
+                    {
+                        "course": "MATH 2070",
+                        "concurrent": true
+                    },
+                    {
+                        "course": "PHYS 2113",
+                        "concurrent": true
+                    }
+                ]
+            },
+            {
+                "consent": "division"
+            }
+        ]
+    }
+}

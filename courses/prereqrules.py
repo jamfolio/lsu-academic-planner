@@ -82,19 +82,19 @@ for code, course in courses.items():
         continue
 
     prereq_text = course["prereq"]
-    total_prereqs = total_prereqs + 1
+    total_prereqs += 1
 
     rule = parse_prereq(prereq_text)
 
     if rule is not None:
-        handled = handled + 1
+        handled += 1
     else:
         rule = {
             "needs_review": True,
             "text": prereq_text,
             "courses": re.findall(r"[A-Z]+ \d{4}", prereq_text),
         }
-    
+
     course["prereq_rule"] = rule
 
 with open("courses/courseswithrules.json", "w", encoding="utf-8") as f:

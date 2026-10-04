@@ -7,8 +7,15 @@ gen_eds = {}
 
 os.makedirs("courses", exist_ok=True)
 
-for filename in ["14233.html", "14234.html", "14235.html", "14236.html", "14237.html", "14238.html"]:
-    if not filename.endswith('.html'):
+for filename in [
+    "14233.html",
+    "14234.html",
+    "14235.html",
+    "14236.html",
+    "14237.html",
+    "14238.html",
+]:
+    if not filename.endswith(".html"):
         continue
 
     with open(f"programs/{filename}", "r", encoding="utf-8") as f:
@@ -38,5 +45,5 @@ for filename in ["14233.html", "14234.html", "14235.html", "14236.html", "14237.
 
     gen_eds[category] = {"hours": hours, "courses": codes}
 
-with open ("courses/gen_eds.json", "w", encoding="utf-8") as f:
+with open("courses/gen_eds.json", "w", encoding="utf-8") as f:
     json.dump(gen_eds, f, ensure_ascii=False, indent=2)

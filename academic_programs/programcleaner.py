@@ -21,6 +21,6 @@ for filename in os.listdir("programs"):
     if acalog_div is None and program_desc is None:
         print(filename)
         os.rename(path, f"junk_programs/{filename}")
-        files_moved = files_moved + 1
+        files_moved += 1
 
 print(f"There were {files_moved} files moved")

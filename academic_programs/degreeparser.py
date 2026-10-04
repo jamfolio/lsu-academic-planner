@@ -40,7 +40,9 @@ for filename in os.listdir("programs"):
             if number is not None:
                 number = int(number.group(0))
 
-            if current_track is None or (number is not None and last_number is not None and number <= last_number):
+            if current_track is None or (
+                number is not None and last_number is not None and number <= last_number
+            ):
                 track = {
                     "name": last_heading or title,
                     "total_hours": None,
@@ -78,7 +80,7 @@ for filename in os.listdir("programs"):
                 "Prerequisite Courses:",
                 "Notes:",
                 "Note:",
-                "Required For Bachelor’s Degree:"
+                "Required For Bachelor’s Degree:",
             ):
                 last_heading = heading_text
 
