@@ -1,0 +1,539 @@
+{
+    "14126": {
+        "and": [
+            {
+                "course": "TAM 1100"
+            },
+            {
+                "course": "TAM 2040"
+            },
+            {
+                "course": "TAM 2045"
+            },
+            {
+                "or": [
+                    {
+                        "and": [
+                            {
+                                "course": "TAM 2037"
+                            },
+                            {
+                                "course": "TAM 3022"
+                            },
+                            {
+                                "or": [
+                                    {
+                                        "course": "TAM 1232"
+                                    },
+                                    {
+                                        "course": "TAM 2032"
+                                    }
+                                ]
+                            },
+                            {
+                                "or": [
+                                    {
+                                        "course": "TAM 2038"
+                                    },
+                                    {
+                                        "course": "TAM 3037"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "and": [
+                            {
+                                "course": "TAM 2042"
+                            },
+                            {
+                                "course": "TAM 3042"
+                            },
+                            {
+                                "course": "TAM 3045"
+                            },
+                            {
+                                "or": [
+                                    {
+                                        "course": "TAM 3022"
+                                    },
+                                    {
+                                        "course": "TAM 3027"
+                                    },
+                                    {
+                                        "course": "TAM 4070"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "and": [
+                            {
+                                "course": "TAM 2080"
+                            },
+                            {
+                                "course": "TAM 1071"
+                            },
+                            {
+                                "course": "TAM 4071"
+                            },
+                            {
+                                "course": "TAM 4072"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "other": "2.0 GPA in the courses used for the minor"
+            },
+            {
+                "other": "not available to textiles, apparel, and merchandising majors"
+            }
+        ]
+    },
+    "14192": {
+        "and": [
+            {
+                "course": "SCRN 2001"
+            },
+            {
+                "hours_from": 15,
+                "courses": [
+                    "SCRN 2203",
+                    "SCRN 3001",
+                    "SCRN 3010",
+                    "SCRN 3011",
+                    "SCRN 3012",
+                    "SCRN 3014",
+                    "SCRN 3030",
+                    "SCRN 3501",
+                    "SCRN 3502",
+                    "SCRN 3503",
+                    "SCRN 3504",
+                    "SCRN 3505",
+                    "SCRN 3506",
+                    "SCRN 3507",
+                    "SCRN 4001",
+                    "SCRN 4011",
+                    "SCRN 4012",
+                    "SCRN 4014",
+                    "SCRN 4015",
+                    "SCRN 4046",
+                    "ARTH 4480",
+                    "ARAB 3501",
+                    "CHIN 2070",
+                    "CLST 2070",
+                    "CMST 2012",
+                    "CMST 3012",
+                    "CMST 3013",
+                    "CMST 3107",
+                    "CMST 4312",
+                    "ENGL 2009",
+                    "ENGL 2231",
+                    "ENGL 3133",
+                    "ENGL 4009",
+                    "ENGL 4109",
+                    "ENGL 4133",
+                    "ENGL 4231",
+                    "FREN 4031",
+                    "GERM 3506",
+                    "GERM 4046",
+                    "HIST 4077",
+                    "ITAL 3502",
+                    "MC 2700",
+                    "SPAN 4201",
+                    "WGS 2200"
+                ]
+            },
+            {
+                "hours_in": 9,
+                "subject": "SCRN"
+            },
+            {
+                "other": "at least nine elective hours at the 3000 level or above"
+            },
+            {
+                "other": "special topics courses may count with the Screen Arts director's approval"
+            }
+        ]
+    },
+    "14474": {
+        "and": [
+            {
+                "hours_from": 9,
+                "courses": [
+                    "ECON 4520",
+                    "ECON 4550",
+                    "ECON 4070",
+                    "FIN 3718",
+                    "GBUS 4991",
+                    "MGT 4430",
+                    "MGT 4440",
+                    "MGT 4450"
+                ]
+            },
+            {
+                "other": "the 9 hours must come from at least two departments; a departmentally approved international business elective may substitute"
+            },
+            {
+                "other": "6 hours of departmentally approved electives"
+            },
+            {
+                "other": "2.0 GPA in the courses used for the minor"
+            },
+            {
+                "other": "at least nine hours on this campus, three of them at the 3000 or 4000 level"
+            }
+        ]
+    },
+    "14634": {
+        "and": [
+            {
+                "other": "9 to 18 hours of School of Veterinary Medicine coursework at the 7000 level or above, planned with the Program Director"
+            }
+        ]
+    },
+    "14196": {
+        "and": [
+            {
+                "hours_in": 22,
+                "subject": "GERM"
+            },
+            {
+                "hours_in": 6,
+                "subject": "GERM",
+                "min_level": 3000
+            }
+        ]
+    },
+    "14476": {
+        "and": [
+            {
+                "course": "ISDS 2000"
+            },
+            {
+                "course": "ISDS 2001"
+            },
+            {
+                "or": [
+                    {
+                        "course": "ISDS 3110"
+                    },
+                    {
+                        "course": "ISDS 3003"
+                    },
+                    {
+                        "course": "ISDS 3009"
+                    }
+                ]
+            },
+            {
+                "other": "9 hours of departmentally approved Analytics electives"
+            },
+            {
+                "other": "2.0 GPA in the courses used for the minor"
+            },
+            {
+                "other": "at least nine hours on this campus, three of them at the 3000 or 4000 level"
+            }
+        ]
+    },
+    "14186": {
+        "and": [
+            {
+                "hours_from": 15,
+                "courses": [
+                    "ANTH 4002",
+                    "ARTH 2411",
+                    "ARTH 4441",
+                    "ARTH 4442",
+                    "ARTH 4443",
+                    "ARTH 4445",
+                    "CHIN 1101",
+                    "CHIN 1102",
+                    "CHIN 2001",
+                    "CHIN 2002",
+                    "CHIN 2070",
+                    "CHIN 3101",
+                    "CHIN 3102",
+                    "CHIN 3801",
+                    "CLST 3090",
+                    "ENGL 2673",
+                    "ENGL 3080",
+                    "ENGL 4680",
+                    "ENTR 4050",
+                    "GEOG 1003",
+                    "GEOG 4002",
+                    "HIST 2100",
+                    "HIST 2096",
+                    "HIST 2190",
+                    "HIST 4050",
+                    "HIST 4078",
+                    "HIST 4091",
+                    "HIST 4092",
+                    "HIST 4093",
+                    "HIST 4094",
+                    "HIST 4097",
+                    "HIST 4099",
+                    "HIST 4191",
+                    "ISDS 4160",
+                    "INTL 4002",
+                    "JAPN 3801",
+                    "POLI 4067",
+                    "POLI 4079",
+                    "REL 2027",
+                    "REL 3786",
+                    "REL 4001",
+                    "REL 4600",
+                    "REL 4800",
+                    "REL 4035",
+                    "REL 4191",
+                    "SCRN 3503"
+                ]
+            },
+            {
+                "other": "at least six hours taken at LSU at the 3000 or 4000 level"
+            },
+            {
+                "other": "other courses may count with Asian Studies faculty approval"
+            }
+        ]
+    },
+    "14200": {
+        "and": [
+            {
+                "hours_from": 15,
+                "courses": [
+                    "REL 1004",
+                    "REL 1007",
+                    "REL 2029",
+                    "REL 2120",
+                    "REL 3004",
+                    "REL 3100",
+                    "REL 3104",
+                    "REL 3124",
+                    "REL 4125",
+                    "REL 4236",
+                    "HEBR 1001",
+                    "HEBR 1002",
+                    "HEBR 2003",
+                    "HEBR 2004",
+                    "ENGL 3124",
+                    "ENGL 4055",
+                    "ENGL 4086",
+                    "ENGL 4122",
+                    "ENGL 4231",
+                    "ENGL 4236",
+                    "ENGL 4593",
+                    "HIST 4026",
+                    "HIST 4125",
+                    "ANTH 3004"
+                ]
+            },
+            {
+                "other": "at least six hours at the 3000 level or above"
+            },
+            {
+                "other": "electives from at least two areas (Religious Studies, Hebrew, Literature, History, Anthropology)"
+            },
+            {
+                "other": "some courses count only depending on topic, by petition"
+            }
+        ]
+    },
+    "14198": {
+        "and": [
+            {
+                "hours_in": 18,
+                "subject": "HIST"
+            },
+            {
+                "hours_in": 9,
+                "subject": "HIST",
+                "min_level": 3000
+            },
+            {
+                "other": "a two-semester six-hour HIST sequence at the 1000 or 2000 level"
+            }
+        ]
+    },
+    "14156": {
+        "and": [
+            {
+                "course": "KIN 2530"
+            },
+            {
+                "other": "three activity courses"
+            },
+            {
+                "hours_from": 12,
+                "courses": [
+                    "KIN 2501",
+                    "KIN 2513",
+                    "KIN 2526",
+                    "KIN 3507",
+                    "KIN 4515",
+                    "KIN 4517",
+                    "KIN 4800",
+                    "MKT 3410"
+                ]
+            }
+        ]
+    },
+    "14482": {
+        "and": [
+            {
+                "course": "EE 2120"
+            },
+            {
+                "course": "EE 2230"
+            },
+            {
+                "course": "EE 2741"
+            },
+            {
+                "course": "EE 2742"
+            },
+            {
+                "course": "EE 3755"
+            },
+            {
+                "hours_from": 6,
+                "courses": [
+                    "EE 3710",
+                    "EE 3752"
+                ]
+            },
+            {
+                "other": "EE 47xx courses also count toward the six elective hours"
+            },
+            {
+                "other": "2.0 GPA in the minor and a C or better in each course"
+            }
+        ]
+    },
+    "14221": {
+        "and": [
+            {
+                "course": "CHEM 1201"
+            },
+            {
+                "course": "CHEM 1202"
+            },
+            {
+                "or": [
+                    {
+                        "and": [
+                            {
+                                "course": "CHEM 2261"
+                            },
+                            {
+                                "course": "CHEM 2262"
+                            }
+                        ]
+                    },
+                    {
+                        "course": "CHEM 2001"
+                    }
+                ]
+            },
+            {
+                "or": [
+                    {
+                        "and": [
+                            {
+                                "course": "CHEM 1212"
+                            },
+                            {
+                                "course": "CHEM 2364"
+                            }
+                        ]
+                    },
+                    {
+                        "course": "CHEM 2002"
+                    }
+                ]
+            },
+            {
+                "hours_in": 24,
+                "subject": "CHEM",
+                "except": [
+                    "CHEM 2900",
+                    "CHEM 3900",
+                    "CHEM 4003",
+                    "CHEM 4005"
+                ]
+            },
+            {
+                "hours_in": 6,
+                "subject": "CHEM",
+                "min_level": 3000,
+                "except": [
+                    "CHEM 2900",
+                    "CHEM 3900",
+                    "CHEM 4003",
+                    "CHEM 4005"
+                ]
+            }
+        ]
+    },
+    "14240": {
+        "and": [
+            {
+                "course": "MC 2010"
+            },
+            {
+                "course": "MC 3504"
+            },
+            {
+                "course": "MC 3505"
+            },
+            {
+                "course": "MC 4520"
+            },
+            {
+                "other": "three hours from one additional political communication course"
+            },
+            {
+                "hours_in": 3,
+                "subject": "POLI",
+                "min_level": 4000
+            }
+        ]
+    },
+    "14164": {
+        "and": [
+            {
+                "course": "ME 2733"
+            },
+            {
+                "course": "ME 3701"
+            },
+            {
+                "course": "ME 4723"
+            },
+            {
+                "course": "ME 4743"
+            },
+            {
+                "or": [
+                    {
+                        "course": "CE 3400"
+                    },
+                    {
+                        "other": "equivalent"
+                    }
+                ]
+            },
+            {
+                "other": "two courses from an approved list of technical electives"
+            },
+            {
+                "other": "C or better in each course"
+            }
+        ]
+    }
+}

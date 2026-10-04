@@ -6,7 +6,7 @@ with open("courses/courseswithrules.json", "r", encoding="utf-8") as f:
 with open("courses/llmrules.json", "r", encoding="utf-8") as f:
     llm_rules = json.load(f)
 
-with open("courses/manualfixes.json", "r", encoding="utf-8") as f:
+with open("courses/manualprereqfixes.json", "r", encoding="utf-8") as f:
     manual_fixes = json.load(f)
 
 bad = {

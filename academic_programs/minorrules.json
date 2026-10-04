@@ -1,0 +1,3797 @@
+{
+  "14521": {
+    "and": [
+      {
+        "course": "LHRD 2070"
+      },
+      {
+        "course": "LHRD 3065"
+      },
+      {
+        "course": "LHRD 3171"
+      },
+      {
+        "course": "LHRD 4067"
+      },
+      {
+        "course": "LHRD 4069"
+      }
+    ],
+    "source": "llm"
+  },
+  "14171": {
+    "and": [
+      {
+        "course": "CE 3600"
+      },
+      {
+        "course": "CE 4600"
+      },
+      {
+        "course": "CE 4650"
+      },
+      {
+        "or": [
+          {
+            "course": "CE 4670"
+          },
+          {
+            "course": "CE 4660"
+          }
+        ]
+      },
+      {
+        "course": "EXST 2201"
+      },
+      {
+        "other": "three additional courses chosen from an approved list of technical/design/analysis electives available in the dean’s office"
+      }
+    ],
+    "source": "llm"
+  },
+  "14130": {
+    "and": [
+      {
+        "course": "ART 1661"
+      },
+      {
+        "course": "ART 1662"
+      },
+      {
+        "course": "ART 2661"
+      },
+      {
+        "other": "ART 2661 repeated for six hours of credit"
+      },
+      {
+        "other": "six semester hours of ceramics courses at the 4000-level"
+      }
+    ],
+    "source": "llm"
+  },
+  "14188": {
+    "and": [
+      {
+        "other": "minimum of 16 hours of approved courses, of which no more than six hours may be taken outside the department"
+      },
+      {
+        "hours_in": 6,
+        "subject": "CLST",
+        "min_level": 3000
+      },
+      {
+        "other": "Any course in Latin or Greek language may count toward the minor"
+      },
+      {
+        "hours_in": 9,
+        "subject": "CLST",
+        "except": [
+          "CLST 2092"
+        ]
+      },
+      {
+        "other": "A list of courses outside the department which may count toward the minor is available in the departmental office"
+      }
+    ],
+    "source": "llm"
+  },
+  "14167": {
+    "and": [
+      {
+        "course": "CE 3415"
+      },
+      {
+        "course": "CE 4400"
+      },
+      {
+        "course": "CE 4410"
+      },
+      {
+        "or": [
+          {
+            "course": "CE 4430"
+          },
+          {
+            "course": "CE 4460"
+          }
+        ]
+      },
+      {
+        "course": "CE 4435"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "CE 4420",
+          "CE 4440",
+          "CE 4450"
+        ]
+      },
+      {
+        "other": "no more than one of CE 4300 / CE 4310 / CE 4660"
+      },
+      {
+        "other": "The additional technical/design/analysis electives are available in the dean’s office"
+      },
+      {
+        "other": "A grade of “C” or better in each course is required"
+      }
+    ],
+    "source": "llm"
+  },
+  "14448": {
+    "and": [
+      {
+        "course": "GEOG 2200"
+      },
+      {
+        "course": "GEOG 2210"
+      },
+      {
+        "course": "GEOG 4200"
+      },
+      {
+        "or": [
+          {
+            "course": "GEOG 4044"
+          },
+          {
+            "course": "GEOG 4045"
+          },
+          {
+            "course": "GEOG 4047"
+          }
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "GEOG 3001",
+          "GEOG 3013",
+          "GEOG 4014",
+          "GEOG 4015",
+          "GEOG 4018",
+          "GEOG 4022",
+          "GEOG 4029",
+          "GEOG 4078",
+          "GEOG 4221",
+          "GEOG 4997",
+          "GEOG 4995",
+          "ANTH 4909",
+          "ANTH 4090",
+          "ANTH 4997"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14223": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "GEOL 1201"
+          },
+          {
+            "and": [
+              {
+                "course": "GEOL 1001"
+              },
+              {
+                "course": "GEOL 1601"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "GEOL 1002"
+              },
+              {
+                "course": "GEOL 1601"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "GEOL 1202"
+          },
+          {
+            "and": [
+              {
+                "course": "GEOL 1003"
+              },
+              {
+                "course": "GEOL 1602"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "GEOL 1004"
+              },
+              {
+                "course": "GEOL 1602"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hours_in": 12,
+        "subject": "GEOL",
+        "except": [
+          "GEOL 3909",
+          "GEOL 3999"
+        ]
+      },
+      {
+        "hours_in": 6,
+        "subject": "GEOL",
+        "min_level": 3000,
+        "except": [
+          "GEOL 3909",
+          "GEOL 3999"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14203": {
+    "and": [
+      {
+        "hours_in": 15,
+        "subject": "PHIL"
+      },
+      {
+        "hours_in": 6,
+        "subject": "PHIL",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14242": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "INTL 2000"
+          },
+          {
+            "course": "INTL 2001"
+          }
+        ]
+      },
+      {
+        "other": "interdisciplinary core"
+      },
+      {
+        "other": "global or regional concentration"
+      },
+      {
+        "other": "relevant foreign language"
+      },
+      {
+        "other": "demonstrate second-year competency in a foreign language"
+      }
+    ],
+    "source": "llm"
+  },
+  "14184": {
+    "and": [
+      {
+        "course": "ARAB 2101"
+      },
+      {
+        "course": "ARAB 2102"
+      },
+      {
+        "course": "ARAB 3101"
+      },
+      {
+        "course": "ARAB 3102"
+      },
+      {
+        "other": "six hours of approved electives"
+      }
+    ],
+    "source": "llm"
+  },
+  "14239": {
+    "and": [
+      {
+        "course": "MC 2000"
+      },
+      {
+        "course": "MC 2010"
+      },
+      {
+        "course": "MC 2015"
+      },
+      {
+        "course": "MC 2035"
+      },
+      {
+        "or": [
+          {
+            "courses_from": 2,
+            "courses": [
+              "MC 2005",
+              "MC 3103",
+              "MC 3104"
+            ]
+          },
+          {
+            "courses_from": 2,
+            "courses": [
+              "MC 2040",
+              "MC 3031"
+            ]
+          },
+          {
+            "courses_from": 2,
+            "courses": [
+              "MC 3010",
+              "MC 3001"
+            ]
+          },
+          {
+            "courses_from": 2,
+            "courses": [
+              "MC 3504",
+              "MC 3520"
+            ]
+          },
+          {
+            "courses_from": 2,
+            "courses": [
+              "MC 3080",
+              "MC 4090"
+            ]
+          },
+          {
+            "courses_from": 2,
+            "courses": [
+              "MC 4550",
+              "MC 4600"
+            ]
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14151": {
+    "and": [
+      {
+        "hours_from": 18,
+        "courses": [
+          "ATRN 2000",
+          "KIN 2512",
+          "KIN 2525",
+          "KIN 2526"
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "KIN 1802"
+          },
+          {
+            "course": "KIN 1803"
+          },
+          {
+            "course": "KIN 1804"
+          }
+        ]
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "KIN 2511",
+          "KIN 2516",
+          "KIN 2518"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14150": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "ENVS 1126"
+          },
+          {
+            "course": "ENVS 1127"
+          }
+        ]
+      },
+      {
+        "and": [
+          {
+            "courses_from": 1,
+            "courses": [
+              "ENVS 4035",
+              "ENVS 4036",
+              "ENVS 4101",
+              "ENVS 4477",
+              "ENVS 4600"
+            ]
+          },
+          {
+            "courses_from": 1,
+            "courses": [
+              "ENVS 4261",
+              "ENVS 4262",
+              "ENVS 4264",
+              "ENVS 4266"
+            ]
+          },
+          {
+            "courses_from": 1,
+            "courses": [
+              "ENVS 3102",
+              "ENVS 4145",
+              "ENVS 4149",
+              "ENVS 4900"
+            ]
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "courses_from": 1,
+            "courses": [
+              "ENVS 4035",
+              "ENVS 4036",
+              "ENVS 4101",
+              "ENVS 4477",
+              "ENVS 4600",
+              "ENVS 4261",
+              "ENVS 4262",
+              "ENVS 4264",
+              "ENVS 4266",
+              "ENVS 3102",
+              "ENVS 4145",
+              "ENVS 4149",
+              "ENVS 4900"
+            ]
+          },
+          {
+            "course": "ENVS 3999"
+          },
+          {
+            "other": "any 2000-level or higher courses approved by the department"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14185": {
+    "and": [
+      {
+        "course": "ARTH 1440"
+      },
+      {
+        "course": "ARTH 1441"
+      },
+      {
+        "hours_in": 12,
+        "subject": "ARTH",
+        "min_level": 4000
+      }
+    ],
+    "source": "llm"
+  },
+  "14202": {
+    "and": [
+      {
+        "other": "not more than nine semester hours taken from any one department"
+      },
+      {
+        "hours_in": 9,
+        "subject": "LING",
+        "min_level": 3000
+      },
+      {
+        "or": [
+          {
+            "course": "COMD 2050"
+          },
+          {
+            "course": "LING 2050"
+          },
+          {
+            "course": "ANTH 3060"
+          },
+          {
+            "course": "LING 3060"
+          },
+          {
+            "course": "ENGL 4710"
+          },
+          {
+            "course": "LING 4710"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "COMD 3150"
+          },
+          {
+            "course": "LING 3150"
+          },
+          {
+            "course": "ENGL 4713"
+          },
+          {
+            "course": "LING 4713"
+          },
+          {
+            "course": "ENGL 4714"
+          },
+          {
+            "course": "LING 4714"
+          },
+          {
+            "course": "ENGL 4715"
+          },
+          {
+            "course": "LING 4715"
+          }
+        ]
+      },
+      {
+        "other": "electives selected from at least two of the three concentration areas below"
+      }
+    ],
+    "source": "llm"
+  },
+  "14193": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "FREN 2154"
+          },
+          {
+            "course": "FREN 2254"
+          }
+        ]
+      },
+      {
+        "course": "FREN 2155"
+      },
+      {
+        "course": "FREN 3060"
+      },
+      {
+        "hours_in": 6,
+        "subject": "FREN",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14222": {
+    "and": [
+      {
+        "or": [
+          {
+            "and": [
+              {
+                "course": "CSC 1253"
+              },
+              {
+                "course": "CSC 1254"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "CSC 1350"
+              },
+              {
+                "course": "CSC 1351"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "course": "CSC 2259"
+      },
+      {
+        "or": [
+          {
+            "course": "CSC 3102"
+          },
+          {
+            "course": "CSC 3501"
+          },
+          {
+            "course": "EE 3755"
+          }
+        ]
+      },
+      {
+        "hours_in": 3,
+        "subject": "CSC",
+        "min_level": 3000
+      },
+      {
+        "or": [
+          {
+            "course": "CSC 4101"
+          },
+          {
+            "course": "CSC 4103"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14633": {
+    "and": [
+      {
+        "course": "CPLT 2202"
+      },
+      {
+        "hours_from": 15,
+        "courses": [
+          "CPLT 2201",
+          "CPLT 2203",
+          "CPLT 3070",
+          "CPLT 3023",
+          "CPLT 3801",
+          "CPLT 3802",
+          "CPLT 4091",
+          "CPLT 4100",
+          "CPLT 4500",
+          "CPLT 4600",
+          "CPLT 4700",
+          "CPLT 4800"
+        ]
+      },
+      {
+        "hours_in": 9,
+        "subject": "CPLT",
+        "min_level": 3000
+      },
+      {
+        "other": "special topics courses and courses with sections relevant to Comparative Literature may be accepted for the minor with the approval of the Comparative Literature Director"
+      }
+    ],
+    "source": "llm"
+  },
+  "14189": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "CMST 1150"
+          },
+          {
+            "course": "CMST 1061"
+          }
+        ]
+      },
+      {
+        "hours_in": 12,
+        "subject": "CMST"
+      },
+      {
+        "hours_in": 6,
+        "subject": "CMST",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14166": {
+    "and": [
+      {
+        "other": "ME 3834 or equivalent"
+      },
+      {
+        "course": "ME 4433"
+      },
+      {
+        "other": "three nuclear power core courses"
+      },
+      {
+        "other": "one nuclear power related course chosen from an approved list of nuclear power technical electives"
+      }
+    ],
+    "source": "llm"
+  },
+  "14218": {
+    "and": [
+      {
+        "hours_from": 6,
+        "courses": [
+          "THTR 1029",
+          "THTR 3029",
+          "THTR 3032",
+          "THTR 3803"
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "THTR 1127",
+          "THTR 1131",
+          "THTR 1153",
+          "THTR 1227",
+          "THTR 1231",
+          "THTR 1253",
+          "THTR 2031",
+          "THTR 4031"
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "THTR 2025",
+          "THTR 2032",
+          "THTR 3800",
+          "THTR 3802",
+          "THTR 4029",
+          "THTR 4032",
+          "THTR 4033"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14131": {
+    "and": [
+      {
+        "course": "ARCH 4062"
+      },
+      {
+        "course": "ARCH 4072"
+      },
+      {
+        "course": "ARCH 4700"
+      },
+      {
+        "course": "ARCH 5008"
+      },
+      {
+        "or": [
+          {
+            "course": "ARCH 4041"
+          },
+          {
+            "course": "ARCH 4353"
+          },
+          {
+            "course": "ARCH 4440"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14127": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "RNR 1010"
+          },
+          {
+            "course": "RNR 1001"
+          }
+        ]
+      },
+      {
+        "course": "RNR 2101"
+      },
+      {
+        "course": "RNR 2031"
+      },
+      {
+        "course": "RNR 2039"
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "RNR 2102",
+          "RNR 3004",
+          "RNR 4013",
+          "RNR 4103",
+          "RNR 4107",
+          "RNR 4051"
+        ]
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "RNR 2001",
+          "RNR 2018",
+          "RNR 2900",
+          "RNR 4020",
+          "RNR 4060",
+          "BIOL 4041",
+          "BIOL 4055"
+        ]
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "RNR 3018",
+          "RNR 4012",
+          "RNR 4016",
+          "RNR 4130",
+          "BIOL 4145",
+          "BIOL 4141",
+          "BIOL 4142",
+          "BIOL 4146"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14170": {
+    "and": [
+      {
+        "course": "ACCT 2000"
+      },
+      {
+        "or": [
+          {
+            "course": "BLAW 3201"
+          },
+          {
+            "course": "CM 4211"
+          }
+        ]
+      },
+      {
+        "course": "CONE 4221"
+      },
+      {
+        "course": "ECON 2030"
+      },
+      {
+        "or": [
+          {
+            "course": "IE 3201"
+          },
+          {
+            "course": "FIN 3715"
+          },
+          {
+            "course": "PETE 3025"
+          }
+        ]
+      },
+      {
+        "course": "MGT 3200"
+      },
+      {
+        "course": "MKT 3401"
+      },
+      {
+        "course": "PHYS 1202"
+      },
+      {
+        "course": "PHYS 2112"
+      },
+      {
+        "course": "PHYS 2113"
+      },
+      {
+        "course": "PHYS 2002"
+      },
+      {
+        "or": [
+          {
+            "course": "CMST 1061"
+          },
+          {
+            "course": "CMST 2010"
+          },
+          {
+            "course": "CMST 2060"
+          },
+          {
+            "course": "CMST 2061"
+          }
+        ]
+      },
+      {
+        "other": "Students in other colleges must have approval from the College of Engineering dean’s office to declare this minor."
+      }
+    ],
+    "source": "llm"
+  },
+  "14194": {
+    "and": [
+      {
+        "hours_from": 9,
+        "courses": [
+          "GEOG 4045",
+          "GEOG 4047",
+          "GEOG 4048"
+        ]
+      },
+      {
+        "or": [
+          {
+            "hours_from": 6,
+            "courses": [
+              "GEOG 2040",
+              "GEOG 4020",
+              "GEOG 4042",
+              "GEOG 4044",
+              "GEOG 4046"
+            ]
+          },
+          {
+            "course": "ENVS 4145"
+          },
+          {
+            "course": "ENVS 4149"
+          },
+          {
+            "other": "any courses approved by the program director"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14205": {
+    "and": [
+      {
+        "course": "MILS 3011"
+      },
+      {
+        "course": "MILS 3012"
+      },
+      {
+        "course": "MILS 3013"
+      },
+      {
+        "course": "MILS 4011"
+      },
+      {
+        "course": "MILS 4012"
+      },
+      {
+        "other": "military history approved by the professor of military science"
+      }
+    ],
+    "source": "llm"
+  },
+  "14182": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "AAAS 2000"
+          },
+          {
+            "course": "AAAS 2001"
+          }
+        ]
+      },
+      {
+        "course": "AAAS 4020"
+      },
+      {
+        "or": [
+          {
+            "course": "AAAS 3044"
+          },
+          {
+            "course": "AAAS 3024"
+          }
+        ]
+      },
+      {
+        "hours_in": 9,
+        "subject": "AAAS"
+      },
+      {
+        "hours_in": 3,
+        "subject": "AAAS",
+        "min_level": 3000
+      },
+      {
+        "other": "at least three hours must focus on a geographical region other than the US"
+      },
+      {
+        "other": "Special topics courses relevant to AAAS offered by participating departments may be counted towards the minor requirements with prior approval from the program advisor"
+      }
+    ],
+    "source": "llm"
+  },
+  "14116": {
+    "and": [
+      {
+        "course": "AGRO 2051"
+      },
+      {
+        "hours_in": 14,
+        "subject": "AGRO"
+      },
+      {
+        "hours_in": 6,
+        "subject": "AGRO",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14141": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "ACCT 2000"
+          },
+          {
+            "course": "ACCT 2001"
+          }
+        ]
+      },
+      {
+        "course": "ECON 2030"
+      },
+      {
+        "course": "FIN 3715"
+      },
+      {
+        "course": "ISDS 1100"
+      },
+      {
+        "course": "MGT 3200"
+      },
+      {
+        "course": "MKT 3401"
+      },
+      {
+        "other": "A student must earn a minimum GPA in the minor field."
+      },
+      {
+        "other": "At least nine semester hours must be taken on this campus and, of the nine hours, three must be at the 3000 or 4000 level."
+      },
+      {
+        "other": "This minor is NOT available to students in the E. J. Ourso College of Business."
+      }
+    ],
+    "source": "llm"
+  },
+  "14229": {
+    "and": [
+      {
+        "course": "THTR 3320"
+      },
+      {
+        "course": "THTR 3340"
+      },
+      {
+        "course": "THTR 4320"
+      },
+      {
+        "course": "THTR 4350"
+      },
+      {
+        "other": "THTR 4300 (taken twice)"
+      }
+    ],
+    "source": "llm"
+  },
+  "14462": {
+    "and": [
+      {
+        "course": "ENVS 4101"
+      },
+      {
+        "course": "ENVS 4477"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "ENVS 4007",
+          "ENVS 4010",
+          "ENVS 4035",
+          "ENVS 4036",
+          "ENVS 4045",
+          "ENVS 4102",
+          "ENVS 4500",
+          "ENVS 4113"
+        ]
+      },
+      {
+        "other": "A residency requirement of 9 hours of credit must be earned at this University"
+      }
+    ],
+    "source": "llm"
+  },
+  "14120": {
+    "and": [
+      {
+        "hours_in": 18,
+        "subject": "ENTM"
+      },
+      {
+        "hours_in": 9,
+        "subject": "ENTM",
+        "min_level": 3000
+      },
+      {
+        "course": "ENTM 2001"
+      },
+      {
+        "course": "ENTM 4005"
+      },
+      {
+        "hours_from": 11,
+        "courses": [
+          "ENTM 3002",
+          "ENTM 4002",
+          "ENTM 4006",
+          "ENTM 4007",
+          "ENTM 4012",
+          "ENTM 4018",
+          "ENTM 4040",
+          "ENTM 4099",
+          "ENTM 4100",
+          "ENTM 4199"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14209": {
+    "and": [
+      {
+        "course": "SPAN 2155"
+      },
+      {
+        "course": "SPAN 2156"
+      },
+      {
+        "course": "SPAN 3010"
+      },
+      {
+        "hours_in": 9,
+        "subject": "SPAN",
+        "min_level": 3000
+      },
+      {
+        "other": "18 semester hours above SPAN 2102"
+      }
+    ],
+    "source": "llm"
+  },
+  "14423": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "IE 2060"
+          },
+          {
+            "course": "CSC 1253"
+          },
+          {
+            "course": "CSC 1350"
+          },
+          {
+            "course": "ISDS 3107"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "IE 4425"
+          },
+          {
+            "course": "CSC 4402"
+          },
+          {
+            "course": "ISDS 3110"
+          }
+        ]
+      },
+      {
+        "course": "IE 4427"
+      },
+      {
+        "other": "three courses from an elective list maintained by the Mechanical & Industrial Engineering Department"
+      }
+    ],
+    "source": "llm"
+  },
+  "14136": {
+    "and": [
+      {
+        "course": "ART 1360"
+      },
+      {
+        "course": "ART 2360"
+      },
+      {
+        "hours_in": 3,
+        "subject": "ART",
+        "min_level": 2000
+      },
+      {
+        "course": "ART 4360"
+      },
+      {
+        "hours_in": 6,
+        "subject": "ART",
+        "min_level": 4000
+      }
+    ],
+    "source": "llm"
+  },
+  "14531": {
+    "and": [
+      {
+        "course": "HNRS 1010"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "HNRS 2000",
+          "HNRS 2010",
+          "HNRS 2009",
+          "HNRS 2100",
+          "HNRS 2015",
+          "POLI 2056",
+          "HIST 3071"
+        ]
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "HNRS 3010",
+          "HNRS 3100"
+        ]
+      },
+      {
+        "course": "HNRS 3800"
+      },
+      {
+        "course": "HNRS 3900"
+      },
+      {
+        "course": "HNRS 4000"
+      },
+      {
+        "other": "Students must have the permission of the Ogden Honors College to enroll in the LASAL minor."
+      },
+      {
+        "other": "Students must maintain good standing in the Ogden Honors College and a 3.0 GPA in the courses used to satisfy the minor."
+      },
+      {
+        "other": "An honors student may receive credit for only one minor of the college."
+      }
+    ],
+    "source": "llm"
+  },
+  "14419": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "ME 2334"
+          },
+          {
+            "other": "equivalent"
+          }
+        ]
+      },
+      {
+        "course": "ME 3133"
+      },
+      {
+        "other": "four additional courses from an approved list of technical electives of which at least three must be automotive core courses and one may be a related course"
+      },
+      {
+        "other": "At least two of the courses must be taken while studying at Politecnico di Torino in Torino, Italy"
+      },
+      {
+        "other": "A grade of “C” or better in each course is required"
+      }
+    ],
+    "source": "llm"
+  },
+  "14225": {
+    "and": [
+      {
+        "course": "PHYS 1201"
+      },
+      {
+        "course": "PHYS 1202"
+      },
+      {
+        "course": "PHYS 1208"
+      },
+      {
+        "or": [
+          {
+            "course": "PHYS 1209"
+          },
+          {
+            "course": "PHYS 2110"
+          },
+          {
+            "course": "PHYS 2112"
+          },
+          {
+            "course": "PHYS 2113"
+          },
+          {
+            "course": "PHYS 2108"
+          },
+          {
+            "course": "PHYS 2109"
+          }
+        ]
+      },
+      {
+        "course": "PHYS 2221"
+      },
+      {
+        "courses_from": 3,
+        "courses": [
+          "PHYS 2203",
+          "PHYS 2231",
+          "PHYS 2411",
+          "PHYS 3098"
+        ]
+      },
+      {
+        "other": "at least one additional course must be at the 4000 level"
+      },
+      {
+        "other": "any three credit hour PHYS or ASTR course numbered from 4100 to 4299"
+      }
+    ],
+    "source": "llm"
+  },
+  "14224": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "MATH 1550"
+          },
+          {
+            "course": "MATH 1551"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "MATH 1552"
+          },
+          {
+            "course": "MATH 1553"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "MATH 2057"
+          },
+          {
+            "course": "MATH 2058"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "MATH 2085"
+          },
+          {
+            "course": "MATH 2070"
+          },
+          {
+            "course": "MATH 2090"
+          }
+        ]
+      },
+      {
+        "hours_in": 9,
+        "subject": "MATH",
+        "min_level": 3000,
+        "except": [
+          "MATH 3903",
+          "MATH 4005"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14459": {
+    "and": [
+      {
+        "course": "COMD 2050"
+      },
+      {
+        "course": "COMD 2081"
+      },
+      {
+        "courses_from": 3,
+        "courses": [
+          "COMD 2051",
+          "COMD 3150",
+          "COMD 4153",
+          "COMD 4190",
+          "COMD 4250",
+          "COMD 4380",
+          "COMD 4381",
+          "COMD 4382",
+          "COMD 4383",
+          "COMD 4590",
+          "COMD 4681",
+          "COMD 4751"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14232": {
+    "and": [
+      {
+        "course": "THTR 1025"
+      },
+      {
+        "course": "THTR 2022"
+      },
+      {
+        "course": "THTR 2026"
+      },
+      {
+        "course": "THTR 2130"
+      },
+      {
+        "hours_in": 9,
+        "subject": "THTR",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14160": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "CM 1112"
+          },
+          {
+            "course": "CONE 1112"
+          },
+          {
+            "course": "FESA 2117"
+          }
+        ]
+      },
+      {
+        "course": "CM 2113"
+      },
+      {
+        "course": "CM 2116"
+      },
+      {
+        "or": [
+          {
+            "other": "CM 3112 for CONE majors"
+          },
+          {
+            "course": "CM 4222"
+          },
+          {
+            "course": "CM 3111"
+          },
+          {
+            "course": "CM 4101"
+          },
+          {
+            "course": "CM 4221"
+          },
+          {
+            "course": "CONE 4221"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14530": {
+    "and": [
+      {
+        "course": "HNRS 1010"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "HNRS 2000",
+          "HNRS 2010",
+          "HNRS 2009",
+          "HNRS 2100",
+          "HNRS 2015",
+          "POLI 2056",
+          "HIST 3071"
+        ]
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "HNRS 3010",
+          "HNRS 3100"
+        ]
+      },
+      {
+        "other": "Honors students must have the permission of the Ogden Honors College to enroll in the LASAL minor"
+      },
+      {
+        "other": "Students must maintain good standing in the Ogden Honors College and a 3.0 GPA in the courses used to satisfy the minor"
+      },
+      {
+        "other": "An honors student may receive credit for only one minor of the college"
+      }
+    ],
+    "source": "llm"
+  },
+  "14137": {
+    "and": [
+      {
+        "course": "ART 2761"
+      },
+      {
+        "other": "ART 4761 (repeated for nine credit hours each)"
+      }
+    ],
+    "source": "llm"
+  },
+  "14208": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "SOCL 2001"
+          },
+          {
+            "course": "SOCL 2002"
+          }
+        ]
+      },
+      {
+        "hours_in": 12,
+        "subject": "SOCL"
+      },
+      {
+        "hours_in": 6,
+        "subject": "SOCL",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14121": {
+    "and": [
+      {
+        "course": "EMS 1011"
+      },
+      {
+        "course": "EMS 2011"
+      },
+      {
+        "course": "EMS 3040"
+      },
+      {
+        "course": "EMS 3050"
+      },
+      {
+        "hours_in": 5,
+        "subject": "EMS",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14199": {
+    "and": [
+      {
+        "course": "ITAL 1001"
+      },
+      {
+        "course": "ITAL 1002"
+      },
+      {
+        "course": "ITAL 2101"
+      },
+      {
+        "course": "ITAL 2102"
+      },
+      {
+        "hours_in": 9,
+        "subject": "ITAL",
+        "min_level": 2103
+      },
+      {
+        "hours_in": 6,
+        "subject": "ITAL",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14228": {
+    "and": [
+      {
+        "other": "Approval from the Department of Physics & Astronomy"
+      },
+      {
+        "hours_in": 22,
+        "subject": "PHYS"
+      },
+      {
+        "course": "PHYS 2110"
+      },
+      {
+        "course": "PHYS 2112"
+      },
+      {
+        "course": "PHYS 2113"
+      },
+      {
+        "course": "PHYS 2108"
+      },
+      {
+        "or": [
+          {
+            "course": "PHYS 2109"
+          },
+          {
+            "course": "PHYS 1201"
+          },
+          {
+            "course": "PHYS 1202"
+          },
+          {
+            "course": "PHYS 1208"
+          },
+          {
+            "course": "PHYS 1209"
+          }
+        ]
+      },
+      {
+        "hours_from": 12,
+        "courses": [
+          "MEDP 2051",
+          "MEDP 4331",
+          "MEDP 4351",
+          "MEDP 4352",
+          "NS 4352",
+          "NS 4411",
+          "NS 4570",
+          "PHYS 2203",
+          "PHYS 2207",
+          "PHYS 3098",
+          "PHYS 4271"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14117": {
+    "and": [
+      {
+        "course": "ANSC 1011"
+      },
+      {
+        "course": "ANSC 2050"
+      },
+      {
+        "course": "ANSC 2053"
+      },
+      {
+        "course": "ANSC 2060"
+      },
+      {
+        "course": "ANSC 3010"
+      },
+      {
+        "hours_from": 2,
+        "courses": [
+          "ANSC 2020",
+          "ANSC 2033",
+          "ANSC 2040",
+          "ANSC 2042",
+          "ANSC 2093"
+        ]
+      },
+      {
+        "hours_from": 3,
+        "courses": [
+          "ANSC 4052",
+          "ANSC 4054",
+          "ANSC 4081",
+          "ANSC 4084",
+          "ANSC 4086",
+          "ANSC 4088"
+        ]
+      },
+      {
+        "other": "The minor in animal sciences is not available to students majoring in animal sciences."
+      }
+    ],
+    "source": "llm"
+  },
+  "14183": {
+    "and": [
+      {
+        "course": "ANTH 1001"
+      },
+      {
+        "course": "ANTH 1003"
+      },
+      {
+        "other": "nine hours to be taken from the following three groups with no more than six hours total from any one group: Group 1 ( method and laboratory ) – ANTH 2016, ANTH 3401, ANTH 4010, ANTH 4020, ANTH 4021, ANTH 4083, ANTH 4090; Group 2 (area ) – ANTH 2050, ANTH 3004, ANTH 4004, ANTH 4017, ANTH 4023, ANTH 4050, ANTH 4051, ANTH 4053, ANTH 4470, ANTH 4475; and Group 3 (topical ) – ANTH 2015, ANTH 2051, ANTH 2423, ANTH 3060, ANTH 4018, ANTH 4031, ANTH 4040, ANTH 4060, ANTH 4074, ANTH 4082, ANTH 4086, ANTH 4440. In addition, ANTH 4909, ANTH 4998, and ANTH 4999 may be included in the nine hours. Placement of these courses in the above groups depends on the topic and must be determined by the department on a case-by-case basis."
+      }
+    ],
+    "source": "llm"
+  },
+  "14204": {
+    "and": [
+      {
+        "course": "POLI 2051"
+      },
+      {
+        "hours_in": 15,
+        "subject": "POLI"
+      },
+      {
+        "hours_in": 6,
+        "subject": "POLI",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14195": {
+    "and": [
+      {
+        "courses_from": 1,
+        "courses": [
+          "GEOG 1001",
+          "GEOG 1003"
+        ]
+      },
+      {
+        "course": "GEOG 2050"
+      },
+      {
+        "course": "GEOG 2051"
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "GEOG 2080",
+          "GEOG 4020",
+          "GEOG 4041",
+          "GEOG 4045"
+        ]
+      },
+      {
+        "hours_in": 6,
+        "subject": "GEOG",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14480": {
+    "and": [
+      {
+        "course": "GEOG 2050"
+      },
+      {
+        "course": "GEOG 3013"
+      },
+      {
+        "course": "GEOG 4014"
+      },
+      {
+        "course": "GEOG 4016"
+      },
+      {
+        "or": [
+          {
+            "course": "GEOG 4045"
+          },
+          {
+            "course": "GEOG 4047"
+          }
+        ]
+      },
+      {
+        "hours_from": 3,
+        "courses": [
+          "GEOG 4015",
+          "GEOG 4018",
+          "GEOG 4022",
+          "GEOG 4083",
+          "GEOG 4221",
+          "GEOG 4995",
+          "GEOG 4997"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14155": {
+    "and": [
+      {
+        "other": "must be admitted to an initial elementary education teacher certification program"
+      },
+      {
+        "course": "EDCI 3701"
+      },
+      {
+        "course": "EDCI 3702"
+      },
+      {
+        "course": "EDCI 3703"
+      },
+      {
+        "course": "EDCI 4705"
+      },
+      {
+        "course": "EDCI 4710"
+      },
+      {
+        "course": "ELRC 2507"
+      },
+      {
+        "other": "Students desiring to obtain teaching certification in special education: mild/moderate disabilities grades 1-5 must also complete a student teaching requirement that integrates elementary and special education"
+      },
+      {
+        "other": "The pursuit of certification in special education necessitates early and continuous advising by the Office of Student Services"
+      }
+    ],
+    "source": "llm"
+  },
+  "14143": {
+    "and": [
+      {
+        "course": "ISDS 3001"
+      },
+      {
+        "course": "ISDS 3002"
+      },
+      {
+        "course": "ISDS 3003"
+      },
+      {
+        "hours_in": 6,
+        "subject": "ISDS"
+      },
+      {
+        "other": "Students must have a 2.0 GPA in the courses used to satisfy the minor."
+      },
+      {
+        "other": "At least nine semester hours must be taken through LSU."
+      },
+      {
+        "other": "The Information Technology Management minor is NOT available to students majoring in ISDS."
+      }
+    ],
+    "source": "llm"
+  },
+  "14114": {
+    "and": [
+      {
+        "course": "ENTM 2001"
+      },
+      {
+        "course": "PLHL 4000"
+      },
+      {
+        "course": "AGRO 4070"
+      },
+      {
+        "hours_from": 7,
+        "courses": [
+          "ENTM 4005",
+          "ENTM 4006",
+          "ENTM 4012",
+          "ENTM 4018",
+          "PLHL 4018",
+          "PLHL 4001",
+          "AGRO 4071"
+        ]
+      },
+      {
+        "other": "Of the seven elective hours, at least one course must be from entomology."
+      }
+    ],
+    "source": "llm"
+  },
+  "14207": {
+    "and": [
+      {
+        "course": "REL 2027"
+      },
+      {
+        "course": "REL 2029"
+      },
+      {
+        "hours_in": 9,
+        "subject": "REL"
+      },
+      {
+        "hours_in": 6,
+        "subject": "REL",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14483": {
+    "and": [
+      {
+        "course": "LIS 1000"
+      },
+      {
+        "course": "LIS 2000"
+      },
+      {
+        "courses_from": 3,
+        "courses": [
+          "LIS 2003",
+          "LIS 3510",
+          "LIS 4511",
+          "LIS 4513",
+          "LIS 4900"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14529": {
+    "and": [
+      {
+        "course": "HNRS 1010"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "HNRS 2000",
+          "HNRS 2010",
+          "HNRS 2009"
+        ]
+      },
+      {
+        "hours_from": 9,
+        "courses": [
+          "HNRS 3800",
+          "HNRS 3900",
+          "HNRS 4000"
+        ]
+      },
+      {
+        "other": "9 additional hours as HNRS, departmental honors, or honors option"
+      },
+      {
+        "hours_in": 6,
+        "subject": "HNRS",
+        "min_level": 3000
+      },
+      {
+        "other": "maintain good standing in the Ogden Honors College and a 3.0 GPA in the courses used to satisfy the minor"
+      },
+      {
+        "other": "An honors student may receive credit for only one minor of the college"
+      }
+    ],
+    "source": "llm"
+  },
+  "14159": {
+    "and": [
+      {
+        "course": "BIOL 1201"
+      },
+      {
+        "course": "BIOL 1208"
+      },
+      {
+        "course": "BIOL 1202"
+      },
+      {
+        "course": "BIOL 1209"
+      },
+      {
+        "course": "BIOL 2051"
+      },
+      {
+        "course": "BE 3340"
+      },
+      {
+        "course": "BE 4303"
+      },
+      {
+        "other": "two courses chosen from a list of approved Design Electives available in the Department of Biological & Agricultural Engineering ’s main office"
+      }
+    ],
+    "source": "llm"
+  },
+  "14636": {
+    "and": [
+      {
+        "course": "LHRD 7305"
+      },
+      {
+        "course": "LHRD 7700"
+      },
+      {
+        "or": [
+          {
+            "course": "LHRD 4870"
+          },
+          {
+            "course": "LHRD 4901"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14231": {
+    "and": [
+      {
+        "other": "Audition or acceptance into an academic field of study"
+      },
+      {
+        "course": "MUS 1705"
+      },
+      {
+        "course": "MUS 1799"
+      },
+      {
+        "hours_in": 11,
+        "subject": "MUS"
+      },
+      {
+        "hours_in": 3,
+        "subject": "MUS",
+        "min_level": 3000
+      },
+      {
+        "other": "performance minors should register for 3000-level or higher applied lessons"
+      },
+      {
+        "other": "Each music minor course passed with a grade of “C” or better"
+      }
+    ],
+    "source": "llm"
+  },
+  "14118": {
+    "and": [
+      {
+        "or": [
+          {
+            "and": [
+              {
+                "course": "EXST 2201"
+              },
+              {
+                "course": "EXST 3201"
+              },
+              {
+                "course": "EXST 4050"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "MATH 3355"
+              },
+              {
+                "course": "MATH 4056"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "EXST 3999",
+          "EXST 4012",
+          "EXST 4025",
+          "EXST 4087",
+          "EXST 4142",
+          "EXST 4151"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14163": {
+    "and": [
+      {
+        "course": "EVEG 3200"
+      },
+      {
+        "course": "EVEG 3110"
+      },
+      {
+        "other": "five courses chosen from a list of approved courses available in the dean’s office"
+      }
+    ],
+    "source": "llm"
+  },
+  "14134": {
+    "and": [
+      {
+        "course": "ART 2879"
+      },
+      {
+        "course": "ART 2881"
+      },
+      {
+        "course": "ART 4880"
+      },
+      {
+        "course": "ART 4881"
+      },
+      {
+        "course": "ART 4889"
+      },
+      {
+        "hours_from": 3,
+        "courses": [
+          "ART 4882",
+          "ART 4884",
+          "ART 4886"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14122": {
+    "and": [
+      {
+        "course": "RNR 2002"
+      },
+      {
+        "course": "RNR 4023"
+      },
+      {
+        "course": "RNR 4025"
+      },
+      {
+        "course": "RNR 4037"
+      },
+      {
+        "course": "RNR 4040"
+      },
+      {
+        "course": "RNR 4106"
+      },
+      {
+        "course": "RNR 4145"
+      },
+      {
+        "or": [
+          {
+            "and": [
+              {
+                "course": "RNR 4020"
+              },
+              {
+                "course": "BIOL 4020"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "OCS 4308"
+              },
+              {
+                "course": "BIOL 4308"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14123": {
+    "and": [
+      {
+        "course": "RNR 2001"
+      },
+      {
+        "course": "RNR 2003"
+      },
+      {
+        "course": "RNR 2101"
+      },
+      {
+        "course": "RNR 3002"
+      },
+      {
+        "course": "RNR 4001"
+      },
+      {
+        "course": "RNR 2102"
+      },
+      {
+        "course": "RNR 3103"
+      },
+      {
+        "or": [
+          {
+            "hours_from": 5,
+            "courses": [
+              "ENTM 4018",
+              "PLHL 4018"
+            ]
+          },
+          {
+            "course": "RNR 3105"
+          },
+          {
+            "course": "RNR 4032"
+          },
+          {
+            "course": "RNR 4033"
+          },
+          {
+            "course": "RNR 4036"
+          },
+          {
+            "course": "RNR 4038"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14135": {
+    "and": [
+      {
+        "course": "ART 2995"
+      },
+      {
+        "course": "ART 2996"
+      },
+      {
+        "course": "ART 3994"
+      },
+      {
+        "course": "ART 3996"
+      },
+      {
+        "course": "ART 4941"
+      },
+      {
+        "hours_from": 3,
+        "courses": [
+          "ART 4994",
+          "ART 4996",
+          "ART 4997"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14420": {
+    "and": [
+      {
+        "course": "SW 2500"
+      },
+      {
+        "courses_from": 5,
+        "courses": [
+          "ARTH 4420",
+          "ARTH 4499",
+          "CFS 4065",
+          "EDCI 2400",
+          "EDCI 3001",
+          "EDCI 4800",
+          "ENGL 2593",
+          "ENGL 2716",
+          "LING 2716",
+          "HIST 4197",
+          "KIN 2600",
+          "KIN 2604",
+          "POLI 4028",
+          "SW 7406",
+          "SOCL 4463",
+          "SOCL 4521",
+          "THTR 4021",
+          "THTR 7923",
+          "WGS 1001",
+          "WGS 2200",
+          "WGS 2500",
+          "WGS 2900",
+          "WGS 3150",
+          "WGS 4541",
+          "ELRC 7393",
+          "ELRC 7600"
+        ]
+      },
+      {
+        "other": "no more than two from the same department"
+      },
+      {
+        "other": "at least three must be upper-level"
+      },
+      {
+        "other": "Other courses may be considered for the LGBTQ+ Studies minor with permission of the instructor and the School of Social Work"
+      }
+    ],
+    "source": "llm"
+  },
+  "14162": {
+    "and": [
+      {
+        "course": "EE 2120"
+      },
+      {
+        "course": "EE 2130"
+      },
+      {
+        "course": "EE 2230"
+      },
+      {
+        "course": "EE 2741"
+      },
+      {
+        "course": "EE 3610"
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "EE 3160",
+          "EE 3220",
+          "EE 3232",
+          "EE 3320",
+          "EE 3410",
+          "EE 3530"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14119": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "RNR 1010"
+          },
+          {
+            "course": "RNR 1001"
+          }
+        ]
+      },
+      {
+        "course": "RNR 4022"
+      },
+      {
+        "course": "RNR 4025"
+      },
+      {
+        "course": "RNR 4037"
+      },
+      {
+        "course": "RNR 4145"
+      },
+      {
+        "or": [
+          {
+            "course": "RNR 4023"
+          },
+          {
+            "course": "RNR 4040"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "RNR 4020"
+          },
+          {
+            "course": "BIOL 4020"
+          },
+          {
+            "course": "OCS 4308"
+          },
+          {
+            "course": "BIOL 4308"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14230": {
+    "and": [
+      {
+        "hours_from": 9,
+        "courses": [
+          "THTR 1800",
+          "THTR 3802",
+          "THTR 3803",
+          "THTR 4801"
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "THTR 1127",
+          "THTR 1131",
+          "THTR 1153",
+          "THTR 1227",
+          "THTR 1231",
+          "THTR 1253"
+        ]
+      },
+      {
+        "other": "two technique courses must be at intermediate level"
+      },
+      {
+        "other": "two must be ballet technique classes"
+      },
+      {
+        "hours_from": 3,
+        "courses": [
+          "THTR 1029",
+          "THTR 1240",
+          "THTR 1804",
+          "THTR 2031",
+          "THTR 4031",
+          "THTR 4805"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14197": {
+    "and": [
+      {
+        "hours_in": 16,
+        "subject": "GREK",
+        "min_level": 2000
+      },
+      {
+        "hours_in": 6,
+        "subject": "GREK",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14206": {
+    "and": [
+      {
+        "course": "PSYC 2000"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "PSYC 3020",
+          "PSYC 4111",
+          "PSYC 4031",
+          "PSYC 4034",
+          "PSYC 4035",
+          "PSYC 4037",
+          "PSYC 4030",
+          "PSYC 4032",
+          "PSYC 4033",
+          "PSYC 4041",
+          "PSYC 4070",
+          "PSYC 4072",
+          "PSYC 4176",
+          "PSYC 3050",
+          "PSYC 3140",
+          "PSYC 3083",
+          "PSYC 4043",
+          "PSYC 4080"
+        ]
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "PSYC 3020",
+          "PSYC 4111",
+          "PSYC 4031",
+          "PSYC 4034",
+          "PSYC 4035",
+          "PSYC 4037",
+          "PSYC 4030",
+          "PSYC 4032",
+          "PSYC 4033",
+          "PSYC 4041",
+          "PSYC 4070",
+          "PSYC 4072",
+          "PSYC 4176",
+          "PSYC 3050",
+          "PSYC 3140",
+          "PSYC 3083",
+          "PSYC 4043",
+          "PSYC 4080",
+          "PSYC 2040",
+          "PSYC 2080",
+          "PSYC 3030",
+          "PSYC 3081",
+          "PSYC 3082",
+          "PSYC 4039",
+          "PSYC 4040"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14210": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "WGS 2500"
+          },
+          {
+            "course": "WGS 2501"
+          }
+        ]
+      },
+      {
+        "course": "WGS 4500"
+      },
+      {
+        "hours_from": 12,
+        "courses": [
+          "ANTH 4087",
+          "GEOG 4087",
+          "WGS 4087",
+          "CLST 2080",
+          "CMST 3115",
+          "ENGL 2593",
+          "ENGL 3593",
+          "ENGL 4493",
+          "ENGL 4593",
+          "ELRC 4370",
+          "FREN 4090",
+          "HIST 2014",
+          "HIST 4013",
+          "HIST 4079",
+          "KIN 2600",
+          "PHIL 4949",
+          "POLI 4028",
+          "WGS 4028",
+          "PSYC 4040",
+          "REL 3300",
+          "REL 4032",
+          "SOCL 4463",
+          "SOCL 4465",
+          "SOCL 4521",
+          "SPAN 4100",
+          "SW 2500",
+          "THTR 4021",
+          "WGS 1001",
+          "WGS 2200",
+          "WGS 2300",
+          "WGS 2900",
+          "WGS 3150",
+          "WGS 4541",
+          "WGS 4900"
+        ]
+      },
+      {
+        "hours_in": 9,
+        "subject": "WGS",
+        "min_level": 3000
+      },
+      {
+        "other": "other appropriate courses may be accepted for the minor with the approval of the Director"
+      }
+    ],
+    "source": "llm"
+  },
+  "14181": {
+    "and": [
+      {
+        "hours_from": 12,
+        "courses": [
+          "ASST 3001",
+          "ASST 3002",
+          "ASST 4001",
+          "ASST 4002"
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "ENGL 2012",
+          "MATH 1021",
+          "MATH 1022",
+          "MATH 1023",
+          "MATH 1550"
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "HIST 4055"
+          },
+          {
+            "course": "HIST 4066"
+          },
+          {
+            "course": "HIST 4140"
+          }
+        ]
+      },
+      {
+        "other": "Students may earn up to an additional four hours beyond the minimum 18 hours by completing ASST 1001, ASST 1002, ASST 2001, or ASST 2002 for a maximum of 22 hours."
+      },
+      {
+        "other": "Students must obtain approval from the professor of aerospace studies prior to substituting HIST for ENGL, or any other course substitutions."
+      }
+    ],
+    "source": "llm"
+  },
+  "14115": {
+    "and": [
+      {
+        "hours_from": 9,
+        "courses": [
+          "AGEC 2003",
+          "AGRI 1005",
+          "AGRO 1001",
+          "ANSC 1011",
+          "EMS 1011",
+          "ENTM 2001",
+          "NFS 1049",
+          "HORT 2050",
+          "AEEE 2001",
+          "NFS 1110",
+          "TAM 2045",
+          "RNR 1001"
+        ]
+      },
+      {
+        "other": "nine hours from any course (3000/4000 level) within the College of Agriculture"
+      }
+    ],
+    "source": "llm"
+  },
+  "14142": {
+    "and": [
+      {
+        "course": "ENTR 2000"
+      },
+      {
+        "course": "ENTR 3012"
+      },
+      {
+        "course": "ENTR 3111"
+      },
+      {
+        "other": "six additional hours to be chosen from departmentally approved electives"
+      },
+      {
+        "other": "Students must have a 2.0 GPA in the courses used to satisfy the minor"
+      },
+      {
+        "other": "At least nine semester hours must be taken on this campus"
+      },
+      {
+        "hours_in": 6,
+        "subject": "ENTR",
+        "min_level": 3000
+      },
+      {
+        "other": "The entrepreneurship minor is NOT available to students majoring in Entrepreneurship"
+      },
+      {
+        "other": "Non-Business Majors are strongly encouraged to take ENTR 2999 as an elective, and as the first of the five required courses"
+      }
+    ],
+    "source": "llm"
+  },
+  "14154": {
+    "and": [
+      {
+        "other": "Students minoring in social work must complete a total of 18 hours."
+      }
+    ],
+    "source": "llm"
+  },
+  "14165": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "ME 2334"
+          },
+          {
+            "course": "ME 3333"
+          }
+        ]
+      },
+      {
+        "course": "ME 2733"
+      },
+      {
+        "course": "ME 3133"
+      },
+      {
+        "hours_in": 6,
+        "subject": "ME",
+        "min_level": 4000
+      }
+    ],
+    "source": "llm"
+  },
+  "14132": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "CSC 1253"
+          },
+          {
+            "course": "CSC 1350"
+          }
+        ]
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "ART 1001",
+          "ART 1011",
+          "ARTH 2470",
+          "MUS 1751",
+          "MUS 1799",
+          "ENGL 2009"
+        ]
+      },
+      {
+        "other": "nine credit hours of approved arts electives"
+      },
+      {
+        "other": "three credit hours of approved engineering and/or science electives"
+      },
+      {
+        "course": "ART 4059"
+      }
+    ],
+    "source": "llm"
+  },
+  "14427": {
+    "and": [
+      {
+        "hours_in": 18,
+        "subject": "AEEE"
+      },
+      {
+        "hours_in": 12,
+        "subject": "AEEE",
+        "min_level": 4000
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "AEEE 2001",
+          "AEEE 2002",
+          "AEEE 3010"
+        ]
+      },
+      {
+        "hours_from": 12,
+        "courses": [
+          "AEEE 4010",
+          "AEEE 4026",
+          "AEEE 4027",
+          "AEEE 4101",
+          "AEEE 4102",
+          "AEEE 4505",
+          "AEEE 4506"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14124": {
+    "and": [
+      {
+        "hours_from": 7,
+        "courses": [
+          "HORT 2050",
+          "HORT 2061",
+          "HORT 2070"
+        ]
+      },
+      {
+        "hours_in": 11,
+        "subject": "HORT"
+      }
+    ],
+    "source": "llm"
+  },
+  "14523": {
+    "and": [
+      {
+        "course": "HNRS 1010"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "HNRS 2000",
+          "HNRS 2010",
+          "HNRS 2009",
+          "HNRS 2100"
+        ]
+      },
+      {
+        "other": "9 additional hours as HNRS, departmental honors, or honors option"
+      },
+      {
+        "other": "Six semester hours must be in courses at the 3000 level or above"
+      },
+      {
+        "other": "Students must maintain good standing in the Ogden Honors College and a 3.0 GPA in the courses used to satisfy the minor"
+      },
+      {
+        "other": "An honors student may receive credit for only one minor of the college"
+      }
+    ],
+    "source": "llm"
+  },
+  "14466": {
+    "and": [
+      {
+        "course": "ACCT 3233"
+      },
+      {
+        "course": "ACCT 4233"
+      },
+      {
+        "course": "ACCT 4234"
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "ACCT 3122",
+          "ACCT 3222",
+          "ACCT 4235",
+          "ACCT 4237",
+          "ACCT 4244",
+          "ACCT 4333",
+          "ISDS 3100",
+          "ISDS 3110",
+          "ISDS 4113",
+          "ISDS 4141",
+          "ISDS 4244"
+        ]
+      },
+      {
+        "other": "faculty advisor approved elective"
+      },
+      {
+        "other": "Students must have a 2.0 GPA in the courses used to satisfy the minor"
+      },
+      {
+        "other": "At least nine semester hours must be taken on this campus"
+      }
+    ],
+    "source": "llm"
+  },
+  "14446": {
+    "and": [
+      {
+        "course": "GEOL 1001"
+      },
+      {
+        "or": [
+          {
+            "course": "GEOL 1003"
+          },
+          {
+            "course": "GEOL 2020"
+          }
+        ]
+      },
+      {
+        "course": "FIN 3351"
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "ACCT 4501",
+          "ECON 4320",
+          "ECON 4325",
+          "ENVS 4261",
+          "FIN 3718",
+          "ENTR 4050",
+          "ISDS 4160"
+        ]
+      },
+      {
+        "other": "a faculty advisor approved energy elective"
+      },
+      {
+        "other": "Students must have a 2.0 GPA in the courses used to satisfy the minor"
+      },
+      {
+        "other": "At least nine semester hours must be taken on this campus"
+      }
+    ],
+    "source": "llm"
+  },
+  "14515": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "SOCL 2001"
+          },
+          {
+            "course": "SOCL 2002"
+          }
+        ]
+      },
+      {
+        "course": "SOCL 4461"
+      },
+      {
+        "hours_from": 12,
+        "courses": [
+          "SOCL 2301",
+          "SOCL 2371",
+          "SOCL 3371",
+          "SOCL 3501",
+          "SOCL 3510",
+          "SOCL 4092",
+          "SOCL 4462",
+          "SOCL 4463",
+          "SOCL 4464",
+          "SOCL 4465",
+          "SOCL 4466",
+          "SOCL 4467",
+          "SOCL 4468",
+          "SOCL 4469",
+          "SOCL 4471",
+          "POLI 4020",
+          "POLI 4021",
+          "POLI 4022",
+          "POLI 4023",
+          "SW 3007"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14169": {
+    "and": [
+      {
+        "course": "CE 3500"
+      },
+      {
+        "course": "CE 4500"
+      },
+      {
+        "course": "CE 4520"
+      },
+      {
+        "course": "CE 4530"
+      },
+      {
+        "course": "CE 4550"
+      },
+      {
+        "other": "The State of Louisiana Revised Statutes 37:693.B(3b) and (4f) specify the educational requirements necessary for licensing as a Professional Land Surveyor."
+      },
+      {
+        "other": "Additional courses will be required by the board for the land surveyor license."
+      },
+      {
+        "other": "A list of required and elective courses may be obtained from the Louisiana Professional Engineers and Land Surveyors registration board (LAPELS)."
+      }
+    ],
+    "source": "llm"
+  },
+  "14201": {
+    "and": [
+      {
+        "hours_in": 16,
+        "subject": "LATN",
+        "min_level": 2000
+      },
+      {
+        "hours_in": 6,
+        "subject": "LATN",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14485": {
+    "and": [
+      {
+        "or": [
+          {
+            "and": [
+              {
+                "course": "ID 1051"
+              },
+              {
+                "course": "ID 2770"
+              },
+              {
+                "course": "ID 2775"
+              },
+              {
+                "course": "ID 2776"
+              },
+              {
+                "courses_from": 2,
+                "courses": [
+                  "ID 3777",
+                  "ID 4741",
+                  "ID 4742",
+                  "ID 4751",
+                  "ID 4772"
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "ID 1711"
+              },
+              {
+                "or": [
+                  {
+                    "course": "ART 1008"
+                  },
+                  {
+                    "course": "ART 1011"
+                  }
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "course": "ID 1712"
+                  },
+                  {
+                    "course": "ART 1009"
+                  },
+                  {
+                    "course": "ART 1012"
+                  }
+                ]
+              },
+              {
+                "course": "ID 1051"
+              },
+              {
+                "course": "ID 2770"
+              },
+              {
+                "course": "ID 2775"
+              },
+              {
+                "courses_from": 1,
+                "courses": [
+                  "ID 2776",
+                  "ID 4741",
+                  "ID 4742",
+                  "ID 4772"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14190": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "ECON 2030"
+          },
+          {
+            "and": [
+              {
+                "course": "ECON 2000"
+              },
+              {
+                "course": "ECON 2010"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "course": "ECON 2035"
+      },
+      {
+        "course": "ECON 4720"
+      },
+      {
+        "course": "ECON 4710"
+      },
+      {
+        "hours_in": 6,
+        "subject": "ECON"
+      }
+    ],
+    "source": "llm"
+  },
+  "14191": {
+    "and": [
+      {
+        "course": "ENGL 1001"
+      },
+      {
+        "course": "ENGL 2000"
+      },
+      {
+        "hours_in": 6,
+        "subject": "ENGL",
+        "min_level": 2000
+      },
+      {
+        "hours_in": 6,
+        "subject": "ENGL",
+        "min_level": 3000
+      },
+      {
+        "hours_in": 6,
+        "subject": "ENGL",
+        "min_level": 3000
+      }
+    ],
+    "source": "llm"
+  },
+  "14129": {
+    "and": [
+      {
+        "course": "ARCH 4007"
+      },
+      {
+        "course": "ARCH 4051"
+      },
+      {
+        "course": "ARCH 5003"
+      },
+      {
+        "or": [
+          {
+            "course": "ARCH 4440"
+          },
+          {
+            "course": "ARCH 5003"
+          },
+          {
+            "course": "ID 4741"
+          },
+          {
+            "course": "GEOG 4074"
+          },
+          {
+            "course": "GEOG 4087"
+          },
+          {
+            "other": "ARTH 4000 level or higher"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14241": {
+    "and": [
+      {
+        "hours_in": 18,
+        "subject": "MC"
+      },
+      {
+        "or": [
+          {
+            "and": [
+              {
+                "hours_from": 9,
+                "courses": [
+                  "MC 2005",
+                  "MC 3005"
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "course": "MC 3103"
+                  },
+                  {
+                    "course": "MC 3104"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "MC 2040"
+              },
+              {
+                "course": "MC 3031"
+              },
+              {
+                "course": "MC 4045"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14168": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "BE 4342"
+          },
+          {
+            "course": "BE 3340"
+          }
+        ]
+      },
+      {
+        "course": "BE 4989"
+      },
+      {
+        "or": [
+          {
+            "course": "BIOL 2083"
+          },
+          {
+            "course": "CHE 4260"
+          }
+        ]
+      },
+      {
+        "course": "EE 3950"
+      },
+      {
+        "course": "ME 4433"
+      },
+      {
+        "other": "an approved design project"
+      }
+    ],
+    "source": "llm"
+  },
+  "14187": {
+    "and": [
+      {
+        "course": "CHIN 2001"
+      },
+      {
+        "course": "CHIN 2002"
+      },
+      {
+        "course": "CHIN 3101"
+      },
+      {
+        "course": "CHIN 3102"
+      },
+      {
+        "other": "six hours of approved electives"
+      }
+    ],
+    "source": "llm"
+  },
+  "14113": {
+    "and": [
+      {
+        "or": [
+          {
+            "and": [
+              {
+                "course": "AGEC 2003"
+              },
+              {
+                "course": "ECON 2030"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "ECON 2000"
+              },
+              {
+                "course": "ECON 2010"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "AGEC 3003",
+          "AGEC 3203",
+          "AGEC 3303",
+          "AGEC 3413",
+          "AGEC 3503",
+          "AGEC 3803"
+        ]
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "AGEC 4203",
+          "AGEC 4243",
+          "AGEC 4273",
+          "AGEC 4403",
+          "AGEC 4443",
+          "AGEC 4603",
+          "AGEC 4613",
+          "AGEC 4623"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14152": {
+    "and": [
+      {
+        "course": "KIN 1600"
+      },
+      {
+        "hours_from": 6,
+        "courses": [
+          "KIN 2600",
+          "KIN 2603",
+          "KIN 2604"
+        ]
+      },
+      {
+        "hours_from": 9,
+        "courses": [
+          "KIN 3605",
+          "KIN 3608",
+          "KIN 3609",
+          "KIN 3660",
+          "KIN 4601",
+          "KIN 4604",
+          "KIN 4605",
+          "KIN 4606",
+          "KIN 4609"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14522": {
+    "and": [
+      {
+        "course": "MC 2000"
+      },
+      {
+        "course": "AEEE 2011"
+      },
+      {
+        "course": "AEEE 3011"
+      },
+      {
+        "course": "AEEE 4011"
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "MC 2035",
+          "MC 2040",
+          "MC 3010",
+          "MC 3504"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14125": {
+    "and": [
+      {
+        "course": "NFS 1110"
+      },
+      {
+        "course": "NFS 2110"
+      },
+      {
+        "course": "NFS 2112"
+      },
+      {
+        "course": "NFS 3110"
+      },
+      {
+        "course": "NFS 3115"
+      },
+      {
+        "or": [
+          {
+            "or": [
+              {
+                "course": "NFS 3114"
+              },
+              {
+                "course": "NFS 3116"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "course": "NFS 4111"
+              },
+              {
+                "course": "NFS 4114"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14133": {
+    "and": [
+      {
+        "course": "ART 1001"
+      },
+      {
+        "course": "ART 1008"
+      },
+      {
+        "course": "ART 1009"
+      },
+      {
+        "course": "ART 1010"
+      },
+      {
+        "or": [
+          {
+            "course": "ARTH 1440"
+          },
+          {
+            "course": "ARTH 1441"
+          }
+        ]
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "ART 1360",
+          "ART 1551",
+          "ART 1661",
+          "ART 1762",
+          "ART 1848",
+          "ART 1849",
+          "ART 2050",
+          "ART 2655",
+          "ART 2995"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14534": {
+    "and": [
+      {
+        "course": "ARCH 4353"
+      },
+      {
+        "course": "CM 4223"
+      },
+      {
+        "course": "FIN 3353"
+      },
+      {
+        "courses_from": 2,
+        "courses": [
+          "ARCH 4032",
+          "ARCH 4062",
+          "FIN 3351",
+          "FIN 3352",
+          "CM 3111",
+          "CM 3235",
+          "CM 4222"
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "ARCH 3000"
+          },
+          {
+            "course": "FIN 4354"
+          },
+          {
+            "course": "CM 4206"
+          }
+        ]
+      },
+      {
+        "other": "Students must select one elective (three credits) outside their major department"
+      }
+    ],
+    "source": "llm"
+  },
+  "14631": {
+    "and": [
+      {
+        "hours_from": 18,
+        "courses": [
+          "PADM 3000",
+          "PADM 3010",
+          "PADM 3020",
+          "PADM 3030",
+          "PADM 4010",
+          "PADM 4030"
+        ]
+      },
+      {
+        "other": "POLI, ECON, MGMT or other public affairs elective approved by faculty advisor in Department of Public Administration"
+      }
+    ],
+    "source": "llm"
+  },
+  "14220": {
+    "and": [
+      {
+        "course": "BIOL 1201"
+      },
+      {
+        "course": "BIOL 1202"
+      },
+      {
+        "course": "BIOL 1208"
+      },
+      {
+        "course": "BIOL 1209"
+      },
+      {
+        "course": "BIOL 2051"
+      },
+      {
+        "course": "BIOL 2153"
+      },
+      {
+        "course": "BIOL 3040"
+      },
+      {
+        "course": "BIOL 4087"
+      },
+      {
+        "hours_in": 3,
+        "subject": "BIOL",
+        "min_level": 3000,
+        "except": [
+          "BIOL 3999",
+          "BIOL 4003",
+          "BIOL 4005"
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "14424": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "MATH 2070"
+          },
+          {
+            "course": "MATH 2085"
+          },
+          {
+            "course": "MATH 2090"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "course": "ME 2543"
+          },
+          {
+            "course": "IE 2060"
+          },
+          {
+            "course": "CSC 1253"
+          },
+          {
+            "course": "CSC 1350"
+          }
+        ]
+      },
+      {
+        "course": "ENGR 3100"
+      },
+      {
+        "other": "three courses from the approved list of CORE courses of which at least one must be outside of the student’s major academic unit"
+      },
+      {
+        "other": "one course from the approved list of CAPSTONE courses"
+      },
+      {
+        "other": "Of the 21 credit hours of coursework, at most 15 can overlap with the student’s major academic degree"
+      }
+    ],
+    "source": "llm"
+  },
+  "14161": {
+    "and": [
+      {
+        "course": "CSC 1253"
+      },
+      {
+        "or": [
+          {
+            "course": "CSC 1350"
+          },
+          {
+            "course": "IE 2060"
+          }
+        ]
+      },
+      {
+        "courses_from": 1,
+        "courses": [
+          "ART 1001",
+          "ART 1011",
+          "ARTH 2470",
+          "MUS 1751",
+          "MUS 1799",
+          "ENGL 2009"
+        ]
+      },
+      {
+        "other": "nine credit hours of approved engineering and/or science electives"
+      },
+      {
+        "other": "three credit hours of approved arts electives"
+      },
+      {
+        "course": "EE 4859"
+      }
+    ],
+    "source": "llm"
+  },
+  "14158": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "ME 3834"
+          },
+          {
+            "other": "equivalent"
+          }
+        ]
+      },
+      {
+        "course": "CE 3400"
+      },
+      {
+        "other": "three aerospace core courses"
+      },
+      {
+        "other": "one aerospace related course chosen from an approved list of aerospace technical electives"
+      }
+    ],
+    "source": "llm"
+  },
+  "14149": {
+    "and": [
+      {
+        "course": "OCS 2007"
+      },
+      {
+        "course": "OCS 2008"
+      },
+      {
+        "other": "12 additional credit hours of approved electives"
+      },
+      {
+        "hours_in": 6,
+        "subject": "OCS",
+        "min_level": 3000
+      },
+      {
+        "other": "No more than three credit hours of OCS 3999 may be applied toward the minor"
+      }
+    ],
+    "source": "llm"
+  },
+  "14153": {
+    "and": [
+      {
+        "course": "LHRD 2723"
+      },
+      {
+        "course": "LHRD 3723"
+      },
+      {
+        "course": "LHRD 4723"
+      },
+      {
+        "course": "LHRD 4804"
+      },
+      {
+        "other": "three hours of electives from a list of courses approved by the departmental faculty in the School of Leadership & Human Resource Development"
+      }
+    ],
+    "source": "llm"
+  }
+}
