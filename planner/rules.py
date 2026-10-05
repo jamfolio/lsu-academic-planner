@@ -144,6 +144,46 @@ def is_satisfied(rule, taken, current):
 
         return None
 
+    elif "hours_from" in rule:
+        total = 0
+
+        for course in rule["courses"]:
+            if course in taken:
+                total += course_hours(course)
+
+        return total >= rule["hours_from"]
+
+    elif "courses_from" in rule:
+        count = 0
+
+        for course in rule["courses"]:
+            if course in taken:
+                count += 1
+
+        return count >= rule["courses_from"]
+
+    elif "hours_in" in rule:
+        total = 0
+
+        for code in taken:
+            prefix, number = code.split()
+            number = int(number)
+
+            if prefix != rule["subject"]:
+                continue
+
+            elif rule.get("min_level") is not None and number < rule.get("min_level"):
+                continue
+
+            elif code in rule.get("except", []):
+                continue
+
+            else:
+                total += course_hours(code)
+
+        return total >= rule["hours_in"] 
+
+
     if "consent" in rule or "other" in rule or "equivalent" in rule:
         return None
 
@@ -204,7 +244,7 @@ def semester_hours(plan, courses):
     return totals
 
 
-def check_hours(plan, courses, max_hours=19, approved_max=21):
+def check_hours(plan, courses, max_hours=19, approved_max=21, min_hours=12):
     totals = semester_hours(plan, courses)
     problems = []
 
@@ -213,6 +253,8 @@ def check_hours(plan, courses, max_hours=19, approved_max=21):
             problems.append((i + 1, total[0], "over maximum"))
         elif total[0] > max_hours:
             problems.append((i + 1, total[0], "needs advisor approval"))
+        elif total[1] < min_hours:
+            problems.append((i + 1, total[1], "below full-time"))
 
     return problems
 
@@ -433,3 +475,24 @@ def audit(plan, prior, track, gened_sets):
 
     unused = [code for code in available if code not in used]
     return {"results": results, "unused": unused}
+
+def check_total_hours(plan, prior, track):
+    total_hours = parse_credits(track["total_hours"])
+
+    if total_hours is None:
+        return None
+    
+    needed = total_hours[0]
+
+    have = 0
+
+    for code in prior:
+        have += course_hours(code)
+
+    for semester in plan:
+        for code in semester:
+            have += course_hours(code)
+
+    return {"have": have, "needed": needed, "done": have >= needed}
+
+    

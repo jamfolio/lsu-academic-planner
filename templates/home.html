@@ -1,0 +1,24 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <h1>Home</h1>
+    <form method="post" action="/audit">
+        <select name="track">
+            {% for o in options %}
+            <option value="{{ o.value }}" {% if o.value==selected %}selected{% endif %}>{{ o.label }}</option>
+            {% endfor %}
+        </select>
+        <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
+        <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>
+
+        <textarea name="plan" rows="8" cols="70">{{ plan_text }}</textarea>
+        <button type="submit">Run audit</button>
+        <button type="submit" formaction="/">Load recommended plan</button>
+    </form>
+</body>
+
+</html>
