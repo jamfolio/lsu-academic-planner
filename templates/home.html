@@ -7,11 +7,26 @@
 <body>
     <h1>Home</h1>
     <form method="post" action="/audit">
-        <select name="track">
+        <p>Majors:</p>
+        {% for n in range(3) %}
+        <select name="major">
+            {% if n > 0 %}<option value="">None</option>{% endif %}
             {% for o in options %}
-            <option value="{{ o.value }}" {% if o.value==selected %}selected{% endif %}>{{ o.label }}</option>
+            <option value="{{ o.value }}" {% if o.value==selected_majors[n] %}selected{% endif %}>{{ o.label }}</option>
             {% endfor %}
         </select>
+        {% endfor %}
+
+        <p>Minors:</p>
+        {% for n in range(3) %}
+        <select name="minor">
+            <option value="">None</option>
+            {% for o in minor_options %}
+            <option value="{{ o.value }}" {% if o.value==selected_minors[n] %}selected{% endif %}>{{ o.label }}</option>
+            {% endfor %}
+        </select>
+        {% endfor %}
+
         <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
         <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>
 
