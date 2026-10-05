@@ -108,12 +108,171 @@ def check_plan(plan, prior, courses):
     return problems
 
 
-formats = set()
+def semester_hours(plan, courses):
+    totals = []
 
-for code, course in courses.items():
-    formats.add(course["credits"])
+    for semester in plan:
+        low = 0
+        high = 0
 
-print(len(formats))
+        for code in semester:
+            if code not in courses:
+                continue
 
-for value in sorted(formats, key=str):
-    print(f"{value!r} -> {parse_credits(value)}")
+            credit_tuple = parse_credits(courses[code]["credits"])
+
+            if credit_tuple is None:
+                continue
+
+            low += credit_tuple[0]
+            high += credit_tuple[1]
+
+        totals.append((low, high))
+
+    return totals
+
+
+def check_hours(plan, courses, max_hours=19, approved_max=21):
+    totals = semester_hours(plan, courses)
+    problems = []
+
+    for i, total in enumerate(totals):
+        if total[0] > approved_max:
+            problems.append((i + 1, total[0], "over maximum"))
+        elif total[0] > max_hours:
+            problems.append((i + 1, total[0], "needs advisor approval"))
+
+    return problems
+
+
+GENED_KEYWORDS = [
+    ("english composition", "English Composition"),
+    ("analytical reasoning", "Mathematical/Analytical Reasoning"),
+    ("anlaytical reasoning", "Mathematical/Analytical Reasoning"),
+    ("art", "Fine Arts"),
+    ("humanities", "Humanities"),
+    ("natural science", "Natural Sciences"),
+    ("life science", "Natural Sciences"),
+    ("physical science", "Natural Sciences"),
+    ("social science", "Social/Behavioral Sciences"),
+]
+
+PREFIXES = set()
+
+SUBJECT_NAMES = [
+    ("spanish", ["SPAN"]),
+    ("french", ["FREN"]),
+    ("german", ["GERM"]),
+    ("biology", ["BIOL"]),
+    ("biological sciences", ["BIOL"]),
+    ("chemistry", ["CHEM"]),
+    ("philosophy", ["PHIL"]),
+    ("religious studies", ["REL"]),
+    ("economics", ["ECON"]),
+    ("music history", ["MUS"]),
+    ("art history", ["ARTH"]),
+    ("history", ["HIST"]),
+    ("sociology", ["SOCL"]),
+    ("mass communication", ["MC"]),
+    ("finance", ["FIN"]),
+    ("math", ["MATH"]),
+    ("english", ["ENGL"]),
+    ("music", ["MUS"]),
+    ("studio art", ["ART"]),
+    ("business", ["ACCT", "ECON", "FIN", "ISDS", "MGT", "MKT", "ENTR", "BLAW", "GBUS"]),
+    (
+        "foreign language",
+        [
+            "SPAN",
+            "FREN",
+            "GERM",
+            "ITAL",
+            "LATN",
+            "GREK",
+            "CHIN",
+            "JAPN",
+            "ARAB",
+            "HEBR",
+            "RUSS",
+        ],
+    ),
+]
+
+NEGATIVE_WORDS = [
+    ("excluding"),
+    ("not "),
+    ("other than"),
+    ("encouraged"),
+    ("recommended"),
+]
+
+for code in courses:
+    PREFIXES.add(code.split()[0])
+
+
+def classify_slot(desc):
+    lower = desc.lower()
+    negative = any(word in lower for word in NEGATIVE_WORDS)
+
+    codes = re.findall(r"[A-Z]+ \d{4}(?![-/]|\s*-?\s*[L1]SSevel)", desc)
+
+    if codes and not negative:
+        return {"kind": "list", "courses": codes}
+
+    if (
+        "general education" in lower
+        or "gen ed" in lower
+        or "ilc" in lower
+        or lower.startswith("humanities")
+        or lower.startswith("social science")
+        or lower.startswith("natural science")
+    ):
+
+        categories = []
+
+        for keyword, category in GENED_KEYWORDS:
+            if re.search(r"\b" + keyword, lower) and category not in categories:
+                categories.append(category)
+
+        if categories:
+            return {"kind": "gened", "categories": categories}
+
+    words = re.findall(r"\b[A-Z]{2,5}\b", desc)
+    subjects = []
+    for word in words:
+        if word in PREFIXES and word not in subjects:
+            subjects.append(word)
+
+    for name, prefixes in SUBJECT_NAMES:
+        if re.search(r"\b" + name, lower):
+            for prefix in prefixes:
+                if prefix not in subjects:
+                    subjects.append(prefix)
+            break
+
+    if subjects and not negative:
+        level = re.search(r"([1-4])(?:000|\*\*\*)", desc)
+
+        if level is not None:
+            min_level = int(level.group(1)) * 1000
+        elif "upper-division" in lower or "upper division" in lower:
+            min_level = 3000
+        else:
+            min_level = None
+
+        return {"kind": "subject", "subjects": subjects, "min_level": min_level}
+
+    if lower.startswith(
+        (
+            "elective",
+            "free elective",
+            "general elective",
+            "approved elective",
+            "approved free elective",
+            "academic elective",
+        )
+    ):
+
+        return {"kind": "free"}
+
+    return {"kind": "unknown"}
