@@ -85,6 +85,7 @@ def parse_credits(value):
 
     return (min(values), max(values))
 
+
 def course_hours(code):
     if code not in courses:
         return 0
@@ -181,11 +182,175 @@ def is_satisfied(rule, taken, current):
             else:
                 total += course_hours(code)
 
-        return total >= rule["hours_in"] 
-
+        return total >= rule["hours_in"]
 
     if "consent" in rule or "other" in rule or "equivalent" in rule:
         return None
+
+
+def describe(node):
+    if node is None:
+        return "none"
+    elif "course" in node:
+        return node["course"]
+    elif "or" in node:
+        parts = []
+
+        for n in node["or"]:
+            text = describe(n)
+
+            if "and" in n:
+                parts.append(f"({text})")
+            else:
+                parts.append(text)
+
+        return " or ".join(parts)
+    elif "and" in node:
+        parts = []
+
+        for n in node["and"]:
+            text = describe(n)
+
+            if "or" in n:
+                parts.append(f"({text})")
+            else:
+                parts.append(text)
+
+        return " and ".join(parts)
+    elif "hours_from" in node:
+        number = node["hours_from"]
+        codes = node["courses"]
+
+        first_five = codes[:5]
+
+        shown = ", ".join(first_five)
+
+        if len(codes) > 5:
+            shown += ", ..."
+
+        return f"{number} hours from: {shown}"
+
+    elif "courses_from" in node:
+        number = node["courses_from"]
+        codes = node["courses"]
+
+        first_five = codes[:5]
+
+        shown = ", ".join(first_five)
+
+        if len(codes) > 5:
+            shown += ", ..."
+
+        return f"{number} courses from: {shown}"
+    elif "hours_in" in node:
+        number = node["hours_in"]
+        subject = node["subject"]
+
+        text = f"{number} hours of {subject}"
+
+        if node.get("min_level"):
+            text += f" at the {node.get('min_level')} level or above"
+
+        if node.get("except"):
+            excluded = ", ".join(node["except"])
+
+            text += f" (not {excluded})"
+
+        return text
+    elif "other" in node:
+        return node["other"]
+    elif "consent" in node:
+        return f"consent of the {node['consent']}"
+    elif "equivalent" in node:
+        return "or equivalent"
+    else:
+        return "?"
+
+
+def used_courses(node, taken):
+    if node is None:
+        return []
+    elif "course" in node:
+        if node["course"] in taken:
+            return [node["course"]]
+        else:
+            return []
+    elif "and" in node or "or" in node:
+        found = []
+
+        if "and" in node:
+            children = node["and"]
+        else:
+            children = node["or"]
+
+        for child in children:
+            found.extend(used_courses(child, taken))
+        return found
+    elif "hours_from" in node or "courses_from" in node:
+        found = []
+
+        for code in node["courses"]:
+            if code in taken:
+                found.append(code)
+        return found
+    elif "hours_in" in node:
+        found = []
+
+        for code in taken:
+            prefix, number = code.split()
+            number = int(number)
+
+            if (
+                node["subject"] != prefix
+                or (
+                    node.get("min_level") is not None and node.get("min_level") > number
+                )
+                or code in node.get("except", [])
+            ):
+                continue
+            else:
+                found.append(code)
+        return found
+    else:
+        return []
+
+def minor_rows(rule, taken):
+    if rule is None:
+        return []
+
+    if "and" in rule:
+        children = rule["and"]
+    else:
+        children = [rule]
+
+    rows = []
+
+    for child in children:
+        result = is_satisfied(child, taken, set())
+
+        if result is True:
+            mark = "✓"
+        elif result is False:
+            mark = "✗"
+        else:
+            mark = "?"
+
+        label = describe(child)
+
+        used = used_courses(child, taken)
+        found = []
+
+        for code in used:
+            if code not in found:
+                found.append(code)
+
+        if not found:
+            filled = "-"
+        else:
+            filled = ", ".join(found)
+
+        rows.append({"mark": mark, "label": label, "filled_by": filled})
+    return rows
 
 
 def can_take(rule, taken, current):
@@ -339,6 +504,7 @@ def classify_slot(desc):
 
     return {"kind": "unknown"}
 
+
 def slot_kind(slot, track):
     kind_info = classify_slot(slot["description"])
     fn = slot.get("footnote")
@@ -352,13 +518,14 @@ def slot_kind(slot, track):
 
     return kind_info
 
+
 def slots_accept(code, slot, track, gened_sets):
     kind_info = slot_kind(slot, track)
     kind = kind_info["kind"]
 
     if kind == "list":
         return code in kind_info["courses"]
-    
+
     elif kind == "gened":
         desc_lower = slot["description"].lower()
 
@@ -369,7 +536,7 @@ def slots_accept(code, slot, track, gened_sets):
             if code in gened_sets[category]:
                 return True
         return False
-    
+
     elif kind == "subject":
         prefix, number = code.split()
 
@@ -384,6 +551,7 @@ def slots_accept(code, slot, track, gened_sets):
             return True
     else:
         return True
+
 
 def build_requirements(track):
     requirements = []
@@ -412,8 +580,9 @@ def build_requirements(track):
 
     for value in groups.values():
         requirements.append({"type": "course", "options": value})
-    
+
     return requirements
+
 
 def audit(plan, prior, track, gened_sets):
     reqs = build_requirements(track)
@@ -447,7 +616,7 @@ def audit(plan, prior, track, gened_sets):
         for req in reqs:
             if req["type"] != "slot":
                 continue
-            
+
             if slot_kind(req["slot"], track)["kind"] != kind:
                 continue
 
@@ -460,9 +629,11 @@ def audit(plan, prior, track, gened_sets):
 
             filled = []
             hours = 0
-            
+
             for code in available:
-                if code not in used and slots_accept(code, req["slot"], track, gened_sets):
+                if code not in used and slots_accept(
+                    code, req["slot"], track, gened_sets
+                ):
                     filled.append(code)
                     used.add(code)
 
@@ -471,17 +642,25 @@ def audit(plan, prior, track, gened_sets):
                     if hours >= needed:
                         break
 
-            results.append({"requirement": req, "filled_by": filled, "hours": hours, "needed": needed})
+            results.append(
+                {
+                    "requirement": req,
+                    "filled_by": filled,
+                    "hours": hours,
+                    "needed": needed,
+                }
+            )
 
     unused = [code for code in available if code not in used]
     return {"results": results, "unused": unused}
+
 
 def check_total_hours(plan, prior, track):
     total_hours = parse_credits(track["total_hours"])
 
     if total_hours is None:
         return None
-    
+
     needed = total_hours[0]
 
     have = 0
@@ -494,5 +673,3 @@ def check_total_hours(plan, prior, track):
             have += course_hours(code)
 
     return {"have": have, "needed": needed, "done": have >= needed}
-
-    

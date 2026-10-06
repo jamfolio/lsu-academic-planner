@@ -7,6 +7,7 @@ from planner.rules import (
     courses,
     check_hours,
     is_satisfied,
+    minor_rows,
 )
 
 import json
@@ -182,7 +183,7 @@ def audit_page():
         else:
             status = "needs advisor check"
 
-        minor_results.append({"title": minors[poid]["title"], "status": status})
+        minor_results.append({"title": minors[poid]["title"], "status": status, "rows": minor_rows(minors[poid]["rule"], all_courses)})
 
     programs = []
 

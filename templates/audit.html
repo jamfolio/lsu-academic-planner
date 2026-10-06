@@ -28,7 +28,13 @@
 
     <ul>
         {% for m in minor_results %}
-        <li>{{m.title}}: {{m.status}}</li>
+        <li>{{m.title}}: {{m.status}}
+            <ul>
+                {% for r in m.rows %}
+                <li>{{r.mark}} {{r.label}} ← {{r.filled_by}}</li>
+                {% endfor %}
+            </ul>
+        </li>
         {% else %}
         <li>No minors selected</li>
         {% endfor %}
