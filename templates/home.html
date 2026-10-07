@@ -1,66 +1,7 @@
 <html>
 
 <head>
-    <style>
-        .planner {
-            display: flex;
-            gap: 16px;
-        }
-
-        .semesters {
-            flex: 2;
-        }
-
-        .palette {
-            flex: 1;
-            position: sticky;
-            top: 0;
-            max-height: 100vh;
-            overflow-y: auto;
-            align-self: flex-start;
-        }
-
-        summary {
-            cursor: pointer;
-        }
-
-        .semester {
-            border: 1px solid gray;
-            padding: 8px;
-            margin-bottom: 12px;
-            border-radius: 6px;
-        }
-
-        .chip {
-            display: inline-block;
-            border: 1px solid gray;
-            padding: 4px 8px;
-            margin: 3px;
-            border-radius: 6px;
-        }
-
-        .slot {
-            border-style: dashed;
-            color: gray;
-        }
-
-        .used {
-            opacity: .35;
-            text-decoration: line-through;
-        }
-
-        .over {
-            color: red;
-        }
-
-        .under {
-            color: orange;
-        }
-
-        details details {
-            margin-left: 12px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -116,6 +57,7 @@
                     {% endfor %}
                 </details>
                 {% endfor %}
+                {% if plan_view %}
                 <details>
                     <summary>All Electives</summary>
                     {% for g in elective_groups %}
@@ -128,6 +70,7 @@
                     </details>
                     {% endfor %}
                 </details>
+                {% endif %}
             </div>
         </div>
 
@@ -141,9 +84,7 @@
         <button type="submit" formaction="/">Load recommended plan</button>
     </form>
 
-    <script>
-
-    </script>
+    <script src="{{ url_for('static', filename='planner.js') }}"></script>
 </body>
 
 </html>
