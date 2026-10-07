@@ -9,6 +9,13 @@ from planner.rules import (
     is_satisfied,
     minor_rows,
 )
+from planner.recommend import (
+    recommended_plan,
+    merge_plans,
+    minor_courses,
+    place_course,
+    semester_codes,
+)
 
 import json
 
@@ -20,6 +27,23 @@ with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
 
 app = Flask(__name__)
 
+def clean_choices(values):
+    chosen = []
+    seen = set()
+
+    for choice in values:
+        if not choice or choice in seen:
+            continue
+        else:
+            chosen.append(choice)
+            seen.add(choice)
+
+    return chosen
+
+def parse_prior(text):
+    text = text.replace("\n", ",")
+    prior = {piece.strip().upper() for piece in text.split(",") if piece.strip()}
+    return prior
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -34,35 +58,32 @@ def home():
         selected_majors = request.form.getlist("major")
         selected_minors = request.form.getlist("minor")
         prior_text = request.form.get("prior", "")
-        poid, index = selected_majors[0].split("|")
-        track = degrees[poid]["tracks"][int(index)]
+
+        plans = []
+
+        for choice in clean_choices(selected_majors):
+            poid, index = choice.split("|")
+            track = degrees[poid]["tracks"][int(index)]
+            plans.append(recommended_plan(track))
+
+        plan = merge_plans(plans)
+
+        prior = parse_prior(prior_text)
+        planned = set(prior)
+
+        for semester in plan:
+            planned.update(semester_codes(semester))
+
+        for poid in clean_choices(selected_minors):
+            picks = minor_courses(minors[poid]["rule"], planned)
+
+            for code in picks:
+                place_course(plan, code, prior)
+                planned.add(code)
 
         lines = []
-        seen_groups = set()
-
-        for semester in track["semesters"]:
-            codes = []
-            skip_next = False
-
-            for item in semester["items"]:
-                if item["type"] != "course":
-                    continue
-
-                if skip_next:
-                    skip_next = False
-                    continue
-
-                group = item.get("group")
-                if group is not None:
-                    if group in seen_groups:
-                        continue
-                    seen_groups.add(group)
-
-                codes.append(item["code"])
-
-                if item["connector"] == "or":
-                    skip_next = True
-
+        for semester in plan:
+            codes = [e["code"] for e in semester if e["type"] == "course"]
             lines.append(",".join(codes))
 
         plan_text = "\n".join(lines)
@@ -132,20 +153,9 @@ def audit_page():
     text = request.form["plan"]
     plan = []
 
-    prior_raw = request.form.get("prior", "")
-    prior_raw = prior_raw.replace("\n", ",")
+    prior = parse_prior(request.form.get("prior", ""))
 
-    prior = {piece.strip().upper() for piece in prior_raw.split(",") if piece.strip()}
-
-    chosen_majors = []
-    major_seen = set()
-
-    for choice in request.form.getlist("major"):
-        if not choice or choice in major_seen:
-            continue
-        else:
-            chosen_majors.append(choice)
-            major_seen.add(choice)
+    chosen_majors = clean_choices(request.form.getlist("major"))
 
     for line in text.split("\n"):
         line = line.strip()
@@ -161,15 +171,7 @@ def audit_page():
     for semester in plan:
         all_courses.update(semester)
 
-    chosen_minors = []
-    minor_seen = set()
-
-    for choice in request.form.getlist("minor"):
-        if not choice or choice in minor_seen:
-            continue
-        else:
-            chosen_minors.append(choice)
-            minor_seen.add(choice)
+    chosen_minors = clean_choices(request.form.getlist("minor"))
 
     minor_results = []
 
@@ -183,7 +185,13 @@ def audit_page():
         else:
             status = "needs advisor check"
 
-        minor_results.append({"title": minors[poid]["title"], "status": status, "rows": minor_rows(minors[poid]["rule"], all_courses)})
+        minor_results.append(
+            {
+                "title": minors[poid]["title"],
+                "status": status,
+                "rows": minor_rows(minors[poid]["rule"], all_courses),
+            }
+        )
 
     programs = []
 

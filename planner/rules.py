@@ -314,6 +314,7 @@ def used_courses(node, taken):
     else:
         return []
 
+
 def minor_rows(rule, taken):
     if rule is None:
         return []
