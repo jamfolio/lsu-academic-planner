@@ -50,6 +50,7 @@ def home():
     options = []
     minor_options = []
     plan_text = ""
+    plan = []
     selected_majors = ["", "", ""]
     selected_minors = ["", "", ""]
     prior_text = ""
@@ -112,6 +113,7 @@ def home():
         selected_minors=selected_minors,
         prior_text=prior_text,
         minor_options=minor_options,
+        plan=plan,
     )
 
 

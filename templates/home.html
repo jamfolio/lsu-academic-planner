@@ -1,7 +1,31 @@
 <html>
 
 <head>
+<style>
+    .semester {
+        border: 1px solid gray;
+        padding: 8px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+    }
 
+    .chip {
+        display: inline-block;
+        border:1px solid gray;
+        padding: 4px 8px;
+        margin: 3px;
+        border-radius: 6px;
+    }
+    
+    .slot {
+        display: inline-block;
+        border:1px dashed gray;
+        padding: 4px 8px;
+        margin: 3px;
+        border-radius: 6px;
+        color: gray;
+    }
+</style>
 </head>
 
 <body>
@@ -25,6 +49,19 @@
             <option value="{{ o.value }}" {% if o.value==selected_minors[n] %}selected{% endif %}>{{ o.label }}</option>
             {% endfor %}
         </select>
+        {% endfor %}
+
+        {% for semester in plan %}
+        <div class="semester">
+            <h3>Semester {{ loop.index }}</h3>
+            {% for e in semester %}
+            {% if e.type == "course" %}
+            <div class="chip">{{ e.code }}</div>
+            {% else %}
+            <div class="chip slot">{{ e.description }}</div>
+            {% endif %}
+            {% endfor %}
+        </div>
         {% endfor %}
 
         <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
