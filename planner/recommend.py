@@ -1,5 +1,13 @@
 import json
-from planner.rules import classify_slot, is_satisfied, course_hours, can_take, parse_credits, courses
+from planner.rules import (
+    classify_slot,
+    is_satisfied,
+    course_hours,
+    can_take,
+    parse_credits,
+    courses,
+    meets_level,
+)
 
 
 def recommended_plan(track):
@@ -108,6 +116,8 @@ def minor_courses(rule, planned):
                 break
             elif course in planned:
                 continue
+            elif not meets_level(course, rule.get("min_level")):
+                continue
             else:
                 picks.append(course)
                 total += course_hours(course)
@@ -134,6 +144,7 @@ def minor_courses(rule, planned):
     else:
         return []
 
+
 def entry_hours(entry):
     if entry["type"] == "course":
         return course_hours(entry["code"])
@@ -145,6 +156,7 @@ def entry_hours(entry):
         else:
             return credits[0]
 
+
 def semester_codes(semester):
     codes = set()
 
@@ -153,6 +165,7 @@ def semester_codes(semester):
             codes.add(entry["code"])
 
     return codes
+
 
 def place_course(plan, code, prior, max_hours=19):
     if code not in courses:
@@ -169,15 +182,18 @@ def place_course(plan, code, prior, max_hours=19):
         for e in semester:
             hours += entry_hours(e)
 
-        if can_take(rule, taken_before, current) and hours + course_hours(code) <= max_hours:
+        if (
+            can_take(rule, taken_before, current)
+            and hours + course_hours(code) <= max_hours
+        ):
             semester.append({"type": "course", "code": code})
             return
 
         taken_before.update(current)
 
     plan.append([{"type": "course", "code": code}])
-    
- 
+
+
 if __name__ == "__main__":
     with open("data/degrees.json", "r", encoding="utf-8") as f:
         degrees = json.load(f)
@@ -194,13 +210,13 @@ if __name__ == "__main__":
     picks = minor_courses(minors["14192"]["rule"], planned)
 
     for code in picks:
-        place_course(plan,code,set())
+        place_course(plan, code, set())
 
     for i, semester in enumerate(plan):
         hours = 0
         for entry in semester:
             hours += entry_hours(entry)
-        print(i+1, hours, semester_codes(semester))
+        print(i + 1, hours, semester_codes(semester))
 
     print(minor_courses(minors["14192"]["rule"], set()))
     print(minor_courses(minors["14192"]["rule"], {"SCRN 2001", "SCRN 2203"}))

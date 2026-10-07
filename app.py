@@ -8,6 +8,11 @@ from planner.rules import (
     check_hours,
     is_satisfied,
     minor_rows,
+    build_requirements,
+    used_courses,
+    slot_kind,
+    parse_credits,
+    describe,
 )
 from planner.recommend import (
     recommended_plan,
@@ -15,6 +20,7 @@ from planner.recommend import (
     minor_courses,
     place_course,
     semester_codes,
+    entry_hours,
 )
 
 import json
@@ -25,7 +31,35 @@ with open("data/degrees.json", "r", encoding="utf-8") as f:
 with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
     minors = json.load(f)
 
+elective_map = {}
+
+for code in courses:
+    prefix, number = code.split()
+    number = int(number)
+
+    if number >= 5000:
+        continue
+    else:
+        elective_map.setdefault(prefix, []).append(code)
+
+ELECTIVE_GROUPS = []
+
+for prefix in sorted(elective_map):
+    ELECTIVE_GROUPS.append({"subject": prefix, "codes": sorted(elective_map[prefix])})
+
+COURSE_INFO = {}
+
+for code, info in courses.items():
+    text = f"{info.get('title')} ({info.get('credits')})\nPrereqs: {describe(info.get('prereq_rule'))}"
+
+    if info.get("description"):
+        text += "\n" + info.get("description")[:200]
+
+    COURSE_INFO[code] = text
+
+
 app = Flask(__name__)
+
 
 def clean_choices(values):
     chosen = []
@@ -40,10 +74,12 @@ def clean_choices(values):
 
     return chosen
 
+
 def parse_prior(text):
     text = text.replace("\n", ",")
     prior = {piece.strip().upper() for piece in text.split(",") if piece.strip()}
     return prior
+
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -51,6 +87,11 @@ def home():
     minor_options = []
     plan_text = ""
     plan = []
+    plan_view = []
+    palette = []
+    planned = set()
+    total_hours = 0
+
     selected_majors = ["", "", ""]
     selected_minors = ["", "", ""]
     prior_text = ""
@@ -67,6 +108,76 @@ def home():
             track = degrees[poid]["tracks"][int(index)]
             plans.append(recommended_plan(track))
 
+            program = degrees[poid]
+
+            if track["name"] in program["title"]:
+                title = program["title"]
+            else:
+                title = f"{program['title']} - {track['name']}"
+
+            reqs = build_requirements(track)
+            codes = []
+            slot_groups = {}
+
+            for req in reqs:
+                if req["type"] != "course":
+                    desc = req["slot"]["description"]
+
+                    kind_info = slot_kind(req["slot"], track)
+
+                    if kind_info["kind"] == "list":
+                        slot_codes = kind_info["courses"]
+                    elif kind_info["kind"] == "subject":
+                        slot_codes = []
+
+                        for code in courses:
+                            prefix, number = code.split()
+                            number = int(number)
+
+                            if number >= 5000:
+                                continue
+
+                            if prefix in kind_info["subjects"] and (
+                                kind_info["min_level"] is None
+                                or number >= kind_info["min_level"]
+                            ):
+                                slot_codes.append(code)
+                    else:
+                        continue
+
+                    credits = parse_credits(req["slot"]["credits"])
+
+                    if credits is None:
+                        hours = 3
+                    else:
+                        hours = credits[0]
+
+                    base = desc.replace(f"({req['slot']['credits']})", "").strip()
+                    base = " ".join(base.split())
+                    key = tuple(sorted(slot_codes))
+
+                    if key in slot_groups:
+                        slot_groups[key]["hours"] += hours
+                    else:
+                        slot_groups[key] = {
+                            "title": base,
+                            "hours": hours,
+                            "codes": sorted(slot_codes),
+                        }
+
+                else:
+                    codes.extend(req["options"])
+
+            palette.append({"title": title, "codes": codes})
+
+            for group in slot_groups.values():
+                palette.append(
+                    {
+                        "title": f"{group['title']} ({group['hours']:g} hrs)",
+                        "codes": group["codes"],
+                    }
+                )
+
         plan = merge_plans(plans)
 
         prior = parse_prior(prior_text)
@@ -77,13 +188,30 @@ def home():
 
         for poid in clean_choices(selected_minors):
             picks = minor_courses(minors[poid]["rule"], planned)
+            mentioned = used_courses(minors[poid]["rule"], set(courses))
+
+            palette.append(
+                {"title": minors[poid]["title"], "codes": sorted(set(mentioned))}
+            )
 
             for code in picks:
                 place_course(plan, code, prior)
                 planned.add(code)
 
+        for category, codes in GENED_SETS.items():
+            palette.append({"title": category, "codes": sorted(codes)})
+
         lines = []
+
         for semester in plan:
+            hours = 0
+
+            for e in semester:
+                hours += entry_hours(e)
+
+            plan_view.append({"entries": semester, "hours": hours})
+            total_hours += hours
+
             codes = [e["code"] for e in semester if e["type"] == "course"]
             lines.append(",".join(codes))
 
@@ -113,7 +241,12 @@ def home():
         selected_minors=selected_minors,
         prior_text=prior_text,
         minor_options=minor_options,
-        plan=plan,
+        plan_view=plan_view,
+        total_hours=total_hours,
+        palette=palette,
+        planned=planned,
+        elective_groups=ELECTIVE_GROUPS,
+        course_info=COURSE_INFO,
     )
 
 

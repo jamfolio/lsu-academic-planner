@@ -1,31 +1,66 @@
 <html>
 
 <head>
-<style>
-    .semester {
-        border: 1px solid gray;
-        padding: 8px;
-        margin-bottom: 12px;
-        border-radius: 6px;
-    }
+    <style>
+        .planner {
+            display: flex;
+            gap: 16px;
+        }
 
-    .chip {
-        display: inline-block;
-        border:1px solid gray;
-        padding: 4px 8px;
-        margin: 3px;
-        border-radius: 6px;
-    }
-    
-    .slot {
-        display: inline-block;
-        border:1px dashed gray;
-        padding: 4px 8px;
-        margin: 3px;
-        border-radius: 6px;
-        color: gray;
-    }
-</style>
+        .semesters {
+            flex: 2;
+        }
+
+        .palette {
+            flex: 1;
+            position: sticky;
+            top: 0;
+            max-height: 100vh;
+            overflow-y: auto;
+            align-self: flex-start;
+        }
+
+        summary {
+            cursor: pointer;
+        }
+
+        .semester {
+            border: 1px solid gray;
+            padding: 8px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+        }
+
+        .chip {
+            display: inline-block;
+            border: 1px solid gray;
+            padding: 4px 8px;
+            margin: 3px;
+            border-radius: 6px;
+        }
+
+        .slot {
+            border-style: dashed;
+            color: gray;
+        }
+
+        .used {
+            opacity: .35;
+            text-decoration: line-through;
+        }
+
+        .over {
+            color: red;
+        }
+
+        .under {
+            color: orange;
+        }
+
+        details details {
+            margin-left: 12px;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,18 +86,52 @@
         </select>
         {% endfor %}
 
-        {% for semester in plan %}
-        <div class="semester">
-            <h3>Semester {{ loop.index }}</h3>
-            {% for e in semester %}
-            {% if e.type == "course" %}
-            <div class="chip">{{ e.code }}</div>
-            {% else %}
-            <div class="chip slot">{{ e.description }}</div>
-            {% endif %}
-            {% endfor %}
+        <div class="planner">
+            <div class="semesters">
+                {% for sem in plan_view %}
+                <div class="semester">
+                    <h3>Semester {{ loop.index }} · <span
+                            class="{% if sem.hours > 19 %}over{% elif sem.hours < 12 %}under{% endif %}">{{
+                            sem.hours|int }}
+                            hrs</span></h3>
+                    {% for e in sem.entries %}
+                    {% if e.type == "course" %}
+                    <div class="chip" draggable="true" data-code="{{ e.code }}"
+                        title="{{ course_info.get(e.code, '') }}">{{ e.code }}</div>
+                    {% else %}
+                    <div class="chip slot">{{ e.description }}</div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="palette">
+                {% for section in palette %}
+                <details>
+                    <summary>{{ section.title }}</summary>
+                    {% for code in section.codes %}
+                    <div class="chip {% if code in planned %}used{% endif %}" draggable="true" data-code="{{ code }}"
+                        title="{{ course_info.get(code, '') }}">{{
+                        code }}</div>
+                    {% endfor %}
+                </details>
+                {% endfor %}
+                <details>
+                    <summary>All Electives</summary>
+                    {% for g in elective_groups %}
+                    <details>
+                        <summary>{{ g.subject }} ({{ g.codes|length }})</summary>
+                        {% for code in g.codes %}
+                        <div class="chip {% if code in planned %}used{% endif %}" draggable="true"
+                            title="{{ course_info.get(code, '') }}" data-code="{{ code }}">{{ code }}</div>
+                        {% endfor %}
+                    </details>
+                    {% endfor %}
+                </details>
+            </div>
         </div>
-        {% endfor %}
+
+        <p>Total: {{ total_hours|int }} credits</p>
 
         <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
         <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>
@@ -71,6 +140,10 @@
         <button type="submit">Run audit</button>
         <button type="submit" formaction="/">Load recommended plan</button>
     </form>
+
+    <script>
+
+    </script>
 </body>
 
 </html>

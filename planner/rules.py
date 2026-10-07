@@ -65,6 +65,14 @@ for category, info in gen_eds.items():
 for code in courses:
     PREFIXES.add(code.split()[0])
 
+def meets_level(code, min_level):
+    if min_level is None:
+        return True
+    else:
+        prefix, number = code.split()
+        number = int(number)
+
+        return number >= min_level
 
 def parse_credits(value):
     if value is None:
@@ -149,7 +157,7 @@ def is_satisfied(rule, taken, current):
         total = 0
 
         for course in rule["courses"]:
-            if course in taken:
+            if course in taken and meets_level(course, rule.get("min_level")):
                 total += course_hours(course)
 
         return total >= rule["hours_from"]
@@ -228,7 +236,12 @@ def describe(node):
         if len(codes) > 5:
             shown += ", ..."
 
-        return f"{number} hours from: {shown}"
+        text = f"{number} hours from: {shown}"
+
+        if node.get("min_level"):
+            text += f" at the {node.get('min_level')} level or above"
+
+        return text
 
     elif "courses_from" in node:
         number = node["courses_from"]
@@ -290,7 +303,7 @@ def used_courses(node, taken):
         found = []
 
         for code in node["courses"]:
-            if code in taken:
+            if code in taken and meets_level(code, node.get("min_level")):
                 found.append(code)
         return found
     elif "hours_in" in node:
