@@ -7,6 +7,8 @@ from planner.rules import (
     parse_credits,
     courses,
     meets_level,
+    slot_kind,
+    slot_base,
 )
 
 
@@ -23,11 +25,22 @@ def recommended_plan(track):
                 if item.get("group") is not None:
                     continue
                 else:
+                    kind_info = slot_kind(item, track)
+
+                    if kind_info["kind"] == "gened":
+                        if "lab" in item["description"].lower():
+                            section = "Natural Sciences Lab"
+                        else:
+                            section = kind_info["categories"][0]
+                    else:
+                        section = slot_base(item["description"], item["credits"])
+
                     items.append(
                         {
                             "type": "slot",
                             "description": item["description"],
                             "credits": item["credits"],
+                            "section": section,
                         }
                     )
                     continue

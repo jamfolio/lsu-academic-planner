@@ -40,7 +40,7 @@
                     <div class="chip" draggable="true" data-code="{{ e.code }}"
                         title="{{ course_info.get(e.code, '') }}">{{ e.code }}</div>
                     {% else %}
-                    <div class="chip slot">{{ e.description }}</div>
+                    <div class="chip slot" data-section="{{ e.section }}">{{ e.description }}</div>
                     {% endif %}
                     {% endfor %}
                 </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="palette">
                 {% for section in palette %}
-                <details>
+                <details data-section="{{ section.key }}">
                     <summary>{{ section.title }}</summary>
                     {% for code in section.codes %}
                     <div class="chip {% if code in planned %}used{% endif %}" draggable="true" data-code="{{ code }}"

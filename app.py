@@ -13,6 +13,8 @@ from planner.rules import (
     slot_kind,
     parse_credits,
     describe,
+    slot_base,
+    LAB_COURSES,
 )
 from planner.recommend import (
     recommended_plan,
@@ -152,8 +154,7 @@ def home():
                     else:
                         hours = credits[0]
 
-                    base = desc.replace(f"({req['slot']['credits']})", "").strip()
-                    base = " ".join(base.split())
+                    base = slot_base(desc, req["slot"]["credits"])
                     key = tuple(sorted(slot_codes))
 
                     if key in slot_groups:
@@ -168,13 +169,14 @@ def home():
                 else:
                     codes.extend(req["options"])
 
-            palette.append({"title": title, "codes": codes})
+            palette.append({"title": title, "codes": codes, "key": title})
 
             for group in slot_groups.values():
                 palette.append(
                     {
-                        "title": f"{group['title']} ({group['hours']:g} hrs)",
+                        "title": f"{group['title']}",
                         "codes": group["codes"],
+                        "key": group["title"]
                     }
                 )
 
@@ -191,15 +193,22 @@ def home():
             mentioned = used_courses(minors[poid]["rule"], set(courses))
 
             palette.append(
-                {"title": minors[poid]["title"], "codes": sorted(set(mentioned))}
+                {"title": minors[poid]["title"], "codes": sorted(set(mentioned)), "key": minors[poid]["title"]}
             )
 
             for code in picks:
                 place_course(plan, code, prior)
                 planned.add(code)
 
+        gened_sections = []
+
         for category, codes in GENED_SETS.items():
-            palette.append({"title": category, "codes": sorted(codes)})
+            gened_sections.append({"title": category, "codes": sorted(codes), "key": category})
+        
+        gened_sections.append({"title": "Natural Sciences Lab", "key": "Natural Sciences Lab", "codes": LAB_COURSES})
+
+        gened_sections.sort(key=lambda s:s["title"])
+        palette.extend(gened_sections)
 
         lines = []
 

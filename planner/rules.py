@@ -65,6 +65,41 @@ for category, info in gen_eds.items():
 for code in courses:
     PREFIXES.add(code.split()[0])
 
+
+def is_lab(code):
+    if code not in courses:
+        return False
+    else:
+        return bool(re.search(r"\blab", courses[code]["title"].lower()))
+
+
+lab_prefixes = set()
+
+for nat_sci in GENED_SETS["Natural Sciences"]:
+    lab_prefixes.add(nat_sci.split()[0])
+
+LAB_COURSES = []
+
+for code in courses:
+    prefix, number = code.split()
+    number = int(number)
+
+    if is_lab(code) and prefix in lab_prefixes and number < 3000:
+        LAB_COURSES.append(code)
+
+LAB_COURSES.sort()
+
+
+def slot_base(description, credits):
+    base = description.replace(f"({credits})", "").rstrip("*").strip()
+    base = " ".join(base.split())
+
+    if base.endswith("Electives"):
+        base = base[:-1]
+
+    return base
+
+
 def meets_level(code, min_level):
     if min_level is None:
         return True
@@ -73,6 +108,7 @@ def meets_level(code, min_level):
         number = int(number)
 
         return number >= min_level
+
 
 def parse_credits(value):
     if value is None:
@@ -544,7 +580,7 @@ def slots_accept(code, slot, track, gened_sets):
         desc_lower = slot["description"].lower()
 
         if "lab" in desc_lower:
-            return code in courses and "lab" in courses[code]["title"].lower()
+            return is_lab(code)
 
         for category in kind_info["categories"]:
             if code in gened_sets[category]:
