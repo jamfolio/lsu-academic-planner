@@ -50,7 +50,9 @@ document.querySelectorAll(".semester").forEach((box) => {
       document
         .querySelectorAll(`.palette .chip[data-code="${dragged.dataset.code}"]`)
         .forEach((chip) => {
-          chip.classList.add("used");
+          if (!chip.classList.contains("repeatable")) {
+            chip.classList.add("used");
+          }
         });
     } else {
       box.appendChild(dragged);

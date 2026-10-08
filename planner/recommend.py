@@ -25,6 +25,10 @@ def recommended_plan(track, major=0):
 
         for item in semester["items"]:
             if item["type"] == "slot":
+                if chain is not None:
+                    chain = None
+                    continue
+
                 if item.get("group") is not None:
                     continue
                 else:
@@ -119,7 +123,7 @@ def minor_courses(rule, planned):
         if rule["course"] in planned:
             return []
         else:
-            return [rule["course"]]
+            return [rule["course"]] * rule.get("times", 1)
     elif "and" in rule:
         picks = []
 
@@ -183,7 +187,10 @@ def entry_hours(entry):
         if credits is None:
             return 3
         else:
-            return credits[0]
+            if credits[0] == 0:
+                return credits[-1]
+            else:
+                return credits[0]
 
 
 def semester_codes(semester):
@@ -215,6 +222,7 @@ def place_course(plan, code, prior, max_hours=19):
             can_take(rule, taken_before, current)
             and hours + course_hours(code) <= max_hours
             and EARLIEST.get(code, 1) <= i + 1
+            and code not in current
         ):
             semester.append({"type": "course", "code": code})
             return

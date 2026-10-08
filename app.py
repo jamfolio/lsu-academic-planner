@@ -33,6 +33,7 @@ from planner.recommend import (
 
 import json
 import re
+import math
 
 with open("data/degrees.json", "r", encoding="utf-8") as f:
     degrees = json.load(f)
@@ -41,13 +42,32 @@ TITLE_FIXES = {
     "14509": "African & African American Studies, B.A.",
     "14258": "Coastal Environmental Science, B.S.",
 }
+
+REPEAT_TIMES = {"HNRS 1010": 3}
+
+
+def set_times(rule):
+    if not isinstance(rule, dict):
+        return
+
+    if "course" in rule and rule["course"] in REPEAT_TIMES:
+        rule["times"] = REPEAT_TIMES[rule["course"]]
+
+    for key in ("and", "or"):
+        if key in rule:
+            for child in rule[key]:
+                set_times(child)
+
+
 SKIP_PROGRAMS = {"14259"}
+
 
 def clean_title(text):
     text = re.sub(r",\s*BS\b", ", B.S.", text)
     text = re.sub(r",\s*BA\b", ", B.A.", text)
 
     return text
+
 
 for poid, title in TITLE_FIXES.items():
     degrees[poid]["title"] = title
@@ -68,6 +88,9 @@ print(len(degrees))
 
 with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
     minors = json.load(f)
+
+for minor in minors.values():
+    set_times(minor["rule"])
 
 elective_map = {}
 
@@ -99,7 +122,11 @@ HOURS = {code: course_hours(code) for code in courses}
 
 TITLES = {code: courses[code]["title"] for code in courses}
 
+REPEATABLE = {code for code, info in courses.items() if info.get("repeatable")}
+print(len(REPEATABLE))
+
 app = Flask(__name__)
+
 
 def clean_choices(values):
     chosen = []
@@ -171,7 +198,11 @@ def home():
 
             title = track_label(program, track)
 
-            notes = [note for note in track.get("notes", []) if not note.startswith("Critical:")]
+            notes = [
+                note
+                for note in track.get("notes", [])
+                if not note.startswith("Critical:")
+            ]
             footnotes = track.get("footnotes", {})
             critical = []
 
@@ -180,7 +211,15 @@ def home():
                     crit = crit.replace(" ;", ";")
                     critical.append(f"Semester {i + 1}: {crit}")
 
-            major_info.append({"title": title, "total_hours": track.get("total_hours"), "notes": notes, "footnotes": footnotes, "critical": critical})
+            major_info.append(
+                {
+                    "title": title,
+                    "total_hours": track.get("total_hours"),
+                    "notes": notes,
+                    "footnotes": footnotes,
+                    "critical": critical,
+                }
+            )
 
             reqs = build_requirements(track)
             codes = []
@@ -274,6 +313,22 @@ def home():
         absorb_slots(plan, own_codes, prior)
         compact(plan, prior)
         rebalance(plan)
+
+        total = 0
+
+        for semester in plan:
+            for e in semester:
+                total += entry_hours(e)
+
+        if plan:
+            target = math.ceil(total / len(plan)) + 1
+            trial = [list(s) for s in plan]
+
+            rebalance(trial, target)
+
+            if len(trial) == len(plan):
+                plan[:] = trial
+
         place_end_sequence(plan)
 
         gened_sections = []
@@ -343,7 +398,8 @@ def home():
         course_info=COURSE_INFO,
         hours=HOURS,
         titles=TITLES,
-        major_info=major_info
+        major_info=major_info,
+        repeatable=REPEATABLE,
     )
 
 
