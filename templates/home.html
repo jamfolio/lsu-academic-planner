@@ -40,7 +40,7 @@
                     <div data-hours="{{ e.hours }}" class="chip" draggable="true" data-code="{{ e.code }}"
                         title="{{ course_info.get(e.code, '') }} ">{{ e.code }}</div>
                     {% else %}
-                    <div data-hours="{{ e.hours }}" class="chip slot" data-section="{{ e.section }}" draggable="true">{{
+                    <div data-label="{{ e.label }}" data-hours="{{ e.hours }}" class="chip slot" data-section="{{ e.section }}" draggable="true">{{
                         e.description }}</div>
                     {% endif %}
                     {% endfor %}
@@ -48,13 +48,18 @@
                 {% endfor %}
             </div>
             <div class="palette">
+                <input type="text" id="search" placeholder="Search courses...">
                 {% for section in palette %}
                 <details data-section="{{ section.key }}">
                     <summary>{{ section.title }}</summary>
                     {% for code in section.codes %}
                     <div data-hours="{{ hours.get(code, 0) }}" class="chip {% if code in planned %}used{% endif %}"
-                        draggable="true" data-code="{{ code }}" title="{{ course_info.get(code, '') }}">{{
-                        code }}</div>
+                        draggable="true" data-code="{{ code }}" title="{{ course_info.get(code, '') }}">
+                        {{ code }}
+                        <span class="chip-title">
+                            {{ titles.get(code, '') }}
+                        </span>
+                    </div>
                     {% endfor %}
                 </details>
                 {% endfor %}
@@ -66,7 +71,12 @@
                         <summary>{{ g.subject }} ({{ g.codes|length }})</summary>
                         {% for code in g.codes %}
                         <div data-hours="{{ hours.get(code, 0) }}" class="chip {% if code in planned %}used{% endif %}"
-                            draggable="true" title="{{ course_info.get(code, '') }}" data-code="{{ code }}">{{ code }}
+                            draggable="true" title="{{ course_info.get(code, '') }}" data-code="{{ code }}">
+                            {{ code }}
+                            <span class="chip-title">
+                                {{ titles.get(code, '')}}
+                            </span>
+                            
                         </div>
                         {% endfor %}
                     </details>

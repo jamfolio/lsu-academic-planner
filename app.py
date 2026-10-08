@@ -62,6 +62,8 @@ for code, info in courses.items():
 
 HOURS = {code: course_hours(code) for code in courses}
 
+TITLES = {code: courses[code]["title"] for code in courses}
+
 app = Flask(__name__)
 
 
@@ -233,6 +235,9 @@ def home():
                 hours += entry_hours(e)
                 e["hours"] = entry_hours(e)
 
+                if e["type"] == "slot":
+                    e["label"] = slot_base(e["description"], e["credits"])
+
             plan_view.append({"entries": semester, "hours": hours})
             total_hours += hours
 
@@ -272,6 +277,7 @@ def home():
         elective_groups=ELECTIVE_GROUPS,
         course_info=COURSE_INFO,
         hours=HOURS,
+        titles=TITLES,
     )
 
 

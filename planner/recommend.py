@@ -32,6 +32,8 @@ def recommended_plan(track):
                             section = "Natural Sciences Lab"
                         else:
                             section = kind_info["categories"][0]
+                    elif kind_info["kind"] == "free":
+                        section = "free"
                     else:
                         section = slot_base(item["description"], item["credits"])
 

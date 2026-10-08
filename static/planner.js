@@ -10,7 +10,7 @@ document.querySelectorAll(".semester").forEach((box) => {
   });
   box.addEventListener("drop", (event) => {
     event.preventDefault();
-    if (!dragged){
+    if (!dragged) {
       return
     } else if (!dragged.dataset.code && !dragged.classList.contains("slot")) {
       return;
@@ -29,8 +29,21 @@ document.querySelectorAll(".semester").forEach((box) => {
         slot = box.querySelector(`.slot[data-section="${section}"]`);
       }
 
-      if (slot != null) {
+      if (slot == null) {
+        slot = box.querySelector('.slot[data-section="free"]')
+      }
+
+      let courseHours = Number(copy.dataset.hours || 0)
+      let slotHours = Number(slot?.dataset.hours || 0)
+
+      if (slot != null && courseHours < slotHours) {
+        slot.before(copy);
+        slot.dataset.hours = slotHours - courseHours
+        slot.textContent = `${slot.dataset.label} (${slot.dataset.hours})`
+        copy.shrunkSlot = slot;
+      } else if (slot != null) {
         slot.replaceWith(copy);
+        copy.replacedSlot = slot;
       } else {
         box.appendChild(copy);
       }
@@ -87,3 +100,63 @@ function updateHours() {
 
   document.getElementById("total_hours").textContent = total;
 }
+
+let palette = document.querySelector(".palette");
+
+palette.addEventListener("dragover", (event) => {
+  event.preventDefault();
+});
+
+palette.addEventListener("drop", (event) => {
+  event.preventDefault();
+
+  if (!dragged) {
+    return;
+  } else if (dragged.closest(".semester") == null) {
+    return;
+  } else if (dragged.classList.contains("slot")) {
+    return;
+  }
+
+  if (dragged.shrunkSlot) {
+    let s = dragged.shrunkSlot;
+
+    s.dataset.hours = Number(s.dataset.hours) + Number(dragged.dataset.hours || 0)
+    s.textContent = `${s.dataset.label} (${s.dataset.hours})`
+
+    dragged.remove();
+  } else if (dragged.replacedSlot) {
+    dragged.replaceWith(dragged.replacedSlot);
+  } else {
+    dragged.remove();
+  }
+
+  document
+    .querySelectorAll(`.palette .chip[data-code="${dragged.dataset.code}"]`)
+    .forEach((chip) => {
+      chip.classList.remove("used");
+    });
+
+  updateHours();
+});
+
+document.getElementById("search").addEventListener("input", (event) => {
+  let q = event.target.value.trim().toLowerCase()
+
+  document.querySelectorAll(".palette .chip").forEach((chip) => {
+    let text = `${chip.dataset.code} ${chip.title}`.toLowerCase()
+    chip.style.display = text.includes(q) ? "" : "none"
+  })
+
+  document.querySelectorAll(".palette details").forEach((section) => {
+    let hasMatch = Array.from(section.querySelectorAll(".chip")).some((chip) => chip.style.display !== "none")
+
+    if (!q){
+      section.style.display = ""
+      section.open = false
+    } else {
+      section.style.display = hasMatch ? "" : "none"
+      section.open = hasMatch
+    }
+  })
+})

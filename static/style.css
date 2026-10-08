@@ -1,58 +1,76 @@
-        .planner {
-            display: flex;
-            gap: 16px;
-        }
+.planner {
+  display: flex;
+  gap: 16px;
+}
 
-        .semesters {
-            flex: 2;
-        }
+.semesters {
+  flex: 2;
+}
 
-        .palette {
-            flex: 1;
-            position: sticky;
-            top: 0;
-            max-height: 100vh;
-            overflow-y: auto;
-            align-self: flex-start;
-        }
+.semester .chip-title {
+    display: none;
+}
 
-        summary {
-            cursor: pointer;
-        }
+.palette {
+  flex: 1;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  align-self: flex-start;
+}
 
-        .semester {
-            border: 1px solid gray;
-            padding: 8px;
-            margin-bottom: 12px;
-            border-radius: 6px;
-        }
+.palette .chip {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-        .chip {
-            display: inline-block;
-            border: 1px solid gray;
-            padding: 4px 8px;
-            margin: 3px;
-            border-radius: 6px;
-        }
+summary {
+  cursor: pointer;
+}
 
-        .slot {
-            border-style: dashed;
-            color: gray;
-        }
+.semester {
+  border: 1px solid gray;
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
 
-        .used {
-            opacity: .35;
-            text-decoration: line-through;
-        }
+.chip {
+  display: inline-block;
+  border: 1px solid gray;
+  padding: 4px 8px;
+  margin: 3px;
+  border-radius: 6px;
+}
 
-        .over {
-            color: red;
-        }
+.chip-title {
+    color: gray;
+    margin-left: 3px;
+    font-size: smaller;
+}
 
-        .under {
-            color: orange;
-        }
+.slot {
+  border-style: dashed;
+  color: gray;
+}
 
-        details details {
-            margin-left: 12px;
-        }
+.used {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.over {
+  color: red;
+}
+
+.under {
+  color: orange;
+}
+
+details details {
+  margin-left: 12px;
+}
+
