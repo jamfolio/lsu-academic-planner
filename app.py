@@ -24,6 +24,11 @@ from planner.recommend import (
     place_course,
     semester_codes,
     entry_hours,
+    rebalance,
+    absorb_slots,
+    remove_prior,
+    compact,
+    place_end_sequence,
 )
 
 import json
@@ -146,11 +151,21 @@ def home():
         prior_text = request.form.get("prior", "")
 
         plans = []
+        own_codes = []
 
-        for choice in clean_choices(selected_majors):
+        for n, choice in enumerate(clean_choices(selected_majors)):
             poid, index = choice.split("|")
             track = degrees[poid]["tracks"][int(index)]
-            plans.append(recommended_plan(track))
+            major_plan = recommended_plan(track, n)
+            plans.append(major_plan)
+            mine = set()
+
+            for semester in major_plan:
+                for e in semester:
+                    if e["type"] == "course":
+                        mine.update(e["options"])
+
+            own_codes.append(mine)
 
             program = degrees[poid]
 
@@ -162,7 +177,7 @@ def home():
 
             for i, semester in enumerate(track["semesters"]):
                 for crit in semester.get("critical", []):
-                    crit.replace(" ;", ";")
+                    crit = crit.replace(" ;", ";")
                     critical.append(f"Semester {i + 1}: {crit}")
 
             major_info.append({"title": title, "total_hours": track.get("total_hours"), "notes": notes, "footnotes": footnotes, "critical": critical})
@@ -238,6 +253,8 @@ def home():
         for semester in plan:
             planned.update(semester_codes(semester))
 
+        remove_prior(plan, prior)
+
         for poid in clean_choices(selected_minors):
             picks = minor_courses(minors[poid]["rule"], planned)
             mentioned = used_courses(minors[poid]["rule"], set(courses))
@@ -253,6 +270,11 @@ def home():
             for code in picks:
                 place_course(plan, code, prior)
                 planned.add(code)
+
+        absorb_slots(plan, own_codes, prior)
+        compact(plan, prior)
+        rebalance(plan)
+        place_end_sequence(plan)
 
         gened_sections = []
 

@@ -11,8 +11,10 @@
 - [x] track_label helper + exact match (Analytics, Merchandising were hidden)
 - [x] hide plan textarea
 - [x] clean up " ;" in critical lines
-- [x] "[2000-Level]" vs "[2000-level]" slot labels (lowercase in slot_base?)
+- [x] "[2000-Level]" vs "[2000-level]" slot labels
+- [x] hours shown on every chip (· 3 hr), slots match courses
 - [ ] Joint 3/2 Art and Design title ends in "MDMAE." + total_hours is None
+- [ ] Math B.S. plan totals 122 but catalog says 120 (compare semester hours)
 
 ## parser investigating....
 - [x] cardiopulmonary science track called "art history" ??? (per-file reset)
@@ -21,6 +23,7 @@
 - [ ] liberal arts religious studies "(now under philosophy)" + semester 1 only 6 hrs
 - [ ] coastal env sci & research (14258): total_hours None + env health notes leak in
 - [ ] footnote elective lists ("see below") not captured
+- [ ] "Approved Technical Elective" etc. are kind "other" (list lives in footnote)
 - [ ] english creative writing pre-law semester 4
 - [ ] ag business "see options below"
 - [ ] oral & written communication 1/2 slots
@@ -31,7 +34,17 @@
 - [x] either/or courses on chips
 - [x] elective slots shrink as filled
 - [x] live hours
-- [ ] rebalance overloaded semesters after merging majors
+- [x] rebalance overloaded semesters after merging majors
+- [x] absorb elective/gen ed slots across majors (CS+Math 192 → 151)
+- [x] prior credit removes courses + fills slots
+- [x] compact light semesters (target 15)
+- [x] EARLIEST rule (HNRS 1010 not in semester 1)
+- [x] HNRS 3800/3900/4000 in last three semesters
+- [ ] repeatable courses can be dragged more than once
+- [ ] even out semester loads (2nd rebalance with lower max)
+- [ ] end sequence can push last semester over 19 → move a slot earlier
+- [ ] audit warning when a dragged course breaks EARLIEST
+- [ ] audit counts repeated courses only once / no repeat limits
 - [ ] merging: if a choice chip's option is required by another major, switch to it
 - [ ] minor picks don't get either/or options
 - [ ] shrunkSlot restore breaks if that slot was later replaced

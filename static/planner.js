@@ -39,7 +39,6 @@ document.querySelectorAll(".semester").forEach((box) => {
       if (slot != null && courseHours < slotHours) {
         slot.before(copy);
         slot.dataset.hours = slotHours - courseHours
-        slot.textContent = `${slot.dataset.label} (${slot.dataset.hours})`
         copy.shrunkSlot = slot;
       } else if (slot != null) {
         slot.replaceWith(copy);
@@ -101,7 +100,7 @@ function updateHours() {
   document.getElementById("total_hours").textContent = total;
 }
 
-function closeMenus(){
+function closeMenus() {
   document.querySelectorAll(".choice-menu").forEach((menu) => {
     menu.hidden = true
   })
@@ -128,7 +127,6 @@ palette.addEventListener("drop", (event) => {
     let s = dragged.shrunkSlot;
 
     s.dataset.hours = Number(s.dataset.hours) + Number(dragged.dataset.hours || 0)
-    s.textContent = `${s.dataset.label} (${s.dataset.hours})`
 
     dragged.remove();
   } else if (dragged.replacedSlot) {
@@ -212,7 +210,7 @@ document.addEventListener("click", (event) => {
   }
   let choiceChip = event.target.closest(".choice")
 
-  if (choiceChip != null){
+  if (choiceChip != null) {
     let menu = choiceChip.querySelector(".choice-menu")
     let wasHidden = menu.hidden
 
