@@ -38,17 +38,16 @@ TITLE_FIXES = {
 }
 SKIP_PROGRAMS = {"14259"}
 
-for poid, title in TITLE_FIXES.items():
-    degrees[poid]["title"] = title
-
 def clean_title(text):
     text = re.sub(r",\s*BS\b", ", B.S.", text)
     text = re.sub(r",\s*BA\b", ", B.A.", text)
 
     return text
 
+for poid, title in TITLE_FIXES.items():
+    degrees[poid]["title"] = title
+
 for poid, program in degrees.items():
-    title = program["title"]
     program["title"] = clean_title(program["title"])
 
     for track in program["tracks"]:
@@ -117,6 +116,13 @@ def parse_prior(text):
     return prior
 
 
+def track_label(program, track):
+    if track["name"] in (program["title"], program["title"].split(",")[0]):
+        return program["title"]
+    else:
+        return f"{program['title']} - {track['name']}"
+
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     options = []
@@ -125,6 +131,8 @@ def home():
     plan = []
     plan_view = []
     palette = []
+    major_info = []
+
     planned = set()
     total_hours = 0
 
@@ -146,10 +154,18 @@ def home():
 
             program = degrees[poid]
 
-            if track["name"] in program["title"]:
-                title = program["title"]
-            else:
-                title = f"{program['title']} - {track['name']}"
+            title = track_label(program, track)
+
+            notes = [note for note in track.get("notes", []) if not note.startswith("Critical:")]
+            footnotes = track.get("footnotes", {})
+            critical = []
+
+            for i, semester in enumerate(track["semesters"]):
+                for crit in semester.get("critical", []):
+                    crit.replace(" ;", ";")
+                    critical.append(f"Semester {i + 1}: {crit}")
+
+            major_info.append({"title": title, "total_hours": track.get("total_hours"), "notes": notes, "footnotes": footnotes, "critical": critical})
 
             reqs = build_requirements(track)
             codes = []
@@ -280,10 +296,7 @@ def home():
         for i, track in enumerate(program["tracks"]):
             value = f"{poid}|{i}"
 
-            if track["name"] in program["title"]:
-                label = program["title"]
-            else:
-                label = f"{program['title']} - {track['name']}"
+            label = track_label(program, track)
 
             options.append({"value": value, "label": label})
 
@@ -308,6 +321,7 @@ def home():
         course_info=COURSE_INFO,
         hours=HOURS,
         titles=TITLES,
+        major_info=major_info
     )
 
 
@@ -396,10 +410,7 @@ def audit_page():
         track = degrees[poid]["tracks"][int(index)]
         program = degrees[poid]
 
-        if track["name"] in program["title"]:
-            title = program["title"]
-        else:
-            title = f"{program['title']} - {track['name']}"
+        title = track_label(program, track)
 
         report = audit(plan, prior, track, GENED_SETS)
         rows = build_rows(report)

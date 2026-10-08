@@ -98,6 +98,7 @@ def slot_base(description, credits):
         base = base[:-1]
 
     base = base.split(":")[0].strip()
+    base = base.replace("-Level", "-level")
 
     return base
 

@@ -38,6 +38,13 @@ summary {
   border-radius: 6px;
 }
 
+.major_info {
+  border: 1px solid gray;
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
+
 .chip {
   display: inline-block;
   border: 1px solid gray;
@@ -74,3 +81,41 @@ details details {
   margin-left: 12px;
 }
 
+.choice {
+  cursor: pointer;
+  border-color: goldenrod;
+  position: relative;
+}
+
+.choice-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 4px;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.choice-menu .chip-title {
+  display: inline;
+}
+
+.choice-menu[hidden] {
+  display: none;
+}
+
+.choice-option {
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.choice-option:hover {
+  background-color: #eee;
+}
+
+.choice::after {
+  content: " ⇄";
+}

@@ -27,6 +27,36 @@
         </select>
         {% endfor %}
 
+        {% for info in major_info %}
+        <details class="major_info">
+            <summary>{{ info.title }}{% if info.total_hours %} · {{ info.total_hours }} hours{% endif %}</summary>
+            {% if info.critical %}
+            <h4>Critical Requirements</h4>
+            <ul>
+                {% for c in info.critical %}
+                <li>{{ c }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if info.notes %}
+            <h4>Notes</h4>
+            <ul>
+                {% for n in info.notes %}
+                <li>{{ n }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if info.footnotes %}
+            <h4>Footnotes</h4>
+            <ul>
+                {% for num, text in info.footnotes.items() %}
+                <li>{{ num }}. {{ text }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </details>
+        {% endfor %}
         <div class="planner">
             <div class="semesters">
                 {% for sem in plan_view %}
@@ -37,10 +67,29 @@
                             hrs</span></h3>
                     {% for e in sem.entries %}
                     {% if e.type == "course" %}
-                    <div data-hours="{{ e.hours }}" class="chip" draggable="true" data-code="{{ e.code }}"
-                        title="{{ course_info.get(e.code, '') }} ">{{ e.code }}</div>
+                    <div data-options="{{ e.get('options', [])|join(',') }}" data-hours="{{ e.hours }}"
+                        class="chip {% if e.get('options', [])|length > 1 %}choice{% endif %}" draggable="true"
+                        data-code="{{ e.code }}"
+                        title="{{ course_info.get(e.code, '')}}">
+                        <span class="code">
+                            {{ e.code }}
+                        </span>
+                        {% if e.get('options', [])|length > 1 %}
+                        <div class="choice-menu" hidden>
+                            {% for opt in e.get('options', []) %}
+                            <div class="choice-option" data-code="{{ opt }}">
+                                {{ opt }}
+                                <span class="chip-title">
+                                    {{ titles.get(opt, '') }}
+                                </span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
                     {% else %}
-                    <div data-label="{{ e.label }}" data-hours="{{ e.hours }}" class="chip slot" data-section="{{ e.section }}" draggable="true">{{
+                    <div data-label="{{ e.label }}" data-hours="{{ e.hours }}" class="chip slot"
+                        data-section="{{ e.section }}" draggable="true">{{
                         e.description }}</div>
                     {% endif %}
                     {% endfor %}
@@ -76,7 +125,7 @@
                             <span class="chip-title">
                                 {{ titles.get(code, '')}}
                             </span>
-                            
+
                         </div>
                         {% endfor %}
                     </details>
@@ -96,7 +145,7 @@
         <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
         <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>
 
-        <textarea name="plan" rows="8" cols="70">{{ plan_text }}</textarea>
+        <input type="hidden" name="plan" value="{{ plan_text }}">
         <button type="submit">Run audit</button>
         <button type="submit" formaction="/">Load recommended plan</button>
     </form>

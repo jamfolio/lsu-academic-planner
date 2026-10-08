@@ -71,7 +71,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
     lines.push(codes.join(","));
   });
 
-  document.querySelector('textarea[name="plan"]').value = lines.join("\n");
+  document.querySelector('[name="plan"]').value = lines.join("\n");
 });
 
 function updateHours() {
@@ -99,6 +99,12 @@ function updateHours() {
   });
 
   document.getElementById("total_hours").textContent = total;
+}
+
+function closeMenus(){
+  document.querySelectorAll(".choice-menu").forEach((menu) => {
+    menu.hidden = true
+  })
 }
 
 let palette = document.querySelector(".palette");
@@ -151,7 +157,7 @@ document.getElementById("search").addEventListener("input", (event) => {
   document.querySelectorAll(".palette details").forEach((section) => {
     let hasMatch = Array.from(section.querySelectorAll(".chip")).some((chip) => chip.style.display !== "none")
 
-    if (!q){
+    if (!q) {
       section.style.display = ""
       section.open = false
     } else {
@@ -159,4 +165,61 @@ document.getElementById("search").addEventListener("input", (event) => {
       section.open = hasMatch
     }
   })
+})
+
+document.addEventListener("click", (event) => {
+  let option = event.target.closest(".choice-option")
+
+  if (option != null) {
+    let chip = option.closest(".chip")
+    let oldCode = chip.dataset.code
+    let newCode = option.dataset.code
+    let paletteChip = document.querySelector(`.palette .chip[data-code="${newCode}"]`)
+
+    if (oldCode == newCode) {
+      chip.querySelector(".choice-menu").hidden = true
+      return
+    }
+
+    if (paletteChip != null && paletteChip.classList.contains("used")) {
+      alert("Already in your plan!")
+      return
+    }
+
+    chip.dataset.code = newCode
+    chip.querySelector(".code").textContent = newCode;
+
+    if (paletteChip != null) {
+      chip.dataset.hours = paletteChip.dataset.hours
+      chip.title = paletteChip.title
+    }
+
+    document
+      .querySelectorAll(`.palette .chip[data-code="${oldCode}"]`)
+      .forEach((c) => {
+        c.classList.remove("used");
+      });
+
+    document
+      .querySelectorAll(`.palette .chip[data-code="${newCode}"]`).forEach((p) => {
+        p.classList.add("used");
+      });
+
+    chip.querySelector(".choice-menu").hidden = true
+
+    updateHours();
+    return
+  }
+  let choiceChip = event.target.closest(".choice")
+
+  if (choiceChip != null){
+    let menu = choiceChip.querySelector(".choice-menu")
+    let wasHidden = menu.hidden
+
+    closeMenus()
+    menu.hidden = !wasHidden
+    return
+  }
+
+  closeMenus()
 })

@@ -18,7 +18,7 @@ def recommended_plan(track):
 
     for semester in track["semesters"]:
         items = []
-        skip_next = False
+        chain = None
 
         for item in semester["items"]:
             if item["type"] == "slot":
@@ -45,21 +45,26 @@ def recommended_plan(track):
                             "section": section,
                         }
                     )
+                    chain = None
                     continue
 
-            if skip_next:
-                skip_next = False
-                continue
             group = item.get("group")
             if group is not None:
                 if group in seen_groups:
                     continue
                 seen_groups.add(group)
 
-            items.append({"type": "course", "code": item["code"]})
+            if chain is not None:
+                chain["options"].append(item["code"])
+            else:
+                entry = {"type": "course", "code": item["code"], "options":[item["code"]]}
+                items.append(entry)
 
             if item["connector"] == "or":
-                skip_next = True
+                chain = entry
+            else:
+                chain = None
+
         semesters.append(items)
     return semesters
 
@@ -216,30 +221,13 @@ if __name__ == "__main__":
     with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
         minors = json.load(f)
 
-    plan = recommended_plan(degrees["14278"]["tracks"][4])
-    planned = set()
+    plan = recommended_plan(degrees["14258"]["tracks"][0])
 
-    for semester in plan:
-        planned.update(semester_codes(semester))
-
-    picks = minor_courses(minors["14192"]["rule"], planned)
-
-    for code in picks:
-        place_course(plan, code, set())
-
-    for i, semester in enumerate(plan):
-        hours = 0
-        for entry in semester:
-            hours += entry_hours(entry)
-        print(i + 1, hours, semester_codes(semester))
-
-    print(minor_courses(minors["14192"]["rule"], set()))
-    print(minor_courses(minors["14192"]["rule"], {"SCRN 2001", "SCRN 2203"}))
-
-    plan_a = recommended_plan(degrees["14278"]["tracks"][4])
-    plan_b = recommended_plan(degrees["14278"]["tracks"][2])
-
-    merged = merge_plans([plan_a, plan_b])
-
-    for i, semester in enumerate(merged):
-        print(i + 1, len(plan_a[i]), len(plan_b[i]), len(semester))
+    for i in [0, 3]:
+        print(f"Semester {i + 1}:")
+        for entry in plan[i]:
+            if entry["type"] == "course":
+                print("  course", entry["code"], entry["options"])
+            else:
+                print("  slot  ", entry["description"])
+        print()
