@@ -37,10 +37,11 @@
                             hrs</span></h3>
                     {% for e in sem.entries %}
                     {% if e.type == "course" %}
-                    <div class="chip" draggable="true" data-code="{{ e.code }}"
-                        title="{{ course_info.get(e.code, '') }}">{{ e.code }}</div>
+                    <div data-hours="{{ e.hours }}" class="chip" draggable="true" data-code="{{ e.code }}"
+                        title="{{ course_info.get(e.code, '') }} ">{{ e.code }}</div>
                     {% else %}
-                    <div class="chip slot" data-section="{{ e.section }}">{{ e.description }}</div>
+                    <div data-hours="{{ e.hours }}" class="chip slot" data-section="{{ e.section }}" draggable="true">{{
+                        e.description }}</div>
                     {% endif %}
                     {% endfor %}
                 </div>
@@ -51,8 +52,8 @@
                 <details data-section="{{ section.key }}">
                     <summary>{{ section.title }}</summary>
                     {% for code in section.codes %}
-                    <div class="chip {% if code in planned %}used{% endif %}" draggable="true" data-code="{{ code }}"
-                        title="{{ course_info.get(code, '') }}">{{
+                    <div data-hours="{{ hours.get(code, 0) }}" class="chip {% if code in planned %}used{% endif %}"
+                        draggable="true" data-code="{{ code }}" title="{{ course_info.get(code, '') }}">{{
                         code }}</div>
                     {% endfor %}
                 </details>
@@ -64,8 +65,9 @@
                     <details>
                         <summary>{{ g.subject }} ({{ g.codes|length }})</summary>
                         {% for code in g.codes %}
-                        <div class="chip {% if code in planned %}used{% endif %}" draggable="true"
-                            title="{{ course_info.get(code, '') }}" data-code="{{ code }}">{{ code }}</div>
+                        <div data-hours="{{ hours.get(code, 0) }}" class="chip {% if code in planned %}used{% endif %}"
+                            draggable="true" title="{{ course_info.get(code, '') }}" data-code="{{ code }}">{{ code }}
+                        </div>
                         {% endfor %}
                     </details>
                     {% endfor %}
@@ -74,7 +76,12 @@
             </div>
         </div>
 
-        <p>Total: {{ total_hours|int }} credits</p>
+        <p> Total:
+            <span id="total_hours">
+                {{ total_hours|int }}
+            </span>
+            credits
+        </p>
 
         <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
         <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>

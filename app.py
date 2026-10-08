@@ -15,6 +15,7 @@ from planner.rules import (
     describe,
     slot_base,
     LAB_COURSES,
+    course_hours,
 )
 from planner.recommend import (
     recommended_plan,
@@ -59,6 +60,7 @@ for code, info in courses.items():
 
     COURSE_INFO[code] = text
 
+HOURS = {code: course_hours(code) for code in courses}
 
 app = Flask(__name__)
 
@@ -176,7 +178,7 @@ def home():
                     {
                         "title": f"{group['title']}",
                         "codes": group["codes"],
-                        "key": group["title"]
+                        "key": group["title"],
                     }
                 )
 
@@ -193,7 +195,11 @@ def home():
             mentioned = used_courses(minors[poid]["rule"], set(courses))
 
             palette.append(
-                {"title": minors[poid]["title"], "codes": sorted(set(mentioned)), "key": minors[poid]["title"]}
+                {
+                    "title": minors[poid]["title"],
+                    "codes": sorted(set(mentioned)),
+                    "key": minors[poid]["title"],
+                }
             )
 
             for code in picks:
@@ -203,11 +209,19 @@ def home():
         gened_sections = []
 
         for category, codes in GENED_SETS.items():
-            gened_sections.append({"title": category, "codes": sorted(codes), "key": category})
-        
-        gened_sections.append({"title": "Natural Sciences Lab", "key": "Natural Sciences Lab", "codes": LAB_COURSES})
+            gened_sections.append(
+                {"title": category, "codes": sorted(codes), "key": category}
+            )
 
-        gened_sections.sort(key=lambda s:s["title"])
+        gened_sections.append(
+            {
+                "title": "Natural Sciences Lab",
+                "key": "Natural Sciences Lab",
+                "codes": LAB_COURSES,
+            }
+        )
+
+        gened_sections.sort(key=lambda s: s["title"])
         palette.extend(gened_sections)
 
         lines = []
@@ -217,6 +231,7 @@ def home():
 
             for e in semester:
                 hours += entry_hours(e)
+                e["hours"] = entry_hours(e)
 
             plan_view.append({"entries": semester, "hours": hours})
             total_hours += hours
@@ -256,6 +271,7 @@ def home():
         planned=planned,
         elective_groups=ELECTIVE_GROUPS,
         course_info=COURSE_INFO,
+        hours=HOURS,
     )
 
 
