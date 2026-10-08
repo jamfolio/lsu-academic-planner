@@ -27,9 +27,40 @@ from planner.recommend import (
 )
 
 import json
+import re
 
 with open("data/degrees.json", "r", encoding="utf-8") as f:
     degrees = json.load(f)
+
+TITLE_FIXES = {
+    "14509": "African & African American Studies, B.A.",
+    "14258": "Coastal Environmental Science, B.S.",
+}
+SKIP_PROGRAMS = {"14259"}
+
+for poid, title in TITLE_FIXES.items():
+    degrees[poid]["title"] = title
+
+def clean_title(text):
+    text = re.sub(r",\s*BS\b", ", B.S.", text)
+    text = re.sub(r",\s*BA\b", ", B.A.", text)
+
+    return text
+
+for poid, program in degrees.items():
+    title = program["title"]
+    program["title"] = clean_title(program["title"])
+
+    for track in program["tracks"]:
+        track["name"] = clean_title(track["name"])
+
+
+degrees = {
+    poid: program
+    for poid, program in degrees.items()
+    if re.search(r",\s*B\.?[A-Z]", program["title"]) and poid not in SKIP_PROGRAMS
+}
+print(len(degrees))
 
 with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
     minors = json.load(f)
@@ -65,7 +96,6 @@ HOURS = {code: course_hours(code) for code in courses}
 TITLES = {code: courses[code]["title"] for code in courses}
 
 app = Flask(__name__)
-
 
 def clean_choices(values):
     chosen = []

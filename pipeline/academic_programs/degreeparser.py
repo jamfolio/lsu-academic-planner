@@ -28,6 +28,8 @@ for filename in os.listdir(PROGRAMS_FOLDER):
     current = None
     current_track = None
     last_fn = None
+    last_heading = None
+    last_number = None
     group_id = 0
 
     for block in divs:
@@ -181,6 +183,12 @@ for filename in os.listdir(PROGRAMS_FOLDER):
                 if not text:
                     continue
 
+                if re.match(r"critical\b", text, re.IGNORECASE):
+                    current["critical"].append(
+                        re.sub(r"^critical\s*:?\s*", "", text, flags=re.IGNORECASE)
+                    )
+                    continue
+
                 if "acalog-adhoc-before" not in classes:
                     current_group = None
 
@@ -249,6 +257,9 @@ for filename in os.listdir(PROGRAMS_FOLDER):
         text = re.sub(r"\s+", " ", text.replace("\xa0", " "))
         text = re.sub(r" ([.,;:])", r"\1", text)
         program["footnotes"][number] = text.strip().lstrip("–-").strip()
+
+    if len(program["tracks"]) == 1:
+        program["tracks"][0]["name"] = title
 
     if program["tracks"]:
         degree_programs[filename[:-5]] = program

@@ -97,6 +97,8 @@ def slot_base(description, credits):
     if base.endswith("Electives"):
         base = base[:-1]
 
+    base = base.split(":")[0].strip()
+
     return base
 
 

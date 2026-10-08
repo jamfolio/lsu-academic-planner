@@ -7639,7 +7639,7 @@
     "title": "Leadership & Human Resource Development, B.S.",
     "tracks": [
       {
-        "name": "Leadership & Human Resource Development",
+        "name": "Leadership & Human Resource Development, B.S.",
         "total_hours": "120",
         "semesters": [
           {
@@ -10460,7 +10460,7 @@
     "title": "Entrepreneurship, BS",
     "tracks": [
       {
-        "name": "Curriculum and Instruction",
+        "name": "Entrepreneurship, BS",
         "total_hours": "120",
         "semesters": [
           {
@@ -10849,7 +10849,7 @@
     "title": "Anthropology, B.A.",
     "tracks": [
       {
-        "name": "Anthropology",
+        "name": "Anthropology, B.A.",
         "total_hours": "120",
         "semesters": [
           {
@@ -11206,7 +11206,7 @@
     "title": "Leadership and Human Resource Development, M.S.",
     "tracks": [
       {
-        "name": "Workforce Development",
+        "name": "Leadership and Human Resource Development, M.S.",
         "total_hours": null,
         "semesters": [
           {
@@ -11363,7 +11363,7 @@
     "title": "Communication Studies, B.A (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "Communication Studies",
+        "name": "Communication Studies, B.A (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -11700,7 +11700,7 @@
     "title": "Pre-Physical Therapy",
     "tracks": [
       {
-        "name": "DISSERTATION WRITING AND DEFENSE",
+        "name": "Pre-Physical Therapy",
         "total_hours": null,
         "semesters": [
           {
@@ -17581,7 +17581,7 @@
     "title": "Exceptional Educator: Grades 1-5, B.S.",
     "tracks": [
       {
-        "name": "Exceptional Educator: Grades 1-5",
+        "name": "Exceptional Educator: Grades 1-5, B.S.",
         "total_hours": "124",
         "semesters": [
           {
@@ -17954,7 +17954,7 @@
     "title": "Medical Laboratory Science (Medical Technology)",
     "tracks": [
       {
-        "name": "Exceptional Educator: Grades 1-5",
+        "name": "Medical Laboratory Science (Medical Technology)",
         "total_hours": null,
         "semesters": [
           {
@@ -19614,7 +19614,7 @@
     "title": "Finance, BS",
     "tracks": [
       {
-        "name": "Finance",
+        "name": "Finance, BS",
         "total_hours": "120",
         "semesters": [
           {
@@ -23530,7 +23530,7 @@
     "title": "Pre-Pharmacy",
     "tracks": [
       {
-        "name": "Financial Mathematics",
+        "name": "Pre-Pharmacy",
         "total_hours": null,
         "semesters": [
           {
@@ -27790,18 +27790,10 @@
           {
             "name": "Semester 4",
             "hours": "15",
-            "critical": [],
+            "critical": [
+              "GEOG 2080 ; Second Course in Foreign Language Sequence."
+            ],
             "items": [
-              {
-                "type": "slot",
-                "credits": null,
-                "allowed_courses": [
-                  "GEOG 2080"
-                ],
-                "description": "Critical: GEOG 2080 ; Second Course in Foreign Language Sequence.",
-                "footnote": null,
-                "group": null
-              },
               {
                 "type": "course",
                 "code": "ENGL 2000",
@@ -33099,7 +33091,7 @@
     "title": "Honors Traditions in Critical Thought and Scholarship, B.A.",
     "tracks": [
       {
-        "name": "Philosophy",
+        "name": "Honors Traditions in Critical Thought and Scholarship, B.A.",
         "total_hours": "120",
         "semesters": [
           {
@@ -33479,7 +33471,7 @@
     "title": "Anthropology, B.A. (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "Anthropology",
+        "name": "Anthropology, B.A. (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -36443,7 +36435,7 @@
     "title": "Joint 3/2 Degree in Art and Design, BA - Digital Media Arts & Engineering MDMAE.",
     "tracks": [
       {
-        "name": "Joint 3/2 Degree in Art and Design, BA - Digital Media Arts & Engineering MDMAE",
+        "name": "Joint 3/2 Degree in Art and Design, BA - Digital Media Arts & Engineering MDMAE.",
         "total_hours": null,
         "semesters": [
           {
@@ -39530,7 +39522,7 @@
     "title": "International Studies, B.A.: Global Diplomacy Concentration (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "Global Diplomacy",
+        "name": "International Studies, B.A.: Global Diplomacy Concentration (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -41057,7 +41049,7 @@
     "title": "Interdisciplinary Studies, B.I.S.",
     "tracks": [
       {
-        "name": "Individualized Studies",
+        "name": "Interdisciplinary Studies, B.I.S.",
         "total_hours": "120",
         "semesters": [
           {
@@ -41476,7 +41468,7 @@
     "title": "Early Childhood Education, B.S.",
     "tracks": [
       {
-        "name": "Early Childhood Education",
+        "name": "Early Childhood Education, B.S.",
         "total_hours": null,
         "semesters": [
           {
@@ -41923,7 +41915,7 @@
     "title": "Computer Engineering, B.S.Comp.E.",
     "tracks": [
       {
-        "name": "Computer Engineering",
+        "name": "Computer Engineering, B.S.Comp.E.",
         "total_hours": "127",
         "semesters": [
           {
@@ -51544,7 +51536,7 @@
     "title": "Plant & Soil Systems, B.S.",
     "tracks": [
       {
-        "name": "Agricultural Pest Management (Plant Pathology Emphasis)",
+        "name": "Plant & Soil Systems, B.S.",
         "total_hours": "120",
         "semesters": [
           {
@@ -54255,7 +54247,7 @@
     "title": "Electrical Engineering, B.S.E.E.",
     "tracks": [
       {
-        "name": "Electrical Engineering",
+        "name": "Electrical Engineering, B.S.E.E.",
         "total_hours": "127",
         "semesters": [
           {
@@ -54636,7 +54628,7 @@
     "title": "Landscape Architecture, B.L.A.",
     "tracks": [
       {
-        "name": "Landscape Architecture",
+        "name": "Landscape Architecture, B.L.A.",
         "total_hours": "147",
         "semesters": [
           {
@@ -55044,7 +55036,7 @@
     "title": "African and African American Studies, B.A. (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "Landscape Architecture",
+        "name": "African and African American Studies, B.A. (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -60488,7 +60480,7 @@
     "title": "Chemical Engineering, B.S.Ch.E.",
     "tracks": [
       {
-        "name": "Chemical Engineering",
+        "name": "Chemical Engineering, B.S.Ch.E.",
         "total_hours": "128",
         "semesters": [
           {
@@ -60893,7 +60885,7 @@
     "title": "Communication Studies, B.A.",
     "tracks": [
       {
-        "name": "Communication Studies",
+        "name": "Communication Studies, B.A.",
         "total_hours": "120",
         "semesters": [
           {
@@ -62977,7 +62969,7 @@
     "title": "French, B.A. (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "French",
+        "name": "French, B.A. (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -68978,7 +68970,7 @@
     "title": "Architecture, B.Arch.",
     "tracks": [
       {
-        "name": "Architecture",
+        "name": "Architecture, B.Arch.",
         "total_hours": "150",
         "semesters": [
           {
@@ -69489,7 +69481,7 @@
     "title": "Communication Disorders, B.A.",
     "tracks": [
       {
-        "name": "Communication Disorders",
+        "name": "Communication Disorders, B.A.",
         "total_hours": "120",
         "semesters": [
           {
@@ -69831,7 +69823,7 @@
     "title": "Industrial Engineering, B.S.I.E.",
     "tracks": [
       {
-        "name": "Industrial Engineering",
+        "name": "Industrial Engineering, B.S.I.E.",
         "total_hours": "120",
         "semesters": [
           {
@@ -72149,7 +72141,7 @@
     "title": "Microbiology, B.S.",
     "tracks": [
       {
-        "name": "Microbiology",
+        "name": "Microbiology, B.S.",
         "total_hours": "120",
         "semesters": [
           {
@@ -73297,7 +73289,7 @@
     "title": "African & African American Studies",
     "tracks": [
       {
-        "name": "Women’s, Gender and Sexuality Studies",
+        "name": "African & African American Studies",
         "total_hours": "120",
         "semesters": [
           {
@@ -75058,7 +75050,7 @@
     "title": "Construction Management, B.S.C.M.",
     "tracks": [
       {
-        "name": "Construction Management",
+        "name": "Construction Management, B.S.C.M.",
         "total_hours": null,
         "semesters": [
           {
@@ -75481,7 +75473,7 @@
     "title": "Environmental Engineering, B.S.Ev.E.",
     "tracks": [
       {
-        "name": "Environmental Engineering",
+        "name": "Environmental Engineering, B.S.Ev.E.",
         "total_hours": "128",
         "semesters": [
           {
@@ -75946,7 +75938,7 @@
     "title": "Social Work, B.S.W.",
     "tracks": [
       {
-        "name": "Social Work",
+        "name": "Social Work, B.S.W.",
         "total_hours": "120",
         "semesters": [
           {
@@ -78149,7 +78141,7 @@
     "title": "Fire and Emergency Services Administration, BS",
     "tracks": [
       {
-        "name": "Louisiana State University A&M",
+        "name": "Fire and Emergency Services Administration, BS",
         "total_hours": "120",
         "semesters": [
           {
@@ -78352,7 +78344,7 @@
     "title": "Film and Television, B.F.A.",
     "tracks": [
       {
-        "name": "Louisiana State University A&M",
+        "name": "Film and Television, B.F.A.",
         "total_hours": "120",
         "semesters": [
           {
@@ -79769,7 +79761,7 @@
     "title": "Biochemistry, B.S.",
     "tracks": [
       {
-        "name": "Biochemistry",
+        "name": "Biochemistry, B.S.",
         "total_hours": "120",
         "semesters": [
           {
@@ -82184,7 +82176,7 @@
     "title": "Mechanical Engineering, B.S.M.E.",
     "tracks": [
       {
-        "name": "Mechanical Engineering",
+        "name": "Mechanical Engineering, B.S.M.E.",
         "total_hours": null,
         "semesters": [
           {
@@ -85421,7 +85413,7 @@
     "title": "Interior Design, B.I.D.",
     "tracks": [
       {
-        "name": "Interior Design",
+        "name": "Interior Design, B.I.D.",
         "total_hours": "124",
         "semesters": [
           {
@@ -89908,7 +89900,7 @@
     "title": "Spanish, B.A. (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "Spanish",
+        "name": "Spanish, B.A. (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -90223,7 +90215,7 @@
     "title": "Dental Hygiene",
     "tracks": [
       {
-        "name": "Additional Information:",
+        "name": "Dental Hygiene",
         "total_hours": null,
         "semesters": [
           {
@@ -92494,7 +92486,7 @@
     "title": "Coastal Meteorology, B.S.",
     "tracks": [
       {
-        "name": "Holmes Certification, Grades 1-5",
+        "name": "Coastal Meteorology, B.S.",
         "total_hours": "120",
         "semesters": [
           {
@@ -93260,7 +93252,7 @@
     "title": "Agricultural & Extension Education, M.S.",
     "tracks": [
       {
-        "name": "Agriculture Teacher Certification (6-12)",
+        "name": "Agricultural & Extension Education, M.S.",
         "total_hours": null,
         "semesters": [
           {
@@ -93418,7 +93410,7 @@
     "title": "History, B.A. (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "History",
+        "name": "History, B.A. (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -93800,7 +93792,7 @@
     "title": "Civil Engineering, B.S.C.E.",
     "tracks": [
       {
-        "name": "Civil Engineering",
+        "name": "Civil Engineering, B.S.C.E.",
         "total_hours": "120",
         "semesters": [
           {
@@ -95027,7 +95019,7 @@
     "title": "Cardiopulmonary Science (Respiratory Therapy and Cardiopulmonary Sonography)",
     "tracks": [
       {
-        "name": "Art History",
+        "name": "Cardiopulmonary Science (Respiratory Therapy and Cardiopulmonary Sonography)",
         "total_hours": null,
         "semesters": [
           {
@@ -95294,7 +95286,7 @@
     "title": "Accounting, BS",
     "tracks": [
       {
-        "name": "Accounting",
+        "name": "Accounting, BS",
         "total_hours": "120",
         "semesters": [
           {
@@ -95787,7 +95779,7 @@
     "title": "Pre-Nursing",
     "tracks": [
       {
-        "name": "37-43 Total Sem. Hrs.",
+        "name": "Pre-Nursing",
         "total_hours": null,
         "semesters": [
           {
@@ -103429,7 +103421,7 @@
     "title": "Music Therapy, B.M.T.",
     "tracks": [
       {
-        "name": "Race, Ethnicity, & Gender",
+        "name": "Music Therapy, B.M.T.",
         "total_hours": null,
         "semesters": [
           {
@@ -104039,7 +104031,7 @@
     "title": "Geography, B.S. (3+3 Pre-Law Program)",
     "tracks": [
       {
-        "name": "Geography, B.S.",
+        "name": "Geography, B.S. (3+3 Pre-Law Program)",
         "total_hours": "120",
         "semesters": [
           {
@@ -106129,7 +106121,7 @@
     "title": "Business Analytics, B.S.",
     "tracks": [
       {
-        "name": "Business Analytics",
+        "name": "Business Analytics, B.S.",
         "total_hours": "120",
         "semesters": [
           {
@@ -106502,7 +106494,7 @@
     "title": "Pre-Physician’s Assistant",
     "tracks": [
       {
-        "name": "Master of Science in Renewable Natural Resources (SRNR), Wildlife AOC (WLDM)",
+        "name": "Pre-Physician’s Assistant",
         "total_hours": null,
         "semesters": [
           {
@@ -106883,7 +106875,7 @@
     "title": "Biological Engineering, B.S.B.E.",
     "tracks": [
       {
-        "name": "Biological Engineering",
+        "name": "Biological Engineering, B.S.B.E.",
         "total_hours": "128",
         "semesters": [
           {
@@ -113118,7 +113110,7 @@
     "title": "Dental Laboratory Technology",
     "tracks": [
       {
-        "name": "Chemistry (SCHEM) or (PCHEM)",
+        "name": "Dental Laboratory Technology",
         "total_hours": null,
         "semesters": [
           {

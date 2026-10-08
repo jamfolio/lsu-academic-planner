@@ -6,5 +6,3 @@ with open("data/degrees.json", "r", encoding="utf-8") as f:
 
 with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
     minors = json.load(f)
-
-print(len(LAB_COURSES), LAB_COURSES[:10])
