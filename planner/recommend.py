@@ -248,7 +248,7 @@ def place_course(plan, code, prior, max_hours=19, options=None):
                     slot["credits"] = str(slot_hours - course_hours(code))
 
                 semester.append(
-                    {"type": "course", "code": code, "options": options or [code]}
+                    {"type": "course", "code": code, "options": options or [code], "claimed_by": slot["major"]}
                 )
                 return
 
@@ -368,6 +368,12 @@ def absorb_slots(plan, own_codes, prior):
     all_codes.extend(prior)
 
     claimed = [set() for _ in own_codes]
+
+    for semester in plan:
+        for e in semester:
+            if e["type"] == "course" and e.get("claimed_by") is not None:
+                claimed[e["claimed_by"]].add(e["code"])
+
     for semester in plan:
         keep = []
         for e in semester:
