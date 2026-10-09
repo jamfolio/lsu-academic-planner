@@ -180,6 +180,53 @@ def minor_courses(rule, planned):
                 total += 1
 
         return picks
+    
+    elif "hours_in" in rule:
+        total = 0
+        picks = []
+
+        for course in planned:
+            if course not in courses:
+                continue
+
+            prefix, number = course.split()
+            number = int(number)
+
+            if prefix != rule["subject"]:
+                continue
+
+            elif rule.get("min_level") is not None and number < rule.get("min_level"):
+                continue
+
+            elif course in rule.get("except", []):
+                continue
+
+            else:
+                total += course_hours(course)
+
+        candidates = []
+
+        for code in courses:
+            prefix, number = code.split()
+            number = int(number)
+
+            if (
+                prefix == rule["subject"]
+                and number < 5000
+                and meets_level(code, rule.get("min_level"))
+                and code not in rule.get("except", [])
+                and code not in planned
+            ):
+                candidates.append(code)
+
+        for candidate in candidates:
+            if total >= rule["hours_in"]:
+                break
+            else:
+                picks.append(candidate)
+                total += course_hours(candidate)
+
+        return picks
     else:
         return []
 
@@ -248,7 +295,12 @@ def place_course(plan, code, prior, max_hours=19, options=None):
                     slot["credits"] = str(slot_hours - course_hours(code))
 
                 semester.append(
-                    {"type": "course", "code": code, "options": options or [code], "claimed_by": slot["major"]}
+                    {
+                        "type": "course",
+                        "code": code,
+                        "options": options or [code],
+                        "claimed_by": slot["major"],
+                    }
                 )
                 return
 
