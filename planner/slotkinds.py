@@ -20,11 +20,6 @@ for poid, program in degrees.items():
 
                     descriptions.add(desc)
 
-# print(len(descriptions))
-
-# for desc in sorted(descriptions):
-#     print(desc)
-
 counts = {}
 
 for desc in sorted(descriptions):

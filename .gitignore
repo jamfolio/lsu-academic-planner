@@ -1,2 +1,4 @@
 raw/
+__pycache__/
+TODO.md/
 .DS_Store

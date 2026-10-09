@@ -29,6 +29,8 @@ from planner.recommend import (
     remove_prior,
     compact,
     place_end_sequence,
+    drop_covered_choices,
+    minor_alternatives,
 )
 
 import json
@@ -44,6 +46,15 @@ TITLE_FIXES = {
 }
 
 REPEAT_TIMES = {"HNRS 1010": 3}
+
+FOOTNOTE_FIXES = {"Natural sciences lab (2-1)": "2"}
+
+for program in degrees.values():
+    for track in program["tracks"]:
+        for semester in track["semesters"]:
+            for item in semester["items"]:
+                if item.get("description") in FOOTNOTE_FIXES:
+                    item["footnote"] = FOOTNOTE_FIXES[item["description"]]
 
 
 def set_times(rule):
@@ -285,6 +296,7 @@ def home():
                 )
 
         plan = merge_plans(plans)
+        drop_covered_choices(plan)
 
         prior = parse_prior(prior_text)
         planned = set(prior)
@@ -306,8 +318,10 @@ def home():
                 }
             )
 
+            alts = minor_alternatives(minors[poid]["rule"], {})
+            
             for code in picks:
-                place_course(plan, code, prior)
+                place_course(plan, code, prior, options=alts.get(code))
                 planned.add(code)
 
         absorb_slots(plan, own_codes, prior)

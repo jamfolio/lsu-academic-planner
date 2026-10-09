@@ -108,6 +108,8 @@ details details {
   padding: 4px;
   z-index: 10;
   white-space: nowrap;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .choice-menu .chip-title {
@@ -129,4 +131,24 @@ details details {
 
 .choice::before {
   content: "⇄ ";
+}
+
+.note-mark {
+  color: goldenrod;
+  cursor: help;
+  position: relative;
+}
+
+.note-mark:hover::after {
+  content: attr(data-note);
+  position: absolute;
+  top:100%;
+  left:0;
+  background-color: white;
+  padding: 4px;
+  width: 250px;
+  white-space: normal;
+  z-index: 20;
+  border: 1px solid gray;
+  color: black;
 }
