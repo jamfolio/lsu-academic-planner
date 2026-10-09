@@ -181,7 +181,9 @@ document.addEventListener("click", (event) => {
       return
     }
 
-    if (paletteChip != null && paletteChip.classList.contains("used")) {
+    let inPlan = document.querySelector(`.semester .chip[data-code="${newCode}"]`)
+
+    if (inPlan != null) {
       alert("Already in your plan!")
       return
     }
@@ -193,12 +195,6 @@ document.addEventListener("click", (event) => {
       chip.dataset.hours = paletteChip.dataset.hours
       chip.title = paletteChip.title
     }
-
-    document
-      .querySelectorAll(`.palette .chip[data-code="${oldCode}"]`)
-      .forEach((c) => {
-        c.classList.remove("used");
-      });
 
     document
       .querySelectorAll(`.palette .chip[data-code="${newCode}"]`).forEach((p) => {

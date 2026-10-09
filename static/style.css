@@ -142,8 +142,8 @@ details details {
 .note-mark:hover::after {
   content: attr(data-note);
   position: absolute;
-  top:100%;
-  left:0;
+  top: 100%;
+  left: 0;
   background-color: white;
   padding: 4px;
   width: 250px;
@@ -151,4 +151,12 @@ details details {
   z-index: 20;
   border: 1px solid gray;
   color: black;
+}
+
+.warn-mark {
+  color: red;
+}
+
+.missing {
+  border-color: red;
 }

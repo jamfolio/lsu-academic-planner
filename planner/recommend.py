@@ -9,6 +9,7 @@ from planner.rules import (
     meets_level,
     slot_kind,
     slot_base,
+    family_name,
     GENED_SETS,
 )
 
@@ -36,7 +37,13 @@ def recommended_plan(track, major=0):
                 else:
                     kind_info = slot_kind(item, track)
 
-                    if kind_info["kind"] == "gened":
+                    if kind_info["kind"] == "gened" and (
+                        kind_info.get("only")
+                        or kind_info.get("exclude")
+                        or kind_info.get("min_level")
+                    ):
+                        section = slot_base(item["description"], item["credits"])
+                    elif kind_info["kind"] == "gened":
                         if "lab" in item["description"].lower():
                             section = "Natural Sciences Lab"
                         else:
@@ -44,7 +51,9 @@ def recommended_plan(track, major=0):
                     elif kind_info["kind"] == "free":
                         section = "free"
                     else:
-                        section = slot_base(item["description"], item["credits"])
+                        section = family_name(
+                            slot_base(item["description"], item["credits"])
+                        )
 
                     items.append(
                         {
@@ -76,6 +85,7 @@ def recommended_plan(track, major=0):
                     "options": [item["code"]],
                     "note": notes.get(item.get("footnote")),
                     "footnote": item.get("footnote"),
+                    "major": major,
                 }
                 items.append(entry)
 
@@ -102,11 +112,21 @@ def merge_plans(plans):
 
             for entry in p[i]:
                 if entry["type"] == "course":
-                    if entry["code"] in placed:
+                    options = entry.get("options", [entry["code"]])
+
+                    unused = None
+                    for option in options:
+                        if option not in placed:
+                            unused = option
+                            break
+
+                    if unused is None:
                         continue
                     else:
-                        semester.append(entry)
-                        placed.add(entry["code"])
+                        copy = dict(entry)
+                        copy["code"] = unused
+                        semester.append(copy)
+                        placed.add(unused)
                 else:
                     if p_index > 0 and (
                         classify_slot(entry["description"])["kind"] == "gened"
@@ -141,7 +161,31 @@ def minor_courses(rule, planned):
             if is_satisfied(child, planned, set()) is True:
                 return []
 
-        return minor_courses(rule["or"][0], planned)
+        best = None
+        best_hours = 0
+
+        for child in rule["or"]:
+            if "other" in child or "consent" in child or "equivalent" in child:
+                continue
+
+            picks = minor_courses(child, planned)
+            if is_satisfied(child, planned | set(picks), set()) is False:
+                continue
+
+            hours = 0
+
+            for course in picks:
+                hours += course_hours(course)
+
+            if best is None or hours < best_hours:
+                best = picks
+                best_hours = hours
+
+        if best is None:
+            return []
+        else:
+            return best
+
     elif "hours_from" in rule:
         total = 0
         picks = []
@@ -180,7 +224,7 @@ def minor_courses(rule, planned):
                 total += 1
 
         return picks
-    
+
     elif "hours_in" in rule:
         total = 0
         picks = []
@@ -256,13 +300,47 @@ def semester_codes(semester):
     return codes
 
 
-def place_course(plan, code, prior, max_hours=19, options=None):
+def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
     if code not in courses:
         plan[-1].append({"type": "course", "code": code, "options": options or [code]})
         return
 
     rule = courses[code]["prereq_rule"]
     taken_before = set(prior)
+    everything = set(prior)
+
+    for semester in plan:
+        everything.update(semester_codes(semester))
+
+    missing = can_take(rule, everything, set()) is False
+    was_planned = code in everything
+
+    if missing is True and depth < 5:
+        needed = minor_courses(rule, everything)
+
+        for need in needed:
+            everything = set(prior)
+
+            for semester in plan:
+                everything.update(semester_codes(semester))
+
+            if need in everything:
+                continue
+
+            place_course(plan, need, prior, max_hours, depth=depth + 1)
+
+        everything = set(prior)
+
+        for semester in plan:
+            everything.update(semester_codes(semester))
+
+        if was_planned is False and code in everything:
+            return
+
+        missing = can_take(rule, everything, set()) is False
+
+    if missing:
+        rule = None
 
     for i, semester in enumerate(plan):
         current = semester_codes(semester)
@@ -292,7 +370,7 @@ def place_course(plan, code, prior, max_hours=19, options=None):
                 if slot_hours <= course_hours(code):
                     semester.remove(slot)
                 else:
-                    slot["credits"] = str(slot_hours - course_hours(code))
+                    slot["credits"] = str(int(slot_hours - course_hours(code)))
 
                 semester.append(
                     {
@@ -300,6 +378,7 @@ def place_course(plan, code, prior, max_hours=19, options=None):
                         "code": code,
                         "options": options or [code],
                         "claimed_by": slot["major"],
+                        "missing_prereq": missing,
                     }
                 )
                 return
@@ -316,8 +395,26 @@ def place_course(plan, code, prior, max_hours=19, options=None):
                     e["type"] == "slot"
                     and hours - entry_hours(e) + course_hours(code) <= max_hours
                 ):
+                    clash = False
+
+                    if e["kind_info"]["kind"] in (
+                        "subject",
+                        "list",
+                        "unknown",
+                    ) and i + 1 < len(plan):
+                        for other in plan[i + 1]:
+                            if (
+                                other["type"] == "slot"
+                                and other["kind_info"] == e["kind_info"]
+                            ):
+                                clash = True
+
+                    if clash:
+                        continue
+
                     room = e
                     break
+
             if room is not None:
                 semester.remove(room)
 
@@ -326,7 +423,12 @@ def place_course(plan, code, prior, max_hours=19, options=None):
                 plan[i + 1].insert(0, room)
 
                 semester.append(
-                    {"type": "course", "code": code, "options": options or [code]}
+                    {
+                        "type": "course",
+                        "code": code,
+                        "options": options or [code],
+                        "missing_prereq": missing,
+                    }
                 )
 
                 return
@@ -338,13 +440,27 @@ def place_course(plan, code, prior, max_hours=19, options=None):
             and code not in current
         ):
             semester.append(
-                {"type": "course", "code": code, "options": options or [code]}
+                {
+                    "type": "course",
+                    "code": code,
+                    "options": options or [code],
+                    "missing_prereq": missing,
+                }
             )
             return
 
         taken_before.update(current)
 
-    plan.append([{"type": "course", "code": code, "options": options or [code]}])
+    plan.append(
+        [
+            {
+                "type": "course",
+                "code": code,
+                "options": options or [code],
+                "missing_prereq": missing,
+            }
+        ]
+    )
 
 
 def rebalance(plan, max_hours=19):
@@ -360,9 +476,29 @@ def rebalance(plan, max_hours=19):
             to_move = None
 
             for e in reversed(semester):
-                if e["type"] == "slot":
-                    to_move = e
-                    break
+                if e["type"] != "slot":
+                    continue
+
+                clash = False
+
+                if e["kind_info"]["kind"] in (
+                    "subject",
+                    "list",
+                    "unknown",
+                ) and i + 1 < len(plan):
+                    for other in plan[i + 1]:
+                        if (
+                            other["type"] == "slot"
+                            and other["kind_info"] == e["kind_info"]
+                        ):
+                            clash = True
+                            break
+
+                if clash:
+                    continue
+
+                to_move = e
+                break
 
             if to_move is None:
                 needed = set()
@@ -403,6 +539,15 @@ def fits(code, kind_info):
     elif kind_info["kind"] == "free":
         return True
     elif kind_info["kind"] == "gened":
+        prefix = code.split()[0]
+
+        if kind_info.get("only") and prefix not in kind_info["only"]:
+            return False
+        elif prefix in kind_info.get("exclude", []):
+            return False
+        elif not meets_level(code, kind_info.get("min_level")):
+            return False
+
         for category in kind_info["categories"]:
             if code in GENED_SETS[category]:
                 return True
@@ -456,7 +601,7 @@ def absorb_slots(plan, own_codes, prior):
             if got >= needed:
                 continue
             elif got > 0:
-                e["credits"] = str(needed - got)
+                e["credits"] = str(int((needed - got)))
                 keep.append(e)
             else:
                 keep.append(e)
@@ -500,10 +645,36 @@ def compact(plan, prior, target=15, max_hours=19):
                     continue
 
                 if e["type"] == "course":
+                    if e["code"] in END_SEQUENCE or e["code"] in semester_codes(
+                        semester
+                    ):
+                        continue
+
                     rule = courses.get(e["code"], {}).get("prereq_rule")
                     if can_take(rule, taken_before, semester_codes(semester)) is False:
                         continue
                     if EARLIEST.get(e["code"], 1) > i + 1:
+                        continue
+                elif e["type"] == "slot" and e["kind_info"]["kind"] in (
+                    "subject",
+                    "list",
+                    "unknown",
+                ):
+                    blocked = False
+
+                    for k in range(i, j):
+                        for other in plan[k]:
+                            if (
+                                other["type"] == "slot"
+                                and other["kind_info"] == e["kind_info"]
+                            ):
+                                blocked = True
+                                break
+
+                        if blocked:
+                            break
+
+                    if blocked:
                         continue
 
                 plan[j].remove(e)
@@ -533,26 +704,44 @@ def place_end_sequence(plan):
             continue
 
         semester.remove(entry)
-        found.append(entry)
-
-    plan[:] = [s for s in plan if s]
+        found.append((entry, semester))
 
     while len(plan) < len(found):
         plan.append([])
 
     n = len(found)
 
-    for k, entry in enumerate(found):
-        plan[len(plan) - n + k].append(entry)
+    for k, (entry, source) in enumerate(found):
+        target = plan[len(plan) - n + k]
+        target.append(entry)
+        hours = 0
+
+        for e in target:
+            hours += entry_hours(e)
+
+        if hours > 19 and source is not target:
+            slot = None
+            for e in target:
+                if e["type"] == "slot":
+                    slot = e
+                    break
+
+            if slot is not None:
+                target.remove(slot)
+                source.append(slot)
+
+    plan[:] = [s for s in plan if s]
 
 
 def drop_covered_choices(plan):
-    required = set()
+    required = {}
 
     for semester in plan:
         for e in semester:
             if e["type"] == "course" and len(e.get("options", [e["code"]])) == 1:
-                required.add(e["code"])
+                if e["code"] not in required:
+                    required[e["code"]] = set()
+                required[e["code"]].add(e.get("major"))
 
     for semester in plan:
         keep = []
@@ -561,10 +750,17 @@ def drop_covered_choices(plan):
                 keep.append(e)
             elif len(e.get("options", [e["code"]])) == 1:
                 keep.append(e)
-            elif set(e["options"]) & required:
-                continue
             else:
-                keep.append(e)
+                blocked = False
+                for option in e["options"]:
+                    if option in required:
+                        if required[option] - set({e.get("major")}):
+                            blocked = True
+                            break
+                if blocked == True:
+                    continue
+                else:
+                    keep.append(e)
         semester[:] = keep
 
 
@@ -575,12 +771,13 @@ def minor_alternatives(rule, alts):
         for c in rule["courses"]:
             alts[c] = rule["courses"]
     elif "or" in rule:
-        codes = [child["course"] for child in rule["or"] if "course" in child]
+        for child in rule["or"]:
+            minor_alternatives(child, alts)
+
+        codes = sorted(rule_codes(rule))
         for c in codes:
             alts[c] = codes
 
-        for child in rule["or"]:
-            minor_alternatives(child, alts)
     elif "and" in rule:
         for child in rule["and"]:
             minor_alternatives(child, alts)

@@ -91,8 +91,8 @@ LAB_COURSES.sort()
 
 
 def slot_base(description, credits):
-    base = description.replace(f"({credits})", "").rstrip("*").strip()
-    base = " ".join(base.split())
+    base = description.rstrip("*").strip()
+    base = re.sub(r"\s*\(\d+(?:\.\d+)?(?:-\d+)?\)\s*$", "", base)
 
     if base.endswith("Electives"):
         base = base[:-1]
@@ -101,6 +101,15 @@ def slot_base(description, credits):
     base = base.replace("-Level", "-level")
 
     return base
+
+
+def family_name(base):
+    return re.sub(
+        r"^(first|second|third|fourth|fifth)\s+course\s+(in|from)\s+",
+        "",
+        base,
+        flags=re.I,
+    )
 
 
 def meets_level(code, min_level):
@@ -514,8 +523,66 @@ def classify_slot(desc):
             if re.search(r"\b" + keyword, lower) and category not in categories:
                 categories.append(category)
 
+        only = []
+        exclude = []
+        min_level = None
+
+        if "communication studies" in lower:
+            only.append("CMST")
+        elif "from mathematics" in lower:
+            only.append("MATH")
+        elif "not mus" in lower:
+            exclude.append("MUS")
+        elif "english/honors 2000-level" in lower or "engl/hnrs 2000-level" in lower:
+            only.extend(["ENGL", "HNRS"])
+            min_level = 2000
+        elif "from field other than psychology" in lower:
+            exclude.append("PSYC")
+        elif "other than english" in lower or "other than engl " in lower:
+            exclude.extend(
+                [
+                    "ENGL",
+                    "ARAB",
+                    "ASLG",
+                    "CHIN",
+                    "FREN",
+                    "GERM",
+                    "GREK",
+                    "HEBR",
+                    "ITAL",
+                    "JAPN",
+                    "LATN",
+                    "SPAN",
+                ]
+            )
+        elif "other than" in lower and "foreign language" in lower:
+            exclude.extend(
+                [
+                    "ARAB",
+                    "ASLG",
+                    "CHIN",
+                    "FREN",
+                    "GERM",
+                    "GREK",
+                    "HEBR",
+                    "ITAL",
+                    "JAPN",
+                    "LATN",
+                    "SPAN",
+                ]
+            )
+        elif "other than geog; 2000-level" in lower:
+            exclude.append("GEOG")
+            min_level = 2000
+
         if categories:
-            return {"kind": "gened", "categories": categories}
+            return {
+                "kind": "gened",
+                "categories": categories,
+                "only": only,
+                "exclude": exclude,
+                "min_level": min_level,
+            }
 
     words = re.findall(r"\b[A-Z]{2,5}\b", desc)
     subjects = []
@@ -584,6 +651,15 @@ def slots_accept(code, slot, track, gened_sets):
 
         if "lab" in desc_lower:
             return is_lab(code)
+
+        prefix = code.split()[0]
+
+        if kind_info.get("only") and prefix not in kind_info["only"]:
+            return False
+        elif prefix in kind_info.get("exclude", []):
+            return False
+        elif not meets_level(code, kind_info.get("min_level")):
+            return False
 
         for category in kind_info["categories"]:
             if code in gened_sets[category]:

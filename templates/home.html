@@ -1,162 +1,164 @@
+<!DOCTYPE html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-
-<body>
-    <h1>Home</h1>
-    <form method="post" action="/audit">
-        <p>Majors:</p>
-        {% for n in range(3) %}
-        <select name="major">
-            {% if n > 0 %}<option value="">None</option>{% endif %}
-            {% for o in options %}
-            <option value="{{ o.value }}" {% if o.value==selected_majors[n] %}selected{% endif %}>{{ o.label }}</option>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Home</h1>
+        <form method="post" action="/audit">
+            <p>Majors:</p>
+            {% for n in range(3) %}
+                <select name="major">
+                    {% if n > 0 %}<option value="">None</option>{% endif %}
+                    {% for o in options %}
+                        <option value="{{ o.value }}"
+                                {% if o.value==selected_majors[n] %}selected{% endif %}>{{ o.label }}</option>
+                    {% endfor %}
+                </select>
             {% endfor %}
-        </select>
-        {% endfor %}
-
-        <p>Minors:</p>
-        {% for n in range(3) %}
-        <select name="minor">
-            <option value="">None</option>
-            {% for o in minor_options %}
-            <option value="{{ o.value }}" {% if o.value==selected_minors[n] %}selected{% endif %}>{{ o.label }}</option>
+            <p>Minors:</p>
+            {% for n in range(3) %}
+                <select name="minor">
+                    <option value="">None</option>
+                    {% for o in minor_options %}
+                        <option value="{{ o.value }}"
+                                {% if o.value==selected_minors[n] %}selected{% endif %}>{{ o.label }}</option>
+                    {% endfor %}
+                </select>
             {% endfor %}
-        </select>
-        {% endfor %}
-
-        {% for info in major_info %}
-        <details class="major_info">
-            <summary>{{ info.title }}{% if info.total_hours %} · {{ info.total_hours }} hours{% endif %}</summary>
-            {% if info.critical %}
-            <h4>Critical Requirements</h4>
-            <ul>
-                {% for c in info.critical %}
-                <li>{{ c }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-
-            {% if info.notes %}
-            <h4>Notes</h4>
-            <ul>
-                {% for n in info.notes %}
-                <li>{{ n }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% if info.footnotes %}
-            <h4>Footnotes</h4>
-            <ul>
-                {% for num, text in info.footnotes.items() %}
-                <li>{{ num }}. {{ text }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </details>
-        {% endfor %}
-        <div class="planner">
-            <div class="semesters">
-                {% for sem in plan_view %}
-                <div class="semester">
-                    <h3>Semester {{ loop.index }} · <span
-                            class="{% if sem.hours > 19 %}over{% elif sem.hours < 12 %}under{% endif %}">{{
-                            sem.hours|int }}
-                            hrs</span></h3>
-                    {% for e in sem.entries %}
-                    {% if e.type == "course" %}
-                    <div data-options="{{ e.get('options', [])|join(',') }}" data-hours="{{ e.hours|int }}"
-                        class="chip {% if e.get('options', [])|length > 1 %}choice{% endif %}" draggable="true"
-                        data-code="{{ e.code }}"
-                        title="{{ course_info.get(e.code, '')}} {% if e.note %}Note: {{ e.note }}{% endif %}">
-                        <span class="code">
-                            {{ e.code }}
-                            {% if e.note %}<sup class="note-mark" data-note="{{ e.note }}">{{ e.footnote }}</sup>{%
-                            endif %}
-                        </span>
-                        {% if e.get('options', [])|length > 1 %}
-                        <div class="choice-menu" hidden>
-                            {% for opt in e.get('options', []) %}
-                            <div class="choice-option" data-code="{{ opt }}">
-                                {{ opt }}
-                                <span class="chip-title">
-                                    {{ titles.get(opt, '') }}
-                                </span>
-                            </div>
+            {% for info in major_info %}
+                <details class="major_info">
+                    <summary>{{ info.title }}{% if info.total_hours %} · {{ info.total_hours }} hours{% endif %}</summary>
+                    {% if info.critical %}
+                        <h4>Critical Requirements</h4>
+                        <ul>
+                            {% for c in info.critical %}
+                                <li>{{ c }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if info.notes %}
+                        <h4>Notes</h4>
+                        <ul>
+                            {% for n in info.notes %}
+                                <li>{{ n }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if info.footnotes %}
+                        <h4>Footnotes</h4>
+                        <ul>
+                            {% for num, text in info.footnotes.items() %}
+                                <li>{{ num }}. {{ text }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </details>
+            {% endfor %}
+            <div class="planner">
+                <div class="semesters">
+                    {% for sem in plan_view %}
+                        <div class="semester">
+                            <h3>Semester {{ loop.index }} · <span class="{% if sem.hours > 19 %}over{% elif sem.hours < 12 %}under{% endif %}">{{ sem.hours|int }} hrs</span>
+                            </h3>
+                            {% for e in sem.entries %}
+                                {% if e.type == "course" %}
+                                    <div data-options="{{ e.get('options', [])|join(',') }}"
+                                         data-hours="{{ e.hours|int }}"
+                                         class="chip {% if e.get('options', [])|length > 1 %}choice{% endif %} {% if e.missing_prereq %}missing{% endif %}"
+                                         draggable="true"
+                                         data-code="{{ e.code }}"
+                                         title="{{ course_info.get(e.code, '') }} {% if e.note %}Note: {{ e.note }}{% endif %}">
+                                        <span class="code">
+                                            {{ e.code }}
+                                            {% if e.note %}<sup class="note-mark"
+     data-note="{{ e.note }}">{{ e.footnote }}</sup>{% endif %}
+                                            {% if e.warning %}<span class="note-mark warn-mark"
+      data-note="{{ e.warning }}">⚠</span>{% endif %}
+                                        </span>
+                                        {% if e.get("options", [])|length > 1 %}
+                                            <div class="choice-menu" hidden>
+                                                {% for opt in e.get('options', []) %}
+                                                    <div class="choice-option" data-code="{{ opt }}">
+                                                        {{ opt }}
+                                                        <span class="chip-title">{{ titles.get(opt, '') }}</span>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <div data-label="{{ e.label }}"
+                                         data-hours="{{ e.hours|int }}"
+                                         class="chip slot"
+                                         data-section="{{ e.section }}"
+                                         draggable="true">
+                                        {{ e.label }}
+                                        {% if e.note %}<sup class="note-mark"
+     data-note="{{ e.note }}">{{ e.footnote }}</sup>{% endif %}
+                                    </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
-                        {% endif %}
-                    </div>
-                    {% else %}
-                    <div data-label="{{ e.label }}" data-hours="{{ e.hours|int }}" class="chip slot"
-                        data-section="{{ e.section }}" draggable="true">{{
-                        e.label }}
-                        {% if e.note %}<sup class="note-mark" data-note="{{ e.note }}">{{ e.footnote }}</sup>{% endif %}
-                    </div>
-                    {% endif %}
                     {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <div class="palette">
-                <input type="text" id="search" placeholder="Search courses...">
-                {% for section in palette %}
-                <details data-section="{{ section.key }}">
-                    <summary>{{ section.title }}</summary>
-                    {% for code in section.codes %}
-                    <div data-hours="{{ hours.get(code, 0)|int }}"
-                        class="chip {% if code in planned and code not in repeatable %}used{% endif %}{% if code in repeatable %}repeatable{% endif %}"
-                        draggable="true" data-code="{{ code }}" title="{{ course_info.get(code, '') }}">
-                        {{ code }}
-                        <span class="chip-title">
-                            {{ titles.get(code, '') }}
-                        </span>
-                    </div>
-                    {% endfor %}
-                </details>
-                {% endfor %}
-                {% if plan_view %}
-                <details>
-                    <summary>All Electives</summary>
-                    {% for g in elective_groups %}
-                    <details>
-                        <summary>{{ g.subject }} ({{ g.codes|length }})</summary>
-                        {% for code in g.codes %}
-                        <div data-hours="{{ hours.get(code, 0)|int }}"
-                            class="chip {% if code in planned and code not in repeatable %}used{% endif %}{% if code in repeatable %}repeatable{% endif %}"
-                            draggable="true" title="{{ course_info.get(code, '') }}" data-code="{{ code }}">
-                            {{ code }}
-                            <span class="chip-title">
-                                {{ titles.get(code, '')}}
-                            </span>
-
-                        </div>
+                <div class="palette">
+                    <input type="text" id="search" placeholder="Search courses...">
+                    {% for group in palette %}
+                        <details>
+                            <summary>{{ group.title }}</summary>
+                        {% for section in group.sections %}
+                            <details data-section="{{ section.key }}">
+                                <summary>{{ section.title }}</summary>
+                                {% for code in section.codes %}
+                                    <div data-hours="{{ hours.get(code, 0)|int }}"
+                                         class="chip {% if code in planned and code not in repeatable %}used{% endif %}{% if code in repeatable %}repeatable{% endif %}"
+                                         draggable="true"
+                                         data-code="{{ code }}"
+                                         title="{{ course_info.get(code, '') }}">
+                                        {{ code }}
+                                        <span class="chip-title">{{ titles.get(code, '') }}</span>
+                                    </div>
+                                {% endfor %}
+                            </details>
                         {% endfor %}
-                    </details>
+                        </details>
                     {% endfor %}
-                </details>
-                {% endif %}
+                    {% if plan_view %}
+                        <details>
+                            <summary>All Electives</summary>
+                            {% for g in elective_groups %}
+                                <details>
+                                    <summary>{{ g.subject }} ({{ g.codes|length }})</summary>
+                                    {% for code in g.codes %}
+                                        <div data-hours="{{ hours.get(code, 0)|int }}"
+                                             class="chip {% if code in planned and code not in repeatable %}used{% endif %}{% if code in repeatable %}repeatable{% endif %}"
+                                             draggable="true"
+                                             title="{{ course_info.get(code, '') }}"
+                                             data-code="{{ code }}">
+                                            {{ code }}
+                                            <span class="chip-title">{{ titles.get(code, '') }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </details>
+                            {% endfor %}
+                        </details>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-
-        <p> Total:
-            <span id="total_hours">
-                {{ total_hours|int }}
-            </span>
-            credits
-        </p>
-
-        <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
-        <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>
-
-        <input type="hidden" name="plan" value="{{ plan_text }}">
-        <button type="submit">Run audit</button>
-        <button type="submit" formaction="/">Load recommended plan</button>
-    </form>
-
-    <script src="{{ url_for('static', filename='planner.js') }}"></script>
-</body>
-
+            <p>
+                Total:
+                <span id="total_hours">{{ total_hours|int }}</span>
+                credits
+            </p>
+            <p>Courses you already have credit for (AP, dual enrollment, transfer), separated by commas:</p>
+            <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>
+            <input type="hidden" name="plan" value="{{ plan_text }}">
+            <button type="submit">Run audit</button>
+            <button type="submit" formaction="/">Load recommended plan</button>
+        </form>
+        <script src="{{ url_for('static', filename='planner.js') }}"></script>
+    </body>
 </html>

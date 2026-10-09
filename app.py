@@ -16,6 +16,7 @@ from planner.rules import (
     slot_base,
     LAB_COURSES,
     course_hours,
+    family_name
 )
 from planner.recommend import (
     recommended_plan,
@@ -31,6 +32,7 @@ from planner.recommend import (
     place_end_sequence,
     drop_covered_choices,
     minor_alternatives,
+    fits,
 )
 
 import json
@@ -46,6 +48,43 @@ TITLE_FIXES = {
 }
 
 REPEAT_TIMES = {"HNRS 1010": 3}
+
+HNRS_EITHER_SCIENCE = {"or": [{"course": "HNRS 2010"}, {"course": "HNRS 2009"}]}
+
+HNRS_TWO_OF = {
+    "or": [
+        {"and": [{"course": "HNRS 2000"}, HNRS_EITHER_SCIENCE]},
+        {"and": [{"course": "HNRS 2000"}, {"course": "HNRS 2100"}]},
+        {"and": [HNRS_EITHER_SCIENCE, {"course": "HNRS 2100"}]},
+    ]
+}
+LASAL_CORE = {
+    "and": [
+        HNRS_TWO_OF,
+        {"course": "HNRS 2015"},
+        {"course": "POLI 2056"},
+        {"course": "HIST 3071"},
+    ]
+}
+
+HNRS_FIXES = {
+    tuple(sorted(["HNRS 2000", "HNRS 2010", "HNRS 2009", "HNRS 2100"])): HNRS_TWO_OF,
+    tuple(sorted(["HNRS 2000", "HNRS 2010", "HNRS 2009"])): HNRS_TWO_OF,
+    tuple(
+        sorted(
+            [
+                "HNRS 2000",
+                "HNRS 2010",
+                "HNRS 2009",
+                "HNRS 2100",
+                "HNRS 2015",
+                "POLI 2056",
+                "HIST 3071",
+            ]
+        )
+    ): LASAL_CORE,
+}
+
 
 FOOTNOTE_FIXES = {"Natural sciences lab (2-1)": "2"}
 
@@ -68,6 +107,23 @@ def set_times(rule):
         if key in rule:
             for child in rule[key]:
                 set_times(child)
+
+
+def fix_honors(rule):
+    if not isinstance(rule, dict):
+        return
+
+    for key in ("and", "or"):
+        if key in rule:
+            for i, child in enumerate(rule[key]):
+                if isinstance(child, dict) and "courses_from" in child:
+                    found = tuple(sorted(child["courses"]))
+
+                    if found in HNRS_FIXES:
+                        rule[key][i] = HNRS_FIXES[found]
+                        continue
+
+                fix_honors(child)
 
 
 SKIP_PROGRAMS = {"14259"}
@@ -102,6 +158,7 @@ with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
 
 for minor in minors.values():
     set_times(minor["rule"])
+    fix_honors(minor["rule"])
 
 elective_map = {}
 
@@ -133,8 +190,42 @@ HOURS = {code: course_hours(code) for code in courses}
 
 TITLES = {code: courses[code]["title"] for code in courses}
 
+BY_TITLE = {}
+
+for code, info in courses.items():
+    prefix = code.split()[0]
+    BY_TITLE[(prefix, info["title"])] = code
+
+TWINS = {}
+
+for code, info in courses.items():
+    title = info["title"]
+
+    if title.startswith("HONORS: "):
+        prefix = code.split()[0]
+        regular = BY_TITLE.get((prefix, title[len("HONORS: ") :]))
+
+        if regular is not None:
+            TWINS[code] = regular
+            TWINS[regular] = code
+
 REPEATABLE = {code for code, info in courses.items() if info.get("repeatable")}
 print(len(REPEATABLE))
+
+
+def lightest(p):
+    totals = []
+
+    for semester in p:
+        hours = 0
+
+        for e in semester:
+            hours += entry_hours(e)
+
+        totals.append(hours)
+
+    return min(totals)
+
 
 app = Flask(__name__)
 
@@ -259,6 +350,16 @@ def home():
                                 or number >= kind_info["min_level"]
                             ):
                                 slot_codes.append(code)
+                    elif kind_info["kind"] == "gened" and (
+                        kind_info.get("only")
+                        or kind_info.get("exclude")
+                        or kind_info.get("min_level")
+                    ):
+                        slot_codes = []
+                        for category in kind_info["categories"]:
+                            for code in GENED_SETS[category]:
+                                if fits(code, kind_info) and code not in slot_codes:
+                                    slot_codes.append(code)
                     else:
                         continue
 
@@ -269,7 +370,7 @@ def home():
                     else:
                         hours = credits[0]
 
-                    base = slot_base(desc, req["slot"]["credits"])
+                    base = family_name(slot_base(desc, req["slot"]["credits"]))
                     key = tuple(sorted(slot_codes))
 
                     if key in slot_groups:
@@ -284,16 +385,21 @@ def home():
                 else:
                     codes.extend(req["options"])
 
-            palette.append({"title": title, "codes": codes, "key": title})
+            sections = []
+            sections.append({"title": "Required courses", "codes": codes, "key": title})
 
             for group in slot_groups.values():
-                palette.append(
+                sections.append(
                     {
-                        "title": f"{group['title']}",
+                        "title": group["title"].replace(
+                            "General Education course - ", ""
+                        ),
                         "codes": group["codes"],
                         "key": group["title"],
                     }
                 )
+
+            palette.append({"title": title, "sections": sections})
 
         plan = merge_plans(plans)
         drop_covered_choices(plan)
@@ -313,16 +419,26 @@ def home():
             palette.append(
                 {
                     "title": minors[poid]["title"],
-                    "codes": sorted(set(mentioned)),
-                    "key": minors[poid]["title"],
+                    "sections": [
+                        {
+                            "title": "Minor courses",
+                            "codes": sorted(set(mentioned)),
+                            "key": minors[poid]["title"],
+                        }
+                    ],
                 }
             )
 
             alts = minor_alternatives(minors[poid]["rule"], {})
-            
+
             for code in picks:
+                if code in planned and code not in REPEATABLE:
+                    continue
+
                 place_course(plan, code, prior, options=alts.get(code))
-                planned.add(code)
+
+                for semester in plan:
+                    planned.update(semester_codes(semester))
 
         absorb_slots(plan, own_codes, prior)
         compact(plan, prior)
@@ -337,13 +453,15 @@ def home():
         if plan:
             target = math.ceil(total / len(plan)) + 1
             trial = [list(s) for s in plan]
+            before = lightest(plan)
 
             rebalance(trial, target)
 
-            if len(trial) == len(plan):
+            if len(trial) == len(plan) and lightest(trial) >= before:
                 plan[:] = trial
 
         place_end_sequence(plan)
+        compact(plan, prior)
 
         gened_sections = []
 
@@ -361,7 +479,7 @@ def home():
         )
 
         gened_sections.sort(key=lambda s: s["title"])
-        palette.extend(gened_sections)
+        palette.append({"title": "General Education", "sections": gened_sections})
 
         lines = []
 
@@ -374,6 +492,18 @@ def home():
 
                 if e["type"] == "slot":
                     e["label"] = slot_base(e["description"], e["credits"])
+
+                if e["type"] == "course" and e.get("missing_prereq") is True:
+                    e["warning"] = "Prereq not in plan: " + describe(
+                        courses[e["code"]]["prereq_rule"]
+                    )
+
+                if e["type"] == "course" and e["code"] in TWINS:
+                    twin = TWINS[e["code"]]
+                    current = e.get("options", [e["code"]])
+
+                    if twin not in current:
+                        e["options"] = current + [twin]
 
             plan_view.append({"entries": semester, "hours": hours})
             total_hours += hours
@@ -396,6 +526,11 @@ def home():
 
     options.sort(key=lambda o: o["label"])
     minor_options.sort(key=lambda o: o["label"])
+
+    for code in list(planned):
+        if code in TWINS:
+            planned.add(TWINS[code])
+
     return render_template(
         "home.html",
         options=options,
