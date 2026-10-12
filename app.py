@@ -16,7 +16,7 @@ from planner.rules import (
     slot_base,
     LAB_COURSES,
     course_hours,
-    family_name
+    family_name,
 )
 from planner.recommend import (
     recommended_plan,
@@ -85,6 +85,31 @@ HNRS_FIXES = {
     ): LASAL_CORE,
 }
 
+HNRS_REQUIRED = [
+    "HNRS 1010",
+    "HNRS 2000",
+    "HNRS 2009",
+    "HNRS 2010",
+    "HNRS 2100",
+    "HNRS 3800",
+    "HNRS 3900",
+    "HNRS 4000",
+]
+
+HNRS_EXTRA = {
+    "and": [
+        {
+            "hours_in": 6,
+            "subject": "HNRS",
+            "min_level": 3000,
+            "except": HNRS_REQUIRED,
+            "honors": True,
+        },
+        {"hours_in": 9, "subject": "HNRS", "except": HNRS_REQUIRED, "honors": True},
+    ]
+}
+
+HNRS_MINORS = {"14523", "14529", "14530", "14531"}
 
 FOOTNOTE_FIXES = {"Natural sciences lab (2-1)": "2"}
 
@@ -122,6 +147,14 @@ def fix_honors(rule):
                     if found in HNRS_FIXES:
                         rule[key][i] = HNRS_FIXES[found]
                         continue
+
+                if (
+                    isinstance(child, dict)
+                    and "other" in child
+                    and child["other"].startswith("9 additional hours")
+                ):
+                    rule[key][i] = HNRS_EXTRA
+                    continue
 
                 fix_honors(child)
 
@@ -273,11 +306,17 @@ def home():
     selected_majors = ["", "", ""]
     selected_minors = ["", "", ""]
     prior_text = ""
+    hnrs_checkbox = ""
 
     if request.method == "POST":
         selected_majors = request.form.getlist("major")
         selected_minors = request.form.getlist("minor")
         prior_text = request.form.get("prior", "")
+        hnrs_checkbox = request.form.get("hnrs")
+
+        use_hnrs = bool(
+            hnrs_checkbox and (set(clean_choices(selected_minors)) & HNRS_MINORS)
+        )
 
         plans = []
         own_codes = []
@@ -286,6 +325,33 @@ def home():
             poid, index = choice.split("|")
             track = degrees[poid]["tracks"][int(index)]
             major_plan = recommended_plan(track, n)
+
+            if use_hnrs:
+                for semester in major_plan:
+                    for e in semester:
+                        if (
+                            e["type"] == "course"
+                            and e["code"] in TWINS
+                            and courses[TWINS[e["code"]]]["title"].startswith(
+                                "HONORS: "
+                            )
+                        ):
+                            twin = TWINS[e["code"]]
+                            old = e["code"]
+                            e["code"] = twin
+
+                            new_options = []
+                            for option in e["options"]:
+                                if option == old:
+                                    pick = twin
+                                else:
+                                    pick = option
+
+                                if pick not in new_options:
+                                    new_options.append(pick)
+
+                            e["options"] = new_options
+
             plans.append(major_plan)
             mine = set()
 
@@ -522,7 +588,9 @@ def home():
             options.append({"value": value, "label": label})
 
     for poid, minor in minors.items():
-        minor_options.append({"value": poid, "label": minor["title"]})
+        minor_options.append(
+            {"value": poid, "label": minor["title"], "honors": poid in HNRS_MINORS}
+        )
 
     options.sort(key=lambda o: o["label"])
     minor_options.sort(key=lambda o: o["label"])
@@ -549,6 +617,7 @@ def home():
         titles=TITLES,
         major_info=major_info,
         repeatable=REPEATABLE,
+        hnrs_checkbox=hnrs_checkbox,
     )
 
 

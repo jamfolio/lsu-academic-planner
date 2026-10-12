@@ -219,3 +219,24 @@ document.addEventListener("click", (event) => {
 
   closeMenus()
 })
+
+function updateHonorsBox() {
+  let hnrsLabel = document.getElementById("hnrs-label");
+  let minorDropdown = document.querySelectorAll('select[name="minor"]');
+
+  let found = false
+
+  for (let select of minorDropdown) {
+    if (select.selectedOptions[0].dataset.honors) {
+      found = true
+    }
+  }
+
+  hnrsLabel.hidden = !found
+}
+
+updateHonorsBox();
+
+for (let select of document.querySelectorAll('select[name="minor"]')) {
+  select.addEventListener("change", updateHonorsBox)
+}

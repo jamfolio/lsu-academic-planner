@@ -236,7 +236,9 @@ def minor_courses(rule, planned):
             prefix, number = course.split()
             number = int(number)
 
-            if prefix != rule["subject"]:
+            if prefix != rule["subject"] and not (
+                "honors" in rule and courses[course]["title"].startswith("HONORS: ")
+            ):
                 continue
 
             elif rule.get("min_level") is not None and number < rule.get("min_level"):
@@ -770,6 +772,7 @@ def minor_alternatives(rule, alts):
     elif "courses" in rule:
         for c in rule["courses"]:
             alts[c] = rule["courses"]
+
     elif "or" in rule:
         for child in rule["or"]:
             minor_alternatives(child, alts)
@@ -781,6 +784,28 @@ def minor_alternatives(rule, alts):
     elif "and" in rule:
         for child in rule["and"]:
             minor_alternatives(child, alts)
+
+    elif "hours_in" in rule and rule.get("honors"):
+        found = []
+        
+        for code in courses:
+            prefix, number = code.split()
+            number = int(number)
+
+            if (
+                prefix == rule["subject"]
+                and number < 5000
+                and meets_level(code, rule.get("min_level"))
+                and code not in rule.get("except", [])
+            ):
+                found.append(code)
+
+        found.sort()
+
+        for c in found:
+            if c not in alts:
+                alts[c] = found
+
     return alts
 
 

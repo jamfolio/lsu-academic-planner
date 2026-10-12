@@ -223,10 +223,13 @@ def is_satisfied(rule, taken, current):
         total = 0
 
         for code in taken:
+            if code not in courses:
+                continue
+
             prefix, number = code.split()
             number = int(number)
 
-            if prefix != rule["subject"]:
+            if prefix != rule["subject"] and not ("honors" in rule and courses[code]["title"].startswith("HONORS: ")):
                 continue
 
             elif rule.get("min_level") is not None and number < rule.get("min_level"):
@@ -358,6 +361,9 @@ def used_courses(node, taken):
         found = []
 
         for code in taken:
+            if code not in courses:
+                continue
+            
             prefix, number = code.split()
             number = int(number)
 

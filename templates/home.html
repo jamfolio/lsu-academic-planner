@@ -24,10 +24,13 @@
                     <option value="">None</option>
                     {% for o in minor_options %}
                         <option value="{{ o.value }}"
-                                {% if o.value==selected_minors[n] %}selected{% endif %}>{{ o.label }}</option>
+                                {% if o.value==selected_minors[n] %}selected{% endif %} {% if o.honors %}data-honors="1"{% endif %}>{{ o.label }}</option>
                     {% endfor %}
                 </select>
             {% endfor %}
+            <label id="hnrs-label" hidden>
+                <input type="checkbox" name="hnrs" {% if hnrs_checkbox %}checked{% endif %}> Use honors sections (MATH 1551, PSYC 2001, etc.)
+            </label>
             {% for info in major_info %}
                 <details class="major_info">
                     <summary>{{ info.title }}{% if info.total_hours %} · {{ info.total_hours }} hours{% endif %}</summary>
