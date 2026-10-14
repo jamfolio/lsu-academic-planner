@@ -824,10 +824,22 @@ def live_check():
     for semester, code, reason in problems:
         if reason == "prereqs not met":
             message = "Prereq not met: " + describe(courses[code]["prereq_rule"])
+            kind = "prereq"
+        elif reason == "unknown course":
+            message = "Not in LSU's course data, so prereqs can't be checked"
+            kind = "unknown"
         else:
             message = reason
+            kind = "prereq"
 
-        result.append({"semester": semester, "code": code, "message": message})
+        result.append(
+            {
+                "semester": semester,
+                "code": code,
+                "message": message,
+                "kind": kind,
+            }
+        )
 
     return jsonify(result)
 

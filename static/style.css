@@ -172,3 +172,7 @@ details details {
   width: 250px;
   z-index: 20;
 }
+
+.unknown-mark {
+  color: #999;
+}

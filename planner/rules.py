@@ -98,6 +98,21 @@ STANDING = {
     "senior or graduate standing": 91,
 }
 
+HIGHER_MATH = {
+    "MATH 1021": [
+        "MATH 1022",
+        "MATH 1023",
+        "MATH 1431",
+        "MATH 1550",
+        "MATH 1551",
+        "MATH 1552",
+        "MATH 1553",
+    ],
+    "MATH 1022": ["MATH 1023", "MATH 1550", "MATH 1551", "MATH 1552", "MATH 1553"],
+    "MATH 1023": ["MATH 1550", "MATH 1551", "MATH 1552", "MATH 1553"],
+    "MATH 1431": ["MATH 1550", "MATH 1551"],
+}
+
 
 def fix_standing(rule):
     if not isinstance(rule, dict):
@@ -210,8 +225,12 @@ def is_satisfied(rule, taken, current, hours_before=None):
             return True
         elif rule.get("concurrent") and rule["course"] in current:
             return True
-        else:
-            return False
+
+        for course in HIGHER_MATH.get(rule["course"], []):
+            if course in taken:
+                return True
+
+        return False
 
     elif "and" in rule:
         seen_none = False

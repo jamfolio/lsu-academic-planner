@@ -406,6 +406,8 @@ function checkPrereqs() {
       return
     }
 
+    document.querySelectorAll(".semester .unknown-mark").forEach((mark => mark.remove()))
+
     document.querySelectorAll(".semester .chip.missing").forEach((chip) => {
       chip.classList.remove("missing")
       chip.querySelectorAll(".warn-mark").forEach(m => m.remove())
@@ -419,14 +421,24 @@ function checkPrereqs() {
         continue
       }
 
-      newChip.classList.add("missing")
+      if (p.kind == "unknown") {
+        let span = document.createElement("span")
+        span.className = "note-mark unknown-mark"
+        span.textContent = "?";
+        span.dataset.note = p.message;
+        
+        (newChip.querySelector(".code") || newChip).appendChild(span)
 
-      let mark = document.createElement("span")
-      mark.className = "note-mark warn-mark"
-      mark.dataset.note = p.message
-      mark.textContent = "⚠";
+      } else {
+        newChip.classList.add("missing")
 
-      (newChip.querySelector(".code") || newChip).appendChild(mark)
+        let mark = document.createElement("span")
+        mark.className = "note-mark warn-mark"
+        mark.dataset.note = p.message
+        mark.textContent = "⚠";
+
+        (newChip.querySelector(".code") || newChip).appendChild(mark)
+      }
     }
 
   })
