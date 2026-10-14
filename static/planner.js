@@ -22,10 +22,14 @@ document.querySelectorAll(".semester").forEach((box) => {
       }
 
       let copy = dragged.cloneNode(true);
+      let section = dragged.closest("details")?.dataset.section
       let slot = event.target.closest(".slot");
 
+      if (slot && section && slot.dataset.section !== "free" && slot.dataset.section !== section) {
+        slot = null
+      }
+
       if (slot == null) {
-        let section = dragged.closest("details").dataset.section;
         slot = box.querySelector(`.slot[data-section="${section}"]`);
       }
 
@@ -63,16 +67,10 @@ document.querySelectorAll(".semester").forEach((box) => {
 });
 
 document.querySelector("form").addEventListener("submit", (event) => {
-  let lines = [];
+  let data = collectPlan()
 
-  document.querySelectorAll(".semester").forEach((box) => {
-    let chips = box.querySelectorAll(".chip[data-code]");
-    let codes = Array.from(chips).map((chip) => chip.dataset.code);
-
-    lines.push(codes.join(","));
-  });
-
-  document.querySelector('[name="plan"]').value = lines.join("\n");
+  document.querySelector('[name="plan"]').value = data.plan.map(s => s.join(",")).join("\n")
+  document.querySelector('[name="slot_hours"]').value = data.slotHours.join(",")
 });
 
 function updateHours() {
@@ -100,6 +98,7 @@ function updateHours() {
   });
 
   document.getElementById("total_hours").textContent = total;
+  checkPrereqs();
 }
 
 function closeMenus() {
@@ -133,24 +132,42 @@ palette.addEventListener("drop", (event) => {
     dragged.remove();
   } else if (dragged.replacedSlot) {
     dragged.replaceWith(dragged.replacedSlot);
+  } else if (dragged.dataset.filledSection) {
+    let box = dragged.closest(".semester")
+    let existing = box.querySelector(`.slot[data-section="${dragged.dataset.filledSection}"]`)
+
+    if (existing) {
+      existing.dataset.hours = Number(existing.dataset.hours) + Number(dragged.dataset.filledHours)
+      dragged.remove()
+    } else {
+      let newSlot = document.createElement("div")
+      newSlot.className = "chip slot"
+      newSlot.draggable = true
+      newSlot.dataset.section = dragged.dataset.filledSection
+      newSlot.dataset.label = dragged.dataset.filledLabel
+      newSlot.dataset.hours = dragged.dataset.filledHours
+      newSlot.textContent = dragged.dataset.filledLabel
+      dragged.replaceWith(newSlot)
+    }
   } else {
     dragged.remove();
   }
 
-  document
-    .querySelectorAll(`.palette .chip[data-code="${dragged.dataset.code}"]`)
-    .forEach((chip) => {
-      chip.classList.remove("used");
-    });
+  if (document.querySelector(`.semester .chip[data-code="${dragged.dataset.code}"]`) == null) {
+    document
+      .querySelectorAll(`.palette .chip[data-code="${dragged.dataset.code}"]`)
+      .forEach((chip) => {
+        chip.classList.remove("used");
+      });
+  }
 
   updateHours();
 });
 
-document.getElementById("search").addEventListener("input", (event) => {
-  let q = event.target.value.trim().toLowerCase()
-
+function applySearch() {
+  let q = document.getElementById("search").value.trim().toLowerCase()
   document.querySelectorAll(".palette .chip").forEach((chip) => {
-    let text = `${chip.dataset.code} ${chip.title}`.toLowerCase()
+    let text = `${chip.dataset.code} ${chip.dataset.tip}`.toLowerCase()
     chip.style.display = text.includes(q) ? "" : "none"
   })
 
@@ -165,6 +182,32 @@ document.getElementById("search").addEventListener("input", (event) => {
       section.open = hasMatch
     }
   })
+}
+
+document.getElementById("search").addEventListener("input", (event) => {
+  let q = document.getElementById("search").value.trim().toLowerCase()
+  applySearch();
+  if (q.length >= 2) {
+    fetch(`/elective_search?q=${encodeURIComponent(q)}`).then(r => r.json()).then(list => {
+      if (document.getElementById("search").value.trim().toLowerCase() != q) {
+        return
+      }
+
+      for (let subject of list) {
+        let box = document.querySelector(`details[data-subject="${subject}"]`)
+
+        if (!box) {
+          continue
+        }
+
+        box.style.display = ""
+        box.open = true
+        box.closest("details:not([data-subject])").style.display = ""
+        box.closest("details:not([data-subject])").open = true
+      }
+    })
+
+  }
 })
 
 document.addEventListener("click", (event) => {
@@ -189,11 +232,13 @@ document.addEventListener("click", (event) => {
     }
 
     chip.dataset.code = newCode
-    chip.querySelector(".code").textContent = newCode;
+    chip.querySelector(".code-text").textContent = newCode;
+    chip.querySelector(".warn-mark")?.remove()
+    chip.classList.remove("missing")
+    chip.dataset.tip = option.dataset.tip
 
     if (paletteChip != null) {
       chip.dataset.hours = paletteChip.dataset.hours
-      chip.title = paletteChip.title
     }
 
     document
@@ -240,3 +285,156 @@ updateHonorsBox();
 for (let select of document.querySelectorAll('select[name="minor"]')) {
   select.addEventListener("change", updateHonorsBox)
 }
+
+document.addEventListener("mouseover", (event) => {
+  let toolTip = document.getElementById("tooltip")
+  let target = event.target.closest(".choice-option[data-tip], .chip[data-tip]")
+
+  if (!target || !target.dataset.tip) {
+    return
+  }
+
+  if (event.target.closest(".note-mark")) {
+    toolTip.hidden = true
+    return
+  }
+
+  toolTip.textContent = target.dataset.tip
+  toolTip.hidden = false
+})
+
+document.addEventListener("mouseout", (event) => {
+  let toolTip = document.getElementById("tooltip")
+  let target = event.target.closest(".choice-option[data-tip], .chip[data-tip]")
+
+  if (!target || !target.dataset.tip) {
+    return
+  }
+
+  if (event.relatedTarget?.closest(".chip, .choice-option") === target) {
+    return
+  }
+
+  toolTip.hidden = true
+})
+
+document.addEventListener("mousemove", (event) => {
+  let toolTip = document.getElementById("tooltip")
+
+  if (toolTip.hidden) {
+    return
+  }
+
+
+  toolTip.style.left = `${event.clientX + 12}px`
+  if (event.clientX + 12 + toolTip.offsetWidth > window.innerWidth) {
+    toolTip.style.left = `${event.clientX - toolTip.offsetWidth - 12}px`
+  }
+  toolTip.style.top = `${event.clientY + 12}px`
+})
+
+document.querySelectorAll("details[data-subject]").forEach((details) => {
+  details.addEventListener("toggle", (event) => {
+    if (!details.open || details.dataset.loaded) {
+      return
+    }
+
+    details.dataset.loaded = "1"
+
+    fetch(`/electives/${details.dataset.subject}`).then(r => r.json()).then(list => {
+      for (let course of list) {
+        let div = document.createElement("div")
+        div.className = "chip"
+        div.draggable = true
+        div.dataset.code = course.code
+        div.dataset.hours = course.hours
+        div.dataset.tip = course.tip
+        div.innerHTML = `${div.dataset.code} <span class="chip-title">${course.title}</span>`
+
+        if (course.repeatable) {
+          div.classList.add("repeatable")
+        } else if (document.querySelector(`.semester .chip[data-code="${course.code}"]`)) {
+          div.classList.add("used")
+        }
+
+        details.appendChild(div)
+      }
+
+      if (document.getElementById("search").value.trim() !== "") {
+        applySearch()
+      }
+    })
+  })
+})
+
+document.addEventListener("dragend", (event) => {
+  dragged = null
+})
+
+function collectPlan() {
+  let plan = [];
+  let slotHours = [];
+
+  document.querySelectorAll(".semester").forEach((box) => {
+    let chips = box.querySelectorAll(".chip[data-code]");
+    let codes = Array.from(chips).map((chip) => chip.dataset.code);
+
+    let sum = 0
+    box.querySelectorAll(".chip.slot").forEach((thing) => {
+      sum += Number(thing.dataset.hours || 0)
+    })
+
+    slotHours.push(sum);
+    plan.push(codes)
+
+  });
+
+  return { plan: plan, slotHours: slotHours }
+}
+
+let checkCount = 0
+
+function checkPrereqs() {
+  checkCount++;
+
+  let mine = checkCount
+  let data = collectPlan()
+
+  let priorBox = document.querySelector('[name="prior"]').value
+  fetch("/check_plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan: data.plan, prior: priorBox, slot_hours: data.slotHours }) }).then(r => r.json()).then(problems => {
+    if (mine !== checkCount) {
+      return
+    }
+
+    document.querySelectorAll(".semester .chip.missing").forEach((chip) => {
+      chip.classList.remove("missing")
+      chip.querySelectorAll(".warn-mark").forEach(m => m.remove())
+    })
+
+    for (let p of problems) {
+      let box = document.querySelectorAll(".semester")[p.semester - 1]
+      let newChip = box.querySelector(`.chip[data-code="${p.code}"]`)
+
+      if (!newChip) {
+        continue
+      }
+
+      newChip.classList.add("missing")
+
+      let mark = document.createElement("span")
+      mark.className = "note-mark warn-mark"
+      mark.dataset.note = p.message
+      mark.textContent = "⚠";
+
+      (newChip.querySelector(".code") || newChip).appendChild(mark)
+    }
+
+  })
+
+}
+
+checkPrereqs();
+
+document.querySelector('[name="prior"]').addEventListener("input", (event) => {
+  checkPrereqs();
+})

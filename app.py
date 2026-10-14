@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from planner.rules import (
     audit,
     GENED_SETS,
@@ -33,6 +33,7 @@ from planner.recommend import (
     drop_covered_choices,
     minor_alternatives,
     fits,
+    EARLIEST,
 )
 
 import json
@@ -243,7 +244,6 @@ for code, info in courses.items():
             TWINS[regular] = code
 
 REPEATABLE = {code for code, info in courses.items() if info.get("repeatable")}
-print(len(REPEATABLE))
 
 
 def lightest(p):
@@ -529,6 +529,15 @@ def home():
         place_end_sequence(plan)
         compact(plan, prior)
 
+        needed = max(8, math.ceil(total / 18))
+
+        if len(plan) > needed:
+            copy = [list(s) for s in plan]
+            compact(copy, prior, math.ceil(total / needed))
+
+            if len(copy) <= needed:
+                plan[:] = copy
+
         gened_sections = []
 
         for category, codes in GENED_SETS.items():
@@ -635,7 +644,9 @@ def build_rows(report):
                 mark = "✗"
         else:
             label = req["slot"]["description"]
-            if r["hours"] >= r["needed"]:
+            if r.get("kind") == "unknown":
+                mark = "?"
+            elif r["hours"] >= r["needed"]:
                 mark = "✓"
             elif r["filled_by"]:
                 mark = "◐"
@@ -654,6 +665,18 @@ def build_rows(report):
     return rows
 
 
+def too_early_problems(plan):
+    too_early = []
+
+    for i, semester in enumerate(plan):
+        for code in semester:
+            if code in EARLIEST and i + 1 < EARLIEST[code]:
+                message = f"{code} is in semester {i + 1} but can't be taken before semester {EARLIEST[code]}"
+                too_early.append((i + 1, code, message))
+
+    return too_early
+
+
 @app.route("/audit", methods=["POST"])
 def audit_page():
     text = request.form["plan"]
@@ -661,16 +684,29 @@ def audit_page():
 
     prior = parse_prior(request.form.get("prior", ""))
 
+    bad_prior = []
+
+    for p in prior:
+        if p not in courses:
+            bad_prior.append(p)
+
     chosen_majors = clean_choices(request.form.getlist("major"))
 
     for line in text.split("\n"):
         line = line.strip()
 
         if not line:
+            plan.append([])
             continue
 
         semester = [piece.strip().upper() for piece in line.split(",") if piece.strip()]
         plan.append(semester)
+
+    slot_hours = []
+
+    for piece in request.form.get("slot_hours", "").split(","):
+        if piece.strip():
+            slot_hours.append(float(piece))
 
     all_courses = set(prior)
 
@@ -713,8 +749,16 @@ def audit_page():
         total = check_total_hours(plan, prior, track)
         programs.append({"title": title, "rows": rows, "total": total})
 
-    prereq_problems = check_plan(plan, prior, courses)
-    hours = check_hours(plan, courses, max_hours=19, approved_max=21, min_hours=12)
+    early_problems = too_early_problems(plan)
+    too_early = []
+
+    for sem, code, msg in early_problems:
+        too_early.append(msg)
+
+    prereq_problems = check_plan(plan, prior, courses, extra=slot_hours)
+    hours = check_hours(
+        plan, courses, max_hours=19, approved_max=21, min_hours=12, extra=slot_hours
+    )
 
     return render_template(
         "audit.html",
@@ -722,7 +766,70 @@ def audit_page():
         hours=hours,
         programs=programs,
         minor_results=minor_results,
+        bad_prior=sorted(bad_prior),
+        too_early=too_early,
     )
+
+
+@app.route("/electives/<prefix>")
+def electives(prefix):
+    result = []
+
+    for code in sorted(elective_map.get(prefix, [])):
+        result.append(
+            {
+                "code": code,
+                "title": TITLES.get(code, ""),
+                "hours": HOURS.get(code, 0),
+                "tip": COURSE_INFO.get(code, ""),
+                "repeatable": code in REPEATABLE,
+            }
+        )
+
+    return jsonify(result)
+
+
+@app.route("/elective_search")
+def elective_search():
+    q = request.args.get("q", "").strip().lower()
+
+    if len(q) < 2:
+        return jsonify([])
+
+    found = []
+
+    for subject, codes in elective_map.items():
+        for code in codes:
+            text = f"{code} {COURSE_INFO.get(code, '')}".lower()
+            if q in text:
+                found.append(subject)
+                break
+
+    return jsonify(sorted(found))
+
+
+@app.route("/check_plan", methods=["POST"])
+def live_check():
+    body = request.get_json()
+
+    plan = body["plan"]
+    prior = parse_prior(body.get("prior", ""))
+    slot_hours = body.get("slot_hours", [])
+
+    problems = check_plan(plan, prior, courses, extra=slot_hours)
+    problems += too_early_problems(plan)
+
+    result = []
+
+    for semester, code, reason in problems:
+        if reason == "prereqs not met":
+            message = "Prereq not met: " + describe(courses[code]["prereq_rule"])
+        else:
+            message = reason
+
+        result.append({"semester": semester, "code": code, "message": message})
+
+    return jsonify(result)
 
 
 if __name__ == "__main__":

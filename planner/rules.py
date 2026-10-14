@@ -89,6 +89,48 @@ for code in courses:
 
 LAB_COURSES.sort()
 
+STANDING = {
+    "sophomore standing": 31,
+    "junior standing": 61,
+    "junior or senior standing": 61,
+    "at least junior standing": 61,
+    "senior standing": 91,
+    "senior or graduate standing": 91,
+}
+
+
+def fix_standing(rule):
+    if not isinstance(rule, dict):
+        return
+
+    for key in ("and", "or"):
+        if key in rule:
+            for i, child in enumerate(rule[key]):
+                if isinstance(child, dict):
+                    text = child.get("other", "").lower().strip()
+
+                    if text in STANDING:
+                        rule[key][i] = {"standing": STANDING[text]}
+
+                    else:
+                        fix_standing(child)
+
+
+for code, info in courses.items():
+    rule = info["prereq_rule"]
+
+    if (
+        isinstance(rule, dict)
+        and "other" in rule
+        and rule.get("other", "").lower().strip() in STANDING
+    ):
+        info["prereq_rule"] = {
+            "standing": STANDING[rule.get("other", "").lower().strip()]
+        }
+
+    else:
+        fix_standing(rule)
+
 
 def slot_base(description, credits):
     base = description.rstrip("*").strip()
@@ -142,6 +184,11 @@ def parse_credits(value):
     return (min(values), max(values))
 
 
+def typical_hours(credits):
+    low, high = credits
+    return max(low, min(3, high))
+
+
 def course_hours(code):
     if code not in courses:
         return 0
@@ -151,10 +198,10 @@ def course_hours(code):
     if credits is None:
         return 0
     else:
-        return credits[1]
+        return typical_hours(credits)
 
 
-def is_satisfied(rule, taken, current):
+def is_satisfied(rule, taken, current, hours_before=None):
     if rule is None:
         return True
 
@@ -167,39 +214,38 @@ def is_satisfied(rule, taken, current):
             return False
 
     elif "and" in rule:
-        seen_true = False
+        seen_none = False
 
         for child in rule["and"]:
-            result = is_satisfied(child, taken, current)
+            result = is_satisfied(child, taken, current, hours_before)
 
             if result is False:
                 return False
 
-            elif result is True:
-                seen_true = True
+            elif result is None:
+                seen_none = True
 
-        if seen_true is True:
+        if seen_none:
+            return None
+        else:
             return True
 
-        else:
-            return None
-
     elif "or" in rule:
-        seen_false = False
+        seen_none = False
 
         for child in rule["or"]:
-            result = is_satisfied(child, taken, current)
+            result = is_satisfied(child, taken, current, hours_before)
 
             if result is True:
                 return True
 
-            elif result is False:
-                seen_false = True
+            if result is None:
+                seen_none = True
 
-        if seen_false is True:
+        if seen_none:
+            return None
+        else:
             return False
-
-        return None
 
     elif "hours_from" in rule:
         total = 0
@@ -214,7 +260,7 @@ def is_satisfied(rule, taken, current):
         count = 0
 
         for course in rule["courses"]:
-            if course in taken:
+            if course in taken and meets_level(course, rule.get("min_level")):
                 count += 1
 
         return count >= rule["courses_from"]
@@ -229,7 +275,9 @@ def is_satisfied(rule, taken, current):
             prefix, number = code.split()
             number = int(number)
 
-            if prefix != rule["subject"] and not ("honors" in rule and courses[code]["title"].startswith("HONORS: ")):
+            if prefix != rule["subject"] and not (
+                "honors" in rule and courses[code]["title"].startswith("HONORS: ")
+            ):
                 continue
 
             elif rule.get("min_level") is not None and number < rule.get("min_level"):
@@ -242,6 +290,12 @@ def is_satisfied(rule, taken, current):
                 total += course_hours(code)
 
         return total >= rule["hours_in"]
+
+    elif "standing" in rule:
+        if hours_before is None:
+            return None
+        else:
+            return hours_before >= rule["standing"]
 
     if "consent" in rule or "other" in rule or "equivalent" in rule:
         return None
@@ -327,6 +381,8 @@ def describe(node):
         return f"consent of the {node['consent']}"
     elif "equivalent" in node:
         return "or equivalent"
+    elif "standing" in node:
+        return f"{node['standing']}+ credit hours earned"
     else:
         return "?"
 
@@ -363,7 +419,7 @@ def used_courses(node, taken):
         for code in taken:
             if code not in courses:
                 continue
-            
+
             prefix, number = code.split()
             number = int(number)
 
@@ -421,8 +477,8 @@ def minor_rows(rule, taken):
     return rows
 
 
-def can_take(rule, taken, current):
-    result = is_satisfied(rule, taken, current)
+def can_take(rule, taken, current, hours_before=None):
+    result = is_satisfied(rule, taken, current, hours_before)
 
     if result is not False:
         return True
@@ -430,10 +486,15 @@ def can_take(rule, taken, current):
         return False
 
 
-def check_plan(plan, prior, courses):
+def check_plan(plan, prior, courses, extra=None):
     taken = set(prior)
 
     problems = []
+
+    hours = 0
+
+    for code in prior:
+        hours += course_hours(code)
 
     for i, semester in enumerate(plan):
         current = set(semester)
@@ -445,10 +506,15 @@ def check_plan(plan, prior, courses):
 
             rule = courses[code]["prereq_rule"]
 
-            if can_take(rule, taken, current) is False:
+            if can_take(rule, taken, current, hours) is False:
                 problems.append((i + 1, code, "prereqs not met"))
 
         taken.update(semester)
+
+        hours += sum(course_hours(code) for code in semester)
+
+        if extra and i < len(extra):
+            hours += extra[i]
 
     return problems
 
@@ -477,17 +543,24 @@ def semester_hours(plan, courses):
     return totals
 
 
-def check_hours(plan, courses, max_hours=19, approved_max=21, min_hours=12):
+def check_hours(plan, courses, max_hours=19, approved_max=21, min_hours=12, extra=None):
     totals = semester_hours(plan, courses)
     problems = []
 
     for i, total in enumerate(totals):
-        if total[0] > approved_max:
-            problems.append((i + 1, total[0], "over maximum"))
-        elif total[0] > max_hours:
-            problems.append((i + 1, total[0], "needs advisor approval"))
-        elif total[1] < min_hours:
-            problems.append((i + 1, total[1], "below full-time"))
+        add = 0
+
+        if extra and i < len(extra):
+            add = extra[i]
+        low = total[0] + add
+        high = total[1] + add
+
+        if low > approved_max:
+            problems.append((i + 1, low, "over maximum"))
+        elif low > max_hours:
+            problems.append((i + 1, low, "needs advisor approval"))
+        elif high < min_hours:
+            problems.append((i + 1, high, "below full-time"))
 
     return problems
 
@@ -641,21 +714,51 @@ def slot_kind(slot, track):
 
         if codes:
             kind_info = {"kind": "list", "courses": codes}
+            level = re.search(r"([1-4])000-level", text)
+
+            if level is not None and (
+                "and above" in text.lower() or "or above" in text.lower()
+            ):
+                bare_prefixes = re.findall(r"\b([A-Z]{2,5})\b(?!\s*\d)", text)
+                subjects = []
+
+                for prefix in bare_prefixes:
+                    if prefix in PREFIXES and prefix not in subjects:
+                        subjects.append(prefix)
+
+                if subjects:
+                    kind_info["subjects"] = subjects
+                    kind_info["min_level"] = int(level.group(1)) * 1000
 
     return kind_info
 
 
-def slots_accept(code, slot, track, gened_sets):
-    kind_info = slot_kind(slot, track)
-    kind = kind_info["kind"]
+def fits(code, kind_info, description=""):
+    if code not in courses:
+        return False
 
-    if kind == "list":
-        return code in kind_info["courses"]
+    if kind_info["kind"] == "list":
+        prefix = code.split()[0]
 
-    elif kind == "gened":
-        desc_lower = slot["description"].lower()
+        if code in kind_info["courses"] or (
+            prefix in kind_info.get("subjects", [])
+            and meets_level(code, kind_info.get("min_level"))
+        ):
+            return True
 
-        if "lab" in desc_lower:
+        return False
+
+    elif kind_info["kind"] == "subject":
+        prefix = code.split()[0]
+        return prefix in kind_info["subjects"] and meets_level(
+            code, kind_info["min_level"]
+        )
+
+    elif kind_info["kind"] == "free":
+        return True
+
+    elif kind_info["kind"] == "gened":
+        if "lab" in description.lower():
             return is_lab(code)
 
         prefix = code.split()[0]
@@ -668,24 +771,17 @@ def slots_accept(code, slot, track, gened_sets):
             return False
 
         for category in kind_info["categories"]:
-            if code in gened_sets[category]:
+            if code in GENED_SETS[category]:
                 return True
+
         return False
 
-    elif kind == "subject":
-        prefix, number = code.split()
-
-        number = int(number)
-
-        if prefix not in kind_info["subjects"]:
-            return False
-
-        if kind_info["min_level"] is not None and number < kind_info["min_level"]:
-            return False
-        else:
-            return True
     else:
-        return True
+        return None
+
+
+def slots_accept(code, slot, track, gened_sets):
+    return fits(code, slot_kind(slot, track), slot["description"])
 
 
 def build_requirements(track):
@@ -783,6 +879,7 @@ def audit(plan, prior, track, gened_sets):
                     "filled_by": filled,
                     "hours": hours,
                     "needed": needed,
+                    "kind": slot_kind(req["slot"], track)["kind"],
                 }
             )
 

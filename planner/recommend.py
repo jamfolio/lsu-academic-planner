@@ -11,6 +11,8 @@ from planner.rules import (
     slot_base,
     family_name,
     GENED_SETS,
+    fits,
+    typical_hours,
 )
 
 EARLIEST = {"HNRS 1010": 2}
@@ -21,6 +23,13 @@ def recommended_plan(track, major=0):
     semesters = []
     seen_groups = set()
     notes = track.get("footnotes", {})
+    group_codes = {}
+
+    for semester in track["semesters"]:
+        for item in semester["items"]:
+            g = item.get("group")
+            if g is not None and item["type"] == "course":
+                group_codes.setdefault(g, []).append(item["code"])
 
     for semester in track["semesters"]:
         items = []
@@ -79,10 +88,15 @@ def recommended_plan(track, major=0):
             if chain is not None:
                 chain["options"].append(item["code"])
             else:
+                if group is not None:
+                    options = list(group_codes[group])
+                else:
+                    options = [item["code"]]
+
                 entry = {
                     "type": "course",
                     "code": item["code"],
-                    "options": [item["code"]],
+                    "options": options,
                     "note": notes.get(item.get("footnote")),
                     "footnote": item.get("footnote"),
                     "major": major,
@@ -191,16 +205,24 @@ def minor_courses(rule, planned):
         picks = []
 
         for course in rule["courses"]:
-            if course in planned:
+            if course in planned and meets_level(course, rule.get("min_level")):
                 total += course_hours(course)
 
+        ready = []
+        later = []
+
         for course in rule["courses"]:
+            if course in planned or not meets_level(course, rule.get("min_level")):
+                continue
+
+            if can_take(courses.get(course, {}).get("prereq_rule"), planned, set()):
+                ready.append(course)
+            else:
+                later.append(course)
+
+        for course in ready + later:
             if total >= rule["hours_from"]:
                 break
-            elif course in planned:
-                continue
-            elif not meets_level(course, rule.get("min_level")):
-                continue
             else:
                 picks.append(course)
                 total += course_hours(course)
@@ -211,10 +233,22 @@ def minor_courses(rule, planned):
         picks = []
 
         for course in rule["courses"]:
-            if course in planned:
+            if course in planned and meets_level(course, rule.get("min_level")):
                 total += 1
 
+        ready = []
+        later = []
+
         for course in rule["courses"]:
+            if course in planned or not meets_level(course, rule.get("min_level")):
+                continue
+
+            if can_take(courses.get(course, {}).get("prereq_rule"), planned, set()):
+                ready.append(course)
+            else:
+                later.append(course)
+
+        for course in ready + later:
             if total >= rule["courses_from"]:
                 break
             elif course in planned:
@@ -265,7 +299,16 @@ def minor_courses(rule, planned):
             ):
                 candidates.append(code)
 
+        ready = []
+        later = []
+
         for candidate in candidates:
+            if can_take(courses.get(candidate, {}).get("prereq_rule"), planned, set()):
+                ready.append(candidate)
+            else:
+                later.append(candidate)
+
+        for candidate in ready + later:
             if total >= rule["hours_in"]:
                 break
             else:
@@ -282,14 +325,10 @@ def entry_hours(entry):
         return course_hours(entry["code"])
     elif entry["type"] == "slot":
         credits = parse_credits(entry["credits"])
-
         if credits is None:
             return 3
         else:
-            if credits[0] == 0:
-                return credits[-1]
-            else:
-                return credits[0]
+            return typical_hours(credits)
 
 
 def semester_codes(semester):
@@ -317,7 +356,7 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
     missing = can_take(rule, everything, set()) is False
     was_planned = code in everything
 
-    if missing is True and depth < 5:
+    if is_satisfied(rule, everything, set()) is not True and depth < 5:
         needed = minor_courses(rule, everything)
 
         for need in needed:
@@ -344,6 +383,8 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
     if missing:
         rule = None
 
+    hours_before = sum(course_hours(c) for c in prior)
+
     for i, semester in enumerate(plan):
         current = semester_codes(semester)
         hours = 0
@@ -356,7 +397,7 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
             if (
                 e["type"] == "slot"
                 and e["kind_info"]["kind"] in ("free", "gened", "list", "subject")
-                and fits(code, e["kind_info"])
+                and fits(code, e["kind_info"], e["description"])
             ):
                 slot = e
                 break
@@ -364,7 +405,7 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
         if slot is not None:
             slot_hours = entry_hours(slot)
             if (
-                can_take(rule, taken_before, current)
+                can_take(rule, taken_before, current, hours_before)
                 and EARLIEST.get(code, 1) <= i + 1
                 and code not in current
                 and hours - slot_hours + course_hours(code) <= max_hours
@@ -381,12 +422,15 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
                         "options": options or [code],
                         "claimed_by": slot["major"],
                         "missing_prereq": missing,
+                        "filled_section": slot["section"],
+                        "filled_label": slot_base(slot["description"], slot["credits"]),
+                        "filled_hours": min(slot_hours, course_hours(code)),
                     }
                 )
                 return
 
         if (
-            can_take(rule, taken_before, current)
+            can_take(rule, taken_before, current, hours_before)
             and EARLIEST.get(code, 1) <= i + 1
             and code not in current
             and hours + course_hours(code) > max_hours
@@ -436,7 +480,7 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
                 return
 
         if (
-            can_take(rule, taken_before, current)
+            can_take(rule, taken_before, current, hours_before)
             and hours + course_hours(code) <= max_hours
             and EARLIEST.get(code, 1) <= i + 1
             and code not in current
@@ -452,6 +496,9 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0):
             return
 
         taken_before.update(current)
+
+        for e in semester:
+            hours_before += entry_hours(e)
 
     plan.append(
         [
@@ -530,34 +577,6 @@ def rebalance(plan, max_hours=19):
         i += 1
 
 
-def fits(code, kind_info):
-    if kind_info["kind"] == "list":
-        return code in kind_info["courses"]
-    elif kind_info["kind"] == "subject":
-        prefix = code.split()[0]
-        return prefix in kind_info["subjects"] and meets_level(
-            code, kind_info["min_level"]
-        )
-    elif kind_info["kind"] == "free":
-        return True
-    elif kind_info["kind"] == "gened":
-        prefix = code.split()[0]
-
-        if kind_info.get("only") and prefix not in kind_info["only"]:
-            return False
-        elif prefix in kind_info.get("exclude", []):
-            return False
-        elif not meets_level(code, kind_info.get("min_level")):
-            return False
-
-        for category in kind_info["categories"]:
-            if code in GENED_SETS[category]:
-                return True
-        return False
-    else:
-        return False
-
-
 def absorb_slots(plan, own_codes, prior):
     all_codes = []
 
@@ -596,7 +615,7 @@ def absorb_slots(plan, own_codes, prior):
                 if code in own_codes[m] or code in claimed[m]:
                     continue
 
-                if fits(code, e["kind_info"]):
+                if fits(code, e["kind_info"], e["description"]):
                     claimed[m].add(code)
                     got += course_hours(code)
 
@@ -630,6 +649,8 @@ def remove_prior(plan, prior):
 def compact(plan, prior, target=15, max_hours=19):
     taken_before = set(prior)
 
+    hours_before = sum(course_hours(c) for c in prior)
+
     for i in range(len(plan)):
         semester = plan[i]
         hours = 0
@@ -653,7 +674,12 @@ def compact(plan, prior, target=15, max_hours=19):
                         continue
 
                     rule = courses.get(e["code"], {}).get("prereq_rule")
-                    if can_take(rule, taken_before, semester_codes(semester)) is False:
+                    if (
+                        can_take(
+                            rule, taken_before, semester_codes(semester), hours_before
+                        )
+                        is False
+                    ):
                         continue
                     if EARLIEST.get(e["code"], 1) > i + 1:
                         continue
@@ -684,6 +710,9 @@ def compact(plan, prior, target=15, max_hours=19):
                 hours += h
 
         taken_before.update(semester_codes(semester))
+
+        for e in semester:
+            hours_before += entry_hours(e)
     plan[:] = [s for s in plan if s]
 
 
@@ -722,15 +751,34 @@ def place_end_sequence(plan):
             hours += entry_hours(e)
 
         if hours > 19 and source is not target:
+            source_hours = sum(entry_hours(e) for e in source)
+
             slot = None
             for e in target:
-                if e["type"] == "slot":
+                if e["type"] == "slot" and source_hours + entry_hours(e) <= 19:
                     slot = e
                     break
 
             if slot is not None:
                 target.remove(slot)
                 source.append(slot)
+            else:
+                for e in target:
+                    if e["type"] == "slot":
+                        slot = e
+                        break
+
+                if slot is not None:
+                    for other in plan:
+                        if other is target:
+                            continue
+
+                        other_hours = sum(entry_hours(x) for x in other)
+
+                        if other_hours + entry_hours(slot) <= 19:
+                            target.remove(slot)
+                            other.append(slot)
+                            break
 
     plan[:] = [s for s in plan if s]
 
@@ -787,7 +835,7 @@ def minor_alternatives(rule, alts):
 
     elif "hours_in" in rule and rule.get("honors"):
         found = []
-        
+
         for code in courses:
             prefix, number = code.split()
             number = int(number)
