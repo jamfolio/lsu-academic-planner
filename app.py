@@ -299,6 +299,7 @@ def home():
     selected_minors = ["", "", ""]
     prior_text = ""
     hnrs_checkbox = ""
+    mode = "balanced"
 
     if request.method == "POST":
         selected_majors = request.form.getlist("major")
@@ -734,6 +735,7 @@ def home():
         major_info=major_info,
         repeatable=REPEATABLE,
         hnrs_checkbox=hnrs_checkbox,
+        mode=mode,
     )
 
 

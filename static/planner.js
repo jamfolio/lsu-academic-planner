@@ -44,9 +44,17 @@ document.querySelectorAll(".semester").forEach((box) => {
         slot.before(copy);
         slot.dataset.hours = slotHours - courseHours
         copy.shrunkSlot = slot;
+        copy.dataset.filledSection = slot.dataset.section
+        copy.dataset.filledLabel = slot.dataset.label
+        copy.dataset.filledHours = courseHours
+
       } else if (slot != null) {
         slot.replaceWith(copy);
         copy.replacedSlot = slot;
+        copy.dataset.filledSection = slot.dataset.section
+        copy.dataset.filledLabel = slot.dataset.label
+        copy.dataset.filledHours = slotHours
+
       } else {
         box.appendChild(copy);
       }
@@ -72,6 +80,82 @@ document.querySelector("form").addEventListener("submit", (event) => {
   document.querySelector('[name="plan"]').value = data.plan.map(s => s.join(",")).join("\n")
   document.querySelector('[name="slot_hours"]').value = data.slotHours.join(",")
 });
+
+function savePlan() {
+  if (document.querySelector(".semester") == null) {
+    return
+  }
+
+  let major = Array.from(document.querySelectorAll('select[name="major"]')).map((s) => s.value)
+  let minor = Array.from(document.querySelectorAll('select[name="minor"]')).map((s) => s.value)
+  let prior = document.querySelector('[name="prior"]').value
+  let honors = document.querySelector('input[name="hnrs"]').checked
+  let mode = document.querySelector('#plan-mode').value
+  let semesters = Array.from(document.querySelectorAll(".semester")).map((s) => s.innerHTML)
+
+  let lsuPlan = { majors: major, minors: minor, prior: prior, honors: honors, mode: mode, semesters: semesters }
+
+  localStorage.setItem("lsuPlan", JSON.stringify(lsuPlan))
+}
+
+function restorePlan() {
+  let saved = localStorage.getItem("lsuPlan")
+
+  if (saved == null) {
+    return
+  }
+
+  saved = JSON.parse(saved)
+
+  if (document.querySelector(".semester") == null) {
+    let majorSelects = document.querySelectorAll('select[name="major"]')
+
+    for (let i = 0; i < majorSelects.length; i++) {
+      majorSelects[i].value = saved.majors[i]
+    }
+
+    let minorSelects = document.querySelectorAll('select[name="minor"]')
+
+    for (let i = 0; i < minorSelects.length; i++) {
+      minorSelects[i].value = saved.minors[i]
+    }
+
+    document.querySelector('[name="prior"]').value = saved.prior
+    document.querySelector('input[name="hnrs"]').checked = saved.honors
+
+    updateHonorsBox();
+
+    sessionStorage.setItem("restoring", "1")
+
+    document.querySelector(`button[value="${saved.mode}"]`).click()
+
+    return
+  }
+
+  if (sessionStorage.getItem("restoring") != null) {
+    sessionStorage.removeItem("restoring")
+
+    let boxes = document.querySelectorAll(".semester")
+
+    if (boxes.length != saved.semesters.length) {
+      return
+    }
+
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].innerHTML = saved.semesters[i]
+    }
+
+    document.querySelectorAll(".semester .chip[data-code]").forEach((chip) => {
+      document.querySelectorAll(`.palette .chip[data-code="${chip.dataset.code}"]`).forEach((p) => {
+        if (!p.classList.contains("repeatable")) {
+          p.classList.add("used")
+        }
+      })
+    })
+
+    updateHours();
+  }
+}
 
 function updateHours() {
   let total = 0;
@@ -99,6 +183,7 @@ function updateHours() {
 
   document.getElementById("total_hours").textContent = total;
   checkPrereqs();
+  savePlan();
 }
 
 function closeMenus() {
@@ -276,8 +361,10 @@ document.addEventListener("click", (event) => {
       let flaggedChip = document.querySelector(`.semester .chip[data-hnrs-extra]`)
 
       if (flaggedChip) {
-        chip.droppedExtra = flaggedChip
-        chip.droppedBox = flaggedChip.parentElement
+        chip.dataset.droppedExtra = flaggedChip.outerHTML
+
+        let boxes = Array.from(document.querySelectorAll(".semester"))
+        chip.dataset.droppedBox = boxes.indexOf(flaggedChip.closest(".semester"))
 
         flaggedChip.remove()
 
@@ -288,16 +375,17 @@ document.addEventListener("click", (event) => {
           });
 
       }
-    } else if (oldHonors && !newHonors && chip.droppedExtra) {
-      chip.droppedBox.appendChild(chip.droppedExtra)
+    } else if (oldHonors && !newHonors && chip.dataset.droppedExtra) {
+      let box = document.querySelectorAll(".semester")[Number(chip.dataset.droppedBox)]
+      box.insertAdjacentHTML("beforeend", chip.dataset.droppedExtra)
 
       document
-        .querySelectorAll(`.palette .chip[data-code="${chip.droppedExtra.dataset.code}"]`).forEach((p) => {
+        .querySelectorAll(`.palette .chip[data-code="${box.lastElementChild.dataset.code}"]`).forEach((p) => {
           p.classList.add("used");
         });
 
-      chip.droppedExtra = null
-      chip.droppedBox = null
+      delete chip.dataset.droppedExtra
+      delete chip.dataset.droppedBox
     }
 
     chip.querySelector(".choice-menu").hidden = true
@@ -499,8 +587,20 @@ function checkPrereqs() {
 
 }
 
+document.getElementById("clear-plan")?.addEventListener("click", (event) => {
+  if (!confirm("Clear your saved plan?")) {
+    return
+  }
+
+  localStorage.removeItem("lsuPlan")
+  window.location = "/"
+})
+
+restorePlan();
 checkPrereqs();
+savePlan();
 
 document.querySelector('[name="prior"]').addEventListener("input", (event) => {
   checkPrereqs();
+  savePlan();
 })
