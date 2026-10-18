@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Home</title>
@@ -77,7 +77,8 @@
                                          draggable="true"
                                          data-code="{{ e.code }}"
                                          data-tip="{{ course_info.get(e.code, '') }} {% if e.note %}Note: {{ e.note }}{% endif %}"
-                                         {% if e.filled_section %} data-filled-section="{{ e.filled_section }}" data-filled-label="{{ e.filled_label }}" data-filled-hours="{{ e.filled_hours|int }}" {% endif %}>
+                                         {% if e.filled_section %} data-filled-section="{{ e.filled_section }}" data-filled-label="{{ e.filled_label }}" data-filled-hours="{{ e.filled_hours|int }}" {% endif %}
+                                         {% if e.hnrs_extra %} data-hnrs-extra="1" {% endif %}>
                                         <span class="code">
                                             <span class="code-text">{{ e.code }}</span>
                                             {% if e.note %}<sup class="note-mark"
@@ -156,8 +157,9 @@
             <textarea name="prior" rows="3" cols="70">{{ prior_text }}</textarea>
             <input type="hidden" name="plan" value="{{ plan_text }}">
             <input type="hidden" name="slot_hours">
-            <button type="submit">Run audit</button>
-            <button type="submit" formaction="/">Load recommended plan</button>
+            <button type="submit" formtarget="_blank">Run audit</button>
+            <button type="submit" formaction="/" name="mode" value="balanced">Load recommended plan</button>
+            <button type="submit" formaction="/" name="mode" value="fast">Load fastest plan</button>
         </form>
         <div id="tooltip" hidden></div>
         <script src="{{ url_for('static', filename='planner.js') }}"></script>

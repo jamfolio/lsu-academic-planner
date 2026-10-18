@@ -153,12 +153,26 @@ palette.addEventListener("drop", (event) => {
     dragged.remove();
   }
 
-  if (document.querySelector(`.semester .chip[data-code="${dragged.dataset.code}"]`) == null) {
-    document
-      .querySelectorAll(`.palette .chip[data-code="${dragged.dataset.code}"]`)
-      .forEach((chip) => {
-        chip.classList.remove("used");
-      });
+  let codes = [dragged.dataset.code]
+
+  let pieces = (dragged.dataset.options || "").split(",")
+
+  for (const piece of pieces) {
+    if (piece == "") {
+      continue
+    }
+
+    codes.push(piece)
+  }
+
+  for (const code of codes) {
+    if (document.querySelector(`.semester .chip[data-code="${code}"]`) == null) {
+      document
+        .querySelectorAll(`.palette .chip[data-code="${code}"]`)
+        .forEach((chip) => {
+          chip.classList.remove("used");
+        });
+    }
   }
 
   updateHours();
@@ -217,6 +231,9 @@ document.addEventListener("click", (event) => {
     let chip = option.closest(".chip")
     let oldCode = chip.dataset.code
     let newCode = option.dataset.code
+    let oldTip = chip.dataset.tip
+    let oldHonors = oldTip.startsWith("HONORS: ")
+    let newHonors = option.dataset.tip.startsWith("HONORS: ")
     let paletteChip = document.querySelector(`.palette .chip[data-code="${newCode}"]`)
 
     if (oldCode == newCode) {
@@ -232,6 +249,15 @@ document.addEventListener("click", (event) => {
     }
 
     chip.dataset.code = newCode
+
+    if (document.querySelector(`.semester .chip[data-code="${oldCode}"]`) == null) {
+      document
+        .querySelectorAll(`.palette .chip[data-code="${oldCode}"]`)
+        .forEach((chip) => {
+          chip.classList.remove("used");
+        });
+    }
+
     chip.querySelector(".code-text").textContent = newCode;
     chip.querySelector(".warn-mark")?.remove()
     chip.classList.remove("missing")
@@ -245,6 +271,34 @@ document.addEventListener("click", (event) => {
       .querySelectorAll(`.palette .chip[data-code="${newCode}"]`).forEach((p) => {
         p.classList.add("used");
       });
+
+    if (newHonors && !oldHonors) {
+      let flaggedChip = document.querySelector(`.semester .chip[data-hnrs-extra]`)
+
+      if (flaggedChip) {
+        chip.droppedExtra = flaggedChip
+        chip.droppedBox = flaggedChip.parentElement
+
+        flaggedChip.remove()
+
+        document
+          .querySelectorAll(`.palette .chip[data-code="${flaggedChip.dataset.code}"]`)
+          .forEach((chip) => {
+            chip.classList.remove("used");
+          });
+
+      }
+    } else if (oldHonors && !newHonors && chip.droppedExtra) {
+      chip.droppedBox.appendChild(chip.droppedExtra)
+
+      document
+        .querySelectorAll(`.palette .chip[data-code="${chip.droppedExtra.dataset.code}"]`).forEach((p) => {
+          p.classList.add("used");
+        });
+
+      chip.droppedExtra = null
+      chip.droppedBox = null
+    }
 
     chip.querySelector(".choice-menu").hidden = true
 
@@ -426,7 +480,7 @@ function checkPrereqs() {
         span.className = "note-mark unknown-mark"
         span.textContent = "?";
         span.dataset.note = p.message;
-        
+
         (newChip.querySelector(".code") || newChip).appendChild(span)
 
       } else {

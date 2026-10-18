@@ -17,6 +17,8 @@ from planner.rules import (
     LAB_COURSES,
     course_hours,
     family_name,
+    TWINS,
+    can_take,
 )
 from planner.recommend import (
     recommended_plan,
@@ -34,14 +36,21 @@ from planner.recommend import (
     minor_alternatives,
     fits,
     EARLIEST,
+    rule_codes,
 )
 
 import json
 import re
 import math
+from collections import Counter
 
 with open("data/degrees.json", "r", encoding="utf-8") as f:
     degrees = json.load(f)
+
+with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
+    minors = json.load(f)
+
+app = Flask(__name__)
 
 TITLE_FIXES = {
     "14509": "African & African American Studies, B.A.",
@@ -59,6 +68,7 @@ HNRS_TWO_OF = {
         {"and": [HNRS_EITHER_SCIENCE, {"course": "HNRS 2100"}]},
     ]
 }
+
 LASAL_CORE = {
     "and": [
         HNRS_TWO_OF,
@@ -112,7 +122,25 @@ HNRS_EXTRA = {
 
 HNRS_MINORS = {"14523", "14529", "14530", "14531"}
 
+START_EARLY_MINORS = {"14523", "14529"}
+
 FOOTNOTE_FIXES = {"Natural sciences lab (2-1)": "2"}
+
+SKIP_PROGRAMS = {"14259"}
+
+ELECTIVE_GROUPS = []
+
+COURSE_INFO = {}
+
+HOURS = {code: course_hours(code) for code in courses}
+
+TITLES = {code: courses[code]["title"] for code in courses}
+
+BY_TITLE = {}
+
+TWINS = {}
+
+REPEATABLE = {code for code, info in courses.items() if info.get("repeatable")}
 
 for program in degrees.values():
     for track in program["tracks"]:
@@ -160,9 +188,6 @@ def fix_honors(rule):
                 fix_honors(child)
 
 
-SKIP_PROGRAMS = {"14259"}
-
-
 def clean_title(text):
     text = re.sub(r",\s*BS\b", ", B.S.", text)
     text = re.sub(r",\s*BA\b", ", B.A.", text)
@@ -179,16 +204,11 @@ for poid, program in degrees.items():
     for track in program["tracks"]:
         track["name"] = clean_title(track["name"])
 
-
 degrees = {
     poid: program
     for poid, program in degrees.items()
     if re.search(r",\s*B\.?[A-Z]", program["title"]) and poid not in SKIP_PROGRAMS
 }
-print(len(degrees))
-
-with open("data/minorsfinal.json", "r", encoding="utf-8") as f:
-    minors = json.load(f)
 
 for minor in minors.values():
     set_times(minor["rule"])
@@ -205,12 +225,10 @@ for code in courses:
     else:
         elective_map.setdefault(prefix, []).append(code)
 
-ELECTIVE_GROUPS = []
 
 for prefix in sorted(elective_map):
     ELECTIVE_GROUPS.append({"subject": prefix, "codes": sorted(elective_map[prefix])})
 
-COURSE_INFO = {}
 
 for code, info in courses.items():
     text = f"{info.get('title')} ({info.get('credits')})\nPrereqs: {describe(info.get('prereq_rule'))}"
@@ -220,17 +238,10 @@ for code, info in courses.items():
 
     COURSE_INFO[code] = text
 
-HOURS = {code: course_hours(code) for code in courses}
-
-TITLES = {code: courses[code]["title"] for code in courses}
-
-BY_TITLE = {}
-
 for code, info in courses.items():
     prefix = code.split()[0]
     BY_TITLE[(prefix, info["title"])] = code
 
-TWINS = {}
 
 for code, info in courses.items():
     title = info["title"]
@@ -242,25 +253,6 @@ for code, info in courses.items():
         if regular is not None:
             TWINS[code] = regular
             TWINS[regular] = code
-
-REPEATABLE = {code for code, info in courses.items() if info.get("repeatable")}
-
-
-def lightest(p):
-    totals = []
-
-    for semester in p:
-        hours = 0
-
-        for e in semester:
-            hours += entry_hours(e)
-
-        totals.append(hours)
-
-    return min(totals)
-
-
-app = Flask(__name__)
 
 
 def clean_choices(values):
@@ -313,6 +305,7 @@ def home():
         selected_minors = request.form.getlist("minor")
         prior_text = request.form.get("prior", "")
         hnrs_checkbox = request.form.get("hnrs")
+        mode = request.form.get("mode", "balanced")
 
         use_hnrs = bool(
             hnrs_checkbox and (set(clean_choices(selected_minors)) & HNRS_MINORS)
@@ -478,8 +471,39 @@ def home():
 
         remove_prior(plan, prior)
 
+        taken = set(prior)
+
+        for semester in plan:
+            current = set(semester_codes(semester))
+
+            for e in semester:
+                if e["type"] == "slot" or len(e.get("options", [e["code"]])) <= 1:
+                    continue
+
+                if can_take(courses.get(e["code"], {}).get("prereq_rule"), taken, current) is False:
+                    for option in e["options"]:
+                        if option == e["code"] or option in planned:
+                            continue
+
+                        if can_take(courses.get(option, {}).get("prereq_rule"), taken, current) is not False:
+                            e["code"] = option
+                            break
+
+            taken.update(semester_codes(semester))
+            planned.update(semester_codes(semester))
+
+        counter = Counter()
+
+        for semester in plan:
+            for e in semester:
+                if e["type"] == "course":
+                    counter[e["code"]] += 1
+
+        for p in prior:
+            counter[p] += 1
+
         for poid in clean_choices(selected_minors):
-            picks = minor_courses(minors[poid]["rule"], planned)
+            picks = minor_courses(minors[poid]["rule"], planned, counter)
             mentioned = used_courses(minors[poid]["rule"], set(courses))
 
             palette.append(
@@ -497,11 +521,13 @@ def home():
 
             alts = minor_alternatives(minors[poid]["rule"], {})
 
+            earliest_sem = (1 if poid in START_EARLY_MINORS else 2)
+
             for code in picks:
                 if code in planned and code not in REPEATABLE:
                     continue
 
-                place_course(plan, code, prior, options=alts.get(code))
+                place_course(plan, code, prior, options=alts.get(code), earliest=earliest_sem)
 
                 for semester in plan:
                     planned.update(semester_codes(semester))
@@ -516,27 +542,34 @@ def home():
             for e in semester:
                 total += entry_hours(e)
 
-        if plan:
-            target = math.ceil(total / len(plan)) + 1
-            trial = [list(s) for s in plan]
-            before = lightest(plan)
-
-            rebalance(trial, target)
-
-            if len(trial) == len(plan) and lightest(trial) >= before:
-                plan[:] = trial
-
-        place_end_sequence(plan)
-        compact(plan, prior)
-
         needed = max(8, math.ceil(total / 18))
 
-        if len(plan) > needed:
-            copy = [list(s) for s in plan]
-            compact(copy, prior, math.ceil(total / needed))
+        if mode == "fast":
+            goal = 19
+            cap = 19
 
-            if len(copy) <= needed:
-                plan[:] = copy
+        else:
+            goal = math.ceil(total / needed)
+            cap = goal + 1
+            rebalance(plan, cap)
+
+        compact(plan, prior, goal, cap)
+        place_end_sequence(plan)
+        rebalance(plan, cap)
+        compact(plan, prior, goal, cap)
+
+        if mode != "fast":
+            for bump in [1, 2, 3]:
+                if len(plan) <= needed:
+                    break
+                elif cap + bump > 19:
+                    break
+                else:
+                    copy_plan = [list(s) for s in plan]
+                    compact(copy_plan, prior, cap + bump, cap + bump)
+
+                    if len(copy_plan) <= needed:
+                        plan[:] = copy_plan
 
         gened_sections = []
 
@@ -558,6 +591,13 @@ def home():
 
         lines = []
 
+        chosen_hnrs = set(clean_choices(selected_minors)) & HNRS_MINORS
+
+        named_codes = set()
+
+        for minor in chosen_hnrs:
+            named_codes.update(rule_codes(minors[minor]["rule"]))
+
         for semester in plan:
             hours = 0
 
@@ -572,6 +612,17 @@ def home():
                     e["warning"] = "Prereq not in plan: " + describe(
                         courses[e["code"]]["prereq_rule"]
                     )
+
+                if chosen_hnrs and e["type"] == "course" and "major" not in e:
+                    prefix, number = e["code"].split()
+                    number = int(number)
+
+                    if (
+                        prefix == "HNRS"
+                        and number < 3000
+                        and e["code"] not in named_codes
+                    ):
+                        e["hnrs_extra"] = True
 
                 if e["type"] == "course" and e["code"] in TWINS:
                     twin = TWINS[e["code"]]

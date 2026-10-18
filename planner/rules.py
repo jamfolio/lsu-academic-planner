@@ -4,6 +4,25 @@ import re
 with open("data/coursesfinal.json", "r", encoding="utf-8") as f:
     courses = json.load(f)
 
+BY_TITLE = {}
+
+for code, info in courses.items():
+    prefix = code.split()[0]
+    BY_TITLE[(prefix, info["title"])] = code
+
+TWINS = {}
+
+for code, info in courses.items():
+    title = info["title"]
+
+    if title.startswith("HONORS: "):
+        prefix = code.split()[0]
+        regular = BY_TITLE.get((prefix, title[len("HONORS: ") :]))
+
+        if regular is not None:
+            TWINS[code] = regular
+            TWINS[regular] = code
+
 with open("data/geneds.json", "r", encoding="utf-8") as f:
     gen_eds = json.load(f)
 
@@ -98,7 +117,7 @@ STANDING = {
     "senior or graduate standing": 91,
 }
 
-HIGHER_MATH = {
+HIGHER = {
     "MATH 1021": [
         "MATH 1022",
         "MATH 1023",
@@ -111,6 +130,9 @@ HIGHER_MATH = {
     "MATH 1022": ["MATH 1023", "MATH 1550", "MATH 1551", "MATH 1552", "MATH 1553"],
     "MATH 1023": ["MATH 1550", "MATH 1551", "MATH 1552", "MATH 1553"],
     "MATH 1431": ["MATH 1550", "MATH 1551"],
+    "BIOL 1001": ["BIOL 1201"],
+    "BIOL 1002": ["BIOL 1202"],
+    "EDCI 3136": ["EDCI 4720"],
 }
 
 
@@ -131,6 +153,26 @@ def fix_standing(rule):
                         fix_standing(child)
 
 
+def drop_recommended(rule):
+    if not isinstance(rule, dict):
+        return
+
+    for key in ("and", "or"):
+        if key in rule:
+            kept = []
+
+            for child in rule[key]:
+                if isinstance(child, dict) and (
+                    "other" in child and "recommended" in child["other"].lower()
+                ):
+                    continue
+                else:
+                    drop_recommended(child)
+                    kept.append(child)
+
+            rule[key] = kept
+
+
 for code, info in courses.items():
     rule = info["prereq_rule"]
 
@@ -145,6 +187,42 @@ for code, info in courses.items():
 
     else:
         fix_standing(rule)
+
+    drop_recommended(info["prereq_rule"])
+
+courses["AGRO 2051"]["prereq_rule"] = {
+    "or": [{"course": "CHEM 1001"}, {"course": "CHEM 1002"}, {"course": "CHEM 1202"}]
+}
+
+courses["EDCI 3001"]["prereq_rule"] = {
+    "and": [
+        {"course": "EDCI 2001", "concurrent": True},
+        {
+            "or": [
+                {"course": "ENGL 3203", "concurrent": True},
+                {"course": "FREN 3401", "concurrent": True},
+                {"course": "HIST 3001", "concurrent": True},
+                {"course": "SPAN 3001", "concurrent": True},
+            ]
+        },
+    ]
+}
+
+courses["ECON 2035"]["prereq_rule"] = {
+    "or": [
+        {
+            "and": [
+                {
+                    "or": [{"course": "ECON 2000"}, {"course": "ECON 2001"}]
+                },
+                {
+                    "or": [{"course": "ECON 2010"}, {"course": "ECON 2011"}],
+                },
+            ]
+        },
+        {"course": "ECON 2030"},
+    ]
+}
 
 
 def slot_base(description, credits):
@@ -226,7 +304,10 @@ def is_satisfied(rule, taken, current, hours_before=None):
         elif rule.get("concurrent") and rule["course"] in current:
             return True
 
-        for course in HIGHER_MATH.get(rule["course"], []):
+        if TWINS.get(rule["course"]) in taken:
+            return True
+
+        for course in HIGHER.get(rule["course"], []):
             if course in taken:
                 return True
 
@@ -444,6 +525,9 @@ def used_courses(node, taken):
 
             if (
                 node["subject"] != prefix
+                and not (
+                    "honors" in node and courses[code]["title"].startswith("HONORS: ")
+                )
                 or (
                     node.get("min_level") is not None and node.get("min_level") > number
                 )
@@ -853,9 +937,15 @@ def audit(plan, prior, track, gened_sets):
         filled = None
 
         for option in req["options"]:
-            if option in available and option not in used:
-                filled = option
-                used.add(filled)
+            codes_try = [option, TWINS.get(option)]
+
+            for codes in codes_try:
+                if codes in available and codes not in used:
+                    filled = codes
+                    used.add(codes)
+                    break
+
+            if filled is not None:
                 break
 
         results.append({"requirement": req, "filled_by": filled})
