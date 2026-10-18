@@ -194,7 +194,7 @@ def minor_courses(rule, planned, counts=None):
                 continue
 
             picks = minor_courses(child, planned, counts)
-            if is_satisfied(child, planned | set(picks), set()) is False:
+            if is_satisfied(child, planned | set(picks), set()) is False or any(p not in courses for p in picks):
                 continue
 
             hours = 0
@@ -580,14 +580,33 @@ def rebalance(plan, max_hours=19):
                 else:
                     next_codes = set()
 
+                same_needed = set()
+
+                for e in semester:
+                    if e["type"] == "course":
+                        same_needed |= rule_codes(
+                            courses.get(e["code"], {}).get("prereq_rule")
+                        )
+
                 for e in reversed(semester):
                     if (
                         e["type"] == "course"
                         and e["code"] not in needed
                         and e["code"] not in next_codes
+                        and e["code"] not in same_needed
                     ):
                         to_move = e
                         break
+
+                if to_move is None:
+                    for e in reversed(semester):
+                        if (
+                            e["type"] == "course"
+                            and e["code"] not in needed
+                            and e["code"] not in next_codes
+                        ):
+                            to_move = e
+                            break
 
             if to_move is None:
                 moved = False

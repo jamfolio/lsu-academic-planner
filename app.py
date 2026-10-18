@@ -480,16 +480,70 @@ def home():
                 if e["type"] == "slot" or len(e.get("options", [e["code"]])) <= 1:
                     continue
 
-                if can_take(courses.get(e["code"], {}).get("prereq_rule"), taken, current) is False:
+                if (
+                    can_take(
+                        courses.get(e["code"], {}).get("prereq_rule"), taken, current
+                    )
+                    is False
+                ):
                     for option in e["options"]:
                         if option == e["code"] or option in planned:
                             continue
 
-                        if can_take(courses.get(option, {}).get("prereq_rule"), taken, current) is not False:
+                        if (
+                            can_take(
+                                courses.get(option, {}).get("prereq_rule"),
+                                taken,
+                                current,
+                            )
+                            is not False
+                        ):
                             e["code"] = option
                             break
 
             taken.update(semester_codes(semester))
+            planned.update(semester_codes(semester))
+
+        everything = set(prior)
+
+        for semester in plan:
+            everything.update(semester_codes(semester))
+
+        missing_codes = []
+
+        for semester in plan:
+            for e in semester:
+                if e["type"] != "course":
+                    continue
+
+                if (
+                    is_satisfied(
+                        courses.get(e["code"], {}).get("prereq_rule"), everything, set()
+                    )
+                    is False
+                ):
+                    missing_codes.append(e["code"])
+
+        for code in missing_codes:
+            everything = set(prior)
+
+            for semester in plan:
+                everything.update(semester_codes(semester))
+
+            needs = minor_courses(courses.get(code, {}).get("prereq_rule"), everything)
+
+            for need in needs:
+                everything = set(prior)
+
+                for semester in plan:
+                    everything.update(semester_codes(semester))
+
+                if need in everything or need not in courses:
+                    continue
+
+                place_course(plan, need, prior)
+
+        for semester in plan:
             planned.update(semester_codes(semester))
 
         counter = Counter()
@@ -521,13 +575,15 @@ def home():
 
             alts = minor_alternatives(minors[poid]["rule"], {})
 
-            earliest_sem = (1 if poid in START_EARLY_MINORS else 2)
+            earliest_sem = 1 if poid in START_EARLY_MINORS else 2
 
             for code in picks:
                 if code in planned and code not in REPEATABLE:
                     continue
 
-                place_course(plan, code, prior, options=alts.get(code), earliest=earliest_sem)
+                place_course(
+                    plan, code, prior, options=alts.get(code), earliest=earliest_sem
+                )
 
                 for semester in plan:
                     planned.update(semester_codes(semester))
@@ -542,7 +598,7 @@ def home():
             for e in semester:
                 total += entry_hours(e)
 
-        needed = max(8, math.ceil(total / 18))
+        needed = max(math.ceil(total / 18), min(8, math.ceil(total / 15)))
 
         if mode == "fast":
             goal = 19

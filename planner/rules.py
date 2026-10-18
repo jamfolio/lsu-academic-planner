@@ -127,8 +127,15 @@ HIGHER = {
         "MATH 1552",
         "MATH 1553",
     ],
-    "MATH 1022": ["MATH 1023", "MATH 1550", "MATH 1551", "MATH 1552", "MATH 1553"],
-    "MATH 1023": ["MATH 1550", "MATH 1551", "MATH 1552", "MATH 1553"],
+    "MATH 1022": [
+        "MATH 1023",
+        "MATH 1510",
+        "MATH 1550",
+        "MATH 1551",
+        "MATH 1552",
+        "MATH 1553",
+    ],
+    "MATH 1023": ["MATH 1550", "MATH 1510", "MATH 1551", "MATH 1552", "MATH 1553"],
     "MATH 1431": ["MATH 1550", "MATH 1551"],
     "BIOL 1001": ["BIOL 1201"],
     "BIOL 1002": ["BIOL 1202"],
@@ -212,9 +219,7 @@ courses["ECON 2035"]["prereq_rule"] = {
     "or": [
         {
             "and": [
-                {
-                    "or": [{"course": "ECON 2000"}, {"course": "ECON 2001"}]
-                },
+                {"or": [{"course": "ECON 2000"}, {"course": "ECON 2001"}]},
                 {
                     "or": [{"course": "ECON 2010"}, {"course": "ECON 2011"}],
                 },
@@ -224,6 +229,26 @@ courses["ECON 2035"]["prereq_rule"] = {
     ]
 }
 
+courses["GEOL 1202"]["prereq_rule"] = {
+    "and": [
+        {
+            "or": [
+                {
+                    "and": [{"course": "GEOL 1001"}, {"course": "GEOL 1601"}],
+                },
+                {"course": "GEOL 1201"},
+            ]
+        },
+        {
+            "or": [
+                {"course": "MATH 1022", "concurrent": True},
+                {"course": "MATH 1023", "concurrent": True},
+                {"course": "MATH 1550", "concurrent": True},
+                {"course": "MATH 1551", "concurrent": True},
+            ]
+        },
+    ]
+}
 
 def slot_base(description, credits):
     base = description.rstrip("*").strip()
@@ -304,11 +329,13 @@ def is_satisfied(rule, taken, current, hours_before=None):
         elif rule.get("concurrent") and rule["course"] in current:
             return True
 
-        if TWINS.get(rule["course"]) in taken:
+        if TWINS.get(rule["course"]) in taken or (
+            rule.get("concurrent") and TWINS.get(rule["course"]) in current
+        ):
             return True
 
         for course in HIGHER.get(rule["course"], []):
-            if course in taken:
+            if course in taken or (rule.get("concurrent") and course in current):
                 return True
 
         return False
