@@ -142,6 +142,62 @@ HIGHER = {
     "EDCI 3136": ["EDCI 4720"],
 }
 
+NS_SEQUENCES = {
+    "BIOL 1001": ["BIOL 1002"],
+    "BIOL 1201": ["BIOL 1202", "BIOL 1503"],
+    "CHEM 1001": ["CHEM 1002"],
+    "CHEM 1201": ["CHEM 1202"],
+    "CHEM 1421": ["CHEM 1422", "CHEM 1202"],
+    "PHYS 2001": ["PHYS 2002"],
+    "PHYS 1201": ["PHYS 1202"],
+    "PHYS 2110": ["PHYS 2112", "PHYS 2113"],
+    "PHSC 1001": ["PHSC 1002"],
+    "GEOL 1001": ["GEOL 1003"],
+    "GEOL 1201": ["GEOL 1202"],
+}
+
+POSSIBLE_SEQUENCES = {
+    "ASTR 1101": ["ASTR 1102"],
+    "GEOL 1001": ["GEOL 2020"],
+    "GEOL 1002": ["GEOL 2020"],
+    "HORT 2050": ["HORT 2061"],
+    "GEOG 2050": ["GEOG 2051"],
+    "OCS 1005": ["OCS 2005"],
+}
+
+LIFE_SCIENCES = {
+    "BIOL 1001",
+    "BIOL 1002",
+    "BIOL 1011",
+    "BIOL 1201",
+    "BIOL 1202",
+    "BIOL 1503",
+    "AGRI 1005",
+    "AGRO 1001",
+    "HORT 2050",
+    "HORT 2061",
+    "RNR 1001",
+    "HNRS 1035",
+    "HNRS 2010",
+    "ENVS 1126",
+    "ENVS 1127",
+    "ENVS 2126",
+    "ENVS 2127",
+    "OCS 2050",
+}
+
+NS_LABS = {
+    "BIOL 1001": ["BIOL 1005"],
+    "BIOL 1201": ["BIOL 1208", "BIOL 1209", "BIOL 1207"],
+    "CHEM 1001": ["CHEM 1212"],
+    "CHEM 1201": ["CHEM 1212"],
+    "CHEM 1421": ["CHEM 1431", "CHEM 1212"],
+    "PHYS 2001": ["PHYS 2108", "PHYS 2109"],
+    "PHYS 2110": ["PHYS 2108", "PHYS 2109"],
+    "PHYS 1201": ["PHYS 1208", "PHYS 1209"],
+    "GEOL 1001": ["GEOL 1601", "GEOL 1602"],
+}
+
 
 def fix_standing(rule):
     if not isinstance(rule, dict):
@@ -250,6 +306,7 @@ courses["GEOL 1202"]["prereq_rule"] = {
     ]
 }
 
+
 def slot_base(description, credits):
     base = description.rstrip("*").strip()
     base = re.sub(r"\s*\(\d+(?:\.\d+)?(?:-\d+)?\)\s*$", "", base)
@@ -317,6 +374,102 @@ def course_hours(code):
         return 0
     else:
         return typical_hours(credits)
+
+
+def ns_area(code):
+    if code in LIFE_SCIENCES:
+        return "life"
+    else:
+        return "physical"
+
+
+def ns_done(codes):
+    ns = set()
+
+    for code in codes:
+        if code in GENED_SETS["Natural Sciences"]:
+            ns.add(code)
+
+    best = 0
+
+    for area in ["life", "physical"]:
+        seq = 0
+
+        for first, seconds in NS_SEQUENCES.items():
+            if ns_area(first) != area:
+                continue
+
+            if first in ns and any(s in ns for s in seconds):
+                seq = 2
+            else:
+                if first in ns and seq == 0:
+                    seq = 1
+
+        other = int(any(ns_area(c) != area for c in ns))
+
+        best = max(best, seq + other)
+
+    return best
+
+
+def ns_next(codes):
+    ns = set()
+
+    for code in codes:
+        if code in GENED_SETS["Natural Sciences"]:
+            ns.add(code)
+
+    suggestions = []
+
+    for first, seconds in NS_SEQUENCES.items():
+        if first not in ns or any(s in ns for s in seconds):
+            continue
+        else:
+            suggestions.extend(seconds)
+
+    return suggestions
+
+
+def ns_labs_done(codes):
+    best = 0
+
+    for first, labs in NS_LABS.items():
+        if first not in codes:
+            continue
+
+        hours = 0
+
+        for lab in labs:
+            if lab in codes:
+                hours += course_hours(lab)
+
+        best = max(best, hours)
+
+    return best
+
+
+def ns_labs_next(codes):
+    suggestions = []
+
+    finished = []
+
+    for first, seconds in NS_SEQUENCES.items():
+        if first in codes and any(s in codes for s in seconds):
+            finished.append(first)
+
+    for first, labs in NS_LABS.items():
+        if finished and first not in finished:
+            continue
+
+        if first not in codes:
+            continue
+
+        for lab in labs:
+            if lab not in codes:
+                suggestions.append(lab)
+                break
+
+    return suggestions
 
 
 def is_satisfied(rule, taken, current, hours_before=None):
@@ -945,6 +1098,30 @@ def build_requirements(track):
     return requirements
 
 
+def audit_ns_lecture(slot, track):
+    kind_info = slot_kind(slot, track)
+
+    if (
+        kind_info["kind"] == "gened"
+        and "Natural Sciences" in kind_info["categories"]
+        and "lab" not in slot["description"].lower()
+    ):
+        return True
+
+    return False
+
+
+def audit_strict_lab(slot, track):
+    note = (track["footnotes"].get(slot.get("footnote")) or "").lower()
+
+    if "lab" in slot["description"].lower() and (
+        "associated" in note or "corresponding" in note
+    ):
+        return True
+
+    return False
+
+
 def audit(plan, prior, track, gened_sets):
     reqs = build_requirements(track)
 
@@ -979,12 +1156,66 @@ def audit(plan, prior, track, gened_sets):
 
     KIND_ORDER = ["list", "subject", "gened", "unknown", "free"]
 
+    ns_reqs = []
+    lab_reqs = []
+
+    for req in reqs:
+        if req["type"] == "slot" and audit_strict_lab(req["slot"], track):
+            lab_reqs.append(req)
+
+    covered = ns_labs_done(available)
+
+    lab_courses = []
+
+    for labs in NS_LABS.values():
+        for lab in labs:
+            if lab in available and lab not in used and lab not in lab_courses:
+                lab_courses.append(lab)
+
+    for req in lab_reqs:
+        credits = parse_credits(req["slot"]["credits"])
+
+        if credits is None:
+            needed = 3
+        else:
+            needed = credits[0]
+
+        filled = []
+
+        hours = min(covered, needed)
+        covered -= hours
+
+        shown = 0
+
+        while shown < hours and lab_courses:
+            code = lab_courses.pop(0)
+            filled.append(code)
+            used.add(code)
+            shown += course_hours(code)
+
+        results.append(
+            {
+                "requirement": req,
+                "filled_by": filled,
+                "hours": hours,
+                "needed": needed,
+                "kind": "gened",
+            }
+        )
+
     for kind in KIND_ORDER:
         for req in reqs:
             if req["type"] != "slot":
                 continue
 
             if slot_kind(req["slot"], track)["kind"] != kind:
+                continue
+
+            if audit_ns_lecture(req["slot"], track):
+                ns_reqs.append(req)
+                continue
+
+            if audit_strict_lab(req["slot"], track):
                 continue
 
             credits = parse_credits(req["slot"]["credits"])
@@ -1018,6 +1249,65 @@ def audit(plan, prior, track, gened_sets):
                     "kind": slot_kind(req["slot"], track)["kind"],
                 }
             )
+
+        if kind == "gened":
+            covered = ns_done(available) * 3
+
+            seq_codes = set().union(NS_SEQUENCES)
+
+            for seconds in NS_SEQUENCES.values():
+                seq_codes.update(seconds)
+
+            seq_first = [
+                c
+                for c in available
+                if c not in used
+                and c in GENED_SETS["Natural Sciences"]
+                and c in seq_codes
+                and not is_lab(c)
+            ]
+
+            others = [
+                c
+                for c in available
+                if c not in used
+                and c in GENED_SETS["Natural Sciences"]
+                and c not in seq_codes
+                and not is_lab(c)
+            ]
+
+            ns_courses = seq_first + others
+
+            for req in ns_reqs:
+                credits = parse_credits(req["slot"]["credits"])
+
+                if credits is None:
+                    needed = 3
+                else:
+                    needed = credits[0]
+
+                filled = []
+                hours = 0
+
+                if covered >= needed:
+                    while hours < needed and ns_courses:
+                        code = ns_courses.pop(0)
+                        filled.append(code)
+                        used.add(code)
+                        hours += course_hours(code)
+
+                    hours = needed
+                    covered -= needed
+
+                results.append(
+                    {
+                        "requirement": req,
+                        "filled_by": filled,
+                        "hours": hours,
+                        "needed": needed,
+                        "kind": "gened",
+                    }
+                )
 
     unused = [code for code in available if code not in used]
     return {"results": results, "unused": unused}

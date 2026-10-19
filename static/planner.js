@@ -48,12 +48,20 @@ document.querySelectorAll(".semester").forEach((box) => {
         copy.dataset.filledLabel = slot.dataset.label
         copy.dataset.filledHours = courseHours
 
+        if (slot.dataset.strict) {
+          copy.dataset.filledStrict = "1"
+        }
+
       } else if (slot != null) {
         slot.replaceWith(copy);
         copy.replacedSlot = slot;
         copy.dataset.filledSection = slot.dataset.section
         copy.dataset.filledLabel = slot.dataset.label
         copy.dataset.filledHours = slotHours
+
+        if (slot.dataset.strict) {
+          copy.dataset.filledStrict = "1"
+        }
 
       } else {
         box.appendChild(copy);
@@ -226,12 +234,23 @@ palette.addEventListener("drop", (event) => {
       dragged.remove()
     } else {
       let newSlot = document.createElement("div")
+
       newSlot.className = "chip slot"
       newSlot.draggable = true
       newSlot.dataset.section = dragged.dataset.filledSection
       newSlot.dataset.label = dragged.dataset.filledLabel
       newSlot.dataset.hours = dragged.dataset.filledHours
-      newSlot.textContent = dragged.dataset.filledLabel
+
+      let label = document.createElement("span")
+
+      label.className = "slot-label"
+      label.textContent = dragged.dataset.filledLabel
+      newSlot.appendChild(label)
+
+      if (dragged.dataset.filledStrict) {
+        newSlot.dataset.strict = "1"
+      }
+
       dragged.replaceWith(newSlot)
     }
   } else {
@@ -543,7 +562,9 @@ function checkPrereqs() {
   let data = collectPlan()
 
   let priorBox = document.querySelector('[name="prior"]').value
-  fetch("/check_plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan: data.plan, prior: priorBox, slot_hours: data.slotHours }) }).then(r => r.json()).then(problems => {
+  fetch("/check_plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan: data.plan, prior: priorBox, slot_hours: data.slotHours }) }).then(r => r.json()).then(data => {
+    let problems = data.problems
+
     if (mine !== checkCount) {
       return
     }
@@ -583,8 +604,43 @@ function checkPrereqs() {
       }
     }
 
+    updateNsLabels(data.ns)
+
   })
 
+}
+
+function updateNsLabels(ns) {
+  document.querySelectorAll('.semester .slot[data-section="Natural Sciences"]').forEach((chip, i) => {
+    if (i == 0 && ns.next.length > 0) {
+      chip.dataset.label = `Natural Sciences - finish a sequence (${ns.next.join(" or ")})`
+    } else if (ns.done >= 3) {
+      chip.dataset.label = "Natural Sciences - already covered (remove/ignore)"
+    } else {
+      chip.dataset.label = "Natural Sciences"
+    }
+
+    let slotLabel = chip.querySelector(".slot-label")
+
+    if (slotLabel) {
+      slotLabel.textContent = chip.dataset.label
+    }
+  })
+
+  document.querySelectorAll('.semester .slot[data-strict]').forEach((chip, i) => {
+    if (i == 0 && ns.labs_next.length > 0) {
+      chip.dataset.label = `Natural Sciences Lab - match your sequence (${ns.labs_next.join(" or ")})`
+    } else {
+      chip.dataset.label = "Natural Sciences Lab"
+    }
+
+    let slotLabel = chip.querySelector(".slot-label")
+
+    if (slotLabel) {
+      slotLabel.textContent = chip.dataset.label
+    }
+
+  })
 }
 
 document.getElementById("clear-plan")?.addEventListener("click", (event) => {

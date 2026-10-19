@@ -1,9 +1,12 @@
 import app, random, math
-from planner.rules import check_plan, courses
+from planner.rules import check_plan, courses, parse_credits
+from planner.recommend import END_SEQUENCE
 from collections import Counter
+
 
 def fake_render(template, **context):
     return context
+
 
 app.render_template = fake_render
 
@@ -35,6 +38,9 @@ for mode in ["fast", "balanced"]:
     crash_ex = []
     minor_drops = 0
     drop_ex = []
+    end_shared = 0
+    under_total = 0
+    under_ex = []
 
     for n in range(RUNS):
         major_num = random.choice([1, 1, 1, 2, 2, 3])
@@ -62,6 +68,34 @@ for mode in ["fast", "balanced"]:
             continue
 
         plan_view = result["plan_view"]
+        where = {}
+
+        for i, semester in enumerate(plan_view):
+            for e in semester["entries"]:
+                if e["type"] == "course" and e["code"] in END_SEQUENCE:
+                    where[e["code"]] = i
+
+        if len(set(where.values())) < len(where):
+            end_shared += 1
+
+        need = 0
+
+        for major in dif_majors:
+            if major == "":
+                continue
+
+            poid, index = major.split("|")
+            track = app.degrees[poid]["tracks"][int(index)]
+            t = parse_credits(track.get("total_hours"))
+
+            if t:
+                need = max(need, t[0])
+
+        have = sum(sem["hours"] for sem in plan_view)
+
+        if have < need:
+            under_total += 1
+            under_ex.append((dif_majors, dif_minors, have, need))
 
         if len(plan_view) > 8:
             long_plans += 1
@@ -103,7 +137,7 @@ for mode in ["fast", "balanced"]:
             elif reason == "unknown course":
                 unknown += 1
 
-        if minor_num > 0 and major_num == 0:
+        if minor_num > 0 and major_num == 1:
             no_minor_data = {
                 "major": dif_majors,
                 "minor": ["", "", ""],
@@ -130,11 +164,16 @@ for mode in ["fast", "balanced"]:
     print("unknown course:", unknown)
     print("duplicates:", dupes)
     print("minor lowered hours:", minor_drops)
+    print("end sequence shared:", end_shared)
+    print("under degree total:", under_total)
 
     for ex in crash_ex[:5]:
         print(ex)
 
     for ex in drop_ex[:5]:
+        print(ex)
+
+    for ex in under_ex[:5]:
         print(ex)
 
     for code, count in flagged_courses.most_common(10):

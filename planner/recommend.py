@@ -13,6 +13,11 @@ from planner.rules import (
     GENED_SETS,
     fits,
     typical_hours,
+    ns_done,
+    ns_next,
+    NS_SEQUENCES,
+    ns_labs_done,
+    ns_labs_next,
 )
 
 EARLIEST = {"HNRS 1010": 2}
@@ -194,7 +199,9 @@ def minor_courses(rule, planned, counts=None):
                 continue
 
             picks = minor_courses(child, planned, counts)
-            if is_satisfied(child, planned | set(picks), set()) is False or any(p not in courses for p in picks):
+            if is_satisfied(child, planned | set(picks), set()) is False or any(
+                p not in courses for p in picks
+            ):
                 continue
 
             hours = 0
@@ -352,6 +359,32 @@ def semester_codes(semester):
     return codes
 
 
+def is_ns_lecture(e):
+    if (
+        e["type"] == "slot"
+        and e["kind_info"]["kind"] == "gened"
+        and "Natural Sciences" in e["kind_info"]["categories"]
+        and "lab" not in e["description"].lower()
+    ):
+        return True
+
+    return False
+
+
+def is_strict_lab(e):
+    note = (e.get("note") or "").lower()
+
+    if (
+        e["type"] == "slot"
+        and e["kind_info"]["kind"] == "gened"
+        and "lab" in e["description"].lower()
+        and ("associated" in note or "corresponding" in note)
+    ):
+        return True
+
+    return False
+
+
 def place_course(plan, code, prior, max_hours=19, options=None, depth=0, earliest=1):
     if code not in courses:
         plan[-1].append({"type": "course", "code": code, "options": options or [code]})
@@ -410,6 +443,8 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0, earlies
                 e["type"] == "slot"
                 and e["kind_info"]["kind"] in ("free", "gened", "list", "subject")
                 and fits(code, e["kind_info"], e["description"])
+                and not is_ns_lecture(e)
+                and not is_strict_lab(e)
             ):
                 slot = e
                 break
@@ -541,7 +576,7 @@ def rebalance(plan, max_hours=19):
             to_move = None
 
             for e in reversed(semester):
-                if e["type"] != "slot":
+                if e["type"] != "slot" or e.get("keep_early"):
                     continue
 
                 clash = False
@@ -594,6 +629,7 @@ def rebalance(plan, max_hours=19):
                         and e["code"] not in needed
                         and e["code"] not in next_codes
                         and e["code"] not in same_needed
+                        and e["code"] not in END_SEQUENCE
                     ):
                         to_move = e
                         break
@@ -604,6 +640,7 @@ def rebalance(plan, max_hours=19):
                             e["type"] == "course"
                             and e["code"] not in needed
                             and e["code"] not in next_codes
+                            and e["code"] not in END_SEQUENCE
                         ):
                             to_move = e
                             break
@@ -683,11 +720,17 @@ def absorb_slots(plan, own_codes, prior):
     for semester in plan:
         keep = []
         for e in semester:
-            if e["type"] != "slot" or e["kind_info"]["kind"] not in (
-                "list",
-                "subject",
-                "free",
-                "gened",
+            if (
+                e["type"] != "slot"
+                or e["kind_info"]["kind"]
+                not in (
+                    "list",
+                    "subject",
+                    "free",
+                    "gened",
+                )
+                or is_ns_lecture(e)
+                or is_strict_lab(e)
             ):
                 keep.append(e)
                 continue
@@ -715,6 +758,88 @@ def absorb_slots(plan, own_codes, prior):
             else:
                 keep.append(e)
         semester[:] = keep
+
+    for m in range(len(own_codes)):
+        done = ns_done(all_codes)
+
+        ns_slots = []
+
+        for semester in plan:
+            for e in semester:
+                if is_ns_lecture(e) and e["major"] == m:
+                    ns_slots.append((semester, e))
+
+        for semester, e in ns_slots[:done]:
+            semester.remove(e)
+
+        if ns_slots[done:]:
+            suggestions = ns_next(all_codes)
+
+            if suggestions:
+                semester, e = ns_slots[done:][0]
+
+                e["description"] = (
+                    f"Natural Sciences - finish a sequence ({' or '.join(suggestions)}) (3)"
+                )
+
+                e["keep_early"] = True
+
+                semester.remove(e)
+
+                started = []
+
+                for first, seconds in NS_SEQUENCES.items():
+                    if any(s in suggestions for s in seconds):
+                        started.append(first)
+
+                target = 0
+
+                if not any(f in prior for f in started):
+                    for i, s in enumerate(plan):
+                        if any(f in semester_codes(s) for f in started):
+                            target = i + 1
+                            break
+
+                if target == len(plan):
+                    plan.append([])
+
+                plan[target].append(e)
+
+        lab_hours = ns_labs_done(all_codes)
+        lab_slots = []
+
+        for semester in plan:
+            for e in semester:
+                if is_strict_lab(e) and e["major"] == m:
+                    e["strict_lab"] = True
+                    lab_slots.append((semester, e))
+
+        for semester, e in lab_slots:
+            if lab_hours <= 0:
+                break
+
+            h = entry_hours(e)
+
+            if h <= lab_hours:
+                semester.remove(e)
+                lab_hours -= h
+            else:
+                e["credits"] = str(int(h - lab_hours))
+                lab_hours = 0
+
+        left_labs = []
+
+        for semester in plan:
+            for e in semester:
+                if is_strict_lab(e) and e["major"] == m:
+                    left_labs.append(e)
+
+        if left_labs:
+            lab_next = ns_labs_next(all_codes)
+
+            if lab_next:
+                e = left_labs[0]
+                e["description"] = f"Natural Sciences Lab - match your sequence ({' or '.join(lab_next)}) ({int(entry_hours(e))})"
 
 
 def remove_prior(plan, prior):
@@ -753,6 +878,9 @@ def compact(plan, prior, target=15, max_hours=19):
 
                 h = entry_hours(e)
                 if hours + h > max_hours:
+                    continue
+
+                if e.get("keep_early"):
                     continue
 
                 if e["type"] == "course":

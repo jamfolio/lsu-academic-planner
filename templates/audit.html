@@ -1,73 +1,77 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <h1>Degree Audit</h1>
-        {% if bad_prior %}
-            <h4>These didn't match any courses at LSU, and were therefore not counted:</h4>
-            <ul>
-                {% for p in bad_prior %}
-                    <li>{{ p }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {% if too_early %}
-            <h4>Courses placed too early:</h4>
-            <ul>
-                {% for msg in too_early %}
-                    <li>{{ msg }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {% for prog in programs %}
-            <h2>{{ prog.title }}</h2>
-            <ul>
-                {% for r in prog.rows %}
-                    <li>{{ r.mark }} {{ r.label }} ← {{ r.filled_by }}</li>
-                {% endfor %}
-            </ul>
-            <h3>Total Hours</h3>
-            <ul>
-                {% if prog.total %}
-                    <li>{{ prog.total.have }} / {{ prog.total.needed }} {% if prog.total.done %}✓{% endif %}</li>
-                {% else %}
-                    <li>No total listed for this track</li>
-                {% endif %}
-            </ul>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Audit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Degree Audit</h1>
+    {% if bad_prior %}
+    <h4>These didn't match any courses at LSU, and were therefore not counted:</h4>
+    <ul>
+        {% for p in bad_prior %}
+        <li>{{ p }}</li>
         {% endfor %}
-        <h2>Minors</h2>
-        <ul>
-            {% for m in minor_results %}
-                <li>
-                    {{ m.title }}: {{ m.status }}
-                    <ul>
-                        {% for r in m.rows %}
-                            <li>{{ r.mark }} {{ r.label }} ← {{ r.filled_by }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% else %}
-                <li>No minors selected</li>
-            {% endfor %}
-        </ul>
-        <h2>Prerequisite Problems</h2>
-        <ul>
-            {% for p in prereq_problems %}
-                <li>Semester {{ p[0] }}: {{ p[1] }} - {{ p[2] }}</li>
-            {% else %}
-                <li>No problems</li>
-            {% endfor %}
-        </ul>
-        <h2>Hours</h2>
-        <ul>
-            {% for hour in hours %}
-                <li>Semester {{ hour[0] }}: {{ hour[1] }} hours, {{ hour[2] }}</li>
-            {% else %}
-                <li>Hours are sufficient</li>
-            {% endfor %}
-        </ul>
-    </body>
+    </ul>
+    {% endif %}
+    {% if too_early %}
+    <h4>Courses placed too early:</h4>
+    <ul>
+        {% for msg in too_early %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% for prog in programs %}
+    <h2>{{ prog.title }}</h2>
+    <ul>
+        {% for r in prog.rows %}
+        <li>{{ r.mark }} {{ r.label }} ← {{ r.filled_by }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Total Hours</h3>
+    <ul>
+        {% if prog.total %}
+        <li>{{ prog.total.have }} / {{ prog.total.needed }} {% if prog.total.done %}✓{% endif %}</li>
+        {% else %}
+        <li>No total listed for this track</li>
+        {% endif %}
+    </ul>
+    {% endfor %}
+    <h2>Minors</h2>
+    <ul>
+        {% for m in minor_results %}
+        <li>
+            {{ m.title }}: {{ m.status }}
+            <ul>
+                {% for r in m.rows %}
+                <li>{{ r.mark }} {{ r.label }} ← {{ r.filled_by }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% else %}
+        <li>No minors selected</li>
+        {% endfor %}
+    </ul>
+    <h2>Prerequisite Problems</h2>
+    <ul>
+        {% for p in prereq_problems %}
+        <li>Semester {{ p[0] }}: {{ p[1] }} - {{ p[2] }}</li>
+        {% else %}
+        <li>No problems</li>
+        {% endfor %}
+    </ul>
+    <h2>Hours</h2>
+    <ul>
+        {% for hour in hours %}
+        <li>Semester {{ hour[0] }}: {{ hour[1] }} hours, {{ hour[2] }}</li>
+        {% else %}
+        <li>Hours are sufficient</li>
+        {% endfor %}
+    </ul>
+</body>
+
 </html>

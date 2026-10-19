@@ -19,6 +19,10 @@ from planner.rules import (
     family_name,
     TWINS,
     can_take,
+    ns_done,
+    ns_next,
+    ns_labs_next,
+    ns_labs_done,
 )
 from planner.recommend import (
     recommended_plan,
@@ -314,10 +318,17 @@ def home():
 
         plans = []
         own_codes = []
+        totals = []
 
         for n, choice in enumerate(clean_choices(selected_majors)):
             poid, index = choice.split("|")
             track = degrees[poid]["tracks"][int(index)]
+
+            t = parse_credits(track.get("total_hours"))
+
+            if t:
+                totals.append(t[0])
+
             major_plan = recommended_plan(track, n)
 
             if use_hnrs:
@@ -590,6 +601,38 @@ def home():
                     planned.update(semester_codes(semester))
 
         absorb_slots(plan, own_codes, prior)
+
+        target = max(totals) if totals else 0
+
+        have = 0
+
+        for semester in plan:
+            for e in semester:
+                have += entry_hours(e)
+
+        for c in prior:
+            have += course_hours(c)
+
+        gap = target - have
+
+        while gap > 0:
+            piece = min(3, gap)
+
+            plan[-1].append(
+                {
+                    "type": "slot",
+                    "description": f"Free Elective ({int(piece)})",
+                    "credits": str(int(piece)),
+                    "section": "free",
+                    "major": 0,
+                    "kind_info": {"kind": "free"},
+                    "note": None,
+                    "footnote": None,
+                }
+            )
+
+            gap -= piece
+
         compact(plan, prior)
         rebalance(plan)
 
@@ -928,6 +971,23 @@ def live_check():
     problems = check_plan(plan, prior, courses, extra=slot_hours)
     problems += too_early_problems(plan)
 
+    all_codes = set(prior)
+
+    for semester in plan:
+        all_codes.update(semester)
+
+    ns = {
+        "done": ns_done(all_codes),
+        "next": ns_next(all_codes),
+        "labs_next": ns_labs_next(all_codes),
+    }
+
+    if ns["done"] >= 3:
+        ns["next"] = []
+
+    if ns_labs_done(all_codes) >= 2:
+        ns["labs_next"] = []
+
     result = []
 
     for semester, code, reason in problems:
@@ -950,7 +1010,7 @@ def live_check():
             }
         )
 
-    return jsonify(result)
+    return jsonify({"problems": result, "ns": ns})
 
 
 if __name__ == "__main__":
