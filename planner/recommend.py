@@ -70,18 +70,42 @@ def recommended_plan(track, major=0):
                             slot_base(item["description"], item["credits"])
                         )
 
-                    items.append(
-                        {
-                            "type": "slot",
-                            "description": item["description"],
-                            "credits": item["credits"],
-                            "section": section,
-                            "major": major,
-                            "kind_info": kind_info,
-                            "note": notes.get(item.get("footnote")),
-                            "footnote": item.get("footnote"),
-                        }
-                    )
+                    credits = parse_credits(item["credits"])
+                    hours = int(credits[0]) if credits else 3
+
+                    if hours < 6:
+                        items.append(
+                            {
+                                "type": "slot",
+                                "description": item["description"],
+                                "credits": item["credits"],
+                                "section": section,
+                                "major": major,
+                                "kind_info": kind_info,
+                                "note": notes.get(item.get("footnote")),
+                                "footnote": item.get("footnote"),
+                            }
+                        )
+                    else:
+                        n = hours // 3
+                        extra = hours % 3
+
+                        for k in range(n):
+                            piece = 4 if k < extra else 3
+
+                            items.append(
+                                {
+                                    "type": "slot",
+                                    "description": item["description"],
+                                    "section": section,
+                                    "major": major,
+                                    "kind_info": kind_info,
+                                    "note": notes.get(item.get("footnote")),
+                                    "footnote": item.get("footnote"),
+                                    "credits": str(piece),
+                                }
+                            )
+
                     chain = None
                     continue
 
@@ -501,6 +525,7 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0, earlies
                             if (
                                 other["type"] == "slot"
                                 and other["kind_info"] == e["kind_info"]
+                                and other["description"] != e["description"]
                             ):
                                 clash = True
 
@@ -591,6 +616,7 @@ def rebalance(plan, max_hours=19):
                         if (
                             other["type"] == "slot"
                             and other["kind_info"] == e["kind_info"]
+                            and other["description"] != e["description"]
                         ):
                             clash = True
                             break
@@ -913,6 +939,7 @@ def compact(plan, prior, target=15, max_hours=19):
                             if (
                                 other["type"] == "slot"
                                 and other["kind_info"] == e["kind_info"]
+                                and other["description"] != e["description"]
                             ):
                                 blocked = True
                                 break
