@@ -154,10 +154,10 @@ NS_SEQUENCES = {
     "PHSC 1001": ["PHSC 1002"],
     "GEOL 1001": ["GEOL 1003"],
     "GEOL 1201": ["GEOL 1202"],
+    "ASTR 1101": ["ASTR 1102"],
 }
 
 POSSIBLE_SEQUENCES = {
-    "ASTR 1101": ["ASTR 1102"],
     "GEOL 1001": ["GEOL 2020"],
     "GEOL 1002": ["GEOL 2020"],
     "HORT 2050": ["HORT 2061"],
@@ -383,10 +383,13 @@ def ns_area(code):
         return "physical"
 
 
-def ns_done(codes):
+def ns_done(codes, allowed=None):
     ns = set()
 
     for code in codes:
+        if allowed is not None and code not in allowed:
+            continue
+
         if code in GENED_SETS["Natural Sciences"]:
             ns.add(code)
 
@@ -412,10 +415,13 @@ def ns_done(codes):
     return best
 
 
-def ns_next(codes):
+def ns_next(codes, allowed=None):
     ns = set()
 
     for code in codes:
+        if allowed is not None and code not in allowed:
+            continue
+
         if code in GENED_SETS["Natural Sciences"]:
             ns.add(code)
 
@@ -937,6 +943,12 @@ def classify_slot(desc):
             exclude.append("GEOG")
             min_level = 2000
 
+        if min_level is None:
+            level = re.search(r"([1-4])000", lower)
+
+            if level is not None:
+                min_level = int(level.group(1)) * 1000
+
         if categories:
             return {
                 "kind": "gened",
@@ -1122,6 +1134,23 @@ def audit_strict_lab(slot, track):
     return False
 
 
+def ns_allowed(track):
+    for footnote in track["footnotes"].values():
+        if "[life science]" not in footnote.lower():
+            continue
+
+        codes = re.findall(r"[A-Z]+ \d{4}", footnote)
+        allowed = set(codes)
+
+        for code in codes:
+            if code in NS_SEQUENCES:
+                allowed.update(NS_SEQUENCES[code])
+
+        return allowed
+    return None
+
+
+
 def audit(plan, prior, track, gened_sets):
     reqs = build_requirements(track)
 
@@ -1251,7 +1280,8 @@ def audit(plan, prior, track, gened_sets):
             )
 
         if kind == "gened":
-            covered = ns_done(available) * 3
+            allowed = ns_allowed(track)
+            covered = ns_done(available, allowed) * 3
 
             seq_codes = set().union(NS_SEQUENCES)
 
@@ -1265,6 +1295,7 @@ def audit(plan, prior, track, gened_sets):
                 and c in GENED_SETS["Natural Sciences"]
                 and c in seq_codes
                 and not is_lab(c)
+                and (allowed is None or c in allowed)
             ]
 
             others = [
@@ -1274,6 +1305,7 @@ def audit(plan, prior, track, gened_sets):
                 and c in GENED_SETS["Natural Sciences"]
                 and c not in seq_codes
                 and not is_lab(c)
+                and (allowed is None or c in allowed)
             ]
 
             ns_courses = seq_first + others

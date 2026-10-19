@@ -23,6 +23,7 @@ from planner.rules import (
     ns_next,
     ns_labs_next,
     ns_labs_done,
+    ns_allowed,
 )
 from planner.recommend import (
     recommended_plan,
@@ -317,12 +318,14 @@ def home():
         )
 
         plans = []
+        tracks = []
         own_codes = []
         totals = []
 
         for n, choice in enumerate(clean_choices(selected_majors)):
             poid, index = choice.split("|")
             track = degrees[poid]["tracks"][int(index)]
+            tracks.append(track)
 
             t = parse_credits(track.get("total_hours"))
 
@@ -600,7 +603,7 @@ def home():
                 for semester in plan:
                     planned.update(semester_codes(semester))
 
-        absorb_slots(plan, own_codes, prior)
+        absorb_slots(plan, own_codes, prior, tracks)
 
         target = max(totals) if totals else 0
 
@@ -976,9 +979,16 @@ def live_check():
     for semester in plan:
         all_codes.update(semester)
 
+    allowed = None
+    choice = body.get("major")
+
+    if choice:
+        poid, index = choice.split("|")
+        allowed = ns_allowed(degrees[poid]["tracks"][int(index)])
+
     ns = {
-        "done": ns_done(all_codes),
-        "next": ns_next(all_codes),
+        "done": ns_done(all_codes, allowed),
+        "next": ns_next(all_codes, allowed),
         "labs_next": ns_labs_next(all_codes),
     }
 

@@ -562,7 +562,7 @@ function checkPrereqs() {
   let data = collectPlan()
 
   let priorBox = document.querySelector('[name="prior"]').value
-  fetch("/check_plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan: data.plan, prior: priorBox, slot_hours: data.slotHours }) }).then(r => r.json()).then(data => {
+  fetch("/check_plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan: data.plan, prior: priorBox, slot_hours: data.slotHours, major: document.querySelector('select[name="major"]').value }) }).then(r => r.json()).then(data => {
     let problems = data.problems
 
     if (mine !== checkCount) {

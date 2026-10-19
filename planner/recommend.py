@@ -18,6 +18,7 @@ from planner.rules import (
     NS_SEQUENCES,
     ns_labs_done,
     ns_labs_next,
+    ns_allowed
 )
 
 EARLIEST = {"HNRS 1010": 2}
@@ -702,7 +703,7 @@ def rebalance(plan, max_hours=19):
         i += 1
 
 
-def absorb_slots(plan, own_codes, prior):
+def absorb_slots(plan, own_codes, prior, tracks=None):
     all_codes = []
 
     for semester in plan:
@@ -760,7 +761,8 @@ def absorb_slots(plan, own_codes, prior):
         semester[:] = keep
 
     for m in range(len(own_codes)):
-        done = ns_done(all_codes)
+        allowed = ns_allowed(tracks[m]) if tracks else None
+        done = ns_done(all_codes, allowed)
 
         ns_slots = []
 
@@ -773,7 +775,7 @@ def absorb_slots(plan, own_codes, prior):
             semester.remove(e)
 
         if ns_slots[done:]:
-            suggestions = ns_next(all_codes)
+            suggestions = ns_next(all_codes, allowed)
 
             if suggestions:
                 semester, e = ns_slots[done:][0]
