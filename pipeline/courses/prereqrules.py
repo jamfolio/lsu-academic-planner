@@ -69,7 +69,7 @@ def parse_prereq(text):
     return core
 
 
-with open("courses/courses.json", "r", encoding="utf-8") as f:
+with open("pipeline/courses/courses.json", "r", encoding="utf-8") as f:
     courses = json.load(f)
 
 total_prereqs = 0
@@ -97,7 +97,7 @@ for code, course in courses.items():
 
     course["prereq_rule"] = rule
 
-with open("courses/courseswithrules.json", "w", encoding="utf-8") as f:
+with open("pipeline/courses/courseswithrules.json", "w", encoding="utf-8") as f:
     json.dump(courses, f, ensure_ascii=False, indent=2)
 
 print(handled, "of", total_prereqs)

@@ -1088,6 +1088,12 @@ def slot_kind(slot, track):
     kind_info = classify_slot(slot["description"])
     fn = slot.get("footnote")
 
+    if kind_info["kind"] == "unknown" and (fn is None or fn not in track["footnotes"]):
+        the_fam = family_name(slot_base(slot["description"], slot.get("credits")))
+
+        if the_fam == track["name"]:
+            fn = track.get("concentration_fn")
+
     if kind_info["kind"] == "unknown" and fn is not None and fn in track["footnotes"]:
         text = track["footnotes"][fn]
         codes = re.findall(r"[A-Z]+ \d{4}(?![-/]|\s*-?\s*[Ll]evel)", text)

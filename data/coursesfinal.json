@@ -120924,5 +120924,147 @@
     ],
     "description": "Provides students with an overview of ecological and biological aspects of toxicology. Emphasizes the biochemical and physiological effects of pollutants on animals, effects on wildlife and fisheries population dynamics, modeling, as well as, techniques applied in wildlife and fisheries toxicology studies.",
     "prereq_rule": null
+  },
+  "CHEM 3151": {
+    "code": "CHEM 3151",
+    "title": "Forensic Chemistry",
+    "credits": "3",
+    "prereq": "A grade of C- or better in CHEM 1103, CHEM 1202, or CHEM 1422.",
+    "coreq": null,
+    "equivalent_courses": [],
+    "restricted_credits": [],
+    "repeatable": [],
+    "other": [],
+    "description": "The role of chemistry in modern forensic science with emphasis on the chemical methods and techniques used in criminalistics within the context of case studies based on real crimes.",
+    "prereq_rule": {
+      "or": [
+        {
+          "course": "CHEM 1103"
+        },
+        {
+          "course": "CHEM 1202"
+        },
+        {
+          "course": "CHEM 1422"
+        }
+      ]
+    }
+  },
+  "CHEM 3571": {
+    "code": "CHEM 3571",
+    "title": "Inorganic Chemistry Laboratory",
+    "credits": "1",
+    "prereq": "a grade of C- or better in CHEM 2364 or CHEM 2463 and credit or registration in CHEM 3570.",
+    "coreq": null,
+    "equivalent_courses": [],
+    "restricted_credits": [],
+    "repeatable": [],
+    "other": [
+      "3 hrs. lab."
+    ],
+    "description": "An introduction into inorganic chemistry laboratory with an emphasis on synthesis and characterization of inorganic and organometallic compounds using modern analytical instrumentations.",
+    "prereq_rule": {
+      "and": [
+        {
+          "or": [
+            {
+              "course": "CHEM 2364"
+            },
+            {
+              "course": "CHEM 2463"
+            }
+          ]
+        },
+        {
+          "course": "CHEM 3570",
+          "concurrent": true
+        }
+      ],
+      "source": "llm"
+    }
+  },
+  "EE 1820": {
+    "code": "EE 1820",
+    "title": "Introduction to Electrical and Computer Engineering",
+    "credits": "2",
+    "prereq": null,
+    "coreq": null,
+    "equivalent_courses": [],
+    "restricted_credits": [],
+    "repeatable": [],
+    "other": [
+      "1 hr. lecture, 2 hrs. lab."
+    ],
+    "description": "Survey of concepts and skills needed to succeed in electrical and computer engineering.  Introduction to basic processes of engineering design.",
+    "prereq_rule": null
+  },
+  "EE 2820": {
+    "code": "EE 2820",
+    "title": "Introduction to Electrical & Computer Engineering Design",
+    "credits": "2",
+    "prereq": "EE 1820, CSC 1253.",
+    "coreq": null,
+    "equivalent_courses": [],
+    "restricted_credits": [],
+    "repeatable": [],
+    "other": [
+      "1 hr. lecture, 2 hrs. lab."
+    ],
+    "description": "Introduction to engineering design process for electrical and computer engineering students.",
+    "prereq_rule": {
+      "and": [
+        {
+          "course": "EE 1820"
+        },
+        {
+          "course": "CSC 1253"
+        }
+      ]
+    }
+  },
+  "EXST 4151": {
+    "code": "EXST 4151",
+    "title": "Bayesian Data Analysis",
+    "credits": "3",
+    "prereq": "EXST 4050 or MATH 3355 and EXST 3201.",
+    "coreq": null,
+    "equivalent_courses": [],
+    "restricted_credits": [],
+    "repeatable": [],
+    "other": [],
+    "description": "Introduction to Bayesian statistical methods and their application in fields such as agriculture, biology, engineering, finance, and medicine; topics include non-informative, conjugate and elicited priors; posterior development; common single and multiple parameter models such as binomial, normal, Poisson, and exponential; hierarchical models; hypothesis testing and credible sets; posterior simulation via Markov Chain Monte Carlo; and perfomance of Bayesian procedures.",
+    "prereq_rule": {
+      "and": [
+        {
+          "or": [
+            {
+              "course": "EXST 4050"
+            },
+            {
+              "course": "MATH 3355"
+            }
+          ]
+        },
+        {
+          "course": "EXST 3201"
+        }
+      ],
+      "source": "llm"
+    }
+  },
+  "FESA 2117": {
+    "code": "FESA 2117",
+    "title": "Essential Construction Applications",
+    "credits": "3",
+    "prereq": null,
+    "coreq": null,
+    "equivalent_courses": [],
+    "restricted_credits": [
+      "Credit will not be given for this course and CONE 1112."
+    ],
+    "repeatable": [],
+    "other": [],
+    "description": "A comprehensive understanding of construction materials and techniques in influencing fire behavior, emergency response, and building safety. Included are the characteristics of various building materials, related construction methods, and plan reading. Covered also are the mitigation of fire risks, evaluating building codes and regulations, and implementing effective emergency response plans.",
+    "prereq_rule": null
   }
 }

@@ -5,13 +5,13 @@ import json
 
 courses = {}
 
-os.makedirs("courses", exist_ok=True)
+os.makedirs("pipeline/courses", exist_ok=True)
 
-for filename in os.listdir("pages"):
+for filename in sorted(os.listdir("raw/pages")):
     if not filename.endswith(".html"):
         continue
 
-    with open(f"pages/{filename}", "r", encoding="utf-8") as f:
+    with open(f"raw/pages/{filename}", "r", encoding="utf-8") as f:
         html = f.read()
 
     soup = BeautifulSoup(html, "html.parser")
@@ -147,7 +147,7 @@ for filename in os.listdir("pages"):
             "description": description,
         }
 
-with open("courses/courses.json", "w", encoding="utf-8") as f:
+with open("pipeline/courses/courses.json", "w", encoding="utf-8") as f:
     json.dump(courses, f, ensure_ascii=False, indent=2)
 
 print(len(courses))

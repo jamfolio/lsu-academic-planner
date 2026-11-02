@@ -73,7 +73,7 @@ def following_lists(p):
 
 degree_programs = {}
 
-for filename in os.listdir(PROGRAMS_FOLDER):
+for filename in sorted(os.listdir(PROGRAMS_FOLDER)):
     if not filename.endswith(".html"):
         continue
 

@@ -180,6 +180,7 @@ for program in degrees.values():
         for number, parts in program.get("footnote_sections", {}).items():
             if track["name"] in parts:
                 track["footnotes"][number] = parts[track["name"]]
+                track["concentration_fn"] = number
 
         for semester in track["semesters"]:
             for item in semester["items"]:

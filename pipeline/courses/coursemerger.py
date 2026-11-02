@@ -1,12 +1,12 @@
 import json
 
-with open("courses/courseswithrules.json", "r", encoding="utf-8") as f:
+with open("pipeline/courses/courseswithrules.json", "r", encoding="utf-8") as f:
     course_rules = json.load(f)
 
-with open("courses/llmrules.json", "r", encoding="utf-8") as f:
+with open("pipeline/courses/llmrules.json", "r", encoding="utf-8") as f:
     llm_rules = json.load(f)
 
-with open("courses/manualprereqfixes.json", "r", encoding="utf-8") as f:
+with open("pipeline/courses/manualprereqfixes.json", "r", encoding="utf-8") as f:
     manual_fixes = json.load(f)
 
 bad = {
@@ -51,7 +51,7 @@ for code, rule in manual_fixes.items():
 
     course_rules[code]["prereq_rule"] = rule
 
-with open("courses/coursesfinal.json", "w", encoding="utf-8") as f:
+with open("data/coursesfinal.json", "w", encoding="utf-8") as f:
     json.dump(course_rules, f, ensure_ascii=False, indent=2)
 
 print(prereqs_merged)

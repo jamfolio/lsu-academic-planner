@@ -35,11 +35,11 @@ instructions = """Convert course prerequisite text into JSON rules.
    Now convert this:
    Text: """
 
-with open("courses/courseswithrules.json", "r", encoding="utf-8") as f:
+with open("pipeline/courses/courseswithrules.json", "r", encoding="utf-8") as f:
     courses = json.load(f)
 
-if os.path.exists("courses/llmrules.json"):
-    with open("courses/llmrules.json", "r", encoding="utf-8") as f:
+if os.path.exists("pipeline/courses/llmrules.json"):
+    with open("pipeline/courses/llmrules.json", "r", encoding="utf-8") as f:
         results = json.load(f)
 else:
     results = {}
@@ -90,10 +90,10 @@ for code, course in tqdm(todo):
     results[code] = new_rule
 
     if len(results) % 25 == 0:
-        with open("courses/llmrules.json", "w", encoding="utf-8") as f:
+        with open("pipeline/courses/llmrules.json", "w", encoding="utf-8") as f:
             json.dump(results, f, ensure_ascii=False, indent=2)
 
-with open("courses/llmrules.json", "w", encoding="utf-8") as f:
+with open("pipeline/courses/llmrules.json", "w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=2)
 
 print(len(results))

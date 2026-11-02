@@ -8,10 +8,19 @@ from tqdm import tqdm
 
 headers = {"User-Agent": "LSU academic planner student project"}
 
-os.makedirs("pages", exist_ok=True)
+EXTRA_IDS = [236832, 236845, 236908, 236916, 236929, 236933]
 
-for coid in tqdm(range(227992, 234500)):
-    path = f"pages/{coid}.html"
+FULL_SWEEP = False
+
+os.makedirs("raw/pages", exist_ok=True)
+
+if FULL_SWEEP:
+    coids = list(range(227992, 234500)) + EXTRA_IDS
+else:
+    coids = EXTRA_IDS
+
+for coid in tqdm(coids):
+    path = f"raw/pages/{coid}.html"
     if os.path.exists(path):
         continue
 
@@ -53,4 +62,4 @@ for coid in tqdm(range(227992, 234500)):
         f.write(html)
 
 
-print(len(os.listdir("pages")), "pages saved")
+print(len(os.listdir("raw/pages")), "pages saved")

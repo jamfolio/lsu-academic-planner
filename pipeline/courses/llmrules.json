@@ -21868,5 +21868,106 @@
   "PSYC 7999": {
     "other": "graduate standing in psychology",
     "source": "llm"
+  },
+  "EE 4810": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "EE 2820"
+          },
+          {
+            "course": "EE 3610"
+          },
+          {
+            "course": "EE 3752"
+          }
+        ]
+      },
+      {
+        "other": "senior standing in the College of Engineering"
+      },
+      {
+        "or": [
+          {
+            "course": "EE 3160"
+          },
+          {
+            "course": "EE 3220"
+          },
+          {
+            "course": "EE 3410"
+          },
+          {
+            "course": "EE 3530"
+          },
+          {
+            "course": "EE 3755"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "EE 2120": {
+    "or": [
+      {
+        "course": "EE 1820",
+        "concurrent": true
+      },
+      {
+        "course": "MATH 2070",
+        "concurrent": true
+      },
+      {
+        "and": [
+          {
+            "course": "PHYS 2113",
+            "concurrent": true
+          },
+          {
+            "consent": "division"
+          }
+        ]
+      }
+    ],
+    "source": "llm"
+  },
+  "CHEM 3571": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "CHEM 2364"
+          },
+          {
+            "course": "CHEM 2463"
+          }
+        ]
+      },
+      {
+        "course": "CHEM 3570",
+        "concurrent": true
+      }
+    ],
+    "source": "llm"
+  },
+  "EXST 4151": {
+    "and": [
+      {
+        "or": [
+          {
+            "course": "EXST 4050"
+          },
+          {
+            "course": "MATH 3355"
+          }
+        ]
+      },
+      {
+        "course": "EXST 3201"
+      }
+    ],
+    "source": "llm"
   }
 }
