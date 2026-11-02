@@ -430,15 +430,27 @@ function updateHonorsBox() {
   let hnrsLabel = document.getElementById("hnrs-label");
   let minorDropdown = document.querySelectorAll('select[name="minor"]');
 
-  let found = false
+  let honorsSelect = null
 
   for (let select of minorDropdown) {
-    if (select.selectedOptions[0].dataset.honors) {
-      found = true
+    if (select.selectedOptions[0].dataset.honors && honorsSelect == null) {
+      honorsSelect = select
     }
   }
 
-  hnrsLabel.hidden = !found
+  hnrsLabel.hidden = !honorsSelect
+
+  minorDropdown.forEach((dropdown) => {
+    for (let option of dropdown.options) {
+      if (option.dataset.honors) {
+        if (honorsSelect != null && dropdown !== honorsSelect) {
+          option.disabled = true
+        } else {
+          option.disabled = false
+        }
+      }
+    }
+  })
 }
 
 updateHonorsBox();

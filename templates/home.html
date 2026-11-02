@@ -38,6 +38,9 @@
             <input type="checkbox" name="hnrs" {% if hnrs_checkbox %}checked{% endif %} />
             Use honors sections (MATH 1551, PSYC 2001, etc.)
         </label>
+        {% if honors_notice %}
+        <p>{{ honors_notice }}</p>
+        {% endif %}
         {% for info in major_info %}
         <details class="major_info">
             <summary>

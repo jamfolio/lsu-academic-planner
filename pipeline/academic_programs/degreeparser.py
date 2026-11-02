@@ -8,6 +8,69 @@ OUTPUT_FILE = "data/degrees.json"
 
 FOOTNOTE_START = re.compile(r"^(\d+)\s*[–-]\s*(.*)")
 
+FOLLOW_TAGS = {"p", "ul", "ol", "h4", "h5", "h6"}
+HEADING_TAGS = {"h4", "h5", "h6"}
+
+
+def clean_text(text):
+    text = re.sub(r"\s+", " ", text.replace("\xa0", " "))
+    text = re.sub(r" ([.,;:])", r"\1", text)
+    return text.strip()
+
+
+def starts_with_footnote(p):
+    for child in p.descendants:
+        if getattr(child, "name", None) == "sup":
+            return child.get_text(strip=True).isdigit()
+
+        if isinstance(child, str) and child.strip():
+            return False
+
+    return False
+
+
+def follow_footnote(p):
+    extra = []
+    sections = {}
+    heading = None
+
+    for sib in p.find_next_siblings():
+        if sib.name not in FOLLOW_TAGS:
+            break
+
+        text = clean_text(sib.get_text(" ", strip=True))
+
+        if not text:
+            continue
+
+        if sib.name == "p" and (
+            starts_with_footnote(sib) or FOOTNOTE_START.match(text)
+        ):
+            break
+
+        extra.append(text)
+
+        if sib.name in HEADING_TAGS:
+            heading = text
+            sections[heading] = ""
+        elif heading is not None:
+            sections[heading] = (sections[heading] + " " + text).strip()
+
+    return " ".join(extra), sections
+
+
+def following_lists(p):
+    text = ""
+
+    for sib in p.find_next_siblings():
+        if sib.name not in ("ul", "ol"):
+            break
+
+        text += " " + clean_text(sib.get_text(" ", strip=True))
+
+    return text
+
+
 degree_programs = {}
 
 for filename in os.listdir(PROGRAMS_FOLDER):
@@ -226,14 +289,17 @@ for filename in os.listdir(PROGRAMS_FOLDER):
             if m and current_track is not None:
                 last_fn = m.group(1)
                 current_track["footnotes"][last_fn] = m.group(2)
+                current_track["footnotes"][last_fn] += following_lists(p)
 
             elif last_fn is not None and current_track is not None:
                 current_track["footnotes"][last_fn] += " " + text
+                current_track["footnotes"][last_fn] += following_lists(p)
 
             else:
                 target["notes"].append(text)
 
     program["footnotes"] = {}
+    program["footnote_sections"] = {}
 
     for p in soup.find_all("p"):
         if p.find("sup") is None:
@@ -252,6 +318,17 @@ for filename in os.listdir(PROGRAMS_FOLDER):
                 if child.parent.name == "sup":
                     continue
                 program["footnotes"][number] += child
+
+        if number is None or not starts_with_footnote(p):
+            continue
+
+        extra, sections = follow_footnote(p)
+
+        if extra:
+            program["footnotes"][number] += " " + extra
+
+        if sections:
+            program["footnote_sections"][number] = sections
 
     for number, text in program["footnotes"].items():
         text = re.sub(r"\s+", " ", text.replace("\xa0", " "))

@@ -311,7 +311,7 @@ def slot_base(description, credits):
     base = description.rstrip("*").strip()
     base = re.sub(r"\s*\(\d+(?:\.\d+)?(?:-\d+)?\)\s*$", "", base)
 
-    if base.endswith("Electives"):
+    if base.endswith("Electives") or base.endswith("Courses"):
         base = base[:-1]
 
     base = base.split(":")[0].strip()
@@ -517,9 +517,12 @@ def is_satisfied(rule, taken, current, hours_before=None):
             return True
 
     elif "or" in rule:
+        has_course = any("course" in c for c in rule["or"] if isinstance(c, dict))
         seen_none = False
 
         for child in rule["or"]:
+            if has_course and "equivalent" in child:
+                continue
             result = is_satisfied(child, taken, current, hours_before)
 
             if result is True:
@@ -775,8 +778,87 @@ def can_take(rule, taken, current, hours_before=None):
         return False
 
 
+def rule_codes(rule):
+    if not isinstance(rule, dict):
+        return set()
+
+    codes = set()
+
+    if "course" in rule:
+        codes.add(rule["course"])
+
+    for key in ("and", "or"):
+        if key in rule:
+            for child in rule[key]:
+                codes |= rule_codes(child)
+
+    return codes
+
+
+def hard_needs(rule, planned):
+    if not isinstance(rule, dict):
+        return set()
+
+    if "course" in rule:
+        if rule["course"] in planned:
+            return {(rule["course"], not rule.get("concurrent"))}
+
+        return set()
+
+    found = set()
+
+    if "and" in rule:
+        for child in rule["and"]:
+            found |= hard_needs(child, planned)
+
+        return found
+
+    if "or" in rule:
+        for child in rule["or"]:
+            if not isinstance(child, dict) or not (
+                "course" in child or "and" in child or "or" in child
+            ):
+                return set()
+
+        for child in rule["or"]:
+            found |= hard_needs(child, planned)
+
+        return found
+
+    return set()
+
+
+def in_loop(code, planned):
+    stack = list(hard_needs(courses.get(code, {}).get("prereq_rule"), planned))
+
+    seen = set()
+
+    while stack:
+        c, strict = stack.pop()
+
+        if c == code:
+            if strict:
+                return True
+            continue
+
+        if (c, strict) in seen:
+            continue
+
+        seen.add((c, strict))
+
+        for n, s2 in hard_needs(courses.get(c, {}).get("prereq_rule"), planned):
+            stack.append((n, strict or s2))
+
+    return False
+
+
 def check_plan(plan, prior, courses, extra=None):
     taken = set(prior)
+
+    everything = set(prior)
+
+    for s in plan:
+        everything.update(s)
 
     problems = []
 
@@ -796,7 +878,10 @@ def check_plan(plan, prior, courses, extra=None):
             rule = courses[code]["prereq_rule"]
 
             if can_take(rule, taken, current, hours) is False:
-                problems.append((i + 1, code, "prereqs not met"))
+                if in_loop(code, everything):
+                    problems.append((i + 1, code, "catalog conflict"))
+                else:
+                    problems.append((i + 1, code, "prereqs not met"))
 
         taken.update(semester)
 
@@ -1148,7 +1233,6 @@ def ns_allowed(track):
 
         return allowed
     return None
-
 
 
 def audit(plan, prior, track, gened_sets):

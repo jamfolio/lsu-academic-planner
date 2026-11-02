@@ -18,7 +18,9 @@ from planner.rules import (
     NS_SEQUENCES,
     ns_labs_done,
     ns_labs_next,
-    ns_allowed
+    ns_allowed,
+    rule_codes,
+    in_loop,
 )
 
 EARLIEST = {"HNRS 1010": 2}
@@ -525,7 +527,8 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0, earlies
                             if (
                                 other["type"] == "slot"
                                 and other["kind_info"] == e["kind_info"]
-                                and other["description"] != e["description"]
+                                and slot_base(other["description"], None)
+                                != slot_base(e["description"], None)
                             ):
                                 clash = True
 
@@ -589,6 +592,71 @@ def place_course(plan, code, prior, max_hours=19, options=None, depth=0, earlies
     )
 
 
+def push_later(plan, i, e, seen=None):
+    if seen is None:
+        seen = set()
+
+    if e["code"] in seen:
+        return
+
+    seen.add(e["code"])
+
+    plan[i].remove(e)
+
+    if i + 1 == len(plan):
+        plan.append([])
+
+    plan[i + 1].insert(0, e)
+
+    for k in (i, i + 1):
+        for d in list(plan[k]):
+            if d is e or d["type"] != "course":
+                continue
+
+            if e["code"] in rule_codes(courses.get(d["code"], {}).get("prereq_rule")):
+                push_later(plan, k, d, seen)
+
+
+def fix_order(plan, prior):
+    everything = set(prior)
+
+    for semester in plan:
+        everything.update(semester_codes(semester))
+
+    for _ in range(200):
+        taken_before = set(prior)
+        hours_before = sum(course_hours(c) for c in prior)
+
+        bad = None
+        for i, semester in enumerate(plan):
+            current = semester_codes(semester)
+
+            for e in semester:
+                if e["type"] != "course" or e["code"] in END_SEQUENCE:
+                    continue
+
+                rule = courses.get(e["code"], {}).get("prereq_rule")
+
+                if (
+                    can_take(rule, taken_before, current, hours_before) is False
+                    and can_take(rule, everything - {e["code"]}, set()) is not False
+                    and not in_loop(e["code"], everything)
+                ):
+                    bad = (i, e)
+                    break
+
+            if bad:
+                break
+
+            taken_before |= current
+            hours_before += sum(entry_hours(x) for x in semester)
+
+        if bad is None:
+            return
+
+        push_later(plan, bad[0], bad[1])
+
+
 def rebalance(plan, max_hours=19):
     i = 0
     while i < len(plan):
@@ -616,7 +684,8 @@ def rebalance(plan, max_hours=19):
                         if (
                             other["type"] == "slot"
                             and other["kind_info"] == e["kind_info"]
-                            and other["description"] != e["description"]
+                            and slot_base(other["description"], None)
+                            != slot_base(e["description"], None)
                         ):
                             clash = True
                             break
@@ -673,6 +742,27 @@ def rebalance(plan, max_hours=19):
                             break
 
             if to_move is None:
+                depths = chain_depths(plan)
+                pick = None
+
+                for e in semester:
+                    if (
+                        e["type"] == "course"
+                        and e["code"] not in END_SEQUENCE
+                        and e["code"] not in same_needed
+                        and (
+                            pick is None
+                            or depths.get(e["code"], 0) < depths.get(pick["code"], 0)
+                        )
+                    ):
+                        pick = e
+
+                if pick is not None:
+                    hours -= entry_hours(pick)
+                    push_later(plan, i, pick)
+                    continue
+
+            if to_move is None:
                 moved = False
 
                 for e in reversed(semester):
@@ -692,7 +782,8 @@ def rebalance(plan, max_hours=19):
                             if (
                                 other["type"] == "slot"
                                 and other["kind_info"] == e["kind_info"]
-                                and other["description"] != e["description"]
+                                and slot_base(other["description"], None)
+                                != slot_base(e["description"], None)
                             ):
                                 clash = True
                                 break
@@ -867,7 +958,9 @@ def absorb_slots(plan, own_codes, prior, tracks=None):
 
             if lab_next:
                 e = left_labs[0]
-                e["description"] = f"Natural Sciences Lab - match your sequence ({' or '.join(lab_next)}) ({int(entry_hours(e))})"
+                e["description"] = (
+                    f"Natural Sciences Lab - match your sequence ({' or '.join(lab_next)}) ({int(entry_hours(e))})"
+                )
 
 
 def remove_prior(plan, prior):
@@ -885,6 +978,193 @@ def remove_prior(plan, prior):
 
             keep.append(e)
         semester[:] = keep
+
+
+def chain_depths(plan):
+    planned = set()
+
+    for semester in plan:
+        planned.update(semester_codes(semester))
+
+    needs = {}
+
+    for code in planned:
+        prereqs = rule_codes(courses.get(code, {}).get("prereq_rule"))
+
+        for need in prereqs:
+            if need in planned:
+                needs.setdefault(need, set()).add(code)
+
+    depths = {}
+
+    def depth(code, seen):
+        if code in depths:
+            return depths[code]
+
+        if code in seen:
+            return 0
+
+        best = 0
+
+        for after in sorted(needs.get(code, ())):
+            best = max(best, 1 + depth(after, seen | {code}))
+
+        depths[code] = best
+        return best
+
+    for code in sorted(planned):
+        depth(code, set())
+
+    return depths
+
+
+def movable_slot(plan, e):
+    if e["type"] != "slot" or e.get("keep_early") or e.get("strict_lab"):
+        return False
+
+    if e["kind_info"]["kind"] in ("free", "gened"):
+        return True
+
+    for semester in plan:
+        for other in semester:
+            if (
+                other is not e
+                and other["type"] == "slot"
+                and other["kind_info"] == e["kind_info"]
+                and slot_base(other["description"], None)
+                != slot_base(e["description"], None)
+            ):
+                return False
+
+    return True
+
+
+def concurrent_partners(semester, e):
+    group = [e]
+    changed = True
+
+    while changed:
+        changed = False
+
+        for d in semester:
+            if d["type"] != "course" or any(d is g for g in group):
+                continue
+
+            d_prereqs = rule_codes(courses.get(d["code"], {}).get("prereq_rule"))
+            linked = False
+
+            for g in group:
+                g_prereqs = rule_codes(courses.get(g["code"], {}).get("prereq_rule"))
+
+                if d["code"] in g_prereqs or g["code"] in d_prereqs:
+                    linked = True
+                    break
+
+            if linked:
+                group.append(d)
+                changed = True
+
+    return group
+
+
+def pull_chains(plan, prior, max_hours=19):
+    depths = chain_depths(plan)
+    order = []
+
+    for j, semester in enumerate(plan):
+        for e in semester:
+            if (
+                e["type"] == "course"
+                and depths.get(e["code"], 0) > 0
+                and e["code"] not in END_SEQUENCE
+            ):
+                order.append((-depths[e["code"]], j, e))
+
+    order.sort(key=lambda t: (t[0], t[1]))
+
+    for _, _, e in order:
+        j = None
+
+        for k, semester in enumerate(plan):
+            if any(x is e for x in semester):
+                j = k
+
+        if j is None:
+            continue
+
+        taken_before = set(prior)
+        hours_before = sum(course_hours(c) for c in prior)
+
+        for i in range(j):
+            moved = False
+
+            for group in ([e], concurrent_partners(plan[j], e)):
+                if any(g["code"] in END_SEQUENCE for g in group):
+                    continue
+
+                current = semester_codes(plan[i]) | {g["code"] for g in group}
+
+                if all(
+                    can_take(
+                        courses.get(g["code"], {}).get("prereq_rule"),
+                        taken_before,
+                        current,
+                        hours_before,
+                    )
+                    is not False
+                    and max(EARLIEST.get(g["code"], 1), g.get("earliest", 1)) <= i + 1
+                    and g["code"] not in semester_codes(plan[i])
+                    for g in group
+                ):
+                    h_i = sum(entry_hours(x) for x in plan[i])
+                    h_j = sum(entry_hours(x) for x in plan[j])
+                    h_e = sum(entry_hours(g) for g in group)
+
+                    if h_i + h_e <= max_hours:
+                        for g in group:
+                            plan[j].remove(g)
+                            plan[i].append(g)
+                        moved = True
+                        break
+                    else:
+                        picked = []
+                        freed = 0
+
+                        for s in plan[i]:
+                            if h_i - freed + h_e <= max_hours:
+                                break
+
+                            if movable_slot(plan, s) or (
+                                (
+                                    s["type"] == "course"
+                                    and depths.get(s["code"], 0) == 0
+                                )
+                                and s["code"] not in END_SEQUENCE
+                                and s["code"] not in semester_codes(plan[j])
+                            ):
+                                picked.append(s)
+                                freed += entry_hours(s)
+
+                        if (
+                            picked
+                            and h_i - freed + h_e <= max_hours
+                            and h_j - h_e + freed <= max_hours
+                        ):
+                            for g in group:
+                                plan[j].remove(g)
+                                plan[i].append(g)
+
+                            for s in picked:
+                                plan[i].remove(s)
+                                plan[j].append(s)
+                            moved = True
+                            break
+
+            if moved:
+                break
+
+            taken_before.update(semester_codes(plan[i]))
+            hours_before += sum(entry_hours(x) for x in plan[i])
 
 
 def compact(plan, prior, target=15, max_hours=19):
@@ -906,9 +1186,6 @@ def compact(plan, prior, target=15, max_hours=19):
 
                 h = entry_hours(e)
                 if hours + h > max_hours:
-                    continue
-
-                if e.get("keep_early"):
                     continue
 
                 if e["type"] == "course":
@@ -939,7 +1216,8 @@ def compact(plan, prior, target=15, max_hours=19):
                             if (
                                 other["type"] == "slot"
                                 and other["kind_info"] == e["kind_info"]
-                                and other["description"] != e["description"]
+                                and slot_base(other["description"], None)
+                                != slot_base(e["description"], None)
                             ):
                                 blocked = True
                                 break
@@ -1100,23 +1378,6 @@ def minor_alternatives(rule, alts):
                 alts[c] = found
 
     return alts
-
-
-def rule_codes(rule):
-    if not isinstance(rule, dict):
-        return set()
-
-    codes = set()
-
-    if "course" in rule:
-        codes.add(rule["course"])
-
-    for key in ("and", "or"):
-        if key in rule:
-            for child in rule[key]:
-                codes |= rule_codes(child)
-
-    return codes
 
 
 if __name__ == "__main__":

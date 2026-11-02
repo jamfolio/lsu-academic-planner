@@ -2157,7 +2157,8 @@
     "footnotes": {
       "1": "Approved Coastal Meteorology (CoMet) Electives include: OCS 4017 Field Course in Coastal Meteorology, OCS 4019 Surface-Atmosphere Interactions, OCS 4021 Forecasting Coastal Weather, GEOG 4221 The Tropical Atmosphere.",
       "2": "Students are required to perform undergraduate research (ENVS 3999 /OCS 3999 ) working with a faculty member in their area of expertise. Contact the undergraduate program advisor for information about possible mentors."
-    }
+    },
+    "footnote_sections": {}
   },
   "14433": {
     "title": "Sociology, B.A. (3+3 Pre-Law Program)",
@@ -2859,7 +2860,8 @@
     ],
     "footnotes": {
       "1": "If two course natural sciences sequence is taken in the physical sciences, the additional three hour natural sciences course must be from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14219": {
     "title": "Music, B.A.",
@@ -7633,7 +7635,8 @@
       "4": "Students are encouraged but not required to take MATH 1550 to fulfill the first semester of analytical reasoning.",
       "5": "Students are encouraged but not required to take MATH 1552 to fulfill the second semester of analytical reasoning.",
       "6": "Students should enroll in an AVATAR Minor Area course that also satisfies the General Education Arts course requirement (not MUS)."
-    }
+    },
+    "footnote_sections": {}
   },
   "14262": {
     "title": "Leadership & Human Resource Development, B.S.",
@@ -8061,7 +8064,8 @@
     "notes": [],
     "footnotes": {
       "1": "The list of approved electives includes LHRD 4901, PSYC 2016, PSYC 2040, PSYC 3020, PSYC 3050, CMST 2064, CMST 3060, CMST 3112, CMST 3118, WGS 2900, ANTH 1003, ANTH 2051, AAAS 2000, AAAS 3425, POLI 2053, POLI 2057, POLI 2070, MGT 4322, MGT 4523, SOCL 2001, SOCL 2411, SOCL 2501, SOCL 2511, SOCL 3505, SOCL 3601. Additional electives can be approved by the LHRD Program Coordinator."
-    }
+    },
+    "footnote_sections": {}
   },
   "14274": {
     "title": "Music Education, B.M.E.",
@@ -9173,9 +9177,10 @@
     ],
     "footnotes": {
       "1": "Choose from the following: MUS 4232, MUS 4233, MUS 4234, MUS 4235, MUS 4236.",
-      "2": "Student teaching is offered each fall and spring semester, scheduled as an all day, Monday through Friday experience. Student teachers must also plan for 3:30-4:30 pm meetings on Mondays. No student may schedule more than 15 semester hours of work during the student teaching semester.",
+      "2": "Student teaching is offered each fall and spring semester, scheduled as an all day, Monday through Friday experience. Student teachers must also plan for 3:30-4:30 pm meetings on Mondays. No student may schedule more than 15 semester hours of work during the student teaching semester. In the choral track students whose primary instrument is piano, organ, or guitar must complete voice class ( MUS 1001, MUS 1002 ) or equivalent and two semesters of secondary voice lessons.",
       "3": "Three hours total: Woodwinds (2), Vocal (1)."
-    }
+    },
+    "footnote_sections": {}
   },
   "14254": {
     "title": "Environmental Management Systems , B.S.",
@@ -10454,7 +10459,8 @@
     "footnotes": {
       "1": "A list of approved electives is available in the School of Plant, Environmental and Soil Sciences.",
       "2": "Select one of the following options: AGRO 4070, HORT 2050, HORT 2061, or OCS 4308."
-    }
+    },
+    "footnote_sections": {}
   },
   "14468": {
     "title": "Entrepreneurship, BS",
@@ -10841,9 +10847,10 @@
       "2": "Oral and Written Communication Requirement 1: Choose from CMST 2060, CMST 2061 or CMST 2064. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "3": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "4": "Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061 or CMST 4113. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
-      "5": "BUSINESS ELECTIVES: select from the 3000 or 4000 level offerings of the following departments – ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT, and ISDS.",
+      "5": "BUSINESS ELECTIVES: select from the 3000 or 4000 level offerings of the following departments – ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT, and ISDS. ENTREPRENEURSHIP ELECTIVES: Students must have six hours of ENTR 3000/4000 level coursework, and nine hours from EIS Department list of approved Entrepreneurship electives.",
       "6": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.”"
-    }
+    },
+    "footnote_sections": {}
   },
   "14215": {
     "title": "Anthropology, B.A.",
@@ -11200,7 +11207,8 @@
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
       "2": "SELECT FROM: ANTH 2015, ANTH 2051, ANTH 3060, ANTH 4040."
-    }
+    },
+    "footnote_sections": {}
   },
   "14350": {
     "title": "Leadership and Human Resource Development, M.S.",
@@ -11357,7 +11365,8 @@
       "The program is appropriate for students with any type of bachelor’s degree as well as people currently employed who are seeking to expand their skills and credentials, transition to new roles, or more effectively deal with talent development and organizational change.",
       "The 100% online program can be completed in as little as one year."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14429": {
     "title": "Communication Studies, B.A (3+3 Pre-Law Program)",
@@ -11694,7 +11703,8 @@
     "footnotes": {
       "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences SEQUENCE and two hours lab credit associated with the sequence chosen; three hours in an area (phys/life) not previously selected.",
       "2": "Six hours of first year law coursework will substitute for six hours of CMST major coursework."
-    }
+    },
+    "footnote_sections": {}
   },
   "14405": {
     "title": "Pre-Physical Therapy",
@@ -12076,7 +12086,8 @@
       "Semester 1: “C” or better in ENGL 1001 or equivalent and MATH 1021. 2.0 LSU GPA. 2.0 Cumulative GPA. Semester 2: “C” or better in MATH 1022 or MATH 1550 and CHEM 1201 or CHEM 1421. 2.25 LSU GPA. 2.25 Cumulative GPA. Declare a Degree Program. Semester 3: “C” or better in BIOL 1201 and CHEM 1202 or CHEM 1422. 2.5 LSU GPA. 2.5 Cumulative GPA. Semester 4: “C” or better in ENGL 2000 or equivalent; and BIOL 1202. 2.75 LSU GPA. 2.75 Cumulative GPA. Declare a Major. Semester 5: 3.0 LSU GPA. 3.0 Cumulative GPA. Declare a Major.",
       "BIOL 1201 Biology for Science Majors I (3) CHEM 1201 General Chemistry I (3) CHEM 1202 General Chemistry II (3) CHEM 1421 HONORS: General Chemistry I (3) CHEM 1422 HONORS: General Chemistry II (3) MATH 1021 College Algebra (3) MATH 1022 Plane Trigonometry (3) ​ MATH 1550 Differential and Integral Calculus (5) ILC English Composition (3) ILC English Composition (3)"
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14281": {
     "title": "Physics, B.S.",
@@ -14036,7 +14047,8 @@
       "2": "EDCI 2500 will count as one of the General Education social science courses. Some general education courses are taken in different years than in the standard curriculum. Students should plan their course work so that the last semester of the senior year can accommodate the 12 hours that are required to be taken concurrently (EDCI 4006 and EDCI 3136 ). PHYS 4125 and PHYS 4132 are not required for this concentration, but may be used as physics 4000 electives.",
       "3": "Students who do not take SCI 2010 and SCI 2011 are recommended to take SCI 2012 by their fourth semester. Credit will not be given for SCI 2012 if credit has been earned in SCI 2010 and SCI 2011.",
       "4": "If SCI 2012 is taken in the fourth semester, then EDCI 3550 should be taken in the sixth semester."
-    }
+    },
+    "footnote_sections": {}
   },
   "14147": {
     "title": "Information Systems & Analytics, BS",
@@ -15575,8 +15587,9 @@
       "3": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "4": "Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061, CMST 4113. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "5": "BUSINESS ELECTIVES: select from the 3000 or 4000 level offerings of the following departments – ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT, and ISDS.",
-      "6": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.” A list of approved ISDS electives is available from the Stephenson Department of Entrepreneurship & Information Systems."
-    }
+      "6": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.” A list of approved ISDS electives is available from the Stephenson Department of Entrepreneurship & Information Systems. DIGITAL SERVICES & CONSULTING CONCENTRATION COURSES: to be selected from ISDS 3120 Management of the IT Function, ISDS 4100 Information Systems Consulting, ISDS 4111 Enterprise Systems, ISDS 4130 Cloud Computing for Business II"
+    },
+    "footnote_sections": {}
   },
   "14278": {
     "title": "Computer Science, B.S.",
@@ -17570,12 +17583,13 @@
       "A grade of “C” or better is required in all CSC prerequisite courses; CSC 3200, CSC 4101, CSC 4103 and CSC 4330; MATH 1550 and MATH 1552; BIOL 1001 or BIOL 1201 and all science prerequisite courses including laboratory courses."
     ],
     "footnotes": {
-      "1": "For General Education Natural Science,",
+      "1": "For General Education Natural Science, (3 cr. hrs.) [Life Science] BIOL 1001 or BIOL 1201 (3 cr. hrs.) [Physical Science] Select from PHYS 1201, PHYS 2001, CHEM 1001, CHEM 1201, CHEM 1421, ASTR 1101, GEOL 1001, or GEOL 1003 (3 cr. hrs.) A second course science must be selected to complete the sequence in either the BIOL science or physical science. (2 cr. hrs.) Science lab credits must be wholly associated with the science sequence selected.",
       "2": "APPROVED SEG AREA ELECTIVES (6 hours required): CSC 4243, CSC 4263, CSC 4356, CSC 4357, CSC 4360, CSC 4362, CSC 4370, CSC 4444, CSC 4501, CSC 4562, CSC 4585, CSC 4610, CSC 4740, CSC 4762, CSC 4890; EE 4859; IE 4461; ISDS 4111, ISDS 4112, ISDS 4113, ISDS 4120, ISDS 4125, ISDS 4141; other electives subject to approval.",
       "3": "The selection of the CSC 2000 - level or above elective (3 cr. hrs.) is not restrictive to topics related to software engineering.",
-      "4": "APPROVED TECHNICAL ELECTIVES: Three hours of elective credits must be selected from Group A and three hours of elective credits selected from Group A or Group B.",
-      "5": "Credit will not be applied to the degree for courses with overlapping content. For clarification, contact the division’s academic advisor. Students who have completed the prerequisites may substitute:"
-    }
+      "4": "APPROVED TECHNICAL ELECTIVES: Three hours of elective credits must be selected from Group A and three hours of elective credits selected from Group A or Group B. GROUP A: 2000-level and above only chosen from CSC, BE, CHE, CE, CM, EE, ENGR, EVEG, IE, ME, PETE, EMS, ENVS, OCS, MATH, ECON, FIN, ASTR, BIOL, CHEM, GEOG, GEOL, PHYS, ISDS 3100, ISDS 3105, ISDS 3120, ISDS 4+++. GROUP B: ART 2050, ART 2055, ART 2210, ART 2220, ART 2230,, ART 2551, ART 4020, ART 4050, ART 4055, ART 4059, ART 4230, ART 4240, ART 4290, ART 4550, ART 4560, ART 7250, ART 7255, ARTH 4480, ARTH 4482, ARTH 4484, MC 2035, MC 3031, MC 4002, MC 4015, MC 4260, MC 4550, MC 4600, MC 4720, MUS 2745, MUS 4744, MUS 4745, MUS 4746, MUS 4748, ENGL 2009, ENGL 2231, ENGL 4000, ENGL 4009, ENGL 7109.",
+      "5": "Credit will not be applied to the degree for courses with overlapping content. For clarification, contact the division’s academic advisor. Students who have completed the prerequisites may substitute: EE 3740 for CSC 2259 but not both EE 3755 for CSC 3501 but not both MATH 3355 or EE 3150 or EXST 4050 for IE 3302."
+    },
+    "footnote_sections": {}
   },
   "14413": {
     "title": "Exceptional Educator: Grades 1-5, B.S.",
@@ -17948,7 +17962,8 @@
     "footnotes": {
       "1": "MATH 1021 or MATH 1023.",
       "2": "2.5 LSU and cumulative GPA is required for enrollment in 3000+ level EDCI courses."
-    }
+    },
+    "footnote_sections": {}
   },
   "14107": {
     "title": "Medical Laboratory Science (Medical Technology)",
@@ -18223,7 +18238,8 @@
     ],
     "footnotes": {
       "1": "Because admission to the MLS degree is selective, students are encouraged to utilize these 9 hours of academic electives that may align with an undergraduate degree program offered at the LSU A&M Baton Rouge Campus, including but not limited to Biological Sciences, Chemistry, or Kinesiology Human Movement Science."
-    }
+    },
+    "footnote_sections": {}
   },
   "14279": {
     "title": "Geology, B.S.Geol.",
@@ -19608,7 +19624,8 @@
       "2": "GEOL 1202 is recommended in the second semester, but for students transferring into the major after the second semester, GEOL 1003 + GEOL 1602 or GEOL 1004 + GEOL 1602 may be substituted for credit.",
       "3": "17 hours of 3000-level or 4000-level geology electives with at least 3 credit hours at the 4000-level",
       "4": "21 credit hours from another discipline. 12 of these must be at the 3000 or 4000 level, and 6 of the 12 must be at the 4000 level. Courses should form a coherent sequence and come from one department unless pursuing an interdisciplinary minor. Selection of the second discipline courses should be completed and approved by the department and dean’s office by the end of the sophomore year."
-    }
+    },
+    "footnote_sections": {}
   },
   "14146": {
     "title": "Finance, BS",
@@ -20007,7 +20024,8 @@
       "2": "Oral and Written Communication Requirement 1: Choose from CMST 2060, CMST 2061 or CMST 2064. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "3": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "4": "Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061 or CMST 4113. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor."
-    }
+    },
+    "footnote_sections": {}
   },
   "14280": {
     "title": "Mathematics, B.S.",
@@ -23524,7 +23542,8 @@
       "5": "A student may substitute for MATH 2020 a 3-hour-or-more math course at the 2000-level or higher that is not otherwise required, upon passing the Math Department’s Mathematical Maturity Exam.",
       "6": "It is recommended that this course be chosen from MATH 2025, MATH 2030, or MATH 2035. In any case, the course must carry at least 3 hours’ credit and must not be otherwise required.",
       "7": "Students should plan their course work so that the last semester of the senior year can accommodate the 12 hours that are required to be taken concurrently (EDCI 4006 and BIOL 4005 /CHEM 4005 /PHYS 4005 )."
-    }
+    },
+    "footnote_sections": {}
   },
   "14111": {
     "title": "Pre-Pharmacy",
@@ -23606,7 +23625,8 @@
     "notes": [
       "Semester 1: “C” or better in ENGL 1001 and MATH 1021. Semester 2: “C” or better in MATH 1022 and CHEM 1201. 2.25 LSU GPA, 2.25 Cumulative GPA. Semester 3: “C” or better in BIOL 1201, CHEM 1202. 2.5 LSU GPA, 2.5 Cumulative GPA. Semester 4: “C” or better in ENGL 2000, BIOL 1202. 2.6 LSU GPA, 2.6 Cumulative GPA. Declare a Degree Program. Semester 5: 2.75 LSU GPA, 2.75 Cumulative GPA."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14404": {
     "title": "Mass Communication, B.A.M.C.",
@@ -26515,7 +26535,8 @@
     "footnotes": {
       "1": "If two course natural science sequence is taken in the life sciences, the additional three hour natural science course must be from the physical sciences, and vice versa.",
       "2": "In order to take MC 4501 and MC 4502, you MUST TAKE MC 3005 and MC 3103 /MC 3104 as prerequisites."
-    }
+    },
+    "footnote_sections": {}
   },
   "14214": {
     "title": "Geography, B.S.",
@@ -27951,7 +27972,8 @@
     "notes": [
       "Consult “ Degree Requirements of the College ” in this section of the catalog for specific instructions regarding electives and the “ General Education Requirements ” section of the catalog."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14255": {
     "title": "Economics, BS",
@@ -28889,8 +28911,9 @@
       "4": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "5": "Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061 or CMST 4113. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "6": "BUSINESS ELECTIVES: to be selected from the 3000 or 4000 level offerings of the following departments: ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT, and ISDS.",
-      "7": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.”"
-    }
+      "7": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.” ECON ELECTIVES: See department advisor for more details."
+    },
+    "footnote_sections": {}
   },
   "14275": {
     "title": "Theatre, B.A.",
@@ -31010,7 +31033,8 @@
       "6": "THTR LITERATURE COURSE:Select from: THTR 4021, THTR 4130, THTR 4131, THTR 4220, or THTR 4436.",
       "7": "APPROVED ELECTIVES:Not THTR 1020, THTR 1021, THTR 2028, or THTR 2128.",
       "8": "If the two-course sequence is taken in the physical science, the additional three-hour course must be taken from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14263": {
     "title": "Kinesiology, B.S.",
@@ -33085,7 +33109,8 @@
     "footnotes": {
       "1": "Grade of C or better required for graduation.",
       "2": "Select 12 hrs. of concentration electives: KIN 2603, KIN 3525, KIN 3608, KIN 4509, KIN 4571, KIN 4601, KIN 4605, KIN 4606"
-    }
+    },
+    "footnote_sections": {}
   },
   "14536": {
     "title": "Honors Traditions in Critical Thought and Scholarship, B.A.",
@@ -33465,7 +33490,8 @@
     "footnotes": {
       "1": "If three-cour courses is taken as a life science, the two-course sequence must be taken in the physical sciences, and vice versa.",
       "2": "18 hours of approved electives must be honors (HNRS, departmental, or Honors Option); 9 hours must be at 3000/4000 level."
-    }
+    },
+    "footnote_sections": {}
   },
   "14432": {
     "title": "Anthropology, B.A. (3+3 Pre-Law Program)",
@@ -33806,7 +33832,8 @@
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
       "2": "SELECT FROM: ANTH 2015, ANTH 2051, ANTH 3060, ANTH 4040."
-    }
+    },
+    "footnote_sections": {}
   },
   "14259": {
     "title": "Coastal Environmental Science, B.S. CES.",
@@ -36429,7 +36456,8 @@
     "footnotes": {
       "1": "Approved Coastal Meteorology (CoMet) Electives include: OCS 4017 Field Course in Coastal Meteorology, OCS 4019 Surface-Atmosphere Interactions, OCS 4021 Forecasting Coastal Weather, GEOG 4221 The Tropical Atmosphere.",
       "2": "Students are required to perform undergraduate research (ENVS 3999 /OCS 3999 ) working with a faculty member in their area of expertise. Contact the undergraduate program advisor for information about possible mentors."
-    }
+    },
+    "footnote_sections": {}
   },
   "14520": {
     "title": "Joint 3/2 Degree in Art and Design, BA - Digital Media Arts & Engineering MDMAE.",
@@ -36952,7 +36980,8 @@
       "General Requirements",
       "Pre-Requisites. Certain classes have pre-requisites which need to be considered in order for a student to advance into some courses. A list of such courses is available on the School of Art’s Website and in the College’s Student Services Center. Advising. Students pursuing the BA in Art & Design may choose a group of courses in areas of specific interest to them—such as digital art, graphic design, and the studio arts, which include ceramics, painting and drawing, photography, printmaking, and sculpture. Because of the wide range of individual options available, the development of an Advising Plan, on record in the College’s Student Service Center, is required before a student may advance beyond any 2000-level course. A hold will be put on scheduling for any student who has not completed an Advising Plan by the end of their second year in the program. Upper Level Courses. A minimum of 30 semester hours in courses numbered 3000 or above is required (15 of which must be at the 4000 level). ​Credits in Art. The maximum number of credits in all ART courses which may be taken for this degree is 42"
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14252": {
     "title": "Textiles, Apparel & Merchandising, B.S.",
@@ -38235,7 +38264,8 @@
     "notes": [],
     "footnotes": {
       "1": "Students must earn a grade of “C” or better."
-    }
+    },
+    "footnote_sections": {}
   },
   "14481": {
     "title": "Screen Arts, B.A. (3+3 Pre-Law Program)",
@@ -38654,7 +38684,7 @@
         ],
         "footnotes": {
           "1": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: Screenwriting: Production:",
+          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138",
           "3": "Choose three hours from the following: ART 2050, SCRN 2203 / CPLT 2203, CSC 2463, MUS 2745",
           "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
           "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567",
@@ -39071,7 +39101,7 @@
         ],
         "footnotes": {
           "1": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; and SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: Screenwriting: Production:",
+          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; and SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138",
           "3": "Choose three hours from the following: ART 2050, SCRN 2203 / CPLT 2203, CSC 2463, MUS 2745",
           "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
           "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567",
@@ -39496,7 +39526,7 @@
         ],
         "footnotes": {
           "1": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "2": "In addition to the nine hours of required core courses ( SCRN 2001; SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: Screenwriting: Production:",
+          "2": "In addition to the nine hours of required core courses ( SCRN 2001; SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138",
           "3": "Choose three hours from the following: ART 2050, SCRN 2203 / CPLT 2203, CSC 2463, MUS 2745",
           "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
           "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567",
@@ -39515,8 +39545,9 @@
       "3": "Choose three hours from the following: ART 2050, SCRN 2203 /CPLT 2203, CSC 2463, MUS 2745",
       "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
       "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567",
-      "2": "In addition to the nine hours of required core courses (SCRN 2001; SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements (CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 /ANTH 2423 = Social Sciences)."
-    }
+      "2": "In addition to the nine hours of required core courses (SCRN 2001; SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements (CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 /ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138"
+    },
+    "footnote_sections": {}
   },
   "14439": {
     "title": "International Studies, B.A.: Global Diplomacy Concentration (3+3 Pre-Law Program)",
@@ -40157,10 +40188,11 @@
     ],
     "notes": [],
     "footnotes": {
-      "1": "Note: Students must demonstrate competency in a language. (Competency means: equivalent of six courses for Arabic, Spanish, French, Italian, Chinese and German.) Native speakers can petition the program director for an exemption from this language requirement. The student’s proficiency in reading, writing, and speaking the language must be verified by someone knowledgeable in that language. The Associate Director will select an appropriate individual to conduct an assessment of the student’s language proficiency. These students are still required to meet the four semester college level foreign language requirement as described in the General Catalog.",
+      "1": "Note: Students must demonstrate competency in a language. (Competency means: equivalent of six courses for Arabic, Spanish, French, Italian, Chinese and German.) Native speakers can petition the program director for an exemption from this language requirement. The student’s proficiency in reading, writing, and speaking the language must be verified by someone knowledgeable in that language. The Associate Director will select an appropriate individual to conduct an assessment of the student’s language proficiency. These students are still required to meet the four semester college level foreign language requirement as described in the General Catalog. Complete one of the following sequences: SPAN 1101, SPAN 1102 or SPAN 1152, SPAN 2101, SPAN 2102, SPAN 2155, and one from SPAN 2156, SPAN 3010, SPAN 3043, SPAN 3044, SPAN 3070, SPAN 3072, SPAN 3073, SPAN 3074, SPAN 3980, SPAN 4063, SPAN 4064, SPAN 4100, SPAN 4145, SPAN 4146, SPAN 4147, SPAN 4201, SPAN 4400. FREN 1001, FREN 1002, FREN 2101, FREN 2102, FREN 2155, and FREN 3060. GERM 1101, GERM 1102, GERM 2101, GERM 2102, GERM 2155, and GERM 3060 or GERM 3061 or GERM 3082 or GERM 3083 or GERM 3084 or GERM 4031 or GERM 4043 or GERM 4044 or GERM 4045. ITAL 1001, ITAL 1002, ITAL 2101, ITAL 2102, ITAL 2155, and ITAL 3058 or ITAL 3071 or ITAL 3072 or ITAL 4051 or ITAL 4100. CHIN 1101, CHIN 1102, CHIN 2001, CHIN 2002, CHIN 3101, CHIN 3102. ARAB 1101, ARAB 1102, ARAB 2101, ARAB 2102, ARAB 3101, ARAB 3102.",
       "2": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
-      "3": "Select fifteen hours from the following (must be taken in at least two different departments; at least nine hours must be at or above the 3000-level):"
-    }
+      "3": "Select fifteen hours from the following (must be taken in at least two different departments; at least nine hours must be at or above the 3000-level): Global Diplomacy ECON 4520, ECON 4550, ECON 4560; HIST 2023, HIST 4028, HIST 4049, HIST 4064, HIST 4066, HIST 4130, HIST 4140; LHRD 4901; POLI 4041, POLI 4042, POLI 4043, POLI 4044, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4062, POLI 4063, POLI 4064, POLI 4074."
+    },
+    "footnote_sections": {}
   },
   "14244": {
     "title": "Human Development & Family Science, B.S.",
@@ -41043,7 +41075,8 @@
     "notes": [],
     "footnotes": {
       "1": "For General Education Natural Sciences, both physical and life sciences must be taken; 6 hours in a physical/life sciences sequence; 3 hours in an area (physical/life) not previously selected."
-    }
+    },
+    "footnote_sections": {}
   },
   "14268": {
     "title": "Interdisciplinary Studies, B.I.S.",
@@ -41447,7 +41480,7 @@
           "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
           "2": "At least 45 hours of credit at or above the 3000-level must be completed; of the 45 hours, at least 15 must be at the 4000-level.",
           "3": "General Education/Approved Social Sciences must cover at least three different departments from list.",
-          "4": "General Education Humanities must cover at least one non-ENGL, non-General Education Arts department from list. The Informatics concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: The Organizational Dynamics concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: The Public Policy Advocacy concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: The Urban and Regional Planning concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: Two undergraduate minors, as approved by an HSS academic counselor. This concentration allows students to craft a cohesive set of two undergraduate minors to create a thematic interdisciplinary major. All requirements for each undergraduate minor must be satisfied, and should total 45 hours. Should the required minor hours not total 45 hours, the student will complete additional 3000/4000 level coursework in one or both minors to achieve the 45-hour minimum."
+          "4": "General Education Humanities must cover at least one non-ENGL, non-General Education Arts department from list. The Informatics concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: Digital Studies Minor Geographic Information Systems Minor Information Technology Management Minor The Organizational Dynamics concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: Business Administration Minor Communication Studies Minor Sociology Minor The Public Policy Advocacy concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: History Minor Communication Studies Minor Political Science Minor The Urban and Regional Planning concentration follows the general recommended path for Individualized Studies. Students will fulfill the three minor requirement by completing the following minors: Geography Minor Political Science Minor Sociology Minor Two undergraduate minors, as approved by an HSS academic counselor. This concentration allows students to craft a cohesive set of two undergraduate minors to create a thematic interdisciplinary major. All requirements for each undergraduate minor must be satisfied, and should total 45 hours. Should the required minor hours not total 45 hours, the student will complete additional 3000/4000 level coursework in one or both minors to achieve the 45-hour minimum."
         },
         "notes": [
           "Choose one from the following:"
@@ -41462,7 +41495,8 @@
       "2": "At least 45 hours of credit at or above the 3000-level must be completed; of the 45 hours, at least 15 must be at the 4000-level.",
       "3": "General Education/Approved Social Sciences must cover at least three different departments from list.",
       "4": "General Education Humanities must cover at least one non-ENGL, non-General Education Arts department from list."
-    }
+    },
+    "footnote_sections": {}
   },
   "14157": {
     "title": "Early Childhood Education, B.S.",
@@ -41908,8 +41942,9 @@
       "1": "General Education Humanities: ENGL Literature course.",
       "2": "Option: MATH 1021 /MATH 1023.",
       "3": "2.5 LSU/Cumulative GPA is required for enrollment in 3000+ level EDCI courses.",
-      "4": "Select from the following two areas:"
-    }
+      "4": "Select from the following two areas: Birth-K (24 hours) - EDCI 3053 Infant/Toddler Curriculum & Assessment (3), EDCI 3056 Young Children’s Cognitive and Linguistic Development (3), EDCI 3057 Learning Environments for Infants and Toddlers (3), EDCI 3058 Social-Emotional Growth & Socialization: Culture, Family & Providers (3), EDCI 4181 Student Teaching: Practice and Reflection in B-K (6-12). PK-3 (24 hours) - EDCI 3484 ELA/Social Studies in Grades 1-3 (6), EDCI 3485 Math/Science in Grades 1-3 (6), EDCI 4481 Student Teaching: Practice and Reflection in Grades 1-3 (6-12)."
+    },
+    "footnote_sections": {}
   },
   "14177": {
     "title": "Computer Engineering, B.S.Comp.E.",
@@ -42328,7 +42363,8 @@
     "notes": [
       "A prerequisite to any electrical engineering course may be met only by obtaining a “C” or better in each course cited as a prerequisite. This rule does not apply to EE 2950 or EE 3950."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14435": {
     "title": "Political Science, B.A. (3+3 Pre-Law Program)",
@@ -42620,7 +42656,7 @@
           "1": "POLI 1001 recommended, but not required. If POLI 1001 is not taken, add three hours of Approved POLI courses.",
           "2": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
           "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory.",
-          "4": "All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics Comparative Government & Politics International Politics & Law Political Theory Each field has a special topics course available that may be taken for up to 6 hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, POLI 4999 may count toward a Political Science field with approval of the departmental advisor."
+          "4": "All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics General: POLI 2051 POLI 2052 POLI 4000 Political Behavior: POLI 2030 POLI 4026 POLI 4028 POLI 4030 POLI 4031 POLI 4032 POLI 4034 POLI 4035 POLI 4036 Public Law & Jurisprudence: POLI 4020 POLI 4021 POLI 4023 Public Administration: POLI 2070 POLI 4011 POLI 4017 State, Urban, Local Government: POLI 2056 POLI 4015 POLI 4039 Comparative Government & Politics General: POLI 2053 POLI 4060 POLI 4062 POLI 4063 POLI 4064 Western Europe: POLI 4074 POLI 4075 POLI 4076 POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070 POLI 4072 Asia: POLI 4067 POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057 POLI 4040 POLI 4044 POLI 4045 POLI 4046 POLI 4047 POLI 4048 POLI 4050 POLI 4059 International Law & Organization: POLI 4041 POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060 POLI 4090 History of Political Thought: POLI 4080 POLI 4081 POLI 4082 Contemporary Political Thought: POLI 4096 POLI 4097 POLI 4098 Each field has a special topics course available that may be taken for up to 6 hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, POLI 4999 may count toward a Political Science field with approval of the departmental advisor."
         },
         "notes": []
       },
@@ -42926,7 +42962,7 @@
         "footnotes": {
           "1": "POLI 1001 recommended but not required. If POLI 1001 is not taken, add three hours of approved POLI courses.",
           "2": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "3": "Political Science courses are divided into four fields: (1) American government & politics; (2) comparative government & politics; (3) international politics & law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: General: POLI 2051, POLI 2052, POLI 4000. Political Behavior: POLI 2030, POLI 4026, POLI 4028, POLI 4029, POLI 4030, POLI 4031, POLI 4032, POLI 4034, POLI 4035, POLI 4036 Public Law & Jurisprudence: POLI 4020, POLI 4021, POLI 4023 Public Administration: POLI 2070, POLI 4011, POLI 4017 State, Urban, Local Government: POLI 2056, POLI 4015, POLI 4039 General: POLI 2053, POLI 4060, POLI 4062, POLI 4063, POLI 4064 Western Europe: POLI 4074, POLI 4075, POLI 4076, POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070, POLI 4072 Asia: POLI 4067 POLI 4079 Africa: POLI 4078 Middle East: POLI 4061, International Politics: POLI 2057, POLI 4040, POLI 4044, POLI 4045, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4059 International Law & Organization: POLI 4041, POLI 4042 Foreign Policy: POLI 4043 Political Theory, General: POLI 2060, POLI 4090, POLI 4234 History of Political Thought: POLI 4080, POLI 4081, POLI 4082 Contemporary Political Thought: POLI 4096, POLI 4097, POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government & Politics); POLI 4040 (International Politics & Law); POLI 4060 (Comparative Government & Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
+          "3": "Political Science courses are divided into four fields: (1) American government & politics; (2) comparative government & politics; (3) international politics & law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics General: POLI 2051, POLI 2052, POLI 4000. Political Behavior: POLI 2030, POLI 4026, POLI 4028, POLI 4029, POLI 4030, POLI 4031, POLI 4032, POLI 4034, POLI 4035, POLI 4036 Public Law & Jurisprudence: POLI 4020, POLI 4021, POLI 4023 Public Administration: POLI 2070, POLI 4011, POLI 4017 State, Urban, Local Government: POLI 2056, POLI 4015, POLI 4039 Comparative Government & Politics General: POLI 2053, POLI 4060, POLI 4062, POLI 4063, POLI 4064 Western Europe: POLI 4074, POLI 4075, POLI 4076, POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070, POLI 4072 Asia: POLI 4067 POLI 4079 Africa: POLI 4078 Middle East: POLI 4061, International Politics & Law International Politics: POLI 2057, POLI 4040, POLI 4044, POLI 4045, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4059 International Law & Organization: POLI 4041, POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060, POLI 4090, POLI 4234 History of Political Thought: POLI 4080, POLI 4081, POLI 4082 Contemporary Political Thought: POLI 4096, POLI 4097, POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government & Politics); POLI 4040 (International Politics & Law); POLI 4060 (Comparative Government & Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
         },
         "notes": [
           "Critical: “C” or better in ENGL 1001.",
@@ -43237,7 +43273,7 @@
         "footnotes": {
           "1": "POLI 1001 recommended but not required. If POLI 1001 is not taken, add three hours of approved POLI courses.",
           "2": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics Comparative Government & Politics International Politics & Law Political Theory Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
+          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics General: POLI 2051, POLI 2052, POLI 4000 Political Behavior: POLI 2030, POLI 4026, POLI 4028, POLI 4030, POLI 4031, POLI 4032, POLI 4034, POLI 4035, POLI 4036 Public Law & Jurisprudence: POLI 4020, POLI 4021, POLI 4023 Public Administration: POLI 2070, POLI 4011, POLI 4017 State, Urban, Local Government: POLI 2056, POLI 4015, POLI 4039 Comparative Government & Politics General: POLI 2053, POLI 4060, POLI 4062, POLI 4063, POLI 4064 Western Europe: POLI 4074, POLI 4075, POLI 4076, POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070, POLI 4072 Asia: POLI 4067, POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057, POLI 4040, POLI 4044, POLI 4045, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4059 International Law & Organization: POLI 4041, POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060, POLI 4090 History of Political Thought: POLI 4080, POLI 4081, POLI 4082 Contemporary Political Thought: POLI 4096, POLI 4097, POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
         },
         "notes": [
           "Critical: “C” or better in ENGL 1001.",
@@ -43548,7 +43584,7 @@
         "footnotes": {
           "1": "POLI 1001 recommended but not required. If POLI 1001 is not taken, add three hours of approved POLI courses.",
           "2": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics Comparative Government & Politics International Politics & Law Political Theory Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
+          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics General: POLI 2051, POLI 2052, POLI 4000 Political Behavior: POLI 2030 POLI 4026 POLI 4028 POLI 4030 POLI 4031 POLI 4032 POLI 4034 POLI 4035 POLI 4036 Public Law & Jurisprudence: POLI 4020 POLI 4021 POLI 4023 Public Administration: POLI 2070 POLI 4011 POLI 4017 State, Urban, Local Government: POLI 2056 POLI 4015 POLI 4039 Comparative Government & Politics General: POLI 2053 POLI 4060 POLI 4062 POLI 4063 POLI 4064 Western Europe: POLI 4074 POLI 4075 POLI 4076 POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070 POLI 4072 Asia: POLI 4067 POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057 POLI 4040 POLI 4045 POLI 4046 POLI 4047 POLI 4048 POLI 4050 POLI 4059 International Law & Organization: POLI 4041 POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060 POLI 4090 History of Political Thought: POLI 4080 POLI 4081 POLI 4082 Contemporary Political Thought: POLI 4096 POLI 4097 POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
         },
         "notes": [
           "Critical: “C” or better in ENGL 1001.",
@@ -43851,8 +43887,8 @@
         "footnotes": {
           "1": "POLI 1001 recommended but not required. If POLI 1001 is not taken, add three hours of approved POLI courses.",
           "2": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics Comparative Government & Politics International Politics & Law Political Theory Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor.",
-          "4": "Law & Legal Systems"
+          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics General: POLI 2051, POLI 2052, POLI 4000 Political Behavior: POLI 2030, POLI 4026 POLI 4028 POLI 4030 POLI 4031 POLI 4032 POLI 4034 POLI 4035 POLI 4036 Public Law & Jurisprudence: POLI 4020 POLI 4021 POLI 4023 Public Administration: POLI 2070 POLI 4011 POLI 4017 State, Urban, Local Government: POLI 2056 POLI 4015 POLI 4039 Comparative Government & Politics General: POLI 2053 POLI 4060 POLI 4062 POLI 4063 POLI 4064 Western Europe: POLI 4074 POLI 4075 POLI 4076 POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070 POLI 4072 Asia: POLI 4067 POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057 POLI 4040 POLI 4044 POLI 4045 POLI 4046 POLI 4047 POLI 4048 POLI 4050 POLI 4059 International Law & Organization: POLI 4041 POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060 POLI 4090 History of Political Thought: POLI 4080 POLI 4081 POLI 4082 Contemporary Political Thought: POLI 4096 POLI 4097 POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor.",
+          "4": "Law & Legal Systems American Constitutional Law: POLI 4020 POLI 4021 Judicial Politics: POLI 4023 International Law: POLI 4041 Sociology of Law: SOCL 3371 SOCL 4471 Mass Media Law: MC 3080 MC 3081 Legal Writing: ENGL 3101"
         },
         "notes": [
           "Critical: “C” or better in ENGL 1001.",
@@ -44173,7 +44209,7 @@
         "footnotes": {
           "1": "POLI 1001 recommended but not required. If POLI 1001 is not taken, add three hours of approved POLI courses.",
           "2": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other four fields as follows: American Government & Politics Comparative Government & Politics International Politics & Law Political Theory Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor.",
+          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other four fields as follows: American Government & Politics General: POLI 2051 POLI 2052 POLI 4000 Political Behavior: POLI 2030 POLI 4026 POLI 4028 POLI 4030 POLI 4031 POLI 4032 POLI 4034 POLI 4035 POLI 4036 Public Law & Jurisprudence: POLI 4020 POLI 4021 POLI 4023 Public Administration: POLI 2070 POLI 4011 POLI 4017 State, Urban, Local Government: POLI 2056 POLI 4015 POLI 4039 Comparative Government & Politics General: POLI 2053 POLI 4060 POLI 4062 POLI 4063 POLI 4064 Western Europe: POLI 4074 POLI 4075 POLI 4076 POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070 POLI 4072 Asia: POLI 4067 POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057 POLI 4040 POLI 4044 POLI 4045 POLI 4046 POLI 4047 POLI 4048 POLI 4050 POLI 4059 International Law & Organization: POLI 4041 POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060 POLI 4090 History of Political Thought: POLI 4080 POLI 4081 POLI 4082 Contemporary Political Thought: POLI 4096 POLI 4097 POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor.",
           "4": "Public Policy and Political Analysis Research Methods (Required): POLI 3001 or POLI 4001 Public Policy, General: POLI 2070, POLI 4035 Topics in Public Policy: POLI 4011, POLI 4015, POLI 4017 Political Economy: POLI 4046, POLI 4062 Foreign Policy: POLI 4043 Research Projects: POLI 4998, POLI 4999"
         },
         "notes": [
@@ -44487,7 +44523,7 @@
         "footnotes": {
           "1": "POLI 1001 recommended but not required. If POLI 1001 is not taken, add three hours of approved POLI courses.",
           "2": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "3": "Political Science courses are divided into four fields: (1) American government & politics; (2) comparative government & politics; (3) international politics & law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: General: POLI 2051, POLI 2052, POLI 4000 Political Behavior: POLI 2030, POLI 4026, POLI 4028, POLI 4030, POLI 4031, POLI 4032, POLI 4034, POLI 4035, POLI 4036 Public Law & Jurisprudence: POLI 4020, POLI 4021, POLI 4023 Public Administration: POLI 2070, POLI 4011, POLI 4017 State, Urban, Local Government: POLI 2056, POLI 4015, POLI 4039 General: POLI 2053, POLI 4060, POLI 4062, POLI 4063, POLI 4064 Western Europe: POLI 4074, POLI 4075, POLI 4076, POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070, POLI 4072 Asia: POLI 4067, POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics: POLI 2057, POLI 4040, POLI 4044, POLI 4045, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4059 International Law & Organization: POLI 4041, POLI 4042 Foreign Policy: POLI 4043 Political Theory, General: POLI 2060, POLI 4090, POLI 4234. History of Political Thought: POLI 4080, POLI 4081, POLI 4082 Contemporary Political Thought: POLI 4096, POLI 4097, POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government & Politics); POLI 4040 (International Politics & Law); POLI 4060 (Comparative Government & Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
+          "3": "Political Science courses are divided into four fields: (1) American government & politics; (2) comparative government & politics; (3) international politics & law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics General: POLI 2051, POLI 2052, POLI 4000 Political Behavior: POLI 2030, POLI 4026, POLI 4028, POLI 4030, POLI 4031, POLI 4032, POLI 4034, POLI 4035, POLI 4036 Public Law & Jurisprudence: POLI 4020, POLI 4021, POLI 4023 Public Administration: POLI 2070, POLI 4011, POLI 4017 State, Urban, Local Government: POLI 2056, POLI 4015, POLI 4039 Comparative Government & Politics General: POLI 2053, POLI 4060, POLI 4062, POLI 4063, POLI 4064 Western Europe: POLI 4074, POLI 4075, POLI 4076, POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070, POLI 4072 Asia: POLI 4067, POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057, POLI 4040, POLI 4044, POLI 4045, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4059 International Law & Organization: POLI 4041, POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060, POLI 4090, POLI 4234. History of Political Thought: POLI 4080, POLI 4081, POLI 4082 Contemporary Political Thought: POLI 4096, POLI 4097, POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government & Politics); POLI 4040 (International Politics & Law); POLI 4060 (Comparative Government & Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor."
         },
         "notes": []
       },
@@ -44785,8 +44821,8 @@
         "footnotes": {
           "1": "POLI 1001 recommended but not required. If POLI 1001 is not taken, add three hours of approved POLI courses.",
           "2": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics Comparative Government & Politics International Politics & Law Political Theory Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor.",
-          "4": "Race, Ethnicity, & Gender"
+          "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory. All students take Introduction to American Government ( POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields as follows: American Government & Politics General: POLI 2051 POLI 2052 POLI 4000 Political Behavior: POLI 2030 POLI 4026 POLI 4028 POLI 4030 POLI 4031 POLI 4032 POLI 4034 POLI 4035 POLI 4036 Public Law & Jurisprudence: POLI 4020 POLI 4021 POLI 4023 Public Administration: POLI 2070 POLI 4011 POLI 4017 State, Urban, Local Government: POLI 2056 POLI 4015 POLI 4039 Comparative Government & Politics General: POLI 2053 POLI 4060 POLI 4062 POLI 4063 POLI 4064 Western Europe: POLI 4074 POLI 4075 POLI 4076 POLI 4077 Latin America: POLI 4065 Russia & Eastern Europe: POLI 4070 POLI 4072 Asia: POLI 4067 POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057 POLI 4040 POLI 4044 POLI 4045 POLI 4046 POLI 4047 POLI 4048 POLI 4050 POLI 4059 International Law & Organization: POLI 4041 POLI 4042 Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060 POLI 4090 History of Political Thought: POLI 4080 POLI 4081 POLI 4082 Contemporary Political Thought: POLI 4096 POLI 4097 POLI 4098 Each field has a special topics course available that may be taken for up to six hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, and POLI 4999 may count toward a political science field with approval of the departmental advisor.",
+          "4": "Race, Ethnicity, & Gender Politics & Elections: POLI 4039 Constitutional & Political Thought: POLI 4021 POLI 4080 Gender and American Politics: POLI 4028 Politics and Poverty Policy: POLI 4017 Race and the Media: MC 3333 MC 3505 Cross-Disciplinary Perspectives: HIST 2061 SOCL 2511"
         },
         "notes": [
           "Critical: “C” or better in ENGL 1001.",
@@ -44804,8 +44840,9 @@
       "1": "POLI 1001 recommended, but not required. If POLI 1001 is not taken, add three hours of Approved POLI courses.",
       "2": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
       "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) comparative government and politics; (3) international politics and law; and (4) political theory.",
-      "4": "Race, Ethnicity, & Gender"
-    }
+      "4": "Race, Ethnicity, & Gender Politics & Elections: POLI 4039 Constitutional & Political Thought: POLI 4021 POLI 4080 Gender and American Politics: POLI 4028 Politics and Poverty Policy: POLI 4017 Race and the Media: MC 3333 MC 3505 Cross-Disciplinary Perspectives: HIST 2061 SOCL 2511"
+    },
+    "footnote_sections": {}
   },
   "14248": {
     "title": "Plant & Soil Systems, B.S.",
@@ -45682,7 +45719,8 @@
     "footnotes": {
       "1": "A list of approved electives is available from the Department of Entomology.",
       "2": "A list of approved electives is available in the Department of Entomology."
-    }
+    },
+    "footnote_sections": {}
   },
   "14264": {
     "title": "Sport Administration, B.S.",
@@ -46465,7 +46503,8 @@
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
       "2": "Select 12 hours from the following: AEEE 4039, AEEE 4504; LHRD 4573, LHRD 4723; ENVS 1126; HIST 2061, HIST 4078, HIST 4079; KIN 2526, KIN 2603, KIN 2999, KIN 3507, KIN 4515, KIN 4800; MC 2000, MC 2002; ISDS 3105; CMST 2064; ELRC 4507.",
       "3": "Grade of “C” or better required for graduation."
-    }
+    },
+    "footnote_sections": {}
   },
   "14272": {
     "title": "Sociology, B.A.",
@@ -47256,7 +47295,8 @@
     ],
     "footnotes": {
       "1": "If two course natural sciences sequence is taken in the physical sciences, the additional three hour natural sciences course must be from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14273": {
     "title": "Music, B.M.",
@@ -50807,7 +50847,8 @@
       "3": "French, German or Italian.",
       "4": "Choose from: MUS 3750, MUS 3997, or MUS 4241.",
       "5": "MUS 4351 is offered in alternating years. Please consult course offerings and/or the department for course availability."
-    }
+    },
+    "footnote_sections": {}
   },
   "14265": {
     "title": "Spanish, B.A.",
@@ -51530,7 +51571,8 @@
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
       "2": "SPANISH ELECTIVES: Choose four from the following: SPAN 3015, SPAN 3043, SPAN 3044, SPAN 3070, SPAN 3071, SPAN 3072, SPAN 3073, SPAN 3074, SPAN 3980.",
       "3": "OPTION: SPAN 1152 may be taken in place of SPAN 1101 and SPAN 1102. If selecting this option, it is recommended that SPAN 1152 be taken in the first semester."
-    }
+    },
+    "footnote_sections": {}
   },
   "14249": {
     "title": "Plant & Soil Systems, B.S.",
@@ -51972,7 +52014,8 @@
     "footnotes": {
       "1": "Select two from the following: ENTM 4012, ENTM 4018 /PLHL 4018, ENTM 3000 /PLHL 3000.",
       "2": "A list of approved electives is available in the Department of Plant Pathology & Crop Physiology."
-    }
+    },
+    "footnote_sections": {}
   },
   "14475": {
     "title": "Screen Arts, B.A.",
@@ -52392,7 +52435,7 @@
         ],
         "footnotes": {
           "1": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; and SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: Screenwriting: Production:",
+          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507; and SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138 ​​​​",
           "3": "Choose three hours from the following: ART 2050, CPLT 2203 / SCRN 2203, CSC 2463, MUS 2745",
           "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
           "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567."
@@ -52814,7 +52857,7 @@
         ],
         "footnotes": {
           "1": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507, SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: Screenwriting: Production:",
+          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507, SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138",
           "3": "Choose three hours from the following: ART 2050, CPLT 2203 / SCRN 2203, CSC 2463, MUS 2745",
           "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
           "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567"
@@ -53236,7 +53279,7 @@
         ],
         "footnotes": {
           "1": "If a two-course sequence is taken in the physical sciences, then the three-hour course must be from the life sciences and vice versa.",
-          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507, SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: Screenwriting: Production:",
+          "2": "In addition to the nine hours of required core courses ( SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507, SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements ( CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 / ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138",
           "3": "Choose three hours from the following: ART 2050, CPLT 2203 / SCRN 2203, CSC 2463, MUS 2745",
           "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
           "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567"
@@ -53250,8 +53293,9 @@
       "3": "Choose three hours from the following: ART 2050, CPLT 2203 /SCRN 2203, CSC 2463, MUS 2745",
       "4": "Choose three hours from the following: SCRN 3010, SCRN 3011",
       "5": "Choose three hours from the following: ARTH 4420, ARTH 4468, ARTH 4470, ART 4230, ART 4240, ART 4567",
-      "2": "In addition to the nine hours of required core courses (SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507, SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements (CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 /ANTH 2423 = Social Sciences)."
-    }
+      "2": "In addition to the nine hours of required core courses (SCRN 2001, SCRN 3001 or SCRN 3502 or SCRN 3503 or SCRN 3504 or SCRN 3505 or SCRN 3506 or SCRN 3507, SCRN 4001 ), 19 hours of SCRN core courses must be completed, with an additional nine hours in a concentration from one of the three concentration areas: 1) History, Theory, & Criticism; 2) Screenwriting; 3) Production. Nine hours of General Education coursework overlap with major and concentration requirements (CMST 2012 or CMST 2040, ENGL 2231 = Humanities; ENGL 2423 /ANTH 2423 = Social Sciences). Note: This course listing is not exhaustive. Courses from participating departments that are relevant to SCRN may be counted toward the concentration requirements with prior approval from the program director. History, Theory, & Criticism: SCRN 2203 SCRN 3001 SCRN 3030 SCRN 3501 SCRN 3502 SCRN 3503 SCRN 3504 SCRN 3505 SCRN 3506 SCRN 3507 SCRN 4001 SCRN 4046 AAAS 2410 ANTH 3401 CHIN 2070 CMST 3013 CMST 3107 CMST 4312 CMST 4971 CPLT 2203 ENGL 3133 ENGL 3222 ENGL 4133 ENGL 4231 FREN 4031 GERM 3506 GERM 4046 WGS 2200 Screenwriting: ENGL 2009 (Required if the Screenwriting Concentration is chosen) ENGL 4009 (Required if the Screenwriting Concentration is chosen) Choose 3 hours from: SCRN 3030 CMST 2060 CMST 3040 ENGL 2005 ENGL 2008 ENGL 2029 ENGL 4000 ENGL 4109 Production: SCRN 4001, SCRN 4011, SCRN 4012, SCRN 4014, or SCRN 4015 (Required if the Production Concentration is chosen) ENGL 2009 (Required if the Production Concentration is chosen) Choose 3 hours from: SCRN 3010 SCRN 3011 SCRN 3012 SCRN 3014 SCRN 3020 SCRN 3030 SCRN 4011 SCRN 4012 SCRN 4014 SCRN 4015 ART 2210 ART 2220 ART 2230 ART 4220 ART 4230 ART 4240 ENGL 4009 ENGL 4109 THTR 3026 THTR 4026 THTR 4138"
+    },
+    "footnote_sections": {}
   },
   "14434": {
     "title": "English, B.A. (3+3 Pre-Law Program)",
@@ -54241,7 +54285,8 @@
       "4": "Choose six hours from the following: ENGL 3024, ENGL 3084, ENGL 3133, ENGL 3384, ENGL 3300, ENGL 3301, ENGL 3310, ENGL 3401, ENGL 3716, ENGL 3720, ENGL 3304.",
       "5": "Choose six hours from the following: ENGL 4133, ENGL 4231, ENGL 4300, ENGL 4301, ENGL 4302, ENGL 4310, ENGL 4475, ENGL 4493, ENGL 4710, ENGL 4711 /ENGL 4712, ENGL 4713 /ENGL 4715, ENGL 4714.",
       "6": "Twelve hours of English courses at the 3000 or 4000 level, three of which must be at the 4000 level."
-    }
+    },
+    "footnote_sections": {}
   },
   "14176": {
     "title": "Electrical Engineering, B.S.E.E.",
@@ -54622,7 +54667,8 @@
       "Elective courses are available so that expertise may be obtained in one or more of the following three areas: Electronics • theory, design, and fabrication of solid-state devices and design of electronic circuits and systems. Energy • energy conversion, power system design and analysis, and control of power systems. Systems and Signal Processing • automatic control, networks, signal processing, and communication.",
       "Additional information concerning these areas and guidelines for selecting electives are available in the division office."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14140": {
     "title": "Landscape Architecture, B.L.A.",
@@ -55030,7 +55076,8 @@
     ],
     "footnotes": {
       "1": "LA 4002 may be scheduled in summer session (8.5 semester) as a study abroad program."
-    }
+    },
+    "footnote_sections": {}
   },
   "14510": {
     "title": "African and African American Studies, B.A. (3+3 Pre-Law Program)",
@@ -55329,7 +55376,8 @@
     "notes": [],
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14269": {
     "title": "International Studies, B.A.",
@@ -59252,10 +59300,11 @@
       "For additional information, contact the Associate Director, 153 Howe-Russell Hall, 225-578-7242."
     ],
     "footnotes": {
-      "1": "Note: Students must demonstrate competency.(Competency means: equivalent of six courses for Arabic, Spanish, French, Italian, Chinese and German.) Native speakers can petition the program director for an exemption from this language requirement. The student’s proficiency in reading, writing, and speaking the language must be verified by someone knowledgeable in that language. The Associate Director will select an appropriate individual to conduct an assessment of the student’s language proficiency. These students are still required to meet the four semester college level foreign language requirement as described in the General Catalog.",
+      "1": "Note: Students must demonstrate competency.(Competency means: equivalent of six courses for Arabic, Spanish, French, Italian, Chinese and German.) Native speakers can petition the program director for an exemption from this language requirement. The student’s proficiency in reading, writing, and speaking the language must be verified by someone knowledgeable in that language. The Associate Director will select an appropriate individual to conduct an assessment of the student’s language proficiency. These students are still required to meet the four semester college level foreign language requirement as described in the General Catalog. Complete one of the following sequences: SPAN 1101, SPAN 1102 or SPAN 1152, SPAN 2101, SPAN 2102, SPAN 2155, and one from SPAN 2156, SPAN 3010, SPAN 3043, SPAN 3044, SPAN 3070, SPAN 3072, SPAN 3073, SPAN 3074, SPAN 3980, SPAN 4063, SPAN 4064, SPAN 4100, SPAN 4145, SPAN 4146, SPAN 4147, SPAN 4201, SPAN 4400. FREN 1001, FREN 1002, FREN 2101, FREN 2102, FREN 2155, and FREN 3060. GERM 1101, GERM 1102, GERM 2101, GERM 2102, GERM 2155, and GERM 3060 or GERM 3061 or GERM 3082 or GERM 3083 or GERM 3084 or GERM 4031 or GERM 4043 or GERM 4044 or GERM 4045. ITAL 1001, ITAL 1002, ITAL 2101, ITAL 2102, ITAL 2155, and ITAL 3058 or ITAL 3071 or ITAL 3072 or ITAL 4051 or ITAL 4100. CHIN 1101, CHIN 1102, CHIN 2001, CHIN 2002, CHIN 3101, CHIN 3102. ARAB 1101, ARAB 1102, ARAB 2101, ARAB 2102, ARAB 3101, ARAB 3102.",
       "2": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
-      "3": "Select fifteen hours from the following (must be taken in at least two different departments; at least nine hours must be at or above the 3000-level) for the appropriate area of concentration:"
-    }
+      "3": "Select fifteen hours from the following (must be taken in at least two different departments; at least nine hours must be at or above the 3000-level) for the appropriate area of concentration: Environment and Development ANTH 4086; GEOG 2200; ECON 4520, ECON 4550, ECON 4070, ECON 4320, ECON 4325; EMS 1011, EMS 3040; ENVS 1126, ENVS 4261; GEOG 4014, GEOG 4045, GEOG 3070, GEOG 4078, GEOG 4080, GEOG 4086; LA 2201, LA 3201; OCS 3103, OCS 3200, OCS 4465, OCS 4550, OCS 4600; POLI 4062, POLI 4064; RNR 1001, RNR 2039, RNR 4023, RNR 4107, SOCL 4551. Global Cultures AAAS 2000, AAAS 2025, AAAS 2410, AAAS 3024, AAAS 4124 / REL 4124; ANTH 2050, ANTH 3060, ANTH 4031 / REL 4031, ANTH 4050, ANTH 4470; ARTH 4466; CPLT 2202 / ENGL 2202; ENGL 2673, ENGL 3080, ENGL 4680; FREN 3076, FREN 3090, FREN 4070; GEOG 4079; HIST 4049; INTL 4100, REL 2029, REL 3092; SOCL 4551; SPAN 4100; THTR 3122, THTR 4220, WGS 2900. Global Diplomacy ECON 4520, ECON 4550, ECON 4560; HIST 2023, HIST 4028, HIST 4049, HIST 4064, HIST 4066, HIST 4130, HIST 4140; LHRD 4901; POLI 4041, POLI 4042, POLI 4043, POLI 4044, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4062, POLI 4063, POLI 4064, POLI 4074. Global Studies ANTH 4031; ECON 4070, ECON 4520, ECON 4550; ENGL 3080; ENVS 4010; FIN 3718; HIST 2023, HIST 3117; INTL 3002, INTL 3099; MC 4103; POLI 4040, POLI 4050, POLI 4041, POLI 4042, POLI 4046, POLI 4060, POLI 4062; REL 2029, REL 3300, REL 4032; REL 4031, SOCL 4701; WGS 2900."
+    },
+    "footnote_sections": {}
   },
   "14402": {
     "title": "Studio Art, B.F.A.",
@@ -60474,7 +60523,8 @@
     ],
     "footnotes": {
       "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life science sequence; three hours in an area (phys/life) not previously selected."
-    }
+    },
+    "footnote_sections": {}
   },
   "14245": {
     "title": "Chemical Engineering, B.S.Ch.E.",
@@ -60879,7 +60929,8 @@
       "In addition, students must earn a “C” or better in CHE 2171, CHE 2172, CHE 2176, CHE 3101, CHE 3102, CHE 3104, CHE 3171, CHE 3173, and CHE 3190 before registering for any subsequent course that requires one or more of these as a prerequisite.",
       "The list of General ChE Technical Electives is kept on file in the Chemical Engineering Department’s main office, 3307 Patrick Taylor Hall. It can also be found on ChE’s website at www.lsu.edu/eng/che/."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14212": {
     "title": "Communication Studies, B.A.",
@@ -61222,7 +61273,8 @@
     ],
     "footnotes": {
       "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences SEQUENCE and two hours lab credit associated with the sequence chosen; three hours in an area (phys/life) not previously selected."
-    }
+    },
+    "footnote_sections": {}
   },
   "14438": {
     "title": "Liberal Arts, B.A. (3+3 Pre-Law Program)",
@@ -62101,8 +62153,9 @@
     "notes": [],
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
-      "2": "Courses that meet the cross-cultural course requirement must be on the approved list that can be found on the WGS website or be approved by an undergraduate advisor."
-    }
+      "2": "Courses that meet the cross-cultural course requirement must be on the approved list that can be found on the WGS website or be approved by an undergraduate advisor. Students must complete 36 semester hours of course work including three required courses ( WGS 2500, WGS 2900, WGS 3150 ), two Women’s & Gender Studies special topics courses ( WGS 4500 ), an approved cross-cultural elective, and 18 additional hours of WGS-approved humanities and social sciences electives, of which nine hours must be at the 3000 level or above. Three of the required General Education Humanities hours must be completed with a WGS-approved literature course from the General Education Humanities list."
+    },
+    "footnote_sections": {}
   },
   "14253": {
     "title": "Agricultural & Extension Education, B.S",
@@ -62963,7 +63016,8 @@
       "1": "Students in the teaching and learning concentration will complete a 32-hour technical core. The technical hours in the teaching and learning concentration will cover the requirements for the primary teaching focus area. Additionally, students will be allowed to select 12 hours of approved agricultural electives. Students will develop a plan of study in consultation with a faculty advisor.",
       "2": "Select one from MATH 1022, MATH 1100, MATH 1431, MATH 1550",
       "3": "An option in Youth and Extension is available. Students must complete AEEE 2002, AEEE 4010, AEEE 4101, AEEE 4102 plus 12 hours of approved agriculture electives. Students not pursuing the option should take 24 hours of approved agriculture electives."
-    }
+    },
+    "footnote_sections": {}
   },
   "14440": {
     "title": "French, B.A. (3+3 Pre-Law Program)",
@@ -63295,7 +63349,8 @@
     ],
     "footnotes": {
       "1": "If two-course sequence is taken in the physical sciences, the additional three-hour course must be taken from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14401": {
     "title": "Natural Resource Ecology & Management, B.S.",
@@ -67264,7 +67319,8 @@
       "2": "Wildlife Habitat Conservation & Management area of concentration courses: REQUIRED: CHEM 2060 /CHEM 2261 /PHYS 2001, RNR 2001, RNR 3002, RNR 3034, RNR 3036, RNR 3040, RNR 3041 *, RNR 3103, RNR 3105, RNR 3018, RNR 4001, RNR 4033, RNR 4036, RNR 4038, RNR 4103, RNR 4107, RNR 4150. Select one course from: RNR 3108 or AGRO 2051. Select one course or course from: RNR 3106, RNR 3107, RNR 4032. * Take one hour of RNR 3041.",
       "3": "The 6th semester is intended to include the 8 week field camp experience (RNR 3034, RNR 3036, RNR 3037, RNR 3040, RNR 3041 ) preceded by 8 week on-campus courses (RNR 3103, RNR 3105 ). Students shall only enroll in 8 week area of concentration and 8 week elective courses during this semester and shall expect to be off campus extended period of time, including overnight trips, during the second 8 weeks.",
       "4": "Students seeking federal employment following graduation should consult their academic advisor about federal requirements for animal and plant taxonomy courses."
-    }
+    },
+    "footnote_sections": {}
   },
   "14180": {
     "title": "Petroleum Engineering, B.S.P.E.",
@@ -68181,7 +68237,8 @@
     "footnotes": {
       "1": "PETE 4998 and PETE 4999 projects must be CCUS projects to earn the concentration. Courses will have separate section numbers and departmental approval will be provided for the concentration.",
       "2": "PETE 4056 simulation project must be a CCUS project to earn the concentration. Course will have a separate section and departmental approval will be provided for the concentration."
-    }
+    },
+    "footnote_sections": {}
   },
   "14246": {
     "title": "Economics, B.A.",
@@ -68964,7 +69021,8 @@
       "1": "If postgraduate study in economics is anticipated, it is strongly recommended that the student should pursue a minor in mathematics.",
       "2": "For General Education Natural Sciences, both physical and life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; three hours in an area (physical/life) not previously selected.",
       "3": "3- Select nine hours of Social Sciences electives in two fields from the following: AAAS****, ANTH****, COMD****, GEOG****, INTL****, POLI****, PSYC**** and SOCL****. Not from: COMD 2050, GEOG 2050, or GEOG 2051."
-    }
+    },
+    "footnote_sections": {}
   },
   "14138": {
     "title": "Architecture, B.Arch.",
@@ -69475,7 +69533,8 @@
       "In the architecture curriculum, normal course progress is imperative. A student failing to complete any required course more than one year later than the time designated in the curriculum is prohibited from advancement in the design studio sequence until the deficiency is corrected. All required courses listed through the senior year must be completed before a student is allowed to enroll in the designated fifth-year courses. Courses listed below are to be scheduled in the sequence in which they are listed.",
       "Thirty-nine hours of general education courses must be completed as required by the university."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14211": {
     "title": "Communication Disorders, B.A.",
@@ -69817,7 +69876,8 @@
     ],
     "footnotes": {
       "1": "For students planning to attend an accredited graduate program for Speech-Language Pathology or Audiology, we strongly recommend taking BIOL 1001 & BIOL 1002 plus one of the following: PHSC 1001 or PHYS 2001 or CHEM 1001. If two course sequence is taken in the natural sciences, the additional three-hour course must be taken from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14179": {
     "title": "Industrial Engineering, B.S.I.E.",
@@ -70293,7 +70353,8 @@
       "Industrial Engineering Electives • Choose from the list maintained in the department.",
       "Students may optionally take three hours of advanced ROTC coursework in place of one IE technical elective."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14250": {
     "title": "Animal Sciences, B.S.",
@@ -72135,7 +72196,8 @@
       "1": "ANSC 2051 is offered in fall semesters. ANSC 2052 is offered in spring semesters.",
       "2": "Select from BIOL 2+++, CHEM 2+++, PHYS 2+++, or ANSC 3060, ANSC 3070, ANSC 4001, ANSC 4005, ANSC 4018,ANSC 4048, ANSC 4050, ANSC 4055, ANSC 4060, ANSC 4090",
       "3": "Select from ANSC 4031, ANSC 4052, ANSC 4054, ANSC 4081, ANSC 4084, ANSC 4086, ANSC 4088"
-    }
+    },
+    "footnote_sections": {}
   },
   "14227": {
     "title": "Microbiology, B.S.",
@@ -72574,7 +72636,7 @@
         "footnotes": {
           "1": "OPTION: Begin foreign language requirement (shown in Semesters 3 and 4) in Semester 2 if continuing in the language studied in high school.",
           "2": "Option: BIOL 4087 or BIOL 4093 and BIOL 4094 in consecutive semesters. If student takes BIOL 4093 and BIOL 4094, two hours will apply toward the approved free electives.",
-          "3": "APPROVED MICROBIOLOGY ELECTIVES (10 hrs required) must come from the following list and must include at least two laboratory courses (excluding independent research BIOL 3999 ):"
+          "3": "APPROVED MICROBIOLOGY ELECTIVES (10 hrs required) must come from the following list and must include at least two laboratory courses (excluding independent research BIOL 3999 ): BIOL 3090 Cell Biology (3) BIOL 3999 Undergraduate Research in Biological Sciences (1-3) BIOL 4054 Introductory Mycology (4) or PLHL 4054 Introductory Mycology (4) BIOL 4084 Geomicrobiology (3) or GEOL 4084 Geomicrobiology (3) BIOL 4090 Marine and Environmental Microbiology (3) or OCS 4090 Marine and Environmental Microbiology (3) BIOL 4105 Parasitology (3) BIOL 4106 Parasitology Laboratory (1) BIOL 4115 Microbial Ecology (3) BIOL 4123 Immunology (3) BIOL 4124 Microbial Pathogens (3) BIOL 4125 Prokaryotic Diversity (3) BIOL 4126 Methods in Microbial Diversity (4) BIOL 4132 Eukaryotic Molecular Genetics (3) BIOL 4162 Food Microbiology (4) or NFS 4162 Food Microbiology (4) BIOL 4163 Industrial Microbiology (4) or NFS 4163 Industrial Microbiology (4) BIOL 4190 Introductory Virology (3) BIOL 4200 Microbial Morphogenesis (3) BIOL 4215 Molecular Biology of Bacterial Disease (3) BIOL 4256 Microbial Ecology and Nutrient Cycling in Soils (4) or AGRO 4056 Microbial Ecology and Nutrient Cycling in Soils (4) or EMS 4056 Microbial Ecology and Nutrient Cycling in Soils (4) BIOL 4400 Molecular Genetics Laboratory (3)"
         },
         "notes": []
       }
@@ -72583,8 +72645,9 @@
     "footnotes": {
       "1": "OPTION: Begin foreign language requirement (shown in Semesters 3 and 4) in Semester 2 if continuing in the language studied in high school.",
       "2": "Option: BIOL 4087 or BIOL 4093 and BIOL 4094 in consecutive semesters. If student takes BIOL 4093 and BIOL 4094, two hours will apply toward the approved free electives.",
-      "3": "APPROVED MICROBIOLOGY ELECTIVES (10 hrs required) must come from the following list and must include at least two laboratory courses (excluding independent research BIOL 3999 ):"
-    }
+      "3": "APPROVED MICROBIOLOGY ELECTIVES (10 hrs required) must come from the following list and must include at least two laboratory courses (excluding independent research BIOL 3999 ): BIOL 3090 Cell Biology (3) BIOL 3999 Undergraduate Research in Biological Sciences (1-3) BIOL 4054 Introductory Mycology (4) or PLHL 4054 Introductory Mycology (4) BIOL 4084 Geomicrobiology (3) or GEOL 4084 Geomicrobiology (3) BIOL 4090 Marine and Environmental Microbiology (3) or OCS 4090 Marine and Environmental Microbiology (3) BIOL 4105 Parasitology (3) BIOL 4106 Parasitology Laboratory (1) BIOL 4115 Microbial Ecology (3) BIOL 4123 Immunology (3) BIOL 4124 Microbial Pathogens (3) BIOL 4125 Prokaryotic Diversity (3) BIOL 4126 Methods in Microbial Diversity (4) BIOL 4132 Eukaryotic Molecular Genetics (3) BIOL 4162 Food Microbiology (4) or NFS 4162 Food Microbiology (4) BIOL 4163 Industrial Microbiology (4) or NFS 4163 Industrial Microbiology (4) BIOL 4190 Introductory Virology (3) BIOL 4200 Microbial Morphogenesis (3) BIOL 4215 Molecular Biology of Bacterial Disease (3) BIOL 4256 Microbial Ecology and Nutrient Cycling in Soils (4) or AGRO 4056 Microbial Ecology and Nutrient Cycling in Soils (4) or EMS 4056 Microbial Ecology and Nutrient Cycling in Soils (4) BIOL 4400 Molecular Genetics Laboratory (3)"
+    },
+    "footnote_sections": {}
   },
   "14270": {
     "title": "Liberal Arts, B.A.",
@@ -73282,8 +73345,9 @@
     ],
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
-      "2": "Courses that meet the cross-cultural course requirement must be on the approved list that can be found on the WGS website or be approved by an undergraduate advisor."
-    }
+      "2": "Courses that meet the cross-cultural course requirement must be on the approved list that can be found on the WGS website or be approved by an undergraduate advisor. Students must complete 36 semester hours of course work including three required courses ( WGS 2500, WGS 2900, WGS 3150 ), two Women’s & Gender Studies special topics courses ( WGS 4500 ), an approved cross-cultural elective, and 18 additional hours of WGS-approved social sciences and humanities electives, of which nine hours must be at the 3000 level or above. Three of the required General Education Humanities hours must be completed with a WGS-approved literature course from the General Education Humanities list."
+    },
+    "footnote_sections": {}
   },
   "14509": {
     "title": "African & African American Studies",
@@ -73614,7 +73678,8 @@
     "notes": [],
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14266": {
     "title": "French, B.A.",
@@ -74410,8 +74475,9 @@
       "Consult “ General Education ” section of the catalog for the general education requirements."
     ],
     "footnotes": {
-      "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa."
-    }
+      "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa. Upon approval of the department, other courses relevant to Secondary Education studies may be accepted for this concentration."
+    },
+    "footnote_sections": {}
   },
   "14437": {
     "title": "Philosophy, B.A. (3+3 Pre-Law Program)",
@@ -75044,7 +75110,8 @@
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be from the life sciences, and vice versa.",
       "2": "PHILOSOPHY ELECTIVES: A minimum of 15 semester hours must be in courses numbered 3000-level and above, with at least six of the 15 at the 4000-level. Degree credit will not be allowed for more than six hours of courses numbered below 2000."
-    }
+    },
+    "footnote_sections": {}
   },
   "14175": {
     "title": "Construction Management, B.S.C.M.",
@@ -75467,7 +75534,8 @@
     ],
     "footnotes": {
       "1": "Industry Emphasis Area Courses: Consult the department advisor for a list of courses."
-    }
+    },
+    "footnote_sections": {}
   },
   "14174": {
     "title": "Environmental Engineering, B.S.Ev.E.",
@@ -75932,7 +76000,8 @@
       }
     ],
     "notes": [],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14461": {
     "title": "Social Work, B.S.W.",
@@ -76375,7 +76444,8 @@
     "notes": [],
     "footnotes": {
       "1": "For General Education Natural Sciences both physical and life sciences must be taken: 6 hours in a physical/life sciences sequence; 3 hours in an area (physical/life) not previously selected. This major requires students to take BIOL 1001."
-    }
+    },
+    "footnote_sections": {}
   },
   "14436": {
     "title": "Psychology, B.S. (3+3 Pre-Law Program)",
@@ -76724,7 +76794,7 @@
         "footnotes": {
           "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; six hours in an area (phys/life) not previously selected.",
           "2": "Two General Education Humanities courses must be from history and one from among the literature courses on the General Education Humanities list.",
-          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements.",
+          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Basics (required of all majors): PSYC 2000 or PSYC 2001; PSYC 2005; PSYC 2016; PSYC 2017; and PSYC 4008. Core Areas (students must complete a course from four areas): Advanced Methods: PSYC 3020 or PSYC 4111 Biological Basis: PSYC 4031 or PSYC 4034 or PSYC 4035 or PSYC 4037 Learning and Cognition: PSYC 4030 or PSYC 4032 or PSYC 4033 or PSYC 4041 Developmental Processes: PSYC 4070 or PSYC 4072 or PSYC 4176 Applied/Social: PSYC 3050 or PSYC 3083 or PSYC 3140 or PSYC 4043 or PSYC 4080 Additional Electives: PSYC 2040, PSYC 2080, PSYC 3030, PSYC 3081, PSYC 3082, PSYC 4039, PSYC 4040, PSYC 4042. Excluded Electives: PSYC 2060, PSYC 2070, PSYC 2076, PSYC 2078, PSYC 2999, PSYC 4999. These courses will not count toward the 33 hours required in the major but are permissible electives above the 33-hour minimum. Students choosing the honors option will enroll in three to six hours of PSYC 4999, in addition to the 33 hours required in the major.",
           "4": "Six hours of first year law coursework will substitute for six hours of PSYCS major coursework. Consult “ General Education ” section of the catalog for the general education requirements. Consult “ Degree Requirements of the College ” for this college for specific instructions regarding approved electives and foreign language requirements."
         },
         "notes": [
@@ -77117,7 +77187,7 @@
         "footnotes": {
           "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; six hours in an area (phys/life) not previously selected.",
           "2": "Two General Education Humanities courses must be from history and one from among the literature courses on the General Education Humanities list.",
-          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements.",
+          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Basics (required of all majors): PSYC 2000 or PSYC 2001; PSYC 2005; PSYC 2016; PSYC 2017; and PSYC 4008 Core Areas (students must complete a course from four areas): Advanced Methods: PSYC 3020 or PSYC 4111 Biological Basis: PSYC 4031 or PSYC 4034 or PSYC 4035 or PSYC 4037 Learning and Cognition: PSYC 4030 or PSYC 4032 or PSYC 4033 or PSYC 4041 Developmental Processes: PSYC 4070 or PSYC 4072 or PSYC 4176 Applied/Social: PSYC 3050 or PSYC 3083 or PSYC 3140 or PSYC 4043 or PSYC 4080 Additional Electives: PSYC 2040, PSYC 2080, PSYC 3030, PSYC 3081, PSYC 3082, PSYC 4039, PSYC 4040, PSYC 4042. Excluded Electives: PSYC 2060, PSYC 2070, PSYC 2076, PSYC 2078, PSYC 2999, PSYC 4999. These courses will not count toward the 33 hours required in the major but are permissible electives above the 33-hour minimum. Students choosing the honors option will enroll in three to six hours of PSYC 4999, in addition to the 33 hours required in the major.",
           "4": "Six hours of first year law coursework will substitute for six hours of PSYCS major coursework."
         },
         "notes": [
@@ -77132,10 +77202,11 @@
     ],
     "footnotes": {
       "2": "Two General Education Humanities courses must be from history and one from among the literature courses on the General Education Humanities list.",
-      "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements.",
+      "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Basics (required of all majors): PSYC 2000 or PSYC 2001; PSYC 2005; PSYC 2016; PSYC 2017; and PSYC 4008 Core Areas (students must complete a course from four areas): Advanced Methods: PSYC 3020 or PSYC 4111 Biological Basis: PSYC 4031 or PSYC 4034 or PSYC 4035 or PSYC 4037 Learning and Cognition: PSYC 4030 or PSYC 4032 or PSYC 4033 or PSYC 4041 Developmental Processes: PSYC 4070 or PSYC 4072 or PSYC 4176 Applied/Social: PSYC 3050 or PSYC 3083 or PSYC 3140 or PSYC 4043 or PSYC 4080 Additional Electives: PSYC 2040, PSYC 2080, PSYC 3030, PSYC 3081, PSYC 3082, PSYC 4039, PSYC 4040, PSYC 4042. Excluded Electives: PSYC 2060, PSYC 2070, PSYC 2076, PSYC 2078, PSYC 2999, PSYC 4999. These courses will not count toward the 33 hours required in the major but are permissible electives above the 33-hour minimum. Students choosing the honors option will enroll in three to six hours of PSYC 4999, in addition to the 33 hours required in the major.",
       "4": "Six hours of first year law coursework will substitute for six hours of PSYCS major coursework.",
       "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; six hours in an area (phys/life) not previously selected."
-    }
+    },
+    "footnote_sections": {}
   },
   "14267": {
     "title": "History, B.A.",
@@ -78135,7 +78206,8 @@
     ],
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14637": {
     "title": "Fire and Emergency Services Administration, BS",
@@ -78338,7 +78410,8 @@
       }
     ],
     "notes": [],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14508": {
     "title": "Film and Television, B.F.A.",
@@ -78719,7 +78792,8 @@
       }
     ],
     "notes": [],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14271": {
     "title": "Philosophy, B.A.",
@@ -79754,8 +79828,9 @@
     ],
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be from the life sciences, and vice versa.",
-      "2": "PHILOSOPHY ELECTIVES: A minimum of 15 semester hours must be in courses numbered 3000-level and above, with at least six of the 15 at the 4000-level. Degree credit will not be allowed for more than six hours of courses numbered below 2000."
-    }
+      "2": "PHILOSOPHY ELECTIVES: A minimum of 15 semester hours must be in courses numbered 3000-level and above, with at least six of the 15 at the 4000-level. Degree credit will not be allowed for more than six hours of courses numbered below 2000. Students concentrating in law, ethics, and social justice are required to complete 30 hours of philosophy courses, including PHIL 1021; PHIL 2010; PHIL 2020 ( PHIL 2050 or PHIL 3052 ); PHIL 2033 (or PHIL 2053 ); PHIL 2035; PHIL 4946 or PHIL 4947; an elective in ethics ( PHIL 4942, PHIL 4943, PHIL 4972, or a special topics course in ethics); an elective in social/political philosophy ( PHIL 3062, PHIL 3072, PHIL 4098, PHIL 4945, PHIL 4949, or a special topics course in social/political philosophy); and 6 hours of electives."
+    },
+    "footnote_sections": {}
   },
   "14226": {
     "title": "Biochemistry, B.S.",
@@ -80161,7 +80236,7 @@
         ],
         "footnotes": {
           "1": "OPTION: Complete foreign language requirement (shown in semesters 5 and 6) in semesters 2 and 3 if continuing in the language studied in high school.",
-          "2": "Approved biochemistry electives must come from the following list, must include at least one laboratory course, and must include at least one course from Group 1 and at least two courses from Group 2. Courses from any of the groups can be used for the remainder of the 12-hour requirements: BIOL 3999 can also be taken as a biochemistry elective but does not count as a laboratory course."
+          "2": "Approved biochemistry electives must come from the following list, must include at least one laboratory course, and must include at least one course from Group 1 and at least two courses from Group 2. Courses from any of the groups can be used for the remainder of the 12-hour requirements: BIOL 3999 can also be taken as a biochemistry elective but does not count as a laboratory course. BIOL 4002 Insect Biology (3) ENTM 4002 Insect Biology (3) BIOL 4015 Conservation Biology (4) BIOL 4084 Geomicrobiology (3) GEOL 4084 Geomicrobiology (3) BIOL 4090 Marine and Environmental Microbiology (3) OCS 4090 Marine and Environmental Microbiology (3) BIOL 4115 Microbial Ecology (3) BIOL 4253 Principles of Ecology (3) BIOL 4256 Microbial Ecology and Nutrient Cycling in Soils (4) AGRO 4056 Microbial Ecology and Nutrient Cycling in Soils (4) EMS 4056 Microbial Ecology and Nutrient Cycling in Soils (4) BIOL 4262 Marine Communities (3) BIOL 4308 Plants in Coastal Environments (3) OCS 4308 Plants in Coastal Environments (3) BIOL 4020 Taxonomy and Ecology of Wetland Plants (4) RNR 4020 Taxonomy and Ecology of Wetland Plants (4) BIOL 4041 Plant Diversity (4) BIOL 4054 Introductory Mycology (4) PLHL 4054 Introductory Mycology (4) BIOL 4105 Parasitology (3) BIOL 4125 Prokaryotic Diversity (3) BIOL 4126 Methods in Microbial Diversity (4) BIOL 4141 Mammalogy (4) BIOL 4142 Ornithology (4) BIOL 4145 Ichthyology (4) RNR 4145 Ichthyology (4) BIOL 4146 Herpetology (4) BIOL 4154 Invertebrate Zoology (4) BIOL 4162 Food Microbiology (4) NFS 4162 Food Microbiology (4) BIOL 4163 Industrial Microbiology (4) NFS 4163 Industrial Microbiology (4)"
         },
         "notes": []
       }
@@ -80170,7 +80245,8 @@
     "footnotes": {
       "1": "OPTION: Complete foreign language requirement (shown in semesters 5 and 6) in semesters 2 and 3 if continuing in the language studied in high school.",
       "2": "Approved biochemistry electives must come from the following list, must include at least one laboratory course, and must include at least one course from Group 1 and at least two courses from Group 2. Courses from any of the groups can be used for the remainder of the 12-hour requirements:"
-    }
+    },
+    "footnote_sections": {}
   },
   "14251": {
     "title": "Nutrition & Food Sciences, B.S.",
@@ -82170,7 +82246,8 @@
     ],
     "footnotes": {
       "1": "General Education Humanities: three hours chosen from a 2000-level literature course on the General Education list and three hours chosen from any course on the General Education Humanities list."
-    }
+    },
+    "footnote_sections": {}
   },
   "14178": {
     "title": "Mechanical Engineering, B.S.M.E.",
@@ -82630,7 +82707,8 @@
     "notes": [
       "A grade of “C” or better is required in CHEM 1202, MATH 1552, and PHYS 2110 (or equivalent courses) before a student may enroll in ME 2334. A grade of “C” or better is required in MATH 2070 / MATH 2090 (or equivalent course) before a student may enroll in ME 3834."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14528": {
     "title": "Chemistry, BA",
@@ -85407,7 +85485,8 @@
       }
     ],
     "notes": [],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14139": {
     "title": "Interior Design, B.I.D.",
@@ -85846,7 +85925,8 @@
     "footnotes": {
       "1": "If a two-course natural science sequence is taken in the life sciences, the additional 3-hour natural science course must be from the physical sciences, and vice versa.",
       "2": "INTERIOR DESIGN FOCUS ELECTIVE: Choose three hours from ID 4751, ID 4786, or ID 4772, or an approved 3000 or 4000 level elective offered in the College of Art and Design."
-    }
+    },
+    "footnote_sections": {}
   },
   "14247": {
     "title": "English, B.A.",
@@ -87249,7 +87329,8 @@
       "7": "Twelve hours of English courses at the 3000 or 4000 level, 3 of which must be at the 4000 level.",
       "8": "Choose three hours from the following Diverse Perspectives Category: ENGL 3550, ENGL 3593, ENGL 3673, ENGL 3674, ENGL 4220, ENGL 4322, ENGL 4323, ENGL 4550, ENGL 4593, ENGL 4674, ENGL 4680.",
       "9": "Choose six hours of English electives at the 3000 or 4000 level."
-    }
+    },
+    "footnote_sections": {}
   },
   "14400": {
     "title": "Plant & Soil Systems, B.S.",
@@ -89894,7 +89975,8 @@
       "1": "A list of approved electives is available in the School of Plant, Environmental, and Soil Sciences.",
       "2": "A list of approved electives is available in the School of Plant, Environmental & Soil Sciences.",
       "3": "Students who have taken BIOL 1201 and BIOL 1202 may elect to take BIOL 1208 and BIOL 1209 in place of BIOL 1005."
-    }
+    },
+    "footnote_sections": {}
   },
   "14441": {
     "title": "Spanish, B.A. (3+3 Pre-Law Program)",
@@ -90209,7 +90291,8 @@
     "footnotes": {
       "1": "If two-course sequence is taken in the physical sciences, then the three-hour course must be taken from the life sciences and vice versa.",
       "2": "SPANISH ELECTIVES: Take two 4000-level courses, and choose four from SPAN 3015, SPAN 3043, SPAN 3044, SPAN 3070, SPAN 3071, SPAN 3072, SPAN 3073, SPAN 3074, SPAN 3980."
-    }
+    },
+    "footnote_sections": {}
   },
   "14108": {
     "title": "Dental Hygiene",
@@ -90460,8 +90543,9 @@
     "footnotes": {
       "1": "ILC ARTS course must be from: ART, ARTH, MUS, or THTR rubric.",
       "2": "ILC HUMANITIES course must be from: ARAB, CHIN, CMST, ENGL, FREN, GERM, GREK, HEBR, HIST, ITAL, LATN, PHIL, SPAN, or REL rubric.",
-      "3": "ENGLISH LITERATURE COURSES may be selected from the following:"
-    }
+      "3": "ENGLISH LITERATURE COURSES may be selected from the following: ENGL 2024 ENGL 2025 ENGL 2027 ENGL 2029 ENGL 2123 ENGL 2148 ENGL 2201 (see also: CPLT 2201 ) ENGL 2202 (see also: CPLT 2202 ) ENGL 2220 ENGL 2231 ENGL 2270 ENGL 2300 ENGL 2593 ENGL 2673 ENGL 2674 ENGL 2823 ENGL 2824"
+    },
+    "footnote_sections": {}
   },
   "14276": {
     "title": "Biological Sciences, B.S.",
@@ -91764,8 +91848,9 @@
       "1": "Option: Begin foreign language requirement (shown in Semesters 3 and 4) in Semester 1 and 2 if continuing in the language studied in high school.",
       "2": "See list and requirements for Biological Science electives with department.",
       "3": "Students who have taken both BIOL 4093 and BIOL 4094 may substitute these courses for BIOL 4087.",
-      "4": "Students who do not take SCI 2010 and SCI 2011 are recommended to take SCI 2012 by their third semester. Credit will not be given for SCI 2012 if credit has been earned in SCI 2010 and SCI 2011."
-    }
+      "4": "Students who do not take SCI 2010 and SCI 2011 are recommended to take SCI 2012 by their third semester. Credit will not be given for SCI 2012 if credit has been earned in SCI 2010 and SCI 2011. NOTE:"
+    },
+    "footnote_sections": {}
   },
   "14260": {
     "title": "Elementary Grades Education, B.S.",
@@ -92480,7 +92565,8 @@
       "1": "1- ART 1001 or ARTH 1440 /ARTH 2470 or MUS 1751 /MUS 1799.",
       "2": "Option: MATH 1021 /MATH 1023.",
       "3": "2.5 LSU/Cumulative GPA is required for enrollment in 3000+ level EDCI courses."
-    }
+    },
+    "footnote_sections": {}
   },
   "14630": {
     "title": "Coastal Meteorology, B.S.",
@@ -92959,7 +93045,8 @@
       }
     ],
     "notes": [],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14325": {
     "title": "Engineering Science, M.S.E.S.",
@@ -93246,7 +93333,8 @@
       "At least half of the degree hours must be at the 7000 level or above and students would typically complete some coursework in their undergraduate math, science, or engineering field.",
       "Students who are not certified teachers will be encouraged to seek certification within an alternative certification program."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14470": {
     "title": "Agricultural & Extension Education, M.S.",
@@ -93404,7 +93492,8 @@
     "notes": [
       "The concentration in Agriculture Teacher Certification (6-12) allow students with a bachelor’s degree in an agriculturally related field to learn and refine pedagogical knowledge and skills and earn initial teacher certification to teach agriculture at the secondary level (i.e., grades 6-12). This non-thesis degree requires 36 semester hours of graduate work, at least half of the course work must be at or above the 7000 level. To meet certification requirements from the Louisiana Department of Education, students will complete a year-long residency that, at minimum, is equivalent to 60% full-time in the fall semester and 80% time in the spring semester. Students will work in collaboration with their graduate committee to complete a non-thesis, creative component project."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14431": {
     "title": "History, B.A. (3+3 Pre-Law Program)",
@@ -93786,7 +93875,8 @@
     ],
     "footnotes": {
       "1": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa."
-    }
+    },
+    "footnote_sections": {}
   },
   "14173": {
     "title": "Civil Engineering, B.S.C.E.",
@@ -94210,7 +94300,8 @@
     "notes": [
       "Civil Engineering majors must earn a grade of “C” or better in CHEM 1202, PHYS 2110, PHYS 2112, MATH 1550, MATH 1552, MATH 2057, CE 2200, CE 2450, CE 2460, and CE 3400 before registering for any subsequent courses that require the above as prerequisites."
     ],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14489": {
     "title": "Art and Design, B.A.",
@@ -95013,7 +95104,8 @@
       "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life science sequence; three hours in an area (phys/life) not previously selected.",
       "2": "Students must complete 27 hours of art history courses, take at least one course in three of the four subject areas and take no more than two courses in art history at the 2000 level; ARCH 2007 or ARCH 2008 may substitute one 2000 level course; art history courses that do not fall into any subject area may still be counted toward the 27 hour requirement; ARTH 4420 and ARTH 4490 may be used to fulfill appropriate subject area requirements; ARTH 4449 may be used to fulfill either the Ancient and Medieval Art or Non-Western Art requirement but not both.",
       "3": "Approved electives: see art history undergraduate advisor."
-    }
+    },
+    "footnote_sections": {}
   },
   "14104": {
     "title": "Cardiopulmonary Science (Respiratory Therapy and Cardiopulmonary Sonography)",
@@ -95280,7 +95372,8 @@
       "3": "BIOL 2153, CHEM 2261, or PHYS 2002 recommended.",
       "4": "LSUHSC New Orleans requires either CHEM 1202 and CHEM 1212 or PHYS 2001 and PHYS 2108; LSUHSC Shreveport requires CHEM 1202, CHEM 1212, PHYS 2001, PHYS 2108.",
       "5": "Additional courses needed for the LSUHSC Shreveport program include KIN 2500, KIN 2509, KIN 3500, & BIOL 2161."
-    }
+    },
+    "footnote_sections": {}
   },
   "14145": {
     "title": "Accounting, BS",
@@ -95773,7 +95866,8 @@
       "3": "Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061 or CMST 4113. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "4": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "5": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.”"
-    }
+    },
+    "footnote_sections": {}
   },
   "14112": {
     "title": "Pre-Nursing",
@@ -95950,7 +96044,8 @@
     "footnotes": {
       "1": "Pre-Nursing Students who enter with COLLEGE ALGEBRA (MATH 1021 ) credit may request permission to take BIOL 1201, BIOL 1208, and CHEM 1005 in their first semester to fulfill the 16 hours of credit required to complete the Pre-Nursing application. Students who enact this option should plan to take the ILC HUMANITIES and ILC ARTS credits listed in the first semester in a subsequent semester.",
       "2": "A third humanities course may be taken at LSU and is eligible to transfer to the LSU School of Nursing, but is not immediately required for a student to apply to the School of Nursing."
-    }
+    },
+    "footnote_sections": {}
   },
   "14217": {
     "title": "Psychology, B.S.",
@@ -96327,7 +96422,7 @@
         "footnotes": {
           "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; six hours in an area (phys/life) not previously selected.",
           "2": "Two General Education Humanities courses must be from history and one from among the literature courses on the General Education Humanities list.",
-          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Consult “ General Education ” section of the catalog for the general education requirements. Consult “ Degree Requirements of the College ” for this college for specific instructions regarding approved electives and foreign language requirements."
+          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Basics (required of all majors): PSYC 2000 or PSYC 2001; PSYC 2005; PSYC 2016; PSYC 2017; PSYC 4005; and PSYC 4008. Core Areas (students must complete a course from four areas): Advanced Methods: PSYC 3020 or PSYC 4111 Biological Basis: PSYC 4031 or PSYC 4034 or PSYC 4035 or PSYC 4037 Learning and Cognition: PSYC 4030 or PSYC 4032 or PSYC 4033 or PSYC 4041 Developmental Processes: PSYC 4070 or PSYC 4072 or PSYC 4176 Applied/Social: PSYC 3050 or PSYC 3083 or PSYC 3140 or PSYC 4080 or PSYC 4043 Additional Electives: PSYC 2040, PSYC 2080, PSYC 3030, PSYC 3081, PSYC 3082, PSYC 4039, PSYC 4040, PSYC 4042. Excluded Electives: PSYC 2060, PSYC 2070, PSYC 2076, PSYC 2078, PSYC 2999, PSYC 4999. These courses will not count toward the 34 hours required in the major but are permissible electives above the 34-hour minimum. Students choosing the honors option will enroll in three to six hours of PSYC 4999, in addition to the 34 hours required in the major. Consult “ General Education ” section of the catalog for the general education requirements. Consult “ Degree Requirements of the College ” for this college for specific instructions regarding approved electives and foreign language requirements."
         },
         "notes": []
       },
@@ -96707,7 +96802,7 @@
         "footnotes": {
           "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; six hours in an area (phys/life) not previously selected.",
           "2": "Two General Education Humanities courses must be from history and one from among the literature courses on the General Education Humanities list.",
-          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Consult “ General Education ” section of the catalog for the general education requirements. Consult “ Degree Requirements of the College ” for this college for specific instructions regarding approved electives and foreign language requirements."
+          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Basics (required of all majors): PSYC 2000 or PSYC 2001; PSYC 2005; PSYC 2016; PSYC 2017; PSYC 4005; and PSYC 4008. Required Concentration Courses: PSYC 4043; PSYC 2040, PSYC 2080 and PSYC 3082 Core Areas (students must complete a course from two of the areas listed below): Advanced Methods: ​ PSYC 3020 or PSYC 4111 Biological Basis: PSYC 4031 or PSYC 4034 or PSYC 4035 or PSYC 4037 ​​​ Learning and Cognition: PSYC 4030 or PSYC 4032 or PSYC 4033 or PSYC 4041 Developmental Processes: PSYC 4070 or PSYC 4072 or PSYC 4176 Applied/Social: PSYC 3050 or PSYC 3083 or PSYC 3140 or PSYC 4080 Excluded Courses: PSYC 2060, PSYC 2070, PSYC 2076, PSYC 2078, PSYC 2999, PSYC 4999. These courses will not count toward the 34 hours required in the major but are permissible electives above the 34-hour minimum. Students choosing the honors option will enroll in three to six hours of PSYC 4999, in addition to the 34 hours required in the major. Consult “ General Education ” section of the catalog for the general education requirements. Consult “ Degree Requirements of the College ” for this college for specific instructions regarding approved electives and foreign language requirements."
         },
         "notes": []
       },
@@ -97055,7 +97150,7 @@
         "footnotes": {
           "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; six hours in an area (phys/life) not previously selected.",
           "2": "Two General Education Humanities courses must be from history and one from among the literature courses on the General Education Humanities list.",
-          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements."
+          "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Basics (required of all majors): PSYC 2000 or PSYC 2001; PSYC 2005; PSYC 2016; PSYC 2017; PSYC 4005; and PSYC 4008. Required Concentration Courses: PSYC 3030; PSYC 4041; and two of the following: PSYC 4031 or PSYC 4033 or PSYC 4034 or PSYC 4035 or PSYC 4037 or PSYC 4039 Core Areas (students must complete a course from two areas): Advanced Methods: PSYC 3020 or PSYC 4111 Learning and Cognition: PSYC 4030 or PSYC 4032 Developmental Processes: PSYC 4070 or PSYC 4072 or PSYC 4176 Applied/Social: PSYC 3050 or PSYC 3083 or PSYC 3140 or PSYC 4043 or PSYC 4080 Excluded Electives: PSYC 2060, PSYC 2070, PSYC 2076, PSYC 2078, PSYC 2999, PSYC 4999. These courses will not count toward the 34 hours required in the major but are permissible electives above the 34-hour minimum. Students choosing the honors option will enroll in three to six hours of PSYC 4999, in addition to the 34 hours required in the major."
         },
         "notes": []
       }
@@ -97067,8 +97162,9 @@
     "footnotes": {
       "1": "For General Education Natural Sciences, both physical & life sciences must be taken: six hours in a physical/life sciences sequence and two hours lab credit associated with the sequence chosen; six hours in an area (phys/life) not previously selected.",
       "2": "Two General Education Humanities courses must be from history and one from among the literature courses on the General Education Humanities list.",
-      "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements."
-    }
+      "3": "Students majoring in psychology must take an extra three credit hours of natural sciences lecture and two credit hours of natural sciences laboratory beyond the minimum general education natural sciences requirements. Basics (required of all majors): PSYC 2000 or PSYC 2001; PSYC 2005; PSYC 2016; PSYC 2017; PSYC 4005; and PSYC 4008. Required Concentration Courses: PSYC 3030; PSYC 4041; and two of the following: PSYC 4031 or PSYC 4033 or PSYC 4034 or PSYC 4035 or PSYC 4037 or PSYC 4039 Core Areas (students must complete a course from two areas): Advanced Methods: PSYC 3020 or PSYC 4111 Learning and Cognition: PSYC 4030 or PSYC 4032 Developmental Processes: PSYC 4070 or PSYC 4072 or PSYC 4176 Applied/Social: PSYC 3050 or PSYC 3083 or PSYC 3140 or PSYC 4043 or PSYC 4080 Excluded Electives: PSYC 2060, PSYC 2070, PSYC 2076, PSYC 2078, PSYC 2999, PSYC 4999. These courses will not count toward the 34 hours required in the major but are permissible electives above the 34-hour minimum. Students choosing the honors option will enroll in three to six hours of PSYC 4999, in addition to the 34 hours required in the major."
+    },
+    "footnote_sections": {}
   },
   "14128": {
     "title": "Agricultural Business, B.S.",
@@ -99901,7 +99997,8 @@
       "4": "Select one course from the following:ENGL 2001, ENGL 2002, ENGL 2005, ENGL 2007, ENGL 2008, ENGL 2009, ENGL 2012, ENGL 2024, ENGL 3003, ENGL 3004, or ENGL 3101.",
       "5": "Students electing to take ISDS 2001 must take an additional hour of general electives or ROTC.",
       "6": "At least six hours must be taken at the 3000 level or higher."
-    }
+    },
+    "footnote_sections": {}
   },
   "14256": {
     "title": "International Trade and Finance, B.S.",
@@ -100854,9 +100951,10 @@
       "3": "Oral and Written Communication Requirement 1: Choose from CMST 2060, CMST 2061 or CMST 2064. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "4": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "5": "Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061 or CMST 4113. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
-      "6": "BUSINESS ELECTIVES: to be selected from the 3000 or 4000 level offerings of the following departments: ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT, and ISDS.",
+      "6": "BUSINESS ELECTIVES: to be selected from the 3000 or 4000 level offerings of the following departments: ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT, and ISDS. ELECTIVES: See “ Electives ” under “ Degree Requirements of the College.”",
       "7": "International Requirement: Choose TWO (total 6 hours) from FIN 3718, ISDS 4160, POLI 4042, POLI 4044, POLI 4046, POLI 4050."
-    }
+    },
+    "footnote_sections": {}
   },
   "14257": {
     "title": "Management, BS",
@@ -102018,11 +102116,12 @@
     ],
     "footnotes": {
       "1": "GENERAL EDUCATION NATURAL SCIENCE REQUIREMENT: If two course sequence is taken in the physical science, the additional three hour course must be taken from the life sciences, and vice versa.",
-      "2": "Oral and Written Communication Requirement 1: Choose from CMST 2060, CMST 2061, or CMST 2064",
+      "2": "Oral and Written Communication Requirement 1: Choose from CMST 2060, CMST 2061, or CMST 2064 Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061, or CMST 4113 A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "3": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715, or ISDS 1100",
-      "4": "APPROVED MANAGEMENT ELECTIVES: See management advisor for list of Management electives.",
+      "4": "APPROVED MANAGEMENT ELECTIVES: See management advisor for list of Management electives. BUSINESS ELECTIVES: to be selected from the 3000 or 4000 level offerings of the following departments: ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT and ISDS. STRATEGIC LEADERSHIP CONCENTRATION COURSES: To be selected from MGT 3211, MGT 4820, MGT 4830, and MGT 4840",
       "5": "ELECTIVES: See “Electives” under “Degree Requirements of the College.”"
-    }
+    },
+    "footnote_sections": {}
   },
   "14216": {
     "title": "Political Science, B.A.",
@@ -103413,8 +103512,21 @@
     "footnotes": {
       "1": "POLI 1001 recommended, but not required. If POLI 1001 is not taken, add three hours of Approved POLI courses.",
       "2": "If two course sequence is taken in the physical sciences, the additional three hour course must be taken from the life sciences, and vice versa.",
-      "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) Comparative government and politics; (3) International politics and law; and (4) Political theory. All students take Introduction to American Government (POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields. Courses count in fields as follows:",
-      "4": "Courses count as follows:"
+      "3": "Political Science courses are divided into four fields: (1) American government and politics; (2) Comparative government and politics; (3) International politics and law; and (4) Political theory. All students take Introduction to American Government (POLI 2051 or POLI 2052 ) and must take one course from each of the other three fields. Courses count in fields as follows: American Government & Politics General: POLI 2051, POLI 2052, POLI 4000 Political Behavior: POLI 2030, POLI 4026, POLI 4028, POLI 4029, POLI 4030, POLI 4031, POLI 4032, POLI 4034, POLI 4035, POLI 4036 Public Law & Jurisprudence: POLI 4020, POLI 4021, POLI 4023; Public Administration: POLI 2070, POLI 4011, POLI 4017 State, Urban, Local Government: POLI 2056, POLI 4015, POLI 4039 Comparative Government & Politics General: POLI 2053, POLI 4060, POLI 4062, POLI 4063, POLI 4064 Western Europe: POLI 4074, POLI 4075, POLI 4076, POLI 4077 Latin America: POLI 4065 Russia and Eastern Europe: POLI 4070, POLI 4072 Asia: POLI 4067, POLI 4079 Africa: POLI 4078 Middle East: POLI 4061 International Politics & Law International Politics: POLI 2057, POLI 4040, POLI 4044, POLI 4045, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4059 International Law & Organizations: POLI 4041, POLI 4042; Foreign Policy: POLI 4043 Political Theory Political Theory, General: POLI 2060, POLI 4090, POLI 4234 History of Political Thought: POLI 4080, POLI 4081, POLI 4082 Contemporary Political Thought: POLI 4096, POLI 4097, POLI 4098 Each field has a special topics course available that may be taken for up to 6 hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, POLI 4999 may count toward a Political Science field with approval of the departmental advisor.",
+      "4": "Courses count as follows: Law & Legal Systems American Constitutional Law: POLI 4020, POLI 4021 Judicial Politics: POLI 4023 International Law: POLI 4041 Sociology of Law: SOCL 3371, SOCL 4471 Mass Media Law: MC 3080, MC 3081 Legal Writing: ENGL 3101 Public Policy & Political Analysis Research Methods (Required): POLI 3001 or POLI 4001 Public Policy, General: POLI 2070, POLI 4035 Topics in Public Policy: POLI 4011, POLI 4015, POLI 4017 Political Economy: POLI 4046, POLI 4062 Foreign Policy: POLI 4043 Research Analysis: POLI 4998, POLI 4999 Race, Ethnicity, & Gender Politics & Elections: POLI 4039 Constitutional & Political Thought: POLI 4021, POLI 4080 Gender and American Politics: POLI 4028 Politics and Poverty Policy: POLI 4017 Race and the Media: MC 3333, MC 3505 Cross-Disciplinary Perspectives: HIST 2061, SOCL 2511"
+    },
+    "footnote_sections": {
+      "3": {
+        "American Government & Politics": "General: POLI 2051, POLI 2052, POLI 4000 Political Behavior: POLI 2030, POLI 4026, POLI 4028, POLI 4029, POLI 4030, POLI 4031, POLI 4032, POLI 4034, POLI 4035, POLI 4036 Public Law & Jurisprudence: POLI 4020, POLI 4021, POLI 4023; Public Administration: POLI 2070, POLI 4011, POLI 4017 State, Urban, Local Government: POLI 2056, POLI 4015, POLI 4039",
+        "Comparative Government & Politics": "General: POLI 2053, POLI 4060, POLI 4062, POLI 4063, POLI 4064 Western Europe: POLI 4074, POLI 4075, POLI 4076, POLI 4077 Latin America: POLI 4065 Russia and Eastern Europe: POLI 4070, POLI 4072 Asia: POLI 4067, POLI 4079 Africa: POLI 4078 Middle East: POLI 4061",
+        "International Politics & Law": "International Politics: POLI 2057, POLI 4040, POLI 4044, POLI 4045, POLI 4046, POLI 4047, POLI 4048, POLI 4050, POLI 4059 International Law & Organizations: POLI 4041, POLI 4042; Foreign Policy: POLI 4043",
+        "Political Theory": "Political Theory, General: POLI 2060, POLI 4090, POLI 4234 History of Political Thought: POLI 4080, POLI 4081, POLI 4082 Contemporary Political Thought: POLI 4096, POLI 4097, POLI 4098 Each field has a special topics course available that may be taken for up to 6 hours of credit when topics vary. These courses are: POLI 4000 (American Government and Politics); POLI 4040 (International Politics and Law); POLI 4060 (Comparative Government and Politics); and POLI 4090 (Political Theory). In addition, POLI 4996, POLI 4997, POLI 4998, POLI 4999 may count toward a Political Science field with approval of the departmental advisor."
+      },
+      "4": {
+        "Law & Legal Systems": "American Constitutional Law: POLI 4020, POLI 4021 Judicial Politics: POLI 4023 International Law: POLI 4041 Sociology of Law: SOCL 3371, SOCL 4471 Mass Media Law: MC 3080, MC 3081 Legal Writing: ENGL 3101",
+        "Public Policy & Political Analysis": "Research Methods (Required): POLI 3001 or POLI 4001 Public Policy, General: POLI 2070, POLI 4035 Topics in Public Policy: POLI 4011, POLI 4015, POLI 4017 Political Economy: POLI 4046, POLI 4062 Foreign Policy: POLI 4043 Research Analysis: POLI 4998, POLI 4999",
+        "Race, Ethnicity, & Gender": "Politics & Elections: POLI 4039 Constitutional & Political Thought: POLI 4021, POLI 4080 Gender and American Politics: POLI 4028 Politics and Poverty Policy: POLI 4017 Race and the Media: MC 3333, MC 3505 Cross-Disciplinary Perspectives: HIST 2061, SOCL 2511"
+      }
     }
   },
   "14538": {
@@ -104025,7 +104137,8 @@
       "2": "Students whose primary instrument is a piano will not be required to take MUS 1130, MUS 1131, MUS 1132, and MUS 1133. They will be required to take MUS 3334 and MUS 3335 in order to learn functional piano skills. Piano primary students will need 128 credit hours for the Bachelor of Music Therapy.",
       "3": "Students whose primary instrument is voice will not be required to take MUS 2300. Voice primary students will need 128 credit hours for the Bachelor of Music Therapy.",
       "4": "Students whose primary instrument is guitar will not be required to take MUS 2300. Guitar primary students will need 128 credit hours for the Bachelor of Music Therapy."
-    }
+    },
+    "footnote_sections": {}
   },
   "14451": {
     "title": "Geography, B.S. (3+3 Pre-Law Program)",
@@ -104414,7 +104527,8 @@
       }
     ],
     "notes": [],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14144": {
     "title": "General Business, B.S.",
@@ -106115,7 +106229,8 @@
       "4": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "5": "General Business electives must be 3000/4000 level and selected from the offerings of at least four of the following departments: Accounting, Economics, Entrepreneurship & Information Systems, Finance, Management, and Marketing. For the INFORMATION TECHNOLOGY MANAGEMENT CONCENTRATION, students must complete three courses from the following: ISDS 3001, ISDS 3002, and ISDS 3003. General Business majors must earn GBUS 3061 to apply as a General Business elective or an Oral and Written Communication Requirement.",
       "6": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.”"
-    }
+    },
+    "footnote_sections": {}
   },
   "14514": {
     "title": "Business Analytics, B.S.",
@@ -106488,7 +106603,8 @@
       "4": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "5": "Business electives must be 3000/4000 level; MGT 3320 Strategic Human Resource Management is strongly recommended to be taken before MGT 4321 Human Resource Analytics. Business electives must include 12 hours of business analytics courses selected from ACCT 3025, FIN 4820, ISDS 3303, MGT 4321, and MKT 3501 or courses approved by the faculty advisor.",
       "6": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.”"
-    }
+    },
+    "footnote_sections": {}
   },
   "14105": {
     "title": "Pre-Physician’s Assistant",
@@ -106869,7 +106985,8 @@
     ],
     "footnotes": {
       "1": "ILC Humanities recommended include- CMST 2060 Public Speaking, English Literature, or Foreign Language courses."
-    }
+    },
+    "footnote_sections": {}
   },
   "14172": {
     "title": "Biological Engineering, B.S.B.E.",
@@ -107328,7 +107445,8 @@
       }
     ],
     "notes": [],
-    "footnotes": {}
+    "footnotes": {},
+    "footnote_sections": {}
   },
   "14148": {
     "title": "Marketing, BS",
@@ -108861,8 +108979,9 @@
       "3": "Business students cannot receive credit for ACCT 2000, ECON 2030, FIN 3715 or ISDS 1100.",
       "4": "Oral and Written Communication Requirement 2: Choose from CMST 2060, CMST 2061 or CMST 4113. A Communication Intensive (C-I) course may be substituted for the Oral and Written Communication Requirement with permission from an academic advisor.",
       "5": "BUSINESS ELECTIVES: to be selected from the 3000 or 4000 level offerings of the following departments: ACCT, BADM, BLAW, ECON, ENTR, FIN, GBUS, MGT, MKT, and ISDS.",
-      "6": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.”"
-    }
+      "6": "ELECTIVES: See “Electives ” under “Degree Requirements of the College.” MARKETING PROFESSIONAL SALES CONCENTRATION ELECTIVES: Students must complete MKT 3427, MKT 4423, and either MKT 4450, MKT 4478 or MKT 4479 to satisfy the requirements of the concentration."
+    },
+    "footnote_sections": {}
   },
   "14277": {
     "title": "Chemistry, B.S.",
@@ -113104,7 +113223,8 @@
       "2": "Two semester hours of CHEM 3900 in an approved materials chemistry research project.",
       "3": "Chemistry Electives: CHEM 4150, CHEM 4160, CHEM 4556, CHEM 4557, CHEM 4558, CHEM 4559, CHEM 4561, CHEM 4562, CHEM 4563, CHEM 4565, CHEM 4570, CHEM 4571, CHEM 4581, CHEM 4594, CHEM 4596, CHEM 4597.",
       "4": "Forensic Electives: ANTH 2014 ANTH 3014 ANTH 4014; SOCL 3371, SOCL 3501, SOCL 3510, SOCL 4461, SOCL 4462, SOCL 4463, SOCL 4464, SOCL 4465, SOCL 4466, SOCL 4467, SOCL 4468, SOCL 4469, SOCL 4471."
-    }
+    },
+    "footnote_sections": {}
   },
   "14109": {
     "title": "Dental Laboratory Technology",
@@ -113223,6 +113343,7 @@
       "1": "BIOL 1201, GEOL 1001, PHYS 2001, ASTR 1101 Recommended.",
       "2": "ILC ARTS Course must be from ART, ARTH, MUS, or THTR rubric.",
       "3": "ILC HUMANITIES Course must be from: ARAB, CHIN, CMST, ENGL, FREN, GERM, GREK, HEBR, HIST, ITAL, LATN, PHIL, SPAN, or REL rubric."
-    }
+    },
+    "footnote_sections": {}
   }
 }

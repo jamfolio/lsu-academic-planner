@@ -41,6 +41,8 @@ for mode in ["fast", "balanced"]:
     end_shared = 0
     under_total = 0
     under_ex = []
+    avoidable_long = 0
+    conflicts = 0
 
     for n in range(RUNS):
         major_num = random.choice([1, 1, 1, 2, 2, 3])
@@ -48,6 +50,8 @@ for mode in ["fast", "balanced"]:
 
         minor_num = random.choice([0, 0, 1, 1, 1, 2, 2, 3])
         dif_minors = random.sample(minors, minor_num)
+
+        dif_minors = app.limit_honors(dif_minors)[0]
 
         dif_majors += [""] * (3 - len(dif_majors))
         dif_minors += [""] * (3 - len(dif_minors))
@@ -100,6 +104,11 @@ for mode in ["fast", "balanced"]:
         if len(plan_view) > 8:
             long_plans += 1
 
+        fewest = max(8, math.ceil(have / 18))
+
+        if len(plan_view) > fewest:
+            avoidable_long += 1
+
         for sem in plan_view:
             if sem["hours"] > 19:
                 over_19 += 1
@@ -136,6 +145,8 @@ for mode in ["fast", "balanced"]:
                     flagged_majors[major] += 1
             elif reason == "unknown course":
                 unknown += 1
+            elif reason == "catalog conflict":
+                conflicts += 1
 
         if minor_num > 0 and major_num == 1:
             no_minor_data = {
@@ -151,7 +162,7 @@ for mode in ["fast", "balanced"]:
             with_hours = sum(sem["hours"] for sem in plan_view)
             without_hours = sum(sem["hours"] for sem in no_minor_result["plan_view"])
 
-            if with_hours < without_hours:
+            if with_hours < without_hours and with_hours < need:
                 minor_drops += 1
                 drop_ex.append((dif_majors, dif_minors, with_hours, without_hours))
 
@@ -159,9 +170,11 @@ for mode in ["fast", "balanced"]:
 
     print("crashes:", crashes)
     print("long plans:", long_plans)
+    print("avoidable long:", avoidable_long)
     print("over 19 hours:", over_19)
     print("prereqs not found:", prereq)
     print("unknown course:", unknown)
+    print("catalog conflict:", conflicts)
     print("duplicates:", dupes)
     print("minor lowered hours:", minor_drops)
     print("end sequence shared:", end_shared)

@@ -42,12 +42,15 @@ from planner.recommend import (
     fits,
     EARLIEST,
     rule_codes,
+    pull_chains,
+    fix_order,
 )
 
 import json
 import re
 import math
 from collections import Counter
+import copy
 
 with open("data/degrees.json", "r", encoding="utf-8") as f:
     degrees = json.load(f)
@@ -148,7 +151,36 @@ TWINS = {}
 REPEATABLE = {code for code, info in courses.items() if info.get("repeatable")}
 
 for program in degrees.values():
+    first = program["tracks"][0]
     for track in program["tracks"]:
+        if (
+            track is not first
+            and track["semesters"]
+            and track["semesters"][0]["name"] != "Semester 1"
+        ):
+            _, start = track["semesters"][0]["name"].split(" ")
+            start = int(start)
+
+            before = copy.deepcopy(first["semesters"][: start - 1])
+
+            track["semesters"] = before + track["semesters"]
+
+        if not track.get("footnotes"):
+            track["footnotes"] = dict(program.get("footnotes", {}))
+
+        if not track.get("notes"):
+            track["notes"] = list(program.get("notes", []))
+
+        if not track.get("total_hours"):
+            for t in program["tracks"]:
+                if t.get("total_hours"):
+                    track["total_hours"] = t.get("total_hours")
+                    break
+
+        for number, parts in program.get("footnote_sections", {}).items():
+            if track["name"] in parts:
+                track["footnotes"][number] = parts[track["name"]]
+
         for semester in track["semesters"]:
             for item in semester["items"]:
                 if item.get("description") in FOOTNOTE_FIXES:
@@ -274,6 +306,27 @@ def clean_choices(values):
     return chosen
 
 
+def limit_honors(choices):
+    kept = []
+    first = None
+    dropped = False
+
+    for choice in choices:
+        if choice in HNRS_MINORS and first:
+            kept.append("")
+            dropped = True
+        elif choice in HNRS_MINORS:
+            first = choice
+            kept.append(choice)
+        else:
+            kept.append(choice)
+
+    if dropped is True:
+        return kept, first
+    else:
+        return kept, None
+
+
 def parse_prior(text):
     text = text.replace("\n", ",")
     prior = {piece.strip().upper() for piece in text.split(",") if piece.strip()}
@@ -305,6 +358,7 @@ def home():
     prior_text = ""
     hnrs_checkbox = ""
     mode = "balanced"
+    honors_notice = None
 
     if request.method == "POST":
         selected_majors = request.form.getlist("major")
@@ -312,6 +366,10 @@ def home():
         prior_text = request.form.get("prior", "")
         hnrs_checkbox = request.form.get("hnrs")
         mode = request.form.get("mode", "balanced")
+        selected_minors, kept_hnrs = limit_honors(selected_minors)
+
+        if kept_hnrs is not None:
+            honors_notice = f"Only one honors minor can be taken at a time. The {minors[kept_hnrs]['title']} was kept."
 
         use_hnrs = bool(
             hnrs_checkbox and (set(clean_choices(selected_minors)) & HNRS_MINORS)
@@ -533,7 +591,9 @@ def home():
 
                 if (
                     is_satisfied(
-                        courses.get(e["code"], {}).get("prereq_rule"), everything, set()
+                        courses.get(e["code"], {}).get("prereq_rule"),
+                        everything - {e["code"]},
+                        set(),
                     )
                     is False
                 ):
@@ -545,7 +605,9 @@ def home():
             for semester in plan:
                 everything.update(semester_codes(semester))
 
-            needs = minor_courses(courses.get(code, {}).get("prereq_rule"), everything)
+            needs = minor_courses(
+                courses.get(code, {}).get("prereq_rule"), everything - {code}
+            )
 
             for need in needs:
                 everything = set(prior)
@@ -636,6 +698,8 @@ def home():
 
             gap -= piece
 
+        fix_order(plan, prior)
+        pull_chains(plan, prior)
         compact(plan, prior)
         rebalance(plan)
 
@@ -656,9 +720,13 @@ def home():
             cap = goal + 1
             rebalance(plan, cap)
 
+        pull_chains(plan, prior, cap)
         compact(plan, prior, goal, cap)
         place_end_sequence(plan)
+        fix_order(plan, prior)
+        pull_chains(plan, prior, cap)
         rebalance(plan, cap)
+        fix_order(plan, prior)
         compact(plan, prior, goal, cap)
 
         if mode != "fast":
@@ -782,6 +850,7 @@ def home():
         repeatable=REPEATABLE,
         hnrs_checkbox=hnrs_checkbox,
         mode=mode,
+        honors_notice=honors_notice,
     )
 
 
@@ -868,7 +937,7 @@ def audit_page():
     for semester in plan:
         all_courses.update(semester)
 
-    chosen_minors = clean_choices(request.form.getlist("minor"))
+    chosen_minors = clean_choices(limit_honors(request.form.getlist("minor"))[0])
 
     minor_results = []
 
@@ -911,13 +980,20 @@ def audit_page():
         too_early.append(msg)
 
     prereq_problems = check_plan(plan, prior, courses, extra=slot_hours)
+
+    bad_messages = []
+
+    for sem, code, reason in prereq_problems:
+        message, kind = problem_message(code, reason)
+        bad_messages.append((sem, code, message))
+
     hours = check_hours(
         plan, courses, max_hours=19, approved_max=21, min_hours=12, extra=slot_hours
     )
 
     return render_template(
         "audit.html",
-        prereq_problems=prereq_problems,
+        prereq_problems=bad_messages,
         hours=hours,
         programs=programs,
         minor_results=minor_results,
@@ -963,6 +1039,23 @@ def elective_search():
     return jsonify(sorted(found))
 
 
+def problem_message(code, reason):
+    if reason == "prereqs not met":
+        message = "Prereq not met: " + describe(courses[code]["prereq_rule"])
+        kind = "prereq"
+    elif reason == "unknown course":
+        message = "Not in LSU's course data, so prereqs can't be checked"
+        kind = "unknown"
+    elif reason == "catalog conflict":
+        message = "LSU's catalog lists prereqs that loop back to this course. Check with an advisor."
+        kind = "unknown"
+    else:
+        message = reason
+        kind = "prereq"
+
+    return message, kind
+
+
 @app.route("/check_plan", methods=["POST"])
 def live_check():
     body = request.get_json()
@@ -1001,15 +1094,7 @@ def live_check():
     result = []
 
     for semester, code, reason in problems:
-        if reason == "prereqs not met":
-            message = "Prereq not met: " + describe(courses[code]["prereq_rule"])
-            kind = "prereq"
-        elif reason == "unknown course":
-            message = "Not in LSU's course data, so prereqs can't be checked"
-            kind = "unknown"
-        else:
-            message = reason
-            kind = "prereq"
+        message, kind = problem_message(code, reason)
 
         result.append(
             {
